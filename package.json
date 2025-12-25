@@ -1,5 +1,5 @@
 {
-  "name": "vacano-ui",
+  "name": "@vacano/ui",
   "version": "0.0.1",
   "description": "Vacano React components library",
   "type": "module",
