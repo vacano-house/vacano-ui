@@ -1,0 +1,1 @@
+export const DEFAULT_ICON_LUCIDE_PROP_SIZE = 24

@@ -165,6 +165,7 @@
   },
   "dependencies": {
     "@emotion/styled": "^11.14.1",
+    "@fontsource/manrope": "^5.2.8",
     "clsx": "^2.1.1"
   }
 }

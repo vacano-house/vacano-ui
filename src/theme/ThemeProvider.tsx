@@ -3,6 +3,7 @@ import { useMemo, useState } from 'react'
 import { ThemeProvider as EmotionThemeProvider } from '@emotion/react'
 
 import { ThemeContext } from './constants'
+import { GlobalStyle } from './GlobalStyle'
 import { themeDark, themeLight } from './themes'
 import type { ThemeContextValue, ThemeMode, ThemeProviderProps } from './types'
 
@@ -33,7 +34,10 @@ export function ThemeProvider({ children, defaultMode = 'light' }: ThemeProvider
 
   return (
     <ThemeContext value={contextValue}>
-      <EmotionThemeProvider theme={theme}>{children}</EmotionThemeProvider>
+      <EmotionThemeProvider theme={theme}>
+        <GlobalStyle />
+        {children}
+      </EmotionThemeProvider>
     </ThemeContext>
   )
 }
