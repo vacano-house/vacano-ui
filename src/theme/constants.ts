@@ -1,5 +1,10 @@
-export const palette = {}
+import { createContext } from 'react'
 
-export const shadows = {}
+import { themeLight } from './themes'
+import type { ThemeContextValue } from './types'
 
-export const breakpoints = {}
+export const ThemeContext = createContext<ThemeContextValue>({
+  mode: 'light',
+  theme: themeLight,
+  setMode: () => {},
+})

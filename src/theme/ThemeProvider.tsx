@@ -1,23 +1,10 @@
-import { createContext, useContext, useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
 
 import { ThemeProvider as EmotionThemeProvider } from '@emotion/react'
 
-import { themeDark, themeLight, type Theme } from './themes'
-import type { ThemeMode } from './types'
-
-interface ThemeContextValue {
-  theme: Theme
-  mode: ThemeMode
-  setMode: (mode: ThemeMode) => void
-  toggleMode: () => void
-}
-
-const ThemeContext = createContext<ThemeContextValue | null>(null)
-
-interface ThemeProviderProps {
-  children: React.ReactNode
-  defaultMode?: ThemeMode
-}
+import { ThemeContext } from './constants'
+import { themeDark, themeLight } from './themes'
+import type { ThemeContextValue, ThemeMode, ThemeProviderProps } from './types'
 
 export function ThemeProvider({ children, defaultMode = 'light' }: ThemeProviderProps) {
   const [mode, setMode] = useState<ThemeMode>(defaultMode)
@@ -40,22 +27,13 @@ export function ThemeProvider({ children, defaultMode = 'light' }: ThemeProvider
       theme,
       mode,
       setMode,
-      toggleMode: () => setMode((prev) => (prev === 'light' ? 'dark' : 'light')),
     }),
     [theme, mode],
   )
 
   return (
-    <ThemeContext.Provider value={contextValue}>
+    <ThemeContext value={contextValue}>
       <EmotionThemeProvider theme={theme}>{children}</EmotionThemeProvider>
-    </ThemeContext.Provider>
+    </ThemeContext>
   )
-}
-
-export function useTheme(): ThemeContextValue {
-  const context = useContext(ThemeContext)
-  if (!context) {
-    throw new Error('useTheme must be used within a ThemeProvider')
-  }
-  return context
 }
