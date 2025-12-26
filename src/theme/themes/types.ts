@@ -1,3 +1,32 @@
+type ButtonVariantTheme = {
+  color: string
+  backgroundColor: string
+  borderColor: string
+  hover: {
+    backgroundColor: string
+    borderColor: string
+  }
+  active: {
+    backgroundColor: string
+    borderColor: string
+  }
+  focus: {
+    outlineColor: string
+  }
+  disabled: {
+    color: string
+    backgroundColor: string
+    borderColor: string
+  }
+  char: {
+    color: string
+    backgroundColor: string
+  }
+  icon: {
+    color: string
+  }
+}
+
 export type Theme = {
   chip: {
     color: {
@@ -14,5 +43,11 @@ export type Theme = {
       warning: string
       error: string
     }
+  }
+  button: {
+    primary: ButtonVariantTheme
+    secondary: ButtonVariantTheme
+    ghost: ButtonVariantTheme
+    danger: ButtonVariantTheme
   }
 }

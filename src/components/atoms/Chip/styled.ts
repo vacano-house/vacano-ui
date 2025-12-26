@@ -43,8 +43,8 @@ export const StyledChipContainer = styled.span<StyledChipContainerProps>`
   height: 24px;
   padding: 0 12px;
   border-radius: 12px;
-  font-size: 11px;
-  font-weight: 700;
+  font-size: 12px;
+  font-weight: 600;
   min-width: 0;
   max-width: ${({ $fullWidth }) => ($fullWidth ? 'none' : '200px')};
   color: ${({ theme, $status }) => getChipContainerColor(theme, $status)};

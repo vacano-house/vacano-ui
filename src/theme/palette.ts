@@ -5,6 +5,12 @@ export const colors = {
   onyx: '#111111',
   carbonBlack: '#232323',
   graphite: '#343434',
+  slate: '#484848',
+  ash: '#6b6b6b',
+  silver: '#8c8c8c',
+  mist: '#b0b0b0',
+  cloud: '#d4d4d4',
+  snow: '#ebebeb',
   icyBlue: '#bde0fe',
 
   // status - solid
@@ -20,6 +26,23 @@ export const colors = {
   amberBg: '#ffb4001a',
   redBg: '#ff50501a',
   greyBg: '#0000000d',
+
+  // interactive (with alpha)
+  hoverLight: '#00000008',
+  activeLight: '#00000012',
+  hoverDark: '#ffffff12',
+  activeDark: '#ffffff20',
+
+  // danger variants
+  redLight: '#c8323214',
+  redMedium: '#c8323228',
+
+  // focus rings
+  focusRingDark: '#00000080',
+  focusRingDarkSubtle: '#00000040',
+  focusRingLight: '#ffffff80',
+  focusRingLightSubtle: '#ffffff40',
+  focusRingDanger: '#c8323280',
 } as const
 
 export const shadows = {

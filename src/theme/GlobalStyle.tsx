@@ -1,7 +1,7 @@
-import '@fontsource/manrope/400.css'
-import '@fontsource/manrope/500.css'
-import '@fontsource/manrope/600.css'
-import '@fontsource/manrope/700.css'
+import '@fontsource/inter/400.css'
+import '@fontsource/inter/500.css'
+import '@fontsource/inter/600.css'
+import '@fontsource/inter/700.css'
 
 import { css, Global } from '@emotion/react'
 
@@ -25,7 +25,7 @@ const globalStyles = css`
 
   body {
     min-height: 100vh;
-    font-family: 'Manrope', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;

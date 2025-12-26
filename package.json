@@ -128,7 +128,7 @@
   },
   "dependencies": {
     "@emotion/styled": "^11.14.1",
-    "@fontsource/manrope": "^5.2.8",
+    "@fontsource/inter": "^5.2.8",
     "@lordicon/react": "^1.11.0",
     "clsx": "^2.1.1",
     "lottie-web": "^5.13.0"
