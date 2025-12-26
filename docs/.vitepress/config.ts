@@ -9,7 +9,7 @@ export default defineConfig({
     logo: '/logo.svg',
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Components', link: 'https://components.vacano.io' },
+      { text: 'Components', link: '/storybook/' },
     ],
     sidebar: [
       {

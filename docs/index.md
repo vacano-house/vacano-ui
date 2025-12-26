@@ -16,7 +16,7 @@ hero:
       link: https://github.com/vacano-house/vacano-ui
     - theme: alt
       text: Components
-      link: https://components.vacano.io
+      link: /storybook/
 features:
   - icon: ⚛️
     title: Atomic Design
