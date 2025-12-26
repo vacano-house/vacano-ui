@@ -1,9 +1,25 @@
 export const colors = {
+  // base
   black: '#000000',
+  white: '#ffffff',
   onyx: '#111111',
   carbonBlack: '#232323',
   graphite: '#343434',
   icyBlue: '#bde0fe',
+
+  // status - solid
+  blue: '#0050c8',
+  green: '#009650',
+  amber: '#b48200',
+  red: '#c83232',
+  grey: '#646464',
+
+  // status - background (with alpha)
+  blueBg: '#0064ff1a',
+  greenBg: '#00c8641a',
+  amberBg: '#ffb4001a',
+  redBg: '#ff50501a',
+  greyBg: '#0000000d',
 } as const
 
 export const shadows = {
