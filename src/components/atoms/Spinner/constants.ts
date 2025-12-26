@@ -1,0 +1,2 @@
+export const DEFAULT_SPINNER_PROP_SIZE = 24
+export const DEFAULT_SPINNER_PROP_ARIA_LABEL = 'Loading'
