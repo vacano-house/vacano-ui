@@ -132,4 +132,55 @@ export const themeDark: Theme = {
       },
     },
   },
+  checkbox: {
+    box: {
+      backgroundColor: 'transparent',
+      borderColor: colors.ash,
+      checked: {
+        backgroundColor: colors.white,
+        borderColor: colors.white,
+      },
+      focus: {
+        shadowColor: colors.focusRingLightSubtle,
+      },
+    },
+    icon: {
+      color: colors.black,
+    },
+    label: {
+      color: colors.white,
+    },
+    state: {
+      warning: {
+        box: {
+          borderColor: colors.amber,
+          checked: {
+            backgroundColor: colors.amber,
+            borderColor: colors.amber,
+          },
+          focus: {
+            shadowColor: colors.focusRingWarning,
+          },
+        },
+        label: {
+          color: colors.amber,
+        },
+      },
+      error: {
+        box: {
+          borderColor: colors.red,
+          checked: {
+            backgroundColor: colors.red,
+            borderColor: colors.red,
+          },
+          focus: {
+            shadowColor: colors.focusRingError,
+          },
+        },
+        label: {
+          color: colors.red,
+        },
+      },
+    },
+  },
 }

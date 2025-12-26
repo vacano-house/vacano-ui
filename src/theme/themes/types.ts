@@ -27,6 +27,46 @@ type ButtonVariantTheme = {
   }
 }
 
+type CheckboxStateTheme = {
+  box: {
+    borderColor: string
+    checked: {
+      backgroundColor: string
+      borderColor: string
+    }
+    focus: {
+      shadowColor: string
+    }
+  }
+  label: {
+    color: string
+  }
+}
+
+type CheckboxTheme = {
+  box: {
+    backgroundColor: string
+    borderColor: string
+    checked: {
+      backgroundColor: string
+      borderColor: string
+    }
+    focus: {
+      shadowColor: string
+    }
+  }
+  icon: {
+    color: string
+  }
+  label: {
+    color: string
+  }
+  state: {
+    warning: CheckboxStateTheme
+    error: CheckboxStateTheme
+  }
+}
+
 export type Theme = {
   chip: {
     color: {
@@ -50,4 +90,5 @@ export type Theme = {
     ghost: ButtonVariantTheme
     danger: ButtonVariantTheme
   }
+  checkbox: CheckboxTheme
 }

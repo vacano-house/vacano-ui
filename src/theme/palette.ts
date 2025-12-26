@@ -43,6 +43,8 @@ export const colors = {
   focusRingLight: '#ffffff80',
   focusRingLightSubtle: '#ffffff40',
   focusRingDanger: '#c8323280',
+  focusRingWarning: '#b4820040',
+  focusRingError: '#c8323240',
 } as const
 
 export const shadows = {
