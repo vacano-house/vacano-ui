@@ -188,6 +188,78 @@ export const themeDark: Theme = {
       color: colors.white,
     },
   },
+  input: {
+    wrapper: {
+      backgroundColor: colors.inputBgDark,
+      borderColor: colors.slate,
+      focus: {
+        outlineColor: colors.focusRingLightSubtle,
+      },
+      disabled: {
+        backgroundColor: colors.graphite,
+        borderColor: colors.slate,
+      },
+    },
+    label: {
+      color: colors.cloud,
+    },
+    input: {
+      color: colors.white,
+      placeholderColor: colors.ash,
+      disabled: {
+        color: colors.ash,
+      },
+    },
+    icon: {
+      color: colors.cloud,
+      disabled: {
+        color: colors.ash,
+      },
+    },
+    toggle: {
+      color: colors.cloud,
+    },
+    state: {
+      warning: {
+        wrapper: {
+          backgroundColor: colors.inputBgWarning,
+          borderColor: colors.amber,
+          focus: {
+            outlineColor: colors.focusRingWarning,
+          },
+        },
+        label: {
+          color: colors.amber,
+        },
+        input: {
+          color: colors.white,
+          placeholderColor: colors.amber,
+        },
+        icon: {
+          color: colors.amber,
+        },
+      },
+      error: {
+        wrapper: {
+          backgroundColor: colors.inputBgError,
+          borderColor: colors.red,
+          focus: {
+            outlineColor: colors.focusRingError,
+          },
+        },
+        label: {
+          color: colors.red,
+        },
+        input: {
+          color: colors.white,
+          placeholderColor: colors.red,
+        },
+        icon: {
+          color: colors.red,
+        },
+      },
+    },
+  },
   radio: {
     circle: {
       borderColor: colors.ash,

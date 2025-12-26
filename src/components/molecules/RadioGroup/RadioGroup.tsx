@@ -1,5 +1,5 @@
 import { classNameGetter } from '../../../lib/utils'
-import { Radio } from '../../atoms'
+import { Radio } from '../../atoms/Radio'
 import { StyledRadioGroupContainer, StyledRadioGroupLabel, StyledRadioGroupOptions } from './styled'
 import type { RadioGroupProps } from './types'
 

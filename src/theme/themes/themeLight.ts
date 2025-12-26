@@ -188,6 +188,78 @@ export const themeLight: Theme = {
       color: colors.onyx,
     },
   },
+  input: {
+    wrapper: {
+      backgroundColor: colors.inputBgLight,
+      borderColor: colors.mist,
+      focus: {
+        outlineColor: colors.focusRingDarkSubtle,
+      },
+      disabled: {
+        backgroundColor: colors.snow,
+        borderColor: colors.cloud,
+      },
+    },
+    label: {
+      color: colors.slate,
+    },
+    input: {
+      color: colors.onyx,
+      placeholderColor: colors.silver,
+      disabled: {
+        color: colors.silver,
+      },
+    },
+    icon: {
+      color: colors.slate,
+      disabled: {
+        color: colors.silver,
+      },
+    },
+    toggle: {
+      color: colors.slate,
+    },
+    state: {
+      warning: {
+        wrapper: {
+          backgroundColor: colors.inputBgWarning,
+          borderColor: colors.amber,
+          focus: {
+            outlineColor: colors.focusRingWarning,
+          },
+        },
+        label: {
+          color: colors.amber,
+        },
+        input: {
+          color: colors.onyx,
+          placeholderColor: colors.amber,
+        },
+        icon: {
+          color: colors.amber,
+        },
+      },
+      error: {
+        wrapper: {
+          backgroundColor: colors.inputBgError,
+          borderColor: colors.red,
+          focus: {
+            outlineColor: colors.focusRingError,
+          },
+        },
+        label: {
+          color: colors.red,
+        },
+        input: {
+          color: colors.onyx,
+          placeholderColor: colors.red,
+        },
+        icon: {
+          color: colors.red,
+        },
+      },
+    },
+  },
   radio: {
     circle: {
       borderColor: colors.mist,

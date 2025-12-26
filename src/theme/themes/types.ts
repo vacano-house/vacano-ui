@@ -119,6 +119,63 @@ type CheckboxGroupTheme = {
   }
 }
 
+type InputStateTheme = {
+  wrapper: {
+    backgroundColor: string
+    borderColor: string
+    focus: {
+      outlineColor: string
+    }
+  }
+  label: {
+    color: string
+  }
+  input: {
+    color: string
+    placeholderColor: string
+  }
+  icon: {
+    color: string
+  }
+}
+
+type InputTheme = {
+  wrapper: {
+    backgroundColor: string
+    borderColor: string
+    focus: {
+      outlineColor: string
+    }
+    disabled: {
+      backgroundColor: string
+      borderColor: string
+    }
+  }
+  label: {
+    color: string
+  }
+  input: {
+    color: string
+    placeholderColor: string
+    disabled: {
+      color: string
+    }
+  }
+  icon: {
+    color: string
+    disabled: {
+      color: string
+    }
+  }
+  toggle: {
+    color: string
+  }
+  state: {
+    warning: InputStateTheme
+    error: InputStateTheme
+  }
+}
+
 export type Theme = {
   chip: {
     color: {
@@ -144,6 +201,7 @@ export type Theme = {
   }
   checkbox: CheckboxTheme
   checkboxGroup: CheckboxGroupTheme
+  input: InputTheme
   radio: RadioTheme
   radioGroup: RadioGroupTheme
 }

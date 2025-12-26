@@ -1,5 +1,5 @@
 import { classNameGetter } from '../../../lib/utils'
-import { Checkbox } from '../../atoms'
+import { Checkbox } from '../../atoms/Checkbox'
 import {
   StyledCheckboxGroupContainer,
   StyledCheckboxGroupLabel,
