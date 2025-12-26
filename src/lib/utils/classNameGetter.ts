@@ -1,9 +1,9 @@
 import clsx from 'clsx'
 
-import { COMPONENTS_PREFIX } from '../constants'
+const COMPONENTS_PREFIX = 'vacano'
 
 export const classNameGetter =
   (name: string) =>
-  (element: string, ...classNames: (string | undefined)[]) => {
+  (element: string, ...classNames: Array<string | undefined>) => {
     return clsx(`${COMPONENTS_PREFIX}_${name}_${element}`, ...classNames)
   }
