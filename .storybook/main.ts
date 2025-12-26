@@ -14,6 +14,9 @@ const config: StorybookConfig = {
     if (process.env.STORYBOOK_BASE) {
       config.base = process.env.STORYBOOK_BASE
     }
+    config.plugins = config.plugins?.filter(
+      (plugin) => plugin && 'name' in plugin && plugin.name !== 'vite:dts',
+    )
     return config
   },
 }
