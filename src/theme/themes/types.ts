@@ -119,6 +119,110 @@ type CheckboxGroupTheme = {
   }
 }
 
+type CheckboxCardStateTheme = {
+  container: {
+    borderColor: string
+    checked: {
+      borderColor: string
+    }
+  }
+  label: {
+    color: string
+  }
+  description: {
+    color: string
+  }
+}
+
+type CheckboxCardTheme = {
+  container: {
+    backgroundColor: string
+    borderColor: string
+    hover: {
+      borderColor: string
+    }
+    checked: {
+      backgroundColor: string
+      borderColor: string
+    }
+    focus: {
+      outlineColor: string
+    }
+    disabled: {
+      backgroundColor: string
+      borderColor: string
+    }
+  }
+  label: {
+    color: string
+    disabled: {
+      color: string
+    }
+  }
+  description: {
+    color: string
+    disabled: {
+      color: string
+    }
+  }
+  state: {
+    warning: CheckboxCardStateTheme
+    error: CheckboxCardStateTheme
+  }
+}
+
+type RadioCardStateTheme = {
+  container: {
+    borderColor: string
+    checked: {
+      borderColor: string
+    }
+  }
+  label: {
+    color: string
+  }
+  description: {
+    color: string
+  }
+}
+
+type RadioCardTheme = {
+  container: {
+    backgroundColor: string
+    borderColor: string
+    hover: {
+      borderColor: string
+    }
+    checked: {
+      backgroundColor: string
+      borderColor: string
+    }
+    focus: {
+      outlineColor: string
+    }
+    disabled: {
+      backgroundColor: string
+      borderColor: string
+    }
+  }
+  label: {
+    color: string
+    disabled: {
+      color: string
+    }
+  }
+  description: {
+    color: string
+    disabled: {
+      color: string
+    }
+  }
+  state: {
+    warning: RadioCardStateTheme
+    error: RadioCardStateTheme
+  }
+}
+
 type InputStateTheme = {
   wrapper: {
     backgroundColor: string
@@ -200,8 +304,10 @@ export type Theme = {
     danger: ButtonVariantTheme
   }
   checkbox: CheckboxTheme
+  checkboxCard: CheckboxCardTheme
   checkboxGroup: CheckboxGroupTheme
   input: InputTheme
   radio: RadioTheme
+  radioCard: RadioCardTheme
   radioGroup: RadioGroupTheme
 }

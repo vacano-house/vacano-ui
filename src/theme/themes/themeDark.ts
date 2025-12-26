@@ -183,6 +183,68 @@ export const themeDark: Theme = {
       },
     },
   },
+  checkboxCard: {
+    container: {
+      backgroundColor: colors.graphite,
+      borderColor: colors.slate,
+      hover: {
+        borderColor: colors.ash,
+      },
+      checked: {
+        backgroundColor: colors.graphite,
+        borderColor: colors.white,
+      },
+      focus: {
+        outlineColor: colors.focusRingLightSubtle,
+      },
+      disabled: {
+        backgroundColor: colors.carbonBlack,
+        borderColor: colors.slate,
+      },
+    },
+    label: {
+      color: colors.white,
+      disabled: {
+        color: colors.ash,
+      },
+    },
+    description: {
+      color: colors.cloud,
+      disabled: {
+        color: colors.ash,
+      },
+    },
+    state: {
+      warning: {
+        container: {
+          borderColor: colors.amber,
+          checked: {
+            borderColor: colors.amber,
+          },
+        },
+        label: {
+          color: colors.amber,
+        },
+        description: {
+          color: colors.amber,
+        },
+      },
+      error: {
+        container: {
+          borderColor: colors.red,
+          checked: {
+            borderColor: colors.red,
+          },
+        },
+        label: {
+          color: colors.red,
+        },
+        description: {
+          color: colors.red,
+        },
+      },
+    },
+  },
   checkboxGroup: {
     label: {
       color: colors.white,
@@ -308,6 +370,68 @@ export const themeDark: Theme = {
           color: colors.red,
         },
         label: {
+          color: colors.red,
+        },
+      },
+    },
+  },
+  radioCard: {
+    container: {
+      backgroundColor: colors.graphite,
+      borderColor: colors.slate,
+      hover: {
+        borderColor: colors.ash,
+      },
+      checked: {
+        backgroundColor: colors.graphite,
+        borderColor: colors.white,
+      },
+      focus: {
+        outlineColor: colors.focusRingLightSubtle,
+      },
+      disabled: {
+        backgroundColor: colors.carbonBlack,
+        borderColor: colors.slate,
+      },
+    },
+    label: {
+      color: colors.white,
+      disabled: {
+        color: colors.ash,
+      },
+    },
+    description: {
+      color: colors.cloud,
+      disabled: {
+        color: colors.ash,
+      },
+    },
+    state: {
+      warning: {
+        container: {
+          borderColor: colors.amber,
+          checked: {
+            borderColor: colors.amber,
+          },
+        },
+        label: {
+          color: colors.amber,
+        },
+        description: {
+          color: colors.amber,
+        },
+      },
+      error: {
+        container: {
+          borderColor: colors.red,
+          checked: {
+            borderColor: colors.red,
+          },
+        },
+        label: {
+          color: colors.red,
+        },
+        description: {
           color: colors.red,
         },
       },

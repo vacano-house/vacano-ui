@@ -183,6 +183,68 @@ export const themeLight: Theme = {
       },
     },
   },
+  checkboxCard: {
+    container: {
+      backgroundColor: colors.white,
+      borderColor: colors.mist,
+      hover: {
+        borderColor: colors.silver,
+      },
+      checked: {
+        backgroundColor: colors.white,
+        borderColor: colors.onyx,
+      },
+      focus: {
+        outlineColor: colors.focusRingDarkSubtle,
+      },
+      disabled: {
+        backgroundColor: colors.snow,
+        borderColor: colors.cloud,
+      },
+    },
+    label: {
+      color: colors.onyx,
+      disabled: {
+        color: colors.silver,
+      },
+    },
+    description: {
+      color: colors.slate,
+      disabled: {
+        color: colors.silver,
+      },
+    },
+    state: {
+      warning: {
+        container: {
+          borderColor: colors.amber,
+          checked: {
+            borderColor: colors.amber,
+          },
+        },
+        label: {
+          color: colors.amber,
+        },
+        description: {
+          color: colors.amber,
+        },
+      },
+      error: {
+        container: {
+          borderColor: colors.red,
+          checked: {
+            borderColor: colors.red,
+          },
+        },
+        label: {
+          color: colors.red,
+        },
+        description: {
+          color: colors.red,
+        },
+      },
+    },
+  },
   checkboxGroup: {
     label: {
       color: colors.onyx,
@@ -308,6 +370,68 @@ export const themeLight: Theme = {
           color: colors.red,
         },
         label: {
+          color: colors.red,
+        },
+      },
+    },
+  },
+  radioCard: {
+    container: {
+      backgroundColor: colors.white,
+      borderColor: colors.mist,
+      hover: {
+        borderColor: colors.silver,
+      },
+      checked: {
+        backgroundColor: colors.white,
+        borderColor: colors.onyx,
+      },
+      focus: {
+        outlineColor: colors.focusRingDarkSubtle,
+      },
+      disabled: {
+        backgroundColor: colors.snow,
+        borderColor: colors.cloud,
+      },
+    },
+    label: {
+      color: colors.onyx,
+      disabled: {
+        color: colors.silver,
+      },
+    },
+    description: {
+      color: colors.slate,
+      disabled: {
+        color: colors.silver,
+      },
+    },
+    state: {
+      warning: {
+        container: {
+          borderColor: colors.amber,
+          checked: {
+            borderColor: colors.amber,
+          },
+        },
+        label: {
+          color: colors.amber,
+        },
+        description: {
+          color: colors.amber,
+        },
+      },
+      error: {
+        container: {
+          borderColor: colors.red,
+          checked: {
+            borderColor: colors.red,
+          },
+        },
+        label: {
+          color: colors.red,
+        },
+        description: {
           color: colors.red,
         },
       },
