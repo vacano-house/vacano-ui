@@ -1,6 +1,4 @@
-import type { ChangeEventHandler, InputHTMLAttributes, ReactElement, Ref } from 'react'
-
-import type { AnimatedIconName, AnimatedIconRef } from '../../../icons/Animated'
+import type { ChangeEventHandler, InputHTMLAttributes, ReactNode, Ref } from 'react'
 
 export type InputType = InputHTMLAttributes<HTMLInputElement>['type']
 
@@ -50,8 +48,7 @@ export type InputProps = Omit<
   onChange: ChangeEventHandler<HTMLInputElement>
   type?: InputType
   label?: string
-  icon?: AnimatedIconName | ReactElement
-  iconRef?: Ref<AnimatedIconRef>
+  icon?: ReactNode
   state?: InputState
   fullWidth?: boolean
   className?: string

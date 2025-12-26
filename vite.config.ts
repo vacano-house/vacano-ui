@@ -17,10 +17,11 @@ export default defineConfig({
   ],
   build: {
     lib: {
-      entry: resolve(__dirname, 'src/index.ts'),
-      name: 'VacanoUI',
+      entry: {
+        index: resolve(__dirname, 'src/index.ts'),
+        icons: resolve(__dirname, 'src/icons/Lucide/index.ts'),
+      },
       formats: ['es', 'cjs'],
-      fileName: 'index',
     },
     rollupOptions: {
       external: ['react', 'react-dom', 'react/jsx-runtime', '@emotion/react'],
@@ -33,6 +34,6 @@ export default defineConfig({
       },
     },
     sourcemap: true,
-    minify: false,
+    minify: 'esbuild',
   },
 })

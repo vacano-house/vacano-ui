@@ -1,9 +1,3 @@
-import { cloneElement, isValidElement } from 'react'
-
-import { useTheme } from '@emotion/react'
-
-import { AnimatedIcon } from '../../../icons/Animated/AnimatedIcon'
-import type { AnimatedIconName } from '../../../icons/Animated/types'
 import { classNameGetter } from '../../../lib/utils'
 import { INPUT_PASSWORD_ICON_PATHS } from './constants'
 import {
@@ -20,14 +14,11 @@ import { useInput } from './useInput'
 
 const css = classNameGetter('input')
 
-const ICON_SIZE = 16
-
 export const Input = ({
   className,
   classnames,
   fullWidth,
   icon,
-  iconRef,
   label,
   onChange,
   onBlur,
@@ -38,21 +29,15 @@ export const Input = ({
   value,
   ...rest
 }: InputProps) => {
-  const theme = useTheme()
   const {
-    effectiveIconRef,
     inputType,
-    isAnimatedIcon,
-    isLucideIcon,
     isPassword,
     isPasswordVisible,
     handleBlur,
     handleFocus,
     handlePasswordMouseDown,
     handlePasswordMouseUp,
-  } = useInput({ icon, iconRef, onBlur, onFocus, type, value })
-
-  const iconColor = rest.disabled ? theme.input.icon.disabled.color : theme.input.icon.color
+  } = useInput({ onBlur, onFocus, type, value })
 
   const passwordIconPaths = isPasswordVisible
     ? INPUT_PASSWORD_ICON_PATHS.visible
@@ -63,23 +48,7 @@ export const Input = ({
       return null
     }
 
-    if (isAnimatedIcon) {
-      return (
-        <AnimatedIcon
-          name={icon as AnimatedIconName}
-          size={ICON_SIZE}
-          ref={effectiveIconRef}
-          disableOnHover
-          color={iconColor}
-        />
-      )
-    }
-
-    if (isLucideIcon && isValidElement(icon)) {
-      return cloneElement(icon, { size: ICON_SIZE } as Record<string, unknown>)
-    }
-
-    return null
+    return icon
   }
 
   return (

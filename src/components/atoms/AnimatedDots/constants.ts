@@ -1,2 +1,0 @@
-export const DEFAULT_ANIMATED_DOTS_PROP_SIZE = 6
-export const DEFAULT_ANIMATED_DOTS_PROP_ARIA_LABEL = 'Loading'

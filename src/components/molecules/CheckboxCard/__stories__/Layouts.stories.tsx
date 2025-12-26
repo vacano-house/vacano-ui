@@ -61,7 +61,9 @@ const LayoutsExample = () => (
     <div style={labelStyle}>display: block (default)</div>
     <div style={{ ...containerStyle, display: 'block' }}>
       <InteractiveCard label="First" description="Description for first option" />
+      <br />
       <InteractiveCard label="Second" description="Description for second option" />
+      <br />
       <InteractiveCard label="Third" description="Description for third option" />
     </div>
 

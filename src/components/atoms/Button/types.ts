@@ -1,6 +1,4 @@
-import type { ButtonHTMLAttributes, ReactElement, Ref } from 'react'
-
-import type { AnimatedIconName, AnimatedIconRef } from '../../../icons/Animated'
+import type { ButtonHTMLAttributes, ReactNode } from 'react'
 
 export type ButtonVariant = 'primary' | 'secondary' | 'ghost' | 'danger'
 
@@ -40,8 +38,7 @@ export type ButtonProps = Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'childre
   classnames?: ButtonClassnames
   'data-test-id'?: string
   fullWidth?: boolean
-  icon?: AnimatedIconName | ReactElement
-  iconRef?: Ref<AnimatedIconRef>
+  icon?: ReactNode
   loading?: boolean
   variant?: ButtonVariant
 }

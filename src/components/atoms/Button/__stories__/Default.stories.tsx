@@ -1,71 +1,49 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
 import {
-  IconLucideCheck,
-  IconLucideDownload,
-  IconLucidePlus,
-  IconLucideSearch,
-  IconLucideSettings,
-  IconLucideTrash,
-  IconLucideX,
+  Bell,
+  Check,
+  Download,
+  Home,
+  Plus,
+  Search,
+  Settings,
+  Trash,
+  User,
+  X,
 } from '../../../../icons/Lucide'
 import { Button } from '../Button'
 import type { ButtonProps } from '../types'
 
-const iconKeys = [
-  'none',
-  'animated-settings',
-  'animated-search',
-  'animated-trash',
-  'animated-check',
-  'animated-bell',
-  'animated-home',
-  'lucide-search',
-  'lucide-settings',
-  'lucide-plus',
-  'lucide-check',
-  'lucide-x',
-  'lucide-trash',
-  'lucide-download',
-] as const
-
-type IconKey = (typeof iconKeys)[number]
-
-const lucideIconMap: Record<string, React.ReactElement> = {
-  'lucide-search': <IconLucideSearch />,
-  'lucide-settings': <IconLucideSettings />,
-  'lucide-plus': <IconLucidePlus />,
-  'lucide-check': <IconLucideCheck />,
-  'lucide-x': <IconLucideX />,
-  'lucide-trash': <IconLucideTrash />,
-  'lucide-download': <IconLucideDownload />,
+const iconMap = {
+  none: null,
+  search: <Search size={18} />,
+  settings: <Settings size={18} />,
+  plus: <Plus size={18} />,
+  check: <Check size={18} />,
+  x: <X size={18} />,
+  trash: <Trash size={18} />,
+  download: <Download size={18} />,
+  bell: <Bell size={18} />,
+  home: <Home size={18} />,
+  user: <User size={18} />,
 }
 
-const getIcon = (iconKey: IconKey): ButtonProps['icon'] => {
-  if (iconKey === 'none') {
-    return undefined
-  }
+type IconOption = keyof typeof iconMap
 
-  if (iconKey.startsWith('animated-')) {
-    return iconKey as ButtonProps['icon']
-  }
-
-  return lucideIconMap[iconKey]
-}
-
-type StoryProps = Omit<ButtonProps, 'icon'> & { iconKey: IconKey }
+type StoryProps = Omit<ButtonProps, 'icon'> & { icon: IconOption }
 
 const meta: Meta<StoryProps> = {
   title: 'Atoms/Button',
   parameters: {
     layout: 'centered',
     controls: {
-      include: ['variant', 'children', 'iconKey', 'char', 'loading', 'disabled', 'fullWidth'],
+      include: ['variant', 'children', 'icon', 'char', 'loading', 'disabled', 'fullWidth'],
     },
   },
   args: {
     children: 'Button',
-    iconKey: 'none',
+    icon: 'none',
   },
   argTypes: {
     variant: {
@@ -77,11 +55,10 @@ const meta: Meta<StoryProps> = {
       control: 'text',
       description: 'Button text',
     },
-    iconKey: {
+    icon: {
       control: 'select',
-      options: iconKeys,
+      options: Object.keys(iconMap),
       description: 'Button icon',
-      name: 'icon',
     },
     char: {
       control: 'text',
@@ -107,5 +84,5 @@ export default meta
 type Story = StoryObj<StoryProps>
 
 export const Default: Story = {
-  render: ({ iconKey, ...args }) => <Button {...args} icon={getIcon(iconKey)} />,
+  render: ({ icon, ...args }) => <Button {...args} icon={iconMap[icon]} />,
 }

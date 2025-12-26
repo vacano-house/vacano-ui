@@ -16,6 +16,16 @@
         "types": "./dist/index.d.cts",
         "default": "./dist/index.cjs"
       }
+    },
+    "./icons": {
+      "import": {
+        "types": "./dist/icons.d.ts",
+        "default": "./dist/icons.js"
+      },
+      "require": {
+        "types": "./dist/icons.d.cts",
+        "default": "./dist/icons.cjs"
+      }
     }
   },
   "files": [
@@ -121,14 +131,13 @@
     ]
   },
   "lint-staged": {
-    "*.{ts,tsx}": [
+    "src/**/*.{ts,tsx}": [
       "eslint --fix",
       "prettier --write"
     ]
   },
   "dependencies": {
     "@emotion/styled": "^11.14.1",
-    "@fontsource/inter": "^5.2.8",
     "@lordicon/react": "^1.11.0",
     "clsx": "^2.1.1",
     "lottie-web": "^5.13.0"

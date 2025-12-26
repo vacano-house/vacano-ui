@@ -4,14 +4,9 @@ import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { describe, expect, it, vi } from 'vitest'
 
+import { Search } from '../../../../icons/Lucide'
 import { ThemeProvider } from '../../../../theme'
 import { Button } from '../Button'
-
-vi.mock('../../../../icons/Animated/AnimatedIcon', () => ({
-  AnimatedIcon: ({ name }: { name: string }) => (
-    <span data-testid={`animated-icon-${name}`}>{name}</span>
-  ),
-}))
 
 const renderWithTheme = (ui: ReactNode) => {
   return render(<ThemeProvider>{ui}</ThemeProvider>)
@@ -135,12 +130,11 @@ describe('Button', () => {
     expect(handleClick).not.toHaveBeenCalled()
   })
 
-  it('renders Lucide icon when ReactElement is passed', () => {
-    const MockIcon = () => <svg data-testid="mock-icon" />
+  it('renders icon when icon is passed', () => {
+    renderWithTheme(<Button icon={<Search size={18} />}>With Icon</Button>)
 
-    renderWithTheme(<Button icon={<MockIcon />}>With Icon</Button>)
-
-    expect(screen.getByTestId('mock-icon')).toBeInTheDocument()
+    expect(screen.getByRole('button')).toBeInTheDocument()
+    expect(screen.getByRole('button').querySelector('.vacano_button_icon')).toBeInTheDocument()
   })
 
   it('applies fullWidth styling', () => {

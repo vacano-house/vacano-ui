@@ -2,101 +2,24 @@ import { useState } from 'react'
 
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
-import type { AnimatedIconName } from '../../../../icons/Animated'
-import {
-  IconLucideLock,
-  IconLucideMail,
-  IconLucidePhone,
-  IconLucideSearch,
-  IconLucideUser,
-} from '../../../../icons/Lucide'
+import { Calendar, CreditCard, Lock, Mail, Phone, Search, User } from '../../../../icons/Lucide'
 import { Input } from '../Input'
 import type { InputProps } from '../types'
 
-const lucideIcons = {
-  'lucide-search': <IconLucideSearch />,
-  'lucide-mail': <IconLucideMail />,
-  'lucide-user': <IconLucideUser />,
-  'lucide-lock': <IconLucideLock />,
-  'lucide-phone': <IconLucidePhone />,
+const iconMap = {
+  none: null,
+  search: <Search size={16} />,
+  mail: <Mail size={16} />,
+  user: <User size={16} />,
+  lock: <Lock size={16} />,
+  phone: <Phone size={16} />,
+  calendar: <Calendar size={16} />,
+  'credit-card': <CreditCard size={16} />,
 }
 
-const animatedIconNames: AnimatedIconName[] = [
-  'animated-account',
-  'animated-add-card',
-  'animated-analytics',
-  'animated-arrow-down',
-  'animated-arrow-right',
-  'animated-arrow-up',
-  'animated-article',
-  'animated-assessment',
-  'animated-assignment',
-  'animated-autorenew',
-  'animated-bell',
-  'animated-bolt',
-  'animated-book',
-  'animated-bookmark',
-  'animated-build',
-  'animated-calculate',
-  'animated-calendar',
-  'animated-category',
-  'animated-chat',
-  'animated-check',
-  'animated-clock',
-  'animated-code',
-  'animated-compare',
-  'animated-compress',
-  'animated-credit-card',
-  'animated-cross',
-  'animated-email',
-  'animated-expand',
-  'animated-file',
-  'animated-folder',
-  'animated-heart',
-  'animated-help',
-  'animated-history',
-  'animated-home',
-  'animated-inbox',
-  'animated-info',
-  'animated-label',
-  'animated-newspaper',
-  'animated-phone',
-  'animated-pie-chart',
-  'animated-play',
-  'animated-ratio',
-  'animated-search',
-  'animated-settings',
-  'animated-share',
-  'animated-shopping',
-  'animated-spinner',
-  'animated-ticket',
-  'animated-trash',
-  'animated-trending-down',
-  'animated-trending-up',
-  'animated-upload',
-  'animated-wallet',
-  'animated-wifi',
-]
+type IconOption = keyof typeof iconMap
 
-const iconOptions = ['none', ...Object.keys(lucideIcons), ...animatedIconNames]
-
-const getIcon = (iconName: string): InputProps['icon'] => {
-  if (iconName === 'none') {
-    return undefined
-  }
-
-  if (iconName in lucideIcons) {
-    return lucideIcons[iconName as keyof typeof lucideIcons]
-  }
-
-  if (iconName.startsWith('animated-')) {
-    return iconName as AnimatedIconName
-  }
-
-  return undefined
-}
-
-type StoryProps = Omit<InputProps, 'icon' | 'value' | 'onChange'> & { icon: string }
+type StoryProps = Omit<InputProps, 'icon' | 'value' | 'onChange'> & { icon: IconOption }
 
 const meta: Meta<StoryProps> = {
   title: 'Atoms/Input',
@@ -140,7 +63,7 @@ const meta: Meta<StoryProps> = {
     },
     icon: {
       control: 'select',
-      options: iconOptions,
+      options: Object.keys(iconMap),
       description: 'Icon',
     },
   },
@@ -156,7 +79,7 @@ const InteractiveInput = ({ icon, ...args }: StoryProps) => {
   return (
     <Input
       {...args}
-      icon={getIcon(icon)}
+      icon={iconMap[icon]}
       value={value}
       onChange={(e) => setValue(e.target.value)}
     />

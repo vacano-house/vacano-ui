@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
-import { IconLucidePlus, IconLucideSearch, IconLucideX } from '../../../../icons/Lucide'
+import { Plus, Search, Settings, X } from '../../../../icons/Lucide'
 import { Button } from '../Button'
 
 const meta: Meta<typeof Button> = {
@@ -19,10 +19,10 @@ type Story = StoryObj<typeof Button>
 
 const IconOnlyExample = () => (
   <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', alignItems: 'center' }}>
-    <Button variant="primary" icon={<IconLucidePlus />} />
-    <Button variant="secondary" icon={<IconLucideSearch />} />
-    <Button variant="ghost" icon="animated-settings" />
-    <Button variant="danger" icon={<IconLucideX />} />
+    <Button variant="primary" icon={<Plus size={18} />} />
+    <Button variant="secondary" icon={<Search size={18} />} />
+    <Button variant="ghost" icon={<Settings size={18} />} />
+    <Button variant="danger" icon={<X size={18} />} />
   </div>
 )
 

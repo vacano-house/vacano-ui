@@ -1,4 +1,4 @@
-import { IconLucideCheck, IconLucideMinus } from '../../../icons/Lucide'
+import { Check, Minus } from '../../../icons/Lucide'
 import { classNameGetter } from '../../../lib/utils'
 import {
   StyledCheckboxBox,
@@ -48,7 +48,7 @@ export const Checkbox = ({
           className={css('icon', classnames?.icon)}
           $visible={indeterminate || checked}
         >
-          {indeterminate ? <IconLucideMinus /> : <IconLucideCheck />}
+          {indeterminate ? <Minus /> : <Check />}
         </StyledCheckboxIcon>
       </StyledCheckboxBox>
       {label && (

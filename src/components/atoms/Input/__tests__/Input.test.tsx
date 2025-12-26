@@ -4,14 +4,9 @@ import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { describe, expect, it, vi } from 'vitest'
 
+import { Search } from '../../../../icons/Lucide'
 import { ThemeProvider } from '../../../../theme'
 import { Input } from '../Input'
-
-vi.mock('../../../../icons/Animated/AnimatedIcon', () => ({
-  AnimatedIcon: ({ name }: { name: string }) => (
-    <span data-testid={`animated-icon-${name}`}>{name}</span>
-  ),
-}))
 
 const renderWithTheme = (ui: ReactNode) => {
   return render(<ThemeProvider>{ui}</ThemeProvider>)
@@ -81,10 +76,9 @@ describe('Input', () => {
 
   it('renders icon when provided', () => {
     const { container } = renderWithTheme(
-      <Input value="" onChange={() => {}} icon={<span data-testid="icon">Icon</span>} />,
+      <Input value="" onChange={() => {}} icon={<Search size={16} />} />,
     )
 
-    expect(screen.getByTestId('icon')).toBeInTheDocument()
     expect(container.querySelector('.vacano_input_icon')).toBeInTheDocument()
   })
 

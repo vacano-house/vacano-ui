@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
-import { IconLucideSearch } from '../../../../icons/Lucide'
 import { Button } from '../Button'
 
 const meta: Meta<typeof Button> = {
@@ -31,7 +30,7 @@ const DisabledExample = () => (
     <Button variant="danger" disabled>
       Danger
     </Button>
-    <Button variant="primary" icon={<IconLucideSearch />} disabled>
+    <Button variant="primary" icon="search" disabled>
       With Icon
     </Button>
     <Button variant="secondary" char="K" disabled>

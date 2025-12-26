@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
-import { IconLucideLock, IconLucideMail, IconLucideSearch } from '../../../../icons/Lucide'
+import { Lock, Mail, Search } from '../../../../icons/Lucide'
 import { Input } from '../Input'
 
 const meta: Meta<typeof Input> = {
@@ -47,12 +47,7 @@ const LayoutsExample = () => (
 
     <div style={labelStyle}>with icon</div>
     <div style={containerStyle}>
-      <Input
-        value=""
-        onChange={() => {}}
-        icon={<IconLucideSearch size={18} />}
-        placeholder="Search..."
-      />
+      <Input value="" onChange={() => {}} icon={<Search size={16} />} placeholder="Search..." />
     </div>
 
     <div style={labelStyle}>disabled</div>
@@ -89,7 +84,7 @@ const LayoutsExample = () => (
         value=""
         onChange={() => {}}
         type="email"
-        icon={<IconLucideMail size={18} />}
+        icon={<Mail size={16} />}
         placeholder="email@example.com"
       />
     </div>
@@ -100,7 +95,7 @@ const LayoutsExample = () => (
         value="secret123"
         onChange={() => {}}
         type="password"
-        icon={<IconLucideLock size={18} />}
+        icon={<Lock size={16} />}
         placeholder="Password"
       />
     </div>
@@ -162,7 +157,7 @@ const LayoutsExample = () => (
         type="email"
         placeholder="john@example.com"
       />
-      <Input value="" onChange={() => {}} fullWidth label="Phone" type="phone" />
+      <Input value="" onChange={() => {}} fullWidth label="Phone" type="tel" />
     </div>
   </div>
 )

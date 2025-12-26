@@ -1,1 +1,1 @@
-export const DEFAULT_ICON_LUCIDE_PROP_SIZE = 24
+export const DEFAULT_LUCIDE_PROP_SIZE = 24

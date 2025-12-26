@@ -10,13 +10,13 @@ hero:
   actions:
     - theme: brand
       text: Get Started
-      link: /getting-started
+      link: /guide/getting-started
     - theme: alt
       text: View on GitHub
       link: https://github.com/vacano-house/vacano-ui
     - theme: alt
-      text: Components
-      link: /storybook/
+      text: Storybook
+      link: https://ui.vacano.io/storybook/
 features:
   - icon: ⚛️
     title: Atomic Design
@@ -30,4 +30,10 @@ features:
   - icon: 🔧
     title: TypeScript
     details: Written in TypeScript with full type definitions included.
+  - icon: 🎯
+    title: 1500+ Icons
+    details: Complete Lucide icon set included with separate entry point for optimal bundle size.
+  - icon: ♿
+    title: Accessible
+    details: Built with accessibility in mind, following WAI-ARIA guidelines.
 ---
