@@ -42,8 +42,14 @@ const lucideIconMap: Record<string, React.ReactElement> = {
 }
 
 const getIcon = (iconKey: IconKey): ButtonProps['icon'] => {
-  if (iconKey === 'none') return undefined
-  if (iconKey.startsWith('animated-')) return iconKey as ButtonProps['icon']
+  if (iconKey === 'none') {
+    return undefined
+  }
+
+  if (iconKey.startsWith('animated-')) {
+    return iconKey as ButtonProps['icon']
+  }
+
   return lucideIconMap[iconKey]
 }
 

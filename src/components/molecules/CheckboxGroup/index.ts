@@ -1,2 +1,2 @@
+export * from './types'
 export * from './CheckboxGroup'
-export * from './RadioGroup'

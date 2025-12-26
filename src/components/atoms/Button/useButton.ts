@@ -61,7 +61,10 @@ export const useButton = (
   }, [iconRef])
 
   const handleMouseEnter = useCallback(() => {
-    if (disabled || loading) return
+    if (disabled || loading) {
+      return
+    }
+
     setIsHovered(true)
 
     if (isAnimatedIcon && effectiveIconRef && 'current' in effectiveIconRef) {

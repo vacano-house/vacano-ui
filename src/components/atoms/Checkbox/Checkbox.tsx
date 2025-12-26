@@ -1,6 +1,5 @@
 import { IconLucideCheck, IconLucideMinus } from '../../../icons/Lucide'
 import { classNameGetter } from '../../../lib/utils'
-import { CHECKBOX_ICON_SIZE } from './constants'
 import {
   StyledCheckboxBox,
   StyledCheckboxContainer,
@@ -49,11 +48,7 @@ export const Checkbox = ({
           className={css('icon', classnames?.icon)}
           $visible={indeterminate || checked}
         >
-          {indeterminate ? (
-            <IconLucideMinus size={CHECKBOX_ICON_SIZE} />
-          ) : (
-            <IconLucideCheck size={CHECKBOX_ICON_SIZE} />
-          )}
+          {indeterminate ? <IconLucideMinus /> : <IconLucideCheck />}
         </StyledCheckboxIcon>
       </StyledCheckboxBox>
       {label && (

@@ -183,4 +183,67 @@ export const themeLight: Theme = {
       },
     },
   },
+  checkboxGroup: {
+    label: {
+      color: colors.onyx,
+    },
+  },
+  radio: {
+    circle: {
+      borderColor: colors.mist,
+      checked: {
+        borderColor: colors.onyx,
+      },
+      focus: {
+        shadowColor: colors.focusRingDarkSubtle,
+      },
+    },
+    dot: {
+      color: colors.onyx,
+    },
+    label: {
+      color: colors.onyx,
+    },
+    state: {
+      warning: {
+        circle: {
+          borderColor: colors.amber,
+          checked: {
+            borderColor: colors.amber,
+          },
+          focus: {
+            shadowColor: colors.focusRingWarning,
+          },
+        },
+        dot: {
+          color: colors.amber,
+        },
+        label: {
+          color: colors.amber,
+        },
+      },
+      error: {
+        circle: {
+          borderColor: colors.red,
+          checked: {
+            borderColor: colors.red,
+          },
+          focus: {
+            shadowColor: colors.focusRingError,
+          },
+        },
+        dot: {
+          color: colors.red,
+        },
+        label: {
+          color: colors.red,
+        },
+      },
+    },
+  },
+  radioGroup: {
+    label: {
+      color: colors.onyx,
+    },
+  },
 }

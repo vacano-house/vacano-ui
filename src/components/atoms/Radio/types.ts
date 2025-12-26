@@ -1,26 +1,24 @@
 import type { ChangeEventHandler, InputHTMLAttributes, Ref } from 'react'
 
-export type CheckboxState = 'warning' | 'error'
+export type RadioState = 'warning' | 'error'
 
-export type CheckboxClassnames = {
+export type RadioClassnames = {
   container?: string
   input?: string
-  box?: string
-  icon?: string
+  circle?: string
+  dot?: string
   label?: string
 }
 
-export type CheckboxProps = Omit<
+export type RadioProps = Omit<
   InputHTMLAttributes<HTMLInputElement>,
   'type' | 'checked' | 'onChange'
 > & {
   checked: boolean
-  onChange: ChangeEventHandler<HTMLInputElement>
-
+  classnames?: RadioClassnames
   'data-test-id'?: string
-  classnames?: CheckboxClassnames
-  indeterminate?: boolean
   label?: string
+  onChange: ChangeEventHandler<HTMLInputElement>
   ref?: Ref<HTMLInputElement>
-  state?: CheckboxState
+  state?: RadioState
 }

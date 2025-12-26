@@ -29,13 +29,25 @@ const getBoxBorderColor = (
   state?: CheckboxState,
 ) => {
   if (checked || indeterminate) {
-    if (state === 'warning') return theme.checkbox.state.warning.box.checked.borderColor
-    if (state === 'error') return theme.checkbox.state.error.box.checked.borderColor
+    if (state === 'warning') {
+      return theme.checkbox.state.warning.box.checked.borderColor
+    }
+
+    if (state === 'error') {
+      return theme.checkbox.state.error.box.checked.borderColor
+    }
+
     return theme.checkbox.box.checked.borderColor
   }
 
-  if (state === 'warning') return theme.checkbox.state.warning.box.borderColor
-  if (state === 'error') return theme.checkbox.state.error.box.borderColor
+  if (state === 'warning') {
+    return theme.checkbox.state.warning.box.borderColor
+  }
+
+  if (state === 'error') {
+    return theme.checkbox.state.error.box.borderColor
+  }
+
   return theme.checkbox.box.borderColor
 }
 
@@ -46,8 +58,14 @@ const getBoxBackgroundColor = (
   state?: CheckboxState,
 ) => {
   if (checked || indeterminate) {
-    if (state === 'warning') return theme.checkbox.state.warning.box.checked.backgroundColor
-    if (state === 'error') return theme.checkbox.state.error.box.checked.backgroundColor
+    if (state === 'warning') {
+      return theme.checkbox.state.warning.box.checked.backgroundColor
+    }
+
+    if (state === 'error') {
+      return theme.checkbox.state.error.box.checked.backgroundColor
+    }
+
     return theme.checkbox.box.checked.backgroundColor
   }
 
@@ -55,14 +73,26 @@ const getBoxBackgroundColor = (
 }
 
 const getBoxFocusShadowColor = (theme: Theme, state?: CheckboxState) => {
-  if (state === 'warning') return theme.checkbox.state.warning.box.focus.shadowColor
-  if (state === 'error') return theme.checkbox.state.error.box.focus.shadowColor
+  if (state === 'warning') {
+    return theme.checkbox.state.warning.box.focus.shadowColor
+  }
+
+  if (state === 'error') {
+    return theme.checkbox.state.error.box.focus.shadowColor
+  }
+
   return theme.checkbox.box.focus.shadowColor
 }
 
 const getLabelColor = (theme: Theme, state?: CheckboxState) => {
-  if (state === 'warning') return theme.checkbox.state.warning.label.color
-  if (state === 'error') return theme.checkbox.state.error.label.color
+  if (state === 'warning') {
+    return theme.checkbox.state.warning.label.color
+  }
+
+  if (state === 'error') {
+    return theme.checkbox.state.error.label.color
+  }
+
   return theme.checkbox.label.color
 }
 

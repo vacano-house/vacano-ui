@@ -55,7 +55,9 @@ export const Button = ({
     : theme.button[variant].icon.color
 
   const renderIcon = () => {
-    if (!icon) return null
+    if (!icon) {
+      return null
+    }
 
     if (isAnimatedIcon) {
       return (

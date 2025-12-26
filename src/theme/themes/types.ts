@@ -67,6 +67,58 @@ type CheckboxTheme = {
   }
 }
 
+type RadioStateTheme = {
+  circle: {
+    borderColor: string
+    checked: {
+      borderColor: string
+    }
+    focus: {
+      shadowColor: string
+    }
+  }
+  dot: {
+    color: string
+  }
+  label: {
+    color: string
+  }
+}
+
+type RadioTheme = {
+  circle: {
+    borderColor: string
+    checked: {
+      borderColor: string
+    }
+    focus: {
+      shadowColor: string
+    }
+  }
+  dot: {
+    color: string
+  }
+  label: {
+    color: string
+  }
+  state: {
+    warning: RadioStateTheme
+    error: RadioStateTheme
+  }
+}
+
+type RadioGroupTheme = {
+  label: {
+    color: string
+  }
+}
+
+type CheckboxGroupTheme = {
+  label: {
+    color: string
+  }
+}
+
 export type Theme = {
   chip: {
     color: {
@@ -91,4 +143,7 @@ export type Theme = {
     danger: ButtonVariantTheme
   }
   checkbox: CheckboxTheme
+  checkboxGroup: CheckboxGroupTheme
+  radio: RadioTheme
+  radioGroup: RadioGroupTheme
 }
