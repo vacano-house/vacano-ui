@@ -4,63 +4,67 @@ import { createPortal } from 'react-dom'
 import { FloatingFocusManager } from '@floating-ui/react'
 import { useVirtualizer } from '@tanstack/react-virtual'
 
-import { Check, ChevronDown } from '../../../icons/Lucide'
+import { Check, ChevronDown, X } from '../../../icons/Lucide'
 import { classNameGetter } from '../../../lib/utils'
 import {
-  DEFAULT_SELECT_OPTION_HEIGHT,
-  DEFAULT_SELECT_PROP_EMPTY_MESSAGE,
-  DEFAULT_SELECT_PROP_MAX_HEIGHT,
-  DEFAULT_SELECT_PROP_PLACEHOLDER,
-  DEFAULT_SELECT_PROP_PLACEMENT,
-  DEFAULT_SELECT_PROP_SEARCH_PLACEHOLDER,
+  DEFAULT_MULTISELECT_OPTION_HEIGHT,
+  DEFAULT_MULTISELECT_PROP_EMPTY_MESSAGE,
+  DEFAULT_MULTISELECT_PROP_MAX_HEIGHT,
+  DEFAULT_MULTISELECT_PROP_PLACEHOLDER,
+  DEFAULT_MULTISELECT_PROP_PLACEMENT,
+  DEFAULT_MULTISELECT_PROP_SEARCH_PLACEHOLDER,
 } from './constants'
 import {
-  StyledSelectChevron,
-  StyledSelectContainer,
-  StyledSelectContent,
-  StyledSelectEmpty,
-  StyledSelectIcon,
-  StyledSelectLabel,
-  StyledSelectList,
-  StyledSelectOption,
-  StyledSelectOptionCheck,
-  StyledSelectOptionLabel,
-  StyledSelectSearch,
-  StyledSelectSearchInput,
-  StyledSelectTrigger,
-  StyledSelectValue,
+  StyledMultiSelectChevron,
+  StyledMultiSelectChip,
+  StyledMultiSelectChipLabel,
+  StyledMultiSelectChipRemove,
+  StyledMultiSelectChipsContainer,
+  StyledMultiSelectContainer,
+  StyledMultiSelectContent,
+  StyledMultiSelectEmpty,
+  StyledMultiSelectIcon,
+  StyledMultiSelectLabel,
+  StyledMultiSelectList,
+  StyledMultiSelectOption,
+  StyledMultiSelectOptionCheck,
+  StyledMultiSelectOptionLabel,
+  StyledMultiSelectPlaceholder,
+  StyledMultiSelectSearch,
+  StyledMultiSelectSearchInput,
+  StyledMultiSelectTrigger,
 } from './styled'
-import type { SelectProps } from './types'
-import { useSelect } from './useSelect'
+import type { MultiSelectProps } from './types'
+import { useMultiSelect } from './useMultiSelect'
 
-const css = classNameGetter('select')
+const css = classNameGetter('multiselect')
 
-export const Select = ({
+export const MultiSelect = ({
   options,
   value,
   onChange,
-  placeholder = DEFAULT_SELECT_PROP_PLACEHOLDER,
-  searchPlaceholder = DEFAULT_SELECT_PROP_SEARCH_PLACEHOLDER,
-  emptyMessage = DEFAULT_SELECT_PROP_EMPTY_MESSAGE,
+  placeholder = DEFAULT_MULTISELECT_PROP_PLACEHOLDER,
+  searchPlaceholder = DEFAULT_MULTISELECT_PROP_SEARCH_PLACEHOLDER,
+  emptyMessage = DEFAULT_MULTISELECT_PROP_EMPTY_MESSAGE,
   label,
   icon,
   state,
   disabled,
   fullWidth,
-  placement = DEFAULT_SELECT_PROP_PLACEMENT,
-  maxHeight = DEFAULT_SELECT_PROP_MAX_HEIGHT,
+  placement = DEFAULT_MULTISELECT_PROP_PLACEMENT,
+  maxHeight = DEFAULT_MULTISELECT_PROP_MAX_HEIGHT,
   virtualized,
   searchable,
   portalRenderNode,
   className,
   classnames,
   ...rest
-}: SelectProps) => {
+}: MultiSelectProps) => {
   const listRef = useRef<HTMLDivElement>(null)
 
   const {
     isOpen,
-    selectedOption,
+    selectedOptions,
     filteredOptions,
     searchQuery,
     context,
@@ -72,9 +76,11 @@ export const Select = ({
     listRef: itemsRef,
     handleSearchChange,
     handleSearchKeyDown,
+    handleRemove,
     searchInputRef,
     highlightedIndex,
-  } = useSelect({
+    isSelected,
+  } = useMultiSelect({
     options,
     value,
     onChange,
@@ -89,7 +95,7 @@ export const Select = ({
   const virtualizer = useVirtualizer({
     count: filteredOptions.length,
     getScrollElement: () => listRef.current,
-    estimateSize: () => DEFAULT_SELECT_OPTION_HEIGHT,
+    estimateSize: () => DEFAULT_MULTISELECT_OPTION_HEIGHT,
     overscan: 5,
     enabled: virtualized,
   })
@@ -97,15 +103,15 @@ export const Select = ({
   const renderOptions = () => {
     if (filteredOptions.length === 0) {
       return (
-        <StyledSelectEmpty className={css('empty', classnames?.empty)}>
+        <StyledMultiSelectEmpty className={css('empty', classnames?.empty)}>
           {emptyMessage}
-        </StyledSelectEmpty>
+        </StyledMultiSelectEmpty>
       )
     }
 
     if (virtualized) {
       return (
-        <StyledSelectList
+        <StyledMultiSelectList
           ref={listRef}
           className={css('list', classnames?.list)}
           style={{ maxHeight: listMaxHeight, overflow: 'auto' }}
@@ -124,10 +130,10 @@ export const Select = ({
                 return null
               }
 
-              const isSelected = option.value === value
+              const selected = isSelected(option.value)
 
               return (
-                <StyledSelectOption
+                <StyledMultiSelectOption
                   key={option.value}
                   ref={(node) => {
                     itemsRef.current[virtualItem.index] = node
@@ -144,29 +150,29 @@ export const Select = ({
                   }}
                   {...getItemProps(virtualItem.index)}
                 >
-                  <StyledSelectOptionLabel>{option.label}</StyledSelectOptionLabel>
-                  <StyledSelectOptionCheck $isSelected={isSelected}>
+                  <StyledMultiSelectOptionCheck $isSelected={selected}>
                     <Check size={16} />
-                  </StyledSelectOptionCheck>
-                </StyledSelectOption>
+                  </StyledMultiSelectOptionCheck>
+                  <StyledMultiSelectOptionLabel>{option.label}</StyledMultiSelectOptionLabel>
+                </StyledMultiSelectOption>
               )
             })}
           </div>
-        </StyledSelectList>
+        </StyledMultiSelectList>
       )
     }
 
     return (
-      <StyledSelectList
+      <StyledMultiSelectList
         ref={listRef}
         className={css('list', classnames?.list)}
         style={{ maxHeight: listMaxHeight }}
       >
         {filteredOptions.map((option, index) => {
-          const isSelected = option.value === value
+          const selected = isSelected(option.value)
 
           return (
-            <StyledSelectOption
+            <StyledMultiSelectOption
               key={option.value}
               ref={(node) => {
                 itemsRef.current[index] = node
@@ -175,14 +181,14 @@ export const Select = ({
               $isHighlighted={highlightedIndex === index}
               {...getItemProps(index)}
             >
-              <StyledSelectOptionLabel>{option.label}</StyledSelectOptionLabel>
-              <StyledSelectOptionCheck $isSelected={isSelected}>
+              <StyledMultiSelectOptionCheck $isSelected={selected}>
                 <Check size={16} />
-              </StyledSelectOptionCheck>
-            </StyledSelectOption>
+              </StyledMultiSelectOptionCheck>
+              <StyledMultiSelectOptionLabel>{option.label}</StyledMultiSelectOptionLabel>
+            </StyledMultiSelectOption>
           )
         })}
-      </StyledSelectList>
+      </StyledMultiSelectList>
     )
   }
 
@@ -197,7 +203,7 @@ export const Select = ({
         initialFocus={searchable ? searchInputRef : undefined}
         modal={false}
       >
-        <StyledSelectContent
+        <StyledMultiSelectContent
           ref={refs.setFloating}
           className={css('content', classnames?.content)}
           style={floatingStyles}
@@ -206,8 +212,8 @@ export const Select = ({
           {...getFloatingProps()}
         >
           {searchable && (
-            <StyledSelectSearch className={css('search', classnames?.search)}>
-              <StyledSelectSearchInput
+            <StyledMultiSelectSearch className={css('search', classnames?.search)}>
+              <StyledMultiSelectSearchInput
                 ref={searchInputRef}
                 type="text"
                 placeholder={searchPlaceholder}
@@ -216,10 +222,10 @@ export const Select = ({
                 onKeyDown={handleSearchKeyDown}
                 onClick={(e) => e.stopPropagation()}
               />
-            </StyledSelectSearch>
+            </StyledMultiSelectSearch>
           )}
           {renderOptions()}
-        </StyledSelectContent>
+        </StyledMultiSelectContent>
       </FloatingFocusManager>
     )
 
@@ -230,42 +236,81 @@ export const Select = ({
     return content
   }
 
+  const renderChips = () => {
+    if (selectedOptions.length === 0) {
+      return (
+        <StyledMultiSelectPlaceholder $disabled={disabled}>
+          {placeholder}
+        </StyledMultiSelectPlaceholder>
+      )
+    }
+
+    return selectedOptions.map((option) => (
+      <StyledMultiSelectChip
+        key={option.value}
+        className={css('chip', classnames?.chip)}
+        $state={state}
+        $disabled={disabled}
+      >
+        <StyledMultiSelectChipLabel>{option.label}</StyledMultiSelectChipLabel>
+        <StyledMultiSelectChipRemove
+          role="button"
+          tabIndex={disabled ? -1 : 0}
+          className={css('chip-remove', classnames?.chipRemove)}
+          $state={state}
+          $disabled={disabled}
+          onClick={(e) => !disabled && handleRemove(option.value, e)}
+          onKeyDown={(e) => {
+            if (!disabled && (e.key === 'Enter' || e.key === ' ')) {
+              e.preventDefault()
+              handleRemove(option.value, e as unknown as React.MouseEvent)
+            }
+          }}
+          aria-label={`Remove ${option.label}`}
+        >
+          <X size={12} />
+        </StyledMultiSelectChipRemove>
+      </StyledMultiSelectChip>
+    ))
+  }
+
   return (
-    <StyledSelectContainer
+    <StyledMultiSelectContainer
       {...rest}
       className={css('container', className, classnames?.container)}
       $fullWidth={fullWidth}
     >
       {label && (
-        <StyledSelectLabel className={css('label', classnames?.label)} $state={state}>
+        <StyledMultiSelectLabel className={css('label', classnames?.label)} $state={state}>
           {label}
-        </StyledSelectLabel>
+        </StyledMultiSelectLabel>
       )}
-      <StyledSelectTrigger
+      <StyledMultiSelectTrigger
         ref={refs.setReference}
         type="button"
         className={css('trigger', classnames?.trigger)}
         $state={state}
         $disabled={disabled}
         $isOpen={isOpen}
+        $hasValue={selectedOptions.length > 0}
         disabled={disabled}
         aria-haspopup="listbox"
         aria-expanded={isOpen}
         {...getReferenceProps()}
       >
         {icon && (
-          <StyledSelectIcon $state={state} $disabled={disabled}>
+          <StyledMultiSelectIcon $state={state} $disabled={disabled}>
             {icon}
-          </StyledSelectIcon>
+          </StyledMultiSelectIcon>
         )}
-        <StyledSelectValue $isPlaceholder={!selectedOption} $state={state} $disabled={disabled}>
-          {selectedOption ? selectedOption.label : placeholder}
-        </StyledSelectValue>
-        <StyledSelectChevron $state={state} $disabled={disabled} $isOpen={isOpen}>
+        <StyledMultiSelectChipsContainer className={css('chips', classnames?.chips)}>
+          {renderChips()}
+        </StyledMultiSelectChipsContainer>
+        <StyledMultiSelectChevron $state={state} $disabled={disabled} $isOpen={isOpen}>
           <ChevronDown size={16} />
-        </StyledSelectChevron>
-      </StyledSelectTrigger>
+        </StyledMultiSelectChevron>
+      </StyledMultiSelectTrigger>
       {renderContent()}
-    </StyledSelectContainer>
+    </StyledMultiSelectContainer>
   )
 }

@@ -8,6 +8,7 @@ import type {
   StyledSelectContentProps,
   StyledSelectIconProps,
   StyledSelectLabelProps,
+  StyledSelectOptionCheckProps,
   StyledSelectOptionProps,
   StyledSelectTriggerProps,
   StyledSelectValueProps,
@@ -222,7 +223,6 @@ export const StyledSelectContent = styled.div<StyledSelectContentProps>`
 `
 
 export const StyledSelectSearch = styled.div`
-  padding: 8px;
   border-bottom: 1px solid ${({ theme }) => theme.select.search.borderColor};
 `
 
@@ -235,18 +235,12 @@ export const StyledSelectSearchInput = styled.input`
   line-height: 1.5;
   font-family: inherit;
   color: ${({ theme }) => theme.select.search.color};
-  background-color: ${({ theme }) => theme.select.search.backgroundColor};
-  border: 1px solid ${({ theme }) => theme.select.search.borderColor};
-  border-radius: 8px;
+  background-color: transparent;
+  border: 0;
   outline: none;
 
   &::placeholder {
     color: ${({ theme }) => theme.select.search.placeholderColor};
-  }
-
-  &:focus {
-    outline: 2px solid ${({ theme }) => theme.select.trigger.focus.outlineColor};
-    outline-offset: 1px;
   }
 `
 
@@ -268,25 +262,14 @@ export const StyledSelectOption = styled.div<StyledSelectOptionProps>`
   border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.1s ease;
-  color: ${({ theme, $isSelected }) =>
-    $isSelected ? theme.select.option.selected.color : theme.select.option.color};
-  background-color: ${({ theme, $isSelected, $isHighlighted }) => {
-    if ($isSelected) {
-      return theme.select.option.selected.backgroundColor
-    }
-
-    if ($isHighlighted) {
-      return theme.select.option.hover.backgroundColor
-    }
-
-    return theme.select.option.backgroundColor
-  }};
+  color: ${({ theme }) => theme.select.option.color};
+  background-color: ${({ theme, $isHighlighted }) =>
+    $isHighlighted
+      ? theme.select.option.hover.backgroundColor
+      : theme.select.option.backgroundColor};
 
   &:hover {
-    background-color: ${({ theme, $isSelected }) =>
-      $isSelected
-        ? theme.select.option.selected.backgroundColor
-        : theme.select.option.hover.backgroundColor};
+    background-color: ${({ theme }) => theme.select.option.hover.backgroundColor};
   }
 `
 
@@ -298,12 +281,14 @@ export const StyledSelectOptionLabel = styled.span`
   white-space: nowrap;
 `
 
-export const StyledSelectOptionCheck = styled.span`
+export const StyledSelectOptionCheck = styled.span<StyledSelectOptionCheckProps>`
   display: flex;
   align-items: center;
   justify-content: center;
   margin-left: 8px;
   flex-shrink: 0;
+  color: ${({ theme }) => theme.select.option.check.color};
+  opacity: ${({ $isSelected }) => ($isSelected ? 1 : 0.15)};
 `
 
 export const StyledSelectEmpty = styled.div`

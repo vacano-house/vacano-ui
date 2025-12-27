@@ -20,6 +20,7 @@ import {
   Spinner,
   CheckboxCard,
   CheckboxGroup,
+  MultiSelect,
   RadioCard,
   RadioGroup,
 
@@ -59,6 +60,7 @@ import type { IconLucideProps } from '@vacano/ui/icons'
 - [Dropdown](/api/dropdown) — DropdownProps, DropdownPlacement, DropdownAlign, DropdownClassnames
 - [Input](/api/input) — InputProps, InputType, InputState, InputClassnames
 - [Loader](/api/loader) — LoaderProps, LoaderClassnames
+- [MultiSelect](/api/multi-select) — MultiSelectProps, MultiSelectOption, MultiSelectState, MultiSelectPlacement, MultiSelectClassnames
 - [Radio](/api/radio) — RadioProps, RadioState, RadioClassnames
 - [Select](/api/select) — SelectProps, SelectOption, SelectState, SelectPlacement, SelectClassnames
 - [Spinner](/api/spinner) — SpinnerProps, SpinnerClassnames

@@ -57,8 +57,11 @@ export type StyledSelectContentProps = {
 }
 
 export type StyledSelectOptionProps = {
-  $isSelected?: boolean
   $isHighlighted?: boolean
+}
+
+export type StyledSelectOptionCheckProps = {
+  $isSelected?: boolean
 }
 
 export type SelectProps = Omit<HTMLAttributes<HTMLDivElement>, 'onChange'> & {

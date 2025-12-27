@@ -498,6 +498,9 @@ export const themeDark: Theme = {
         backgroundColor: colors.blueBg,
         color: colors.blue,
       },
+      check: {
+        color: colors.blue,
+      },
     },
     search: {
       backgroundColor: colors.carbonBlack,
@@ -545,6 +548,137 @@ export const themeDark: Theme = {
         value: {
           color: colors.white,
           placeholderColor: colors.red,
+        },
+        icon: {
+          color: colors.red,
+        },
+        chevron: {
+          color: colors.red,
+        },
+      },
+    },
+  },
+  multiSelect: {
+    trigger: {
+      backgroundColor: colors.inputBgDark,
+      borderColor: colors.slate,
+      focus: {
+        outlineColor: colors.focusRingLightSubtle,
+      },
+      disabled: {
+        backgroundColor: colors.graphite,
+        borderColor: colors.slate,
+      },
+    },
+    label: {
+      color: colors.cloud,
+    },
+    placeholder: {
+      color: colors.ash,
+      disabled: {
+        color: colors.ash,
+      },
+    },
+    chip: {
+      backgroundColor: colors.slate,
+      color: colors.white,
+      remove: {
+        color: colors.cloud,
+        hover: {
+          color: colors.white,
+        },
+      },
+      disabled: {
+        backgroundColor: colors.graphite,
+        color: colors.ash,
+        remove: {
+          color: colors.ash,
+        },
+      },
+    },
+    icon: {
+      color: colors.cloud,
+      disabled: {
+        color: colors.ash,
+      },
+    },
+    chevron: {
+      color: colors.cloud,
+      disabled: {
+        color: colors.ash,
+      },
+    },
+    content: {
+      backgroundColor: colors.graphite,
+      borderColor: colors.slate,
+      shadow: shadows.xl,
+    },
+    option: {
+      color: colors.white,
+      backgroundColor: 'transparent',
+      hover: {
+        backgroundColor: colors.hoverDark,
+      },
+      selected: {
+        backgroundColor: colors.blueBg,
+        color: colors.blue,
+      },
+      check: {
+        color: colors.blue,
+      },
+    },
+    search: {
+      backgroundColor: colors.carbonBlack,
+      borderColor: colors.slate,
+      color: colors.white,
+      placeholderColor: colors.ash,
+    },
+    empty: {
+      color: colors.ash,
+    },
+    state: {
+      warning: {
+        trigger: {
+          backgroundColor: colors.inputBgWarning,
+          borderColor: colors.amber,
+          focus: {
+            outlineColor: colors.focusRingWarning,
+          },
+        },
+        label: {
+          color: colors.amber,
+        },
+        chip: {
+          backgroundColor: colors.amberBg,
+          color: colors.amber,
+          remove: {
+            color: colors.amber,
+          },
+        },
+        icon: {
+          color: colors.amber,
+        },
+        chevron: {
+          color: colors.amber,
+        },
+      },
+      error: {
+        trigger: {
+          backgroundColor: colors.inputBgError,
+          borderColor: colors.red,
+          focus: {
+            outlineColor: colors.focusRingError,
+          },
+        },
+        label: {
+          color: colors.red,
+        },
+        chip: {
+          backgroundColor: colors.redBg,
+          color: colors.red,
+          remove: {
+            color: colors.red,
+          },
         },
         icon: {
           color: colors.red,
