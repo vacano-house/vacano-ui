@@ -10,16 +10,18 @@ All types and components are exported from the main package:
 import {
   // Components
   Button,
-  Input,
   Checkbox,
-  Radio,
   Chip,
-  Spinner,
+  Dropdown,
+  Input,
   Loader,
-  RadioGroup,
+  Radio,
+  Select,
+  Spinner,
+  CheckboxCard,
   CheckboxGroup,
   RadioCard,
-  CheckboxCard,
+  RadioGroup,
 
   // Theme
   ThemeProvider,
@@ -28,7 +30,9 @@ import {
   // Types
   type ButtonProps,
   type ButtonVariant,
+  type DropdownProps,
   type InputProps,
+  type SelectProps,
   type CheckboxProps,
   // ... etc
 } from '@vacano/ui'
@@ -50,12 +54,14 @@ import type { IconLucideProps } from '@vacano/ui/icons'
 
 ### Atoms
 - [Button](/api/button) — ButtonProps, ButtonVariant, ButtonClassnames
-- [Input](/api/input) — InputProps, InputType, InputState, InputClassnames
 - [Checkbox](/api/checkbox) — CheckboxProps, CheckboxState, CheckboxClassnames
-- [Radio](/api/radio) — RadioProps, RadioState, RadioClassnames
 - [Chip](/api/chip) — ChipProps, ChipStatus, ChipClassnames
-- [Spinner](/api/spinner) — SpinnerProps, SpinnerClassnames
+- [Dropdown](/api/dropdown) — DropdownProps, DropdownPlacement, DropdownAlign, DropdownClassnames
+- [Input](/api/input) — InputProps, InputType, InputState, InputClassnames
 - [Loader](/api/loader) — LoaderProps, LoaderClassnames
+- [Radio](/api/radio) — RadioProps, RadioState, RadioClassnames
+- [Select](/api/select) — SelectProps, SelectOption, SelectState, SelectPlacement, SelectClassnames
+- [Spinner](/api/spinner) — SpinnerProps, SpinnerClassnames
 
 ### Molecules
 - [RadioGroup](/api/radio-group) — RadioGroupProps, RadioGroupOption, RadioGroupClassnames

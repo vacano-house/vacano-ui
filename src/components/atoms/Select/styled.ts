@@ -140,7 +140,7 @@ export const StyledSelectContainer = styled.div<StyledSelectContainerProps>`
   gap: 2px;
   position: relative;
   width: ${({ $fullWidth }) => ($fullWidth ? '100%' : 'auto')};
-  min-width: 0;
+  min-width: 120px;
   max-width: ${({ $fullWidth }) => ($fullWidth ? 'none' : '320px')};
 `
 
@@ -290,11 +290,20 @@ export const StyledSelectOption = styled.div<StyledSelectOptionProps>`
   }
 `
 
+export const StyledSelectOptionLabel = styled.span`
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+`
+
 export const StyledSelectOptionCheck = styled.span`
   display: flex;
   align-items: center;
   justify-content: center;
   margin-left: 8px;
+  flex-shrink: 0;
 `
 
 export const StyledSelectEmpty = styled.div`

@@ -53,7 +53,7 @@ const countryOptions: SelectOption[] = [
   { label: 'Brazil', value: 'br' },
 ]
 
-const manyOptions: SelectOption[] = Array.from({ length: 100 }, (_, i) => ({
+const manyOptions: SelectOption[] = Array.from({ length: 100000 }, (_, i) => ({
   label: `Option ${i + 1}`,
   value: String(i + 1),
 }))
@@ -82,7 +82,168 @@ const LayoutsExample = () => {
     <div style={{ maxWidth: '600px' }}>
       <div ref={portalRef} id="select-portal-root" />
 
-      <h3 style={{ marginBottom: '24px' }}>States</h3>
+      <h3 style={{ marginBottom: '24px' }}>Block Layout</h3>
+
+      <div style={labelStyle}>display: block (default)</div>
+      <div style={{ ...containerStyle, display: 'block' }}>
+        <ControlledSelect options={sampleOptions} placeholder="First" />
+        <ControlledSelect options={sampleOptions} placeholder="Second" />
+        <ControlledSelect options={sampleOptions} placeholder="Third" />
+      </div>
+
+      <h3 style={{ margin: '24px 0' }}>Flex Layout - Horizontal</h3>
+
+      <div style={labelStyle}>flex, justify-content: flex-start</div>
+      <div style={{ ...containerStyle, display: 'flex', justifyContent: 'flex-start', gap: '8px' }}>
+        <ControlledSelect options={sampleOptions} placeholder="First" />
+        <ControlledSelect options={sampleOptions} placeholder="Second" />
+        <ControlledSelect options={sampleOptions} placeholder="Third" />
+      </div>
+
+      <div style={labelStyle}>flex, justify-content: center</div>
+      <div style={{ ...containerStyle, display: 'flex', justifyContent: 'center', gap: '8px' }}>
+        <ControlledSelect options={sampleOptions} placeholder="First" />
+        <ControlledSelect options={sampleOptions} placeholder="Second" />
+        <ControlledSelect options={sampleOptions} placeholder="Third" />
+      </div>
+
+      <div style={labelStyle}>flex, justify-content: flex-end</div>
+      <div style={{ ...containerStyle, display: 'flex', justifyContent: 'flex-end', gap: '8px' }}>
+        <ControlledSelect options={sampleOptions} placeholder="First" />
+        <ControlledSelect options={sampleOptions} placeholder="Second" />
+        <ControlledSelect options={sampleOptions} placeholder="Third" />
+      </div>
+
+      <div style={labelStyle}>flex, justify-content: space-between</div>
+      <div style={{ ...containerStyle, display: 'flex', justifyContent: 'space-between' }}>
+        <ControlledSelect options={sampleOptions} placeholder="First" />
+        <ControlledSelect options={sampleOptions} placeholder="Second" />
+        <ControlledSelect options={sampleOptions} placeholder="Third" />
+      </div>
+
+      <h3 style={{ margin: '24px 0' }}>Flex Layout - Vertical</h3>
+
+      <div style={labelStyle}>flex-direction: column, align-items: flex-start</div>
+      <div
+        style={{
+          ...containerStyle,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'flex-start',
+          gap: '8px',
+        }}
+      >
+        <ControlledSelect options={sampleOptions} placeholder="First" />
+        <ControlledSelect options={sampleOptions} placeholder="Second" />
+        <ControlledSelect options={sampleOptions} placeholder="Third" />
+      </div>
+
+      <div style={labelStyle}>flex-direction: column, align-items: center</div>
+      <div
+        style={{
+          ...containerStyle,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          gap: '8px',
+        }}
+      >
+        <ControlledSelect options={sampleOptions} placeholder="First" />
+        <ControlledSelect options={sampleOptions} placeholder="Second" />
+        <ControlledSelect options={sampleOptions} placeholder="Third" />
+      </div>
+
+      <div style={labelStyle}>flex-direction: column, align-items: stretch (fullWidth)</div>
+      <div
+        style={{
+          ...containerStyle,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'stretch',
+          gap: '8px',
+        }}
+      >
+        <ControlledSelect options={sampleOptions} fullWidth placeholder="First" />
+        <ControlledSelect options={sampleOptions} fullWidth placeholder="Second" />
+        <ControlledSelect options={sampleOptions} fullWidth placeholder="Third" />
+      </div>
+
+      <h3 style={{ margin: '24px 0' }}>Grid Layout</h3>
+
+      <div style={labelStyle}>grid, grid-template-columns: repeat(3, auto)</div>
+      <div
+        style={{
+          ...containerStyle,
+          display: 'grid',
+          gridTemplateColumns: 'repeat(3, auto)',
+          gap: '8px',
+          justifyContent: 'start',
+        }}
+      >
+        <ControlledSelect options={sampleOptions} placeholder="First" />
+        <ControlledSelect options={sampleOptions} placeholder="Second" />
+        <ControlledSelect options={sampleOptions} placeholder="Third" />
+      </div>
+
+      <div style={labelStyle}>grid, grid-template-columns: repeat(3, 1fr) (fullWidth)</div>
+      <div
+        style={{
+          ...containerStyle,
+          display: 'grid',
+          gridTemplateColumns: 'repeat(3, 1fr)',
+          gap: '8px',
+        }}
+      >
+        <ControlledSelect options={sampleOptions} fullWidth placeholder="First" />
+        <ControlledSelect options={sampleOptions} fullWidth placeholder="Second" />
+        <ControlledSelect options={sampleOptions} fullWidth placeholder="Third" />
+      </div>
+
+      <div style={labelStyle}>grid, grid-template-columns: 1fr (vertical, fullWidth)</div>
+      <div
+        style={{
+          ...containerStyle,
+          display: 'grid',
+          gridTemplateColumns: '1fr',
+          gap: '8px',
+        }}
+      >
+        <ControlledSelect options={sampleOptions} fullWidth placeholder="First" />
+        <ControlledSelect options={sampleOptions} fullWidth placeholder="Second" />
+        <ControlledSelect options={sampleOptions} fullWidth placeholder="Third" />
+      </div>
+
+      <div style={labelStyle}>grid, justify-items: center</div>
+      <div
+        style={{
+          ...containerStyle,
+          display: 'grid',
+          gridTemplateColumns: '1fr',
+          justifyItems: 'center',
+          gap: '8px',
+        }}
+      >
+        <ControlledSelect options={sampleOptions} placeholder="First" />
+        <ControlledSelect options={sampleOptions} placeholder="Second" />
+        <ControlledSelect options={sampleOptions} placeholder="Third" />
+      </div>
+
+      <div style={labelStyle}>grid, justify-items: stretch (fullWidth)</div>
+      <div
+        style={{
+          ...containerStyle,
+          display: 'grid',
+          gridTemplateColumns: '1fr',
+          justifyItems: 'stretch',
+          gap: '8px',
+        }}
+      >
+        <ControlledSelect options={sampleOptions} fullWidth placeholder="First" />
+        <ControlledSelect options={sampleOptions} fullWidth placeholder="Second" />
+        <ControlledSelect options={sampleOptions} fullWidth placeholder="Third" />
+      </div>
+
+      <h3 style={{ margin: '24px 0' }}>States</h3>
 
       <div style={labelStyle}>default</div>
       <div style={containerStyle}>
@@ -151,13 +312,13 @@ const LayoutsExample = () => {
         />
       </div>
 
-      <div style={labelStyle}>virtualized (100 options)</div>
+      <div style={labelStyle}>virtualized (100,000 options)</div>
       <div style={containerStyle}>
         <ControlledSelect
           options={manyOptions}
           virtualized
           label="Many Options"
-          placeholder="Select from 100 options..."
+          placeholder="Select from 100,000 options..."
         />
       </div>
 
@@ -168,7 +329,7 @@ const LayoutsExample = () => {
           virtualized
           searchable
           label="Search Many"
-          placeholder="Search 100 options..."
+          placeholder="Search 100,000 options..."
         />
       </div>
 
@@ -192,33 +353,7 @@ const LayoutsExample = () => {
         />
       </div>
 
-      <h3 style={{ margin: '24px 0' }}>Width Behavior</h3>
-
-      <div style={labelStyle}>default (max-width: 320px)</div>
-      <div style={containerStyle}>
-        <ControlledSelect options={sampleOptions} placeholder="Default width" />
-      </div>
-
-      <div style={labelStyle}>fullWidth=true</div>
-      <div style={containerStyle}>
-        <ControlledSelect options={sampleOptions} fullWidth placeholder="Full width select" />
-      </div>
-
-      <h3 style={{ margin: '24px 0' }}>Flex Layout</h3>
-
-      <div style={labelStyle}>flex, gap: 16px</div>
-      <div style={{ ...containerStyle, display: 'flex', gap: '16px' }}>
-        <ControlledSelect options={sampleOptions} placeholder="First" />
-        <ControlledSelect options={sampleOptions} placeholder="Second" />
-      </div>
-
-      <div style={labelStyle}>flex, fullWidth</div>
-      <div style={{ ...containerStyle, display: 'flex', gap: '16px' }}>
-        <ControlledSelect options={sampleOptions} fullWidth placeholder="First" />
-        <ControlledSelect options={sampleOptions} fullWidth placeholder="Second" />
-      </div>
-
-      <h3 style={{ margin: '24px 0' }}>Grid Layout</h3>
+      <h3 style={{ margin: '24px 0' }}>Form Layout Example</h3>
 
       <div style={labelStyle}>grid, grid-template-columns: repeat(2, 1fr)</div>
       <div

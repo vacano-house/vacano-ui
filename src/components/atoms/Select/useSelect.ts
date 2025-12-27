@@ -13,6 +13,7 @@ import {
   useListNavigation,
   useRole,
   useTypeahead,
+  type FloatingContext,
   type Placement,
 } from '@floating-ui/react'
 
@@ -36,6 +37,7 @@ export type UseSelectReturn = {
   searchQuery: string
   setSearchQuery: (query: string) => void
   highlightedIndex: number | null
+  context: FloatingContext
   refs: {
     setReference: (node: HTMLElement | null) => void
     setFloating: (node: HTMLElement | null) => void
@@ -95,13 +97,9 @@ export const useSelect = ({
       if (!open) {
         setSearchQuery('')
         setHighlightedIndex(null)
-      } else if (searchable) {
-        setTimeout(() => {
-          searchInputRef.current?.focus()
-        }, 0)
       }
     },
-    [disabled, searchable],
+    [disabled],
   )
 
   const floatingPlacement = useMemo(() => getFloatingPlacement(placement), [placement])
@@ -208,6 +206,7 @@ export const useSelect = ({
     searchQuery,
     setSearchQuery,
     highlightedIndex,
+    context,
     refs: {
       setReference: refs.setReference,
       setFloating: refs.setFloating,

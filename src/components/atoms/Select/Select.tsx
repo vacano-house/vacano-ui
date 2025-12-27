@@ -1,6 +1,7 @@
 import { useRef } from 'react'
 import { createPortal } from 'react-dom'
 
+import { FloatingFocusManager } from '@floating-ui/react'
 import { useVirtualizer } from '@tanstack/react-virtual'
 
 import { Check, ChevronDown } from '../../../icons/Lucide'
@@ -23,6 +24,7 @@ import {
   StyledSelectList,
   StyledSelectOption,
   StyledSelectOptionCheck,
+  StyledSelectOptionLabel,
   StyledSelectSearch,
   StyledSelectSearchInput,
   StyledSelectTrigger,
@@ -61,6 +63,7 @@ export const Select = ({
     selectedOption,
     filteredOptions,
     searchQuery,
+    context,
     refs,
     floatingStyles,
     getReferenceProps,
@@ -142,7 +145,7 @@ export const Select = ({
                   }}
                   {...getItemProps(virtualItem.index)}
                 >
-                  <span>{option.label}</span>
+                  <StyledSelectOptionLabel>{option.label}</StyledSelectOptionLabel>
                   {isSelected && (
                     <StyledSelectOptionCheck>
                       <Check size={16} />
@@ -176,7 +179,7 @@ export const Select = ({
               $isHighlighted={highlightedIndex === index}
               {...getItemProps(index)}
             >
-              <span>{option.label}</span>
+              <StyledSelectOptionLabel>{option.label}</StyledSelectOptionLabel>
               {isSelected && (
                 <StyledSelectOptionCheck>
                   <Check size={16} />
@@ -190,30 +193,40 @@ export const Select = ({
   }
 
   const renderContent = () => {
+    if (!isOpen) {
+      return null
+    }
+
     const content = (
-      <StyledSelectContent
-        ref={refs.setFloating}
-        className={css('content', classnames?.content)}
-        style={floatingStyles}
-        $isOpen={isOpen}
-        $maxHeight={maxHeight}
-        {...getFloatingProps()}
+      <FloatingFocusManager
+        context={context}
+        initialFocus={searchable ? searchInputRef : undefined}
+        modal={false}
       >
-        {searchable && (
-          <StyledSelectSearch className={css('search', classnames?.search)}>
-            <StyledSelectSearchInput
-              ref={searchInputRef}
-              type="text"
-              placeholder={searchPlaceholder}
-              value={searchQuery}
-              onChange={handleSearchChange}
-              onKeyDown={handleSearchKeyDown}
-              onClick={(e) => e.stopPropagation()}
-            />
-          </StyledSelectSearch>
-        )}
-        {renderOptions()}
-      </StyledSelectContent>
+        <StyledSelectContent
+          ref={refs.setFloating}
+          className={css('content', classnames?.content)}
+          style={floatingStyles}
+          $isOpen={isOpen}
+          $maxHeight={maxHeight}
+          {...getFloatingProps()}
+        >
+          {searchable && (
+            <StyledSelectSearch className={css('search', classnames?.search)}>
+              <StyledSelectSearchInput
+                ref={searchInputRef}
+                type="text"
+                placeholder={searchPlaceholder}
+                value={searchQuery}
+                onChange={handleSearchChange}
+                onKeyDown={handleSearchKeyDown}
+                onClick={(e) => e.stopPropagation()}
+              />
+            </StyledSelectSearch>
+          )}
+          {renderOptions()}
+        </StyledSelectContent>
+      </FloatingFocusManager>
     )
 
     if (portalRenderNode) {
