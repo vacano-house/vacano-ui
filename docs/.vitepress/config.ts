@@ -11,6 +11,12 @@ export default defineConfig({
       { text: 'Guide', link: '/guide/getting-started' },
       { text: 'Components', link: '/components/atoms/button' },
       { text: 'API', link: '/api/' },
+      {
+        text: 'MMLA',
+        link: 'https://ui.vacano.io/mmla.md',
+        target: '_blank',
+        rel: 'noopener',
+      },
       { text: 'Storybook', link: 'https://ui.vacano.io/storybook/' },
     ],
     sidebar: {
