@@ -280,6 +280,14 @@ type InputTheme = {
   }
 }
 
+type DropdownTheme = {
+  content: {
+    backgroundColor: string
+    borderColor: string
+    shadow: string
+  }
+}
+
 export type Theme = {
   chip: {
     color: {
@@ -310,4 +318,5 @@ export type Theme = {
   radio: RadioTheme
   radioCard: RadioCardTheme
   radioGroup: RadioGroupTheme
+  dropdown: DropdownTheme
 }

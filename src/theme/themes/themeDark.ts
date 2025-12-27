@@ -1,4 +1,4 @@
-import { colors } from '../palette'
+import { colors, shadows } from '../palette'
 import type { Theme } from './types'
 
 export const themeDark: Theme = {
@@ -440,6 +440,13 @@ export const themeDark: Theme = {
   radioGroup: {
     label: {
       color: colors.white,
+    },
+  },
+  dropdown: {
+    content: {
+      backgroundColor: colors.graphite,
+      borderColor: colors.slate,
+      shadow: shadows.xl,
     },
   },
 }

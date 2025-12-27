@@ -23,7 +23,7 @@ export const StyledButtonContainer = styled.button<StyledButtonContainerProps>`
   font-size: 14px;
   font-weight: 500;
   font-family: inherit;
-  line-height: 1;
+  line-height: 1.5;
   cursor: pointer;
   user-select: none;
   transition:
@@ -84,6 +84,7 @@ export const StyledButtonIconWrapper = styled.span<StyledButtonIconWrapperProps>
 `
 
 export const StyledButtonText = styled.span<StyledButtonTextProps>`
+  overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
   visibility: ${({ $loading }) => ($loading ? 'hidden' : 'visible')};
@@ -97,7 +98,7 @@ export const StyledButtonChar = styled.span<StyledButtonCharProps>`
   border-radius: 4px;
   font-size: 12px;
   font-weight: 600;
-  line-height: 1;
+  line-height: 1.5;
   visibility: ${({ $loading }) => ($loading ? 'hidden' : 'visible')};
   color: ${({ theme, $variant }) => getButtonTheme(theme, $variant).char.color};
   background-color: ${({ theme, $variant }) =>
