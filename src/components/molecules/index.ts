@@ -1,5 +1,4 @@
 export * from './CheckboxCard'
 export * from './CheckboxGroup'
-export * from './Dropdown'
 export * from './RadioCard'
 export * from './RadioGroup'

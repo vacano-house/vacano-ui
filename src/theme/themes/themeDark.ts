@@ -449,4 +449,110 @@ export const themeDark: Theme = {
       shadow: shadows.xl,
     },
   },
+  select: {
+    trigger: {
+      backgroundColor: colors.inputBgDark,
+      borderColor: colors.slate,
+      focus: {
+        outlineColor: colors.focusRingLightSubtle,
+      },
+      disabled: {
+        backgroundColor: colors.graphite,
+        borderColor: colors.slate,
+      },
+    },
+    label: {
+      color: colors.cloud,
+    },
+    value: {
+      color: colors.white,
+      placeholderColor: colors.ash,
+      disabled: {
+        color: colors.ash,
+      },
+    },
+    icon: {
+      color: colors.cloud,
+      disabled: {
+        color: colors.ash,
+      },
+    },
+    chevron: {
+      color: colors.cloud,
+      disabled: {
+        color: colors.ash,
+      },
+    },
+    content: {
+      backgroundColor: colors.graphite,
+      borderColor: colors.slate,
+      shadow: shadows.xl,
+    },
+    option: {
+      color: colors.white,
+      backgroundColor: 'transparent',
+      hover: {
+        backgroundColor: colors.hoverDark,
+      },
+      selected: {
+        backgroundColor: colors.blueBg,
+        color: colors.blue,
+      },
+    },
+    search: {
+      backgroundColor: colors.carbonBlack,
+      borderColor: colors.slate,
+      color: colors.white,
+      placeholderColor: colors.ash,
+    },
+    empty: {
+      color: colors.ash,
+    },
+    state: {
+      warning: {
+        trigger: {
+          backgroundColor: colors.inputBgWarning,
+          borderColor: colors.amber,
+          focus: {
+            outlineColor: colors.focusRingWarning,
+          },
+        },
+        label: {
+          color: colors.amber,
+        },
+        value: {
+          color: colors.white,
+          placeholderColor: colors.amber,
+        },
+        icon: {
+          color: colors.amber,
+        },
+        chevron: {
+          color: colors.amber,
+        },
+      },
+      error: {
+        trigger: {
+          backgroundColor: colors.inputBgError,
+          borderColor: colors.red,
+          focus: {
+            outlineColor: colors.focusRingError,
+          },
+        },
+        label: {
+          color: colors.red,
+        },
+        value: {
+          color: colors.white,
+          placeholderColor: colors.red,
+        },
+        icon: {
+          color: colors.red,
+        },
+        chevron: {
+          color: colors.red,
+        },
+      },
+    },
+  },
 }

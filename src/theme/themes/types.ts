@@ -288,6 +288,94 @@ type DropdownTheme = {
   }
 }
 
+type SelectStateTheme = {
+  trigger: {
+    backgroundColor: string
+    borderColor: string
+    focus: {
+      outlineColor: string
+    }
+  }
+  label: {
+    color: string
+  }
+  value: {
+    color: string
+    placeholderColor: string
+  }
+  icon: {
+    color: string
+  }
+  chevron: {
+    color: string
+  }
+}
+
+type SelectTheme = {
+  trigger: {
+    backgroundColor: string
+    borderColor: string
+    focus: {
+      outlineColor: string
+    }
+    disabled: {
+      backgroundColor: string
+      borderColor: string
+    }
+  }
+  label: {
+    color: string
+  }
+  value: {
+    color: string
+    placeholderColor: string
+    disabled: {
+      color: string
+    }
+  }
+  icon: {
+    color: string
+    disabled: {
+      color: string
+    }
+  }
+  chevron: {
+    color: string
+    disabled: {
+      color: string
+    }
+  }
+  content: {
+    backgroundColor: string
+    borderColor: string
+    shadow: string
+  }
+  option: {
+    color: string
+    backgroundColor: string
+    hover: {
+      backgroundColor: string
+    }
+    selected: {
+      backgroundColor: string
+      color: string
+    }
+  }
+  search: {
+    backgroundColor: string
+    borderColor: string
+    color: string
+    placeholderColor: string
+  }
+  empty: {
+    color: string
+  }
+  state: {
+    warning: SelectStateTheme
+    error: SelectStateTheme
+  }
+}
+
 export type Theme = {
   chip: {
     color: {
@@ -319,4 +407,5 @@ export type Theme = {
   radioCard: RadioCardTheme
   radioGroup: RadioGroupTheme
   dropdown: DropdownTheme
+  select: SelectTheme
 }
