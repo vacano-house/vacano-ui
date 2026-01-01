@@ -1,11 +1,11 @@
-export class ColorUtils {
+export class Colors {
   public static alpha = (hexColor: string, percentage: number): string => {
-    if (!ColorUtils.isValid(hexColor)) {
+    if (!Colors.isValid(hexColor)) {
       return '#000000FF'
     }
 
     const hex = hexColor.replace('#', '').slice(0, 6)
-    const alphaHex = ColorUtils.toHEX(percentage)
+    const alphaHex = Colors.toHEX(percentage)
 
     return `#${hex}${alphaHex}`
   }

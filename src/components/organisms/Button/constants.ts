@@ -1,5 +1,5 @@
 import { COLORS } from '../../../constants'
-import { ColorUtils } from '../../../lib/utils'
+import { Colors } from '../../../lib/utils'
 import { VacanoComponentSize, VacanoInteractiveElementState } from '../../../types'
 import { ButtonVariant } from './types'
 
@@ -33,9 +33,9 @@ export const BUTTON_VARIANT_PROPS: Record<
   normal: {
     background: {
       static: COLORS['steel-blue'],
-      hover: ColorUtils.alpha(COLORS['steel-blue'], 90),
-      active: ColorUtils.alpha(COLORS['steel-blue'], 80),
-      disabled: ColorUtils.alpha(COLORS['steel-blue'], 50),
+      hover: Colors.alpha(COLORS['steel-blue'], 90),
+      active: Colors.alpha(COLORS['steel-blue'], 80),
+      disabled: Colors.alpha(COLORS['steel-blue'], 50),
     },
     color: {
       static: COLORS['white'],
@@ -47,9 +47,9 @@ export const BUTTON_VARIANT_PROPS: Record<
   system: {
     background: {
       static: COLORS['black'],
-      hover: ColorUtils.alpha(COLORS['black'], 90),
-      active: ColorUtils.alpha(COLORS['black'], 80),
-      disabled: ColorUtils.alpha(COLORS['black'], 50),
+      hover: Colors.alpha(COLORS['black'], 90),
+      active: Colors.alpha(COLORS['black'], 80),
+      disabled: Colors.alpha(COLORS['black'], 50),
     },
     color: {
       static: COLORS['white'],
@@ -61,9 +61,9 @@ export const BUTTON_VARIANT_PROPS: Record<
   danger: {
     background: {
       static: COLORS['red'],
-      hover: ColorUtils.alpha(COLORS['red'], 90),
-      active: ColorUtils.alpha(COLORS['red'], 80),
-      disabled: ColorUtils.alpha(COLORS['red'], 50),
+      hover: Colors.alpha(COLORS['red'], 90),
+      active: Colors.alpha(COLORS['red'], 80),
+      disabled: Colors.alpha(COLORS['red'], 50),
     },
     color: {
       static: COLORS['white'],
@@ -74,16 +74,16 @@ export const BUTTON_VARIANT_PROPS: Record<
   },
   transparent: {
     background: {
-      static: ColorUtils.alpha(COLORS['iron-grey'], 5),
-      hover: ColorUtils.alpha(COLORS['iron-grey'], 10),
-      active: ColorUtils.alpha(COLORS['iron-grey'], 13),
-      disabled: ColorUtils.alpha(COLORS['iron-grey'], 5),
+      static: Colors.alpha(COLORS['iron-grey'], 5),
+      hover: Colors.alpha(COLORS['iron-grey'], 10),
+      active: Colors.alpha(COLORS['iron-grey'], 13),
+      disabled: Colors.alpha(COLORS['iron-grey'], 5),
     },
     color: {
       static: COLORS['black'],
       hover: COLORS['black'],
       active: COLORS['black'],
-      disabled: ColorUtils.alpha(COLORS['black'], 30),
+      disabled: Colors.alpha(COLORS['black'], 30),
     },
   },
 }

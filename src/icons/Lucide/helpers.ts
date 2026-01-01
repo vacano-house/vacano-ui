@@ -1,3 +1,3 @@
-import { Tools } from '../../lib/utils'
+import { Tooling } from '../../lib/utils'
 
-export const css = Tools.classNameGetter('icon-lucide')
+export const css = Tooling.newClassNameGetter('icon-lucide')

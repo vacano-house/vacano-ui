@@ -1,12 +1,12 @@
 import { useImperativeHandle, useMemo, useRef } from 'react'
 
 import { useKeyBinding } from '../../../hooks'
-import { Tools } from '../../../lib/utils'
+import { Tooling } from '../../../lib/utils'
 import { KeysBindings } from '../../molecules'
 import { StyledButton, StyledIcon, StyledLabel, StyledLoading } from './styled'
 import { ButtonProps } from './types'
 
-const css = Tools.classNameGetter('button')
+const css = Tooling.newClassNameGetter('button')
 export const Button = ({
   children,
   className,
