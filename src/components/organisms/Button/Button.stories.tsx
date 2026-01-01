@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
-import { Settings } from '../../icons/Lucide'
+import { Settings } from '../../../icons/Lucide'
 import { Button as ButtonComponent } from './Button'
 
 const meta: Meta<typeof ButtonComponent> = {
-  title: 'Components/Button',
+  title: 'organisms/Button',
   component: ButtonComponent,
   parameters: {
     layout: 'centered',
@@ -64,7 +64,7 @@ export const Button: Story = {
         <ButtonComponent
           {...props}
           icon={<Settings />}
-          binding={['Meta', 'Shift', 'D']}
+          keyBindings={['Meta', 'Shift', 'D']}
           onClick={handleClick}
         />
       </div>

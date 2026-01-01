@@ -9,7 +9,7 @@ const normalizeKey = (key: string): string => {
   return key
 }
 
-export const useKeyBind = (binding: KeyboardEventKey[], cb?: () => void) => {
+export const useKeyBinding = (binding: KeyboardEventKey[], cb?: () => void) => {
   const pressedKeys = useRef<Set<string>>(new Set())
   const cbRef = useRef(cb)
 

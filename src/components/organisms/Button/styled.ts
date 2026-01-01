@@ -1,10 +1,10 @@
 import styled from '@emotion/styled'
 
-import { COLORS } from '../../constants'
-import { LoaderCircle } from '../../icons/Lucide'
-import { rotate } from '../../keyframes'
-import { VacanoComponentSize } from '../../types'
-import { ColorUtils } from '../../utils/colors'
+import { COLORS } from '../../../constants'
+import { LoaderCircle } from '../../../icons/Lucide'
+import { rotate } from '../../../keyframes'
+import { ColorUtils } from '../../../lib/utils'
+import { VacanoComponentSize } from '../../../types'
 import { getButtonSizeProps, getButtonVariantProps, getButtonWidthProps } from './helpers'
 import { ButtonVariant } from './types'
 
@@ -80,21 +80,4 @@ export const StyledLoading = styled(LoaderCircle)<{ $size: VacanoComponentSize }
 export const StyledBindings = styled.div`
   display: flex;
   gap: 3px;
-`
-
-export const StyledBindKey = styled.span<{ $variant: ButtonVariant }>`
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 12px;
-  height: 18px;
-  min-width: 18px;
-  line-height: 1.6;
-  padding: 2px 4px;
-  border-radius: 4px;
-  background-color: ${(props) =>
-    props.$variant === 'system'
-      ? ColorUtils.alpha(COLORS['white'], 25)
-      : ColorUtils.alpha(COLORS['black'], 25)};
 `

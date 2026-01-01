@@ -1,1 +1,1 @@
-export * from './useKeyBind'
+export * from './useKeyBinding'

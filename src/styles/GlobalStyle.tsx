@@ -1,11 +1,6 @@
 import { css, Global } from '@emotion/react'
 
 const globalStyles = css`
-  /*
-   * CSS Reset
-   * Based on modern reset practices (Josh Comeau + Andy Bell)
-   */
-
   *,
   *::before,
   *::after {

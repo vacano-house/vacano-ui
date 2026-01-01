@@ -1,4 +1,4 @@
-import { KeyboardEventKey } from '../types'
+import { KeyboardEventKey } from '../../types'
 
 const isMac =
   typeof navigator !== 'undefined' &&
@@ -39,18 +39,24 @@ const KEY_SYMBOLS: Record<string, string | { mac: string; other: string }> = {
   NumLock: '⇭',
 }
 
-export const getKeySymbols = (keys: KeyboardEventKey[]): string[] => {
-  return keys.map((key) => {
-    const symbol = KEY_SYMBOLS[key]
-
-    if (!symbol) {
-      return key
+export class Keyboard {
+  public static getKeySymbols = (keys?: KeyboardEventKey[]): string[] => {
+    if (!keys) {
+      return []
     }
 
-    if (typeof symbol === 'string') {
-      return symbol
-    }
+    return keys.map((key) => {
+      const symbol = KEY_SYMBOLS[key]
 
-    return isMac ? symbol.mac : symbol.other
-  })
+      if (!symbol) {
+        return key
+      }
+
+      if (typeof symbol === 'string') {
+        return symbol
+      }
+
+      return isMac ? symbol.mac : symbol.other
+    })
+  }
 }

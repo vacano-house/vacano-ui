@@ -1,6 +1,6 @@
-import { COLORS } from '../../constants'
-import { VacanoComponentSize, VacanoInteractiveElementState } from '../../types'
-import { ColorUtils } from '../../utils/colors'
+import { COLORS } from '../../../constants'
+import { ColorUtils } from '../../../lib/utils'
+import { VacanoComponentSize, VacanoInteractiveElementState } from '../../../types'
 import { ButtonVariant } from './types'
 
 export const BUTTON_SIZE_PROPS: Record<

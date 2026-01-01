@@ -1,3 +1,3 @@
-import { classNameGetter } from '../../lib/utils'
+import { Tools } from '../../lib/utils'
 
-export const css = classNameGetter('icon-lucide')
+export const css = Tools.classNameGetter('icon-lucide')

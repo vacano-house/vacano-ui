@@ -1,4 +1,4 @@
-import { VacanoComponentSize } from '../../types'
+import { VacanoComponentSize } from '../../../types'
 import { BUTTON_SIZE_PROPS, BUTTON_VARIANT_PROPS } from './constants'
 import { ButtonVariant } from './types'
 

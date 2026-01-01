@@ -1,20 +1,12 @@
 import { useImperativeHandle, useMemo, useRef } from 'react'
 
-import { useKeyBind } from '../../hooks'
-import { classNameGetter } from '../../lib/utils'
-import { getKeySymbols } from '../../utils/keyboard'
-import {
-  StyledBindings,
-  StyledBindKey,
-  StyledButton,
-  StyledIcon,
-  StyledLabel,
-  StyledLoading,
-} from './styled'
+import { useKeyBinding } from '../../../hooks'
+import { Tools } from '../../../lib/utils'
+import { KeysBindings } from '../../molecules'
+import { StyledButton, StyledIcon, StyledLabel, StyledLoading } from './styled'
 import { ButtonProps } from './types'
 
-const css = classNameGetter('button')
-
+const css = Tools.classNameGetter('button')
 export const Button = ({
   children,
   className,
@@ -25,7 +17,7 @@ export const Button = ({
   loading,
   onClick,
   ref = null,
-  binding = [],
+  keyBindings = [],
   size = 'default',
   type = 'button',
   variant = 'normal',
@@ -33,10 +25,8 @@ export const Button = ({
 }: ButtonProps) => {
   const buttonRef = useRef<HTMLButtonElement>(null)
 
-  const bindingSymbols = getKeySymbols(binding)
-
   useImperativeHandle(ref, () => buttonRef.current!, [])
-  useKeyBind(binding, () => {
+  useKeyBinding(keyBindings, () => {
     buttonRef.current?.click()
   })
 
@@ -61,22 +51,14 @@ export const Button = ({
       $variant={variant}
       $size={size}
       $fullWidth={Boolean(fullWidth)}
-      $iconOnly={Boolean(icon) && !(children || binding?.length > 0)}
+      $iconOnly={Boolean(icon) && !(children || keyBindings?.length > 0)}
     >
       {loading && <StyledLoading $size={size} />}
       {icon && !loading && <StyledIcon $size={size}>{icon}</StyledIcon>}
       {children && (
         <StyledLabel className={css('label', classnames?.label)}>{children}</StyledLabel>
       )}
-      {bindingSymbols.length > 0 && (
-        <StyledBindings>
-          {bindingSymbols.map((symbol) => (
-            <StyledBindKey key={symbol} $variant={variant}>
-              {symbol}
-            </StyledBindKey>
-          ))}
-        </StyledBindings>
-      )}
+      <KeysBindings keys={keyBindings} variant={variant === 'system' ? 'light' : 'dark'} />
     </StyledButton>
   )
 }

@@ -11,7 +11,7 @@ const preview: Preview = {
   parameters: {
     options: {
       storySort: {
-        order: ['*'],
+        order: ['atoms', 'molecules', 'organisms', 'templates'],
       },
     },
     controls: {
