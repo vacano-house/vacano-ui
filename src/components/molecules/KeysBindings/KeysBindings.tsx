@@ -10,6 +10,7 @@ export const KeysBindings = ({
   className,
   classnames,
   keys,
+  ref,
   variant,
   ...rest
 }: KeysBindingsProps) => {
@@ -19,7 +20,7 @@ export const KeysBindings = ({
   }
 
   return (
-    <StyledKeyBindings {...rest} className={css('container', className)}>
+    <StyledKeyBindings {...rest} ref={ref} className={css('container', className)}>
       {symbols.map((item) => (
         <KeySymbol
           key={item}

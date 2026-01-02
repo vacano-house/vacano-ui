@@ -1,4 +1,4 @@
-import { PropsWithChildren, useImperativeHandle, useRef } from 'react'
+import { PropsWithChildren } from 'react'
 
 import { StyledContainer } from './styled'
 import { ContainerProps } from './types'
@@ -8,15 +8,11 @@ const css = newClassNameGetter('container')
 export const Container = ({
   children,
   className,
-  ref = null,
+  ref,
   ...rest
 }: PropsWithChildren<ContainerProps>) => {
-  const containerRef = useRef<HTMLDivElement>(null)
-
-  useImperativeHandle(ref, () => containerRef.current!, [])
-
   return (
-    <StyledContainer {...rest} ref={containerRef} className={css('container', className)}>
+    <StyledContainer {...rest} ref={ref} className={css('container', className)}>
       {children}
     </StyledContainer>
   )
