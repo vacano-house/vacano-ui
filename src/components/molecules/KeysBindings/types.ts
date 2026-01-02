@@ -1,4 +1,4 @@
-import { KeyboardEventKey, VacanoComponentProps } from '../../../types'
+import { KeyboardEventKey, VacanoComponentProps } from '../../../lib'
 
 export type KeysBindingsClassNames = {
   item?: string

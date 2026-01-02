@@ -1,8 +1,7 @@
 import styled from '@emotion/styled'
 
-import { COLORS } from '../../../constants'
-import { Colors } from '../../../lib/utils'
 import { KeySymbolVariant } from './types'
+import { alpha, COLORS } from '../../../lib'
 
 export const StyledKeySymbol = styled.span<{ $variant: KeySymbolVariant }>`
   text-align: center;
@@ -16,7 +15,5 @@ export const StyledKeySymbol = styled.span<{ $variant: KeySymbolVariant }>`
   padding: 2px 4px;
   border-radius: 4px;
   background-color: ${(props) =>
-    props.$variant === 'light'
-      ? Colors.alpha(COLORS['white'], 25)
-      : Colors.alpha(COLORS['black'], 25)};
+    props.$variant === 'light' ? alpha(COLORS['white'], 25) : alpha(COLORS['black'], 25)};
 `

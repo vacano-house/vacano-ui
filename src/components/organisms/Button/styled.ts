@@ -1,12 +1,9 @@
 import styled from '@emotion/styled'
 
-import { COLORS } from '../../../constants'
-import { LoaderCircle } from '../../../icons/Lucide'
-import { rotate } from '../../../keyframes'
-import { Colors } from '../../../lib/utils'
-import { VacanoComponentSize } from '../../../types'
 import { getButtonSizeProps, getButtonVariantProps, getButtonWidthProps } from './helpers'
 import { ButtonVariant } from './types'
+import { LoaderCircle } from '../../../icons/Lucide'
+import { alpha, COLORS, KEYFRAMES, VacanoComponentSize } from '../../../lib'
 
 type StyledButtonProps = {
   $variant: ButtonVariant
@@ -42,7 +39,7 @@ export const StyledButton = styled.button<StyledButtonProps>`
   }
 
   &:focus-visible {
-    outline-color: ${Colors.alpha(COLORS['iron-grey'], 30)};
+    outline-color: ${alpha(COLORS['iron-grey'], 30)};
   }
 
   &:disabled {
@@ -74,10 +71,5 @@ export const StyledLabel = styled.span`
 export const StyledLoading = styled(LoaderCircle)<{ $size: VacanoComponentSize }>`
   width: ${(props) => getButtonSizeProps(props.$size).iconSize};
   height: ${(props) => getButtonSizeProps(props.$size).iconSize};
-  animation: ${rotate} 0.8s linear infinite;
-`
-
-export const StyledBindings = styled.div`
-  display: flex;
-  gap: 3px;
+  animation: ${KEYFRAMES.rotate} 0.8s linear infinite;
 `

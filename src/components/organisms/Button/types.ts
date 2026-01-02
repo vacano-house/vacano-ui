@@ -1,6 +1,6 @@
 import type { HTMLAttributes, ReactNode } from 'react'
 
-import { KeyboardEventKey, VacanoComponentProps, VacanoComponentSize } from '../../../types'
+import { KeyboardEventKey, VacanoComponentProps, VacanoComponentSize } from '../../../lib'
 
 export type ButtonClassNames = {
   label?: string

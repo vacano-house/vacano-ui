@@ -26,6 +26,16 @@
         "types": "./dist/icons.d.cts",
         "default": "./dist/icons.cjs"
       }
+    },
+    "./lib": {
+      "import": {
+        "types": "./dist/lib.d.ts",
+        "default": "./dist/lib.js"
+      },
+      "require": {
+        "types": "./dist/lib.d.cts",
+        "default": "./dist/lib.cjs"
+      }
     }
   },
   "files": [
@@ -124,7 +134,11 @@
       "",
       "<THIRD_PARTY_MODULES>",
       "",
-      "^[./]"
+      "^\\./",
+      "^\\.\\./(?!\\.)",
+      "^\\.\\./\\.\\./(?!\\.)",
+      "^\\.\\./\\.\\./\\.\\./(?!\\.)",
+      "^\\.\\./\\.\\./\\.\\./\\.\\./"
     ]
   },
   "lint-staged": {

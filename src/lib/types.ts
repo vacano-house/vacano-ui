@@ -136,3 +136,7 @@ export type KeyboardEventKey =
   | 'Pause'
   | 'PrintScreen'
   | 'ContextMenu'
+
+export type OperatingSystem = 'windows' | 'macos' | 'linux' | 'ios' | 'android' | 'unknown'
+
+export type Browser = 'chrome' | 'firefox' | 'safari' | 'edge' | 'opera' | 'unknown'

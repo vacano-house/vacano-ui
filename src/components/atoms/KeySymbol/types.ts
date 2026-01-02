@@ -1,4 +1,4 @@
-import { VacanoComponentProps } from '../../../types'
+import { VacanoComponentProps } from '../../../lib'
 
 export type KeySymbolVariant = 'dark' | 'light'
 

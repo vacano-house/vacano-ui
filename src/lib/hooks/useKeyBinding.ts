@@ -9,21 +9,21 @@ const normalizeKey = (key: string): string => {
   return key
 }
 
-export const useKeyBinding = (binding: KeyboardEventKey[], cb?: () => void) => {
+export const useKeyBinding = (keys: KeyboardEventKey[], cb?: () => void) => {
   const pressedKeys = useRef<Set<string>>(new Set())
   const cbRef = useRef(cb)
 
   cbRef.current = cb
 
   useEffect(() => {
-    const bindSet = new Set(binding)
+    const keysSet = new Set(keys)
 
     const checkMatch = () => {
-      if (bindSet.size !== pressedKeys.current.size) {
+      if (keysSet.size !== pressedKeys.current.size) {
         return false
       }
 
-      for (const key of bindSet) {
+      for (const key of keysSet) {
         if (!pressedKeys.current.has(key)) {
           return false
         }
@@ -60,5 +60,5 @@ export const useKeyBinding = (binding: KeyboardEventKey[], cb?: () => void) => {
       window.removeEventListener('keyup', handleKeyUp)
       window.removeEventListener('blur', handleBlur)
     }
-  }, [binding])
+  }, [keys])
 }

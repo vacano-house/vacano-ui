@@ -1,6 +1,6 @@
-import { VacanoComponentSize } from '../../../types'
 import { BUTTON_SIZE_PROPS, BUTTON_VARIANT_PROPS } from './constants'
 import { ButtonVariant } from './types'
+import { VacanoComponentSize } from '../../../lib'
 
 export const getButtonVariantProps = (variant: ButtonVariant) => {
   const result = BUTTON_VARIANT_PROPS[variant]

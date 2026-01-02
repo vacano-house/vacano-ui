@@ -20,6 +20,7 @@ export default defineConfig({
       entry: {
         index: resolve(__dirname, 'src/index.ts'),
         icons: resolve(__dirname, 'src/icons/Lucide/index.ts'),
+        lib: resolve(__dirname, 'src/lib/index.ts'),
       },
       formats: ['es', 'cjs'],
     },

@@ -1,8 +1,8 @@
-import { Tooling } from '../../../lib/utils'
 import { StyledKeySymbol } from './styled'
 import { KeySymbolProps } from './types'
+import { newClassNameGetter } from '../../../lib'
 
-const css = Tooling.newClassNameGetter('key-symbol')
+const css = newClassNameGetter('key-symbol')
 export const KeySymbol = ({ className, symbol, variant = 'light', ...rest }: KeySymbolProps) => {
   if (!symbol) {
     return null

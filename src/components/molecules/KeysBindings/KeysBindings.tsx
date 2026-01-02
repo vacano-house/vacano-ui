@@ -1,11 +1,11 @@
 import { useMemo } from 'react'
 
-import { Keyboard, Tooling } from '../../../lib/utils'
-import { KeySymbol } from '../../atoms'
 import { StyledKeyBindings } from './styled'
 import { KeysBindingsProps } from './types'
+import { KeySymbol } from '../../atoms'
+import { getKeySymbols, newClassNameGetter } from '../../../lib'
 
-const css = Tooling.newClassNameGetter('key-bindings')
+const css = newClassNameGetter('key-bindings')
 export const KeysBindings = ({
   className,
   classnames,
@@ -13,10 +13,7 @@ export const KeysBindings = ({
   variant,
   ...rest
 }: KeysBindingsProps) => {
-  const symbols = useMemo(() => {
-    return Keyboard.getKeySymbols(keys)
-  }, [keys])
-
+  const symbols = useMemo(() => getKeySymbols(keys), [keys])
   if (symbols.length === 0) {
     return null
   }
