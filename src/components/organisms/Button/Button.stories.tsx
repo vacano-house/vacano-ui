@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
-import { Settings } from '../../../icons/Lucide'
 import { Button as ButtonComponent } from './Button'
+import { Settings } from '../../../icons/Lucide'
 
 const meta: Meta<typeof ButtonComponent> = {
   title: 'organisms/Button',
