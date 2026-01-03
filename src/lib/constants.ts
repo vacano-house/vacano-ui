@@ -2,21 +2,21 @@ import { keyframes } from '@emotion/react'
 
 import { KeyboardEventKey } from './types'
 
-export enum BREAKPOINTS {
-  'sm' = 640,
-  'md' = 768,
-  'lg' = 1024,
-  'xl' = 1280,
-  '2xl' = 1536,
-}
+export const BREAKPOINTS = {
+  sm: 640,
+  md: 768,
+  lg: 1024,
+  xl: 1280,
+  '2xl': 1536,
+} as const
 
-export const enum COLORS {
-  'black' = '#212529',
-  'white' = '#ffffff',
-  'red' = '#C1121F',
-  'steel-blue' = '#0582ca',
-  'iron-grey' = '#495057',
-}
+export const COLORS = {
+  black: '#212529',
+  white: '#ffffff',
+  red: '#C1121F',
+  'steel-blue': '#0582ca',
+  'iron-grey': '#495057',
+} as const
 
 export const KEYFRAMES = {
   rotate: keyframes`
