@@ -14,6 +14,7 @@ export const StyledKeySymbol = styled.span<{ $variant: KeySymbolVariant }>`
   line-height: 1.6;
   padding: 2px 4px;
   border-radius: 4px;
+  width: fit-content;
   background-color: ${(props) =>
     props.$variant === 'light' ? alpha(COLORS['white'], 25) : alpha(COLORS['black'], 25)};
 `

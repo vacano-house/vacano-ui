@@ -15,10 +15,10 @@ export type VacanoComponentProps<
 export type VacanoComponentSize = 'compact' | 'default'
 
 export type VacanoInteractiveElementState = {
-  active: string
-  disabled: string
-  hover: string
-  static: string
+  active?: string
+  disabled?: string
+  hover?: string
+  static?: string
 }
 
 /**
