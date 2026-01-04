@@ -12,14 +12,17 @@ export const MULTI_VALUE_VARIANT_PROPS: Record<
   {
     border: string
     background: string
+    placeholder: string
   }
 > = {
   normal: {
     border: alpha(COLORS['black'], 60),
     background: alpha(COLORS['black'], 2),
+    placeholder: alpha(COLORS['black'], 40),
   },
   error: {
     border: alpha(COLORS['red'], 60),
     background: alpha(COLORS['red'], 2),
+    placeholder: alpha(COLORS['red'], 40),
   },
 }

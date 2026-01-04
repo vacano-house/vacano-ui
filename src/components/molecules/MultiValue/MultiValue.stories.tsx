@@ -9,7 +9,6 @@ const defaultItems: MultiValueItem[] = [
   { value: '1', label: 'React', disabled: false },
   { value: '2', label: 'TypeScript', disabled: false },
   { value: '3', label: 'Node.js', disabled: false },
-  { value: '4', label: 'Fixed', disabled: true },
 ]
 
 const meta: Meta<typeof MultiValueComponent> = {
@@ -21,12 +20,14 @@ const meta: Meta<typeof MultiValueComponent> = {
   args: {
     items: defaultItems,
     label: 'Technologies',
+    placeholder: 'Select technologies...',
     variant: 'normal',
     disabled: false,
     count: Infinity,
   },
   argTypes: {
     label: { control: 'text' },
+    placeholder: { control: 'text' },
     variant: { control: 'select', options: ['normal', 'error'] },
     disabled: { control: 'boolean' },
     count: { control: 'number' },

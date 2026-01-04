@@ -5,6 +5,7 @@ import { ChipVariant } from './types'
 
 type StyledContainerProps = {
   $variant: ChipVariant
+  $deletable: boolean
 }
 
 type StyledDeleteProps = {
@@ -15,8 +16,9 @@ export const StyledContainer = styled.span<StyledContainerProps>`
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  padding: 4px 8px;
-  border-radius: 6px;
+  padding: 0 ${(props) => (props.$deletable ? '7px' : '10px')} 0 10px;
+  border-radius: 12px;
+  height: 24px;
   font-size: 12px;
   font-weight: 500;
   line-height: 1.5;

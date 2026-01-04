@@ -16,7 +16,13 @@ export const Chip = ({
   ...rest
 }: ChipProps) => {
   return (
-    <StyledContainer {...rest} ref={ref} className={css('container', className)} $variant={variant}>
+    <StyledContainer
+      {...rest}
+      ref={ref}
+      className={css('container', className)}
+      $variant={variant}
+      $deletable={Boolean(deletable)}
+    >
       {children}
       {deletable && (
         <StyledDelete

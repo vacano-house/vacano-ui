@@ -65,6 +65,10 @@ export const KEYFRAMES = {
     from { transform: translateY(0); }
     to { transform: translateY(100%); }
   `,
+  scaleIn: keyframes`
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+  `,
 }
 
 export const KEY_SYMBOLS: Partial<Record<KeyboardEventKey, { mac: string; other: string }>> = {

@@ -11,6 +11,7 @@ export type MultiValueClassNames = {
   chips?: string
   chip?: string
   more?: string
+  placeholder?: string
 }
 
 export type MultiValueProps = VacanoComponentProps<HTMLDivElement, MultiValueClassNames> &
@@ -20,5 +21,6 @@ export type MultiValueProps = VacanoComponentProps<HTMLDivElement, MultiValueCla
     count?: number
     disabled?: boolean
     label?: string
+    placeholder?: string
     variant?: MultiValueVariant
   }

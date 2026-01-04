@@ -1,5 +1,5 @@
 import { getMultiValueChipVariant } from './helpers'
-import { StyledChips, StyledContainer, StyledLabel } from './styled'
+import { StyledChips, StyledContainer, StyledLabel, StyledPlaceholder } from './styled'
 import { MultiValueProps } from './types'
 import { Chip } from '../../atoms'
 import { newClassNameGetter } from '../../../lib'
@@ -14,6 +14,7 @@ export const MultiValue = ({
   items,
   label,
   onChange,
+  placeholder,
   ref,
   variant = 'normal',
   ...rest
@@ -39,6 +40,14 @@ export const MultiValue = ({
         $variant={variant}
         $disabled={Boolean(disabled)}
       >
+        {items.length === 0 && placeholder && (
+          <StyledPlaceholder
+            className={css('placeholder', classnames?.placeholder)}
+            $variant={variant}
+          >
+            {placeholder}
+          </StyledPlaceholder>
+        )}
         {visibleItems.map((item) => (
           <Chip
             key={item.value}
