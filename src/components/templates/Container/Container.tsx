@@ -10,10 +10,8 @@ export const Container = ({
   className,
   ref,
   ...rest
-}: PropsWithChildren<ContainerProps>) => {
-  return (
-    <StyledContainer {...rest} ref={ref} className={css('container', className)}>
-      {children}
-    </StyledContainer>
-  )
-}
+}: PropsWithChildren<ContainerProps>) => (
+  <StyledContainer {...rest} ref={ref} className={css('container', className)}>
+    {children}
+  </StyledContainer>
+)

@@ -13,7 +13,7 @@ export const INPUT_SIZE_PROPS: Record<
   compact: {
     height: '32px',
     padding: '0 10px',
-    radius: '12px',
+    radius: '14px',
     prefixSize: '16px',
   },
   default: {
@@ -31,6 +31,7 @@ export const INPUT_VARIANT_PROPS: Record<
     background: VacanoInteractiveElementState
     color: VacanoInteractiveElementState
     placeholder: VacanoInteractiveElementState
+    focus: string
   }
 > = {
   normal: {
@@ -50,6 +51,7 @@ export const INPUT_VARIANT_PROPS: Record<
       static: alpha(COLORS['black'], 40),
       disabled: alpha(COLORS['black'], 65),
     },
+    focus: alpha(COLORS['iron-grey'], 30),
   },
   error: {
     background: {
@@ -68,5 +70,6 @@ export const INPUT_VARIANT_PROPS: Record<
       static: alpha(COLORS['red'], 40),
       disabled: alpha(COLORS['red'], 65),
     },
+    focus: alpha(COLORS['red'], 30),
   },
 }

@@ -49,4 +49,8 @@ export const StyledInput = styled.input<StyledInputContainerProps>`
       color: ${(props) => getInputVariantProps(props.$variant).placeholder.disabled};
     }
   }
+
+  &:focus-visible {
+    outline: 2px solid ${(props) => getInputVariantProps(props.$variant).focus};
+  }
 `

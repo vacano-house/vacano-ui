@@ -26,7 +26,11 @@ export const BUTTON_SIZE_PROPS: Record<
 
 export const BUTTON_VARIANT_PROPS: Record<
   ButtonVariant,
-  { color: VacanoInteractiveElementState; background: VacanoInteractiveElementState }
+  {
+    color: VacanoInteractiveElementState
+    background: VacanoInteractiveElementState
+    borderColor: VacanoInteractiveElementState
+  }
 > = {
   normal: {
     background: {
@@ -40,6 +44,12 @@ export const BUTTON_VARIANT_PROPS: Record<
       hover: COLORS['white'],
       active: COLORS['white'],
       disabled: COLORS['white'],
+    },
+    borderColor: {
+      static: 'transparent',
+      hover: 'transparent',
+      active: 'transparent',
+      disabled: 'transparent',
     },
   },
   system: {
@@ -55,6 +65,12 @@ export const BUTTON_VARIANT_PROPS: Record<
       active: COLORS['white'],
       disabled: COLORS['white'],
     },
+    borderColor: {
+      static: 'transparent',
+      hover: 'transparent',
+      active: 'transparent',
+      disabled: 'transparent',
+    },
   },
   danger: {
     background: {
@@ -69,12 +85,18 @@ export const BUTTON_VARIANT_PROPS: Record<
       active: COLORS['white'],
       disabled: COLORS['white'],
     },
+    borderColor: {
+      static: 'transparent',
+      hover: 'transparent',
+      active: 'transparent',
+      disabled: 'transparent',
+    },
   },
   transparent: {
     background: {
-      static: alpha(COLORS['iron-grey'], 5),
-      hover: alpha(COLORS['iron-grey'], 10),
-      active: alpha(COLORS['iron-grey'], 13),
+      static: alpha(COLORS['iron-grey'], 1),
+      hover: alpha(COLORS['iron-grey'], 5),
+      active: alpha(COLORS['iron-grey'], 10),
       disabled: alpha(COLORS['iron-grey'], 5),
     },
     color: {
@@ -82,6 +104,12 @@ export const BUTTON_VARIANT_PROPS: Record<
       hover: COLORS['black'],
       active: COLORS['black'],
       disabled: alpha(COLORS['black'], 30),
+    },
+    borderColor: {
+      static: alpha(COLORS['iron-grey'], 20),
+      hover: alpha(COLORS['iron-grey'], 20),
+      active: alpha(COLORS['iron-grey'], 20),
+      disabled: alpha(COLORS['iron-grey'], 10),
     },
   },
 }

@@ -27,15 +27,18 @@ export const StyledButton = styled.button<StyledButtonProps>`
   height: ${(props) => getButtonSizeProps(props.$size).height};
   padding: ${(props) => (!props.$iconOnly ? getButtonSizeProps(props.$size).padding : '0')};
   border-radius: ${(props) => getButtonSizeProps(props.$size).radius};
+  border: 1px solid ${(props) => getButtonVariantProps(props.$variant).borderColor.static};
 
   &:hover:not(:disabled) {
     color: ${(props) => getButtonVariantProps(props.$variant).color.hover};
     background-color: ${(props) => getButtonVariantProps(props.$variant).background.hover};
+    border-color: ${(props) => getButtonVariantProps(props.$variant).borderColor.hover};
   }
 
   &:active:not(:disabled) {
     color: ${(props) => getButtonVariantProps(props.$variant).color.active};
     background-color: ${(props) => getButtonVariantProps(props.$variant).background.active};
+    border-color: ${(props) => getButtonVariantProps(props.$variant).borderColor.active};
   }
 
   &:focus-visible {
@@ -46,6 +49,7 @@ export const StyledButton = styled.button<StyledButtonProps>`
     cursor: not-allowed;
     color: ${(props) => getButtonVariantProps(props.$variant).color.disabled};
     background-color: ${(props) => getButtonVariantProps(props.$variant).background.disabled};
+    border-color: ${(props) => getButtonVariantProps(props.$variant).borderColor.disabled};
   }
 `
 

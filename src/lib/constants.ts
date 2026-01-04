@@ -16,13 +16,55 @@ export const COLORS = {
   red: '#C1121F',
   'steel-blue': '#0582ca',
   'iron-grey': '#495057',
+  'baltic-blue': '#1e6091',
 } as const
 
 export const KEYFRAMES = {
   rotate: keyframes`
-  to {
-    transform: rotate(1turn);
-  }`,
+    to {
+      transform: rotate(1turn);
+    }
+  `,
+  fadeIn: keyframes`
+    from { opacity: 0; }
+    to { opacity: 1; }
+  `,
+  fadeOut: keyframes`
+    from { opacity: 1; }
+    to { opacity: 0; }
+  `,
+  slideInLeft: keyframes`
+    from { transform: translateX(-100%); }
+    to { transform: translateX(0); }
+  `,
+  slideOutLeft: keyframes`
+    from { transform: translateX(0); }
+    to { transform: translateX(-100%); }
+  `,
+  slideInRight: keyframes`
+    from { transform: translateX(100%); }
+    to { transform: translateX(0); }
+  `,
+  slideOutRight: keyframes`
+    from { transform: translateX(0); }
+    to { transform: translateX(100%); }
+  `,
+  slideInTop: keyframes`
+    from { transform: translateY(-100%); }
+    to { transform: translateY(0); }
+  `,
+  slideOutTop: keyframes`
+    from { transform: translateY(0); }
+    to { transform: translateY(-100%); }
+  `,
+  slideInBottom: keyframes`
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+  `,
+  slideOutBottom: keyframes`
+    from { transform: translateY(0); }
+    to { transform: translateY(100%); }
+  `,
 }
 
 export const KEY_SYMBOLS: Partial<Record<KeyboardEventKey, { mac: string; other: string }>> = {
