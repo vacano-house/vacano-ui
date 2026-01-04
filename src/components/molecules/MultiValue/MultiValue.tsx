@@ -44,7 +44,7 @@ export const MultiValue = ({
             key={item.value}
             className={css('chip', classnames?.chip)}
             variant={chipVariant}
-            deletable={item.deletable}
+            deletable={!item.disabled}
             onDelete={() => handleDelete(item.value)}
           >
             {item.label}

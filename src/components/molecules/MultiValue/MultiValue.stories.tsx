@@ -6,10 +6,10 @@ import { MultiValue as MultiValueComponent } from './MultiValue'
 import { MultiValueItem } from './types'
 
 const defaultItems: MultiValueItem[] = [
-  { value: '1', label: 'React', deletable: true },
-  { value: '2', label: 'TypeScript', deletable: true },
-  { value: '3', label: 'Node.js', deletable: true },
-  { value: '4', label: 'Fixed', deletable: false },
+  { value: '1', label: 'React', disabled: false },
+  { value: '2', label: 'TypeScript', disabled: false },
+  { value: '3', label: 'Node.js', disabled: false },
+  { value: '4', label: 'Fixed', disabled: true },
 ]
 
 const meta: Meta<typeof MultiValueComponent> = {

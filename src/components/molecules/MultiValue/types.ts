@@ -1,14 +1,10 @@
 import type { HTMLAttributes } from 'react'
 
-import { VacanoComponentProps } from '../../../lib'
+import { VacanoComponentProps, VacanoValueItem } from '../../../lib'
 
 export type MultiValueVariant = 'normal' | 'error'
 
-export type MultiValueItem = {
-  value: string
-  label: string
-  deletable?: boolean
-}
+export type MultiValueItem = VacanoValueItem
 
 export type MultiValueClassNames = {
   label?: string
