@@ -20,6 +20,7 @@ export type MultiValueProps = VacanoComponentProps<HTMLDivElement, MultiValueCla
     onChange?: (items: MultiValueItem[]) => void
     count?: number
     disabled?: boolean
+    focused?: boolean
     label?: string
     placeholder?: string
     variant?: MultiValueVariant

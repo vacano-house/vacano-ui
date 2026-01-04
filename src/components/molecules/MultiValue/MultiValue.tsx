@@ -11,6 +11,7 @@ export const MultiValue = ({
   classnames,
   count = Infinity,
   disabled,
+  focused = false,
   items,
   label,
   onChange,
@@ -39,6 +40,7 @@ export const MultiValue = ({
         className={css('chips', classnames?.chips)}
         $variant={variant}
         $disabled={Boolean(disabled)}
+        $focused={focused}
       >
         {items.length === 0 && placeholder && (
           <StyledPlaceholder

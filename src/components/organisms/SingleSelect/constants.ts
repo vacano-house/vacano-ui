@@ -1,19 +1,24 @@
-import { MultiValueVariant } from './types'
-import { ChipVariant } from '../../atoms'
+import { SingleSelectVariant } from './types'
 import { alpha, COLORS } from '../../../lib'
 
-export const MULTI_VALUE_CHIP_VARIANT: Record<MultiValueVariant, ChipVariant> = {
-  normal: 'black',
-  error: 'red',
+export const SINGLE_SELECT_OPTION_HEIGHT = 40
+
+export const SINGLE_SELECT_PROPS = {
+  dropdown: {
+    background: COLORS['white'],
+    border: alpha(COLORS['black'], 10),
+    shadow: `0 4px 16px ${alpha(COLORS['black'], 15)}`,
+  },
 }
 
-export const MULTI_VALUE_VARIANT_PROPS: Record<
-  MultiValueVariant,
+export const SINGLE_SELECT_VARIANT_PROPS: Record<
+  SingleSelectVariant,
   {
     border: string
     borderFocused: string
     background: string
     placeholder: string
+    value: string
     focusRing: string
   }
 > = {
@@ -22,6 +27,7 @@ export const MULTI_VALUE_VARIANT_PROPS: Record<
     borderFocused: COLORS['black'],
     background: alpha(COLORS['black'], 2),
     placeholder: alpha(COLORS['black'], 40),
+    value: COLORS['black'],
     focusRing: alpha(COLORS['black'], 20),
   },
   error: {
@@ -29,6 +35,7 @@ export const MULTI_VALUE_VARIANT_PROPS: Record<
     borderFocused: COLORS['red'],
     background: alpha(COLORS['red'], 2),
     placeholder: alpha(COLORS['red'], 40),
+    value: COLORS['red'],
     focusRing: alpha(COLORS['red'], 20),
   },
 }

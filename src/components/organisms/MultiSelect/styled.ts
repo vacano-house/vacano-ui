@@ -9,6 +9,7 @@ export const StyledContainer = styled.div`
 `
 
 export const StyledTrigger = styled.div<{ $disabled: boolean }>`
+  outline: none;
   cursor: ${(props) => (props.$disabled ? 'not-allowed' : 'pointer')};
 `
 
@@ -24,4 +25,5 @@ export const StyledDropdown = styled.div<StyledDropdownProps>`
   box-shadow: ${MULTI_SELECT_PROPS.dropdown.shadow};
   overflow: hidden;
   z-index: 1000;
+  outline: none;
 `

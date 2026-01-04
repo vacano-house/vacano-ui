@@ -14,10 +14,17 @@ import {
 } from '@floating-ui/react'
 import { useVirtualizer } from '@tanstack/react-virtual'
 
-import { MULTI_SELECT_OPTION_HEIGHT } from './constants'
-import { StyledContainer, StyledDropdown, StyledTrigger } from './styled'
-import { MultiSelectProps } from './types'
-import { MultiValue } from '../../molecules'
+import { SINGLE_SELECT_OPTION_HEIGHT } from './constants'
+import {
+  StyledChevron,
+  StyledContainer,
+  StyledDropdown,
+  StyledPlaceholder,
+  StyledTrigger,
+  StyledValue,
+} from './styled'
+import { SingleSelectProps } from './types'
+import { FieldLabel } from '../../atoms'
 import {
   StyledCheck,
   StyledList,
@@ -25,16 +32,15 @@ import {
   StyledSearch,
   StyledSearchInput,
 } from '../../molecules/ValueSelector/styled'
-import { Check } from '../../../icons/Lucide'
+import { Check, ChevronDown } from '../../../icons/Lucide'
 import { newClassNameGetter, VacanoValueItem } from '../../../lib'
 
-const css = newClassNameGetter('multi-select')
+const css = newClassNameGetter('single-select')
 
-export const MultiSelect = ({
+export const SingleSelect = ({
   className,
   classnames,
-  closeOnSelect = false,
-  count = Infinity,
+  closeOnSelect = true,
   disabled = false,
   height = 300,
   label,
@@ -48,7 +54,7 @@ export const MultiSelect = ({
   variant = 'normal',
   virtualized = false,
   ...rest
-}: MultiSelectProps) => {
+}: SingleSelectProps) => {
   const [isOpen, setIsOpen] = useState(false)
   const [isFocused, setIsFocused] = useState(false)
   const [search, setSearch] = useState('')
@@ -78,12 +84,10 @@ export const MultiSelect = ({
     return options.filter((option) => option.label.toLowerCase().includes(query))
   }, [options, search])
 
-  const selectedValues = useMemo(() => new Set(value.map((v) => v.value)), [value])
-
   const virtualizer = useVirtualizer({
     count: filteredOptions.length,
     getScrollElement: () => listRef.current,
-    estimateSize: () => MULTI_SELECT_OPTION_HEIGHT,
+    estimateSize: () => SINGLE_SELECT_OPTION_HEIGHT,
     enabled: virtualized,
   })
 
@@ -107,23 +111,14 @@ export const MultiSelect = ({
   const handleOptionClick = (option: VacanoValueItem) => {
     if (option.disabled) return
 
-    if (selectedValues.has(option.value)) {
-      onChange(value.filter((v) => v.value !== option.value))
+    if (value?.value === option.value) {
+      onChange(null)
     } else {
-      onChange([...value, option])
+      onChange(option)
     }
 
     if (closeOnSelect) {
       setIsOpen(false)
-    }
-  }
-
-  const handleTriggerClick = (e: React.MouseEvent) => {
-    // Don't open if clicking on chip delete button
-    const target = e.target as HTMLElement
-    if (target.closest('.vacano_chip_delete')) {
-      e.stopPropagation()
-      return
     }
   }
 
@@ -171,10 +166,6 @@ export const MultiSelect = ({
     }
   }
 
-  const handleMultiValueChange = (items: VacanoValueItem[]) => {
-    onChange(items)
-  }
-
   const heightValue = typeof height === 'number' ? `${height}px` : height
 
   const renderOptions = () => {
@@ -195,11 +186,12 @@ export const MultiSelect = ({
             {virtualizer.getVirtualItems().map((virtualItem) => {
               const option = filteredOptions[virtualItem.index]
               if (!option) return null
+              const isSelected = value?.value === option.value
               return (
                 <StyledOption
                   key={option.value}
                   className={css('option', classnames?.option)}
-                  $selected={selectedValues.has(option.value)}
+                  $selected={isSelected}
                   $disabled={Boolean(option.disabled)}
                   $focused={virtualItem.index === focusedIndex}
                   onClick={() => handleOptionClick(option)}
@@ -212,7 +204,7 @@ export const MultiSelect = ({
                     transform: `translateY(${virtualItem.start}px)`,
                   }}
                 >
-                  <StyledCheck $selected={selectedValues.has(option.value)}>
+                  <StyledCheck $selected={isSelected}>
                     <Check />
                   </StyledCheck>
                   {option.label}
@@ -230,56 +222,64 @@ export const MultiSelect = ({
         className={css('list', classnames?.list)}
         style={{ maxHeight: heightValue, overflow: 'auto' }}
       >
-        {filteredOptions.map((option, index) => (
-          <StyledOption
-            key={option.value}
-            className={css('option', classnames?.option)}
-            $selected={selectedValues.has(option.value)}
-            $disabled={Boolean(option.disabled)}
-            $focused={index === focusedIndex}
-            onClick={() => handleOptionClick(option)}
-          >
-            <StyledCheck $selected={selectedValues.has(option.value)}>
-              <Check />
-            </StyledCheck>
-            {option.label}
-          </StyledOption>
-        ))}
+        {filteredOptions.map((option, index) => {
+          const isSelected = value?.value === option.value
+          return (
+            <StyledOption
+              key={option.value}
+              className={css('option', classnames?.option)}
+              $selected={isSelected}
+              $disabled={Boolean(option.disabled)}
+              $focused={index === focusedIndex}
+              onClick={() => handleOptionClick(option)}
+            >
+              <StyledCheck $selected={isSelected}>
+                <Check />
+              </StyledCheck>
+              {option.label}
+            </StyledOption>
+          )
+        })}
       </StyledList>
     )
   }
 
   return (
     <StyledContainer {...rest} ref={ref} className={css('container', className)}>
+      {label && (
+        <FieldLabel variant={variant} className={css('label', classnames?.trigger)}>
+          {label}
+        </FieldLabel>
+      )}
       <StyledTrigger
         ref={(node) => {
           triggerRef.current = node
           refs.setReference(node)
         }}
+        className={css('trigger', classnames?.trigger)}
         tabIndex={disabled ? -1 : 0}
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}
+        $variant={variant}
         $disabled={disabled}
-        onClick={handleTriggerClick}
+        $focused={isOpen || isFocused}
         {...(disabled ? {} : getReferenceProps())}
       >
-        <MultiValue
-          classnames={{
-            label: classnames?.label,
-            chips: classnames?.chips,
-            chip: classnames?.chip,
-            more: classnames?.more,
-            placeholder: classnames?.placeholder,
-          }}
-          count={count}
-          disabled={disabled}
-          focused={isOpen || isFocused}
-          items={value}
-          label={label}
-          onChange={handleMultiValueChange}
-          placeholder={placeholder}
-          variant={variant}
-        />
+        {value ? (
+          <StyledValue className={css('value', classnames?.value)} $variant={variant}>
+            {value.label}
+          </StyledValue>
+        ) : (
+          <StyledPlaceholder
+            className={css('placeholder', classnames?.placeholder)}
+            $variant={variant}
+          >
+            {placeholder}
+          </StyledPlaceholder>
+        )}
+        <StyledChevron $open={isOpen}>
+          <ChevronDown />
+        </StyledChevron>
       </StyledTrigger>
 
       {isOpen && (

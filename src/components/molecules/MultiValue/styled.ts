@@ -7,6 +7,7 @@ import { FieldLabel } from '../../atoms'
 type StyledChipsProps = {
   $variant: MultiValueVariant
   $disabled: boolean
+  $focused: boolean
 }
 
 export const StyledContainer = styled.div`
@@ -26,14 +27,23 @@ export const StyledChips = styled.div<StyledChipsProps>`
   gap: 6px;
   min-width: 200px;
   min-height: 40px;
-  padding: 6px 14px;
+  padding: 6px 10px;
   border-radius: 16px;
   box-sizing: border-box;
-  border: 1px solid ${(props) => getMultiValueVariantProps(props.$variant).border};
+  border: 1px solid
+    ${(props) =>
+      props.$focused
+        ? getMultiValueVariantProps(props.$variant).borderFocused
+        : getMultiValueVariantProps(props.$variant).border};
   background-color: ${(props) => getMultiValueVariantProps(props.$variant).background};
+  box-shadow: ${(props) =>
+    props.$focused ? `0 0 0 3px ${getMultiValueVariantProps(props.$variant).focusRing}` : 'none'};
   opacity: ${(props) => (props.$disabled ? 0.5 : 1)};
   cursor: ${(props) => (props.$disabled ? 'not-allowed' : 'default')};
   pointer-events: ${(props) => (props.$disabled ? 'none' : 'auto')};
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
 `
 
 type StyledPlaceholderProps = {
