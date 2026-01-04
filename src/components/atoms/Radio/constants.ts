@@ -1,8 +1,8 @@
-import { CheckboxVariant } from './types'
+import { RadioVariant } from './types'
 import { alpha, COLORS } from '../../../lib'
 
-export const CHECKBOX_VARIANT_PROPS: Record<
-  CheckboxVariant,
+export const RADIO_VARIANT_PROPS: Record<
+  RadioVariant,
   {
     box: {
       border: string
@@ -11,8 +11,8 @@ export const CHECKBOX_VARIANT_PROPS: Record<
       backgroundChecked: string
       focusShadow: string
     }
+    dot: string
     label: string
-    icon: string
   }
 > = {
   normal: {
@@ -20,21 +20,21 @@ export const CHECKBOX_VARIANT_PROPS: Record<
       border: alpha(COLORS['iron-grey'], 30),
       borderChecked: COLORS['iron-grey'],
       background: COLORS['white'],
-      backgroundChecked: COLORS['black'],
+      backgroundChecked: COLORS['white'],
       focusShadow: alpha(COLORS['iron-grey'], 30),
     },
+    dot: COLORS['black'],
     label: COLORS['black'],
-    icon: COLORS['white'],
   },
   error: {
     box: {
       border: COLORS['red'],
       borderChecked: COLORS['red'],
       background: COLORS['white'],
-      backgroundChecked: COLORS['red'],
+      backgroundChecked: COLORS['white'],
       focusShadow: alpha(COLORS['red'], 30),
     },
+    dot: COLORS['red'],
     label: COLORS['red'],
-    icon: COLORS['white'],
   },
 }

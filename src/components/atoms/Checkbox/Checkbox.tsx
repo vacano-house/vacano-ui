@@ -21,7 +21,7 @@ export const Checkbox = ({
     <StyledContainer
       className={css('container', className)}
       $disabled={Boolean(disabled)}
-      $state={variant}
+      $variant={variant}
     >
       <StyledInput
         {...rest}
