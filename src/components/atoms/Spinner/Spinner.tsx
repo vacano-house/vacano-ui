@@ -1,21 +1,21 @@
-import { classNameGetter } from '../../../lib/utils'
-import { DEFAULT_SPINNER_PROP_ARIA_LABEL, DEFAULT_SPINNER_PROP_SIZE } from './constants'
-import { StyledSpinnerContainer } from './styled'
-import type { SpinnerProps } from './types'
+import { StyledSpinner } from './styled'
+import { SpinnerProps } from './types'
+import { newClassNameGetter } from '../../../lib'
 
-const css = classNameGetter('spinner')
+const css = newClassNameGetter('spinner')
 
 export const Spinner = ({
-  'aria-label': ariaLabel = DEFAULT_SPINNER_PROP_ARIA_LABEL,
+  'aria-label': ariaLabel = 'Loading',
   className,
-  classnames,
-  size = DEFAULT_SPINNER_PROP_SIZE,
+  ref,
+  size = 'md',
   ...rest
 }: SpinnerProps) => {
   return (
-    <StyledSpinnerContainer
+    <StyledSpinner
       {...rest}
-      className={css('container', className, classnames?.container)}
+      ref={ref}
+      className={css('container', className)}
       role="status"
       aria-label={ariaLabel}
       $size={size}

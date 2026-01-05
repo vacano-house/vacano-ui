@@ -1,3 +1,3 @@
-import { classNameGetter } from '../../lib/utils'
+import { newClassNameGetter } from '../../lib'
 
-export const css = classNameGetter('icon-lucide')
+export const css = newClassNameGetter('icon-lucide')

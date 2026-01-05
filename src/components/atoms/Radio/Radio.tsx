@@ -1,14 +1,8 @@
-import { classNameGetter } from '../../../lib/utils'
-import {
-  StyledRadioCircle,
-  StyledRadioContainer,
-  StyledRadioDot,
-  StyledRadioInput,
-  StyledRadioLabel,
-} from './styled'
-import type { RadioProps } from './types'
+import { StyledBox, StyledContainer, StyledDot, StyledInput, StyledLabel } from './styled'
+import { RadioProps } from './types'
+import { newClassNameGetter } from '../../../lib'
 
-const css = classNameGetter('radio')
+const css = newClassNameGetter('radio')
 
 export const Radio = ({
   checked,
@@ -18,16 +12,16 @@ export const Radio = ({
   label,
   onChange,
   ref,
-  state,
+  variant = 'normal',
   ...rest
 }: RadioProps) => {
   return (
-    <StyledRadioContainer
-      className={css('container', className, classnames?.container)}
-      $disabled={disabled}
-      $state={state}
+    <StyledContainer
+      className={css('container', className)}
+      $disabled={Boolean(disabled)}
+      $variant={variant}
     >
-      <StyledRadioInput
+      <StyledInput
         {...rest}
         ref={ref}
         type="radio"
@@ -36,18 +30,14 @@ export const Radio = ({
         disabled={disabled}
         onChange={onChange}
       />
-      <StyledRadioCircle
-        className={css('circle', classnames?.circle)}
-        $checked={checked}
-        $state={state}
-      >
-        <StyledRadioDot className={css('dot', classnames?.dot)} $visible={checked} $state={state} />
-      </StyledRadioCircle>
+      <StyledBox className={css('box', classnames?.box)} $checked={checked} $variant={variant}>
+        <StyledDot className={css('dot', classnames?.dot)} $visible={checked} $variant={variant} />
+      </StyledBox>
       {label && (
-        <StyledRadioLabel className={css('label', classnames?.label)} $state={state}>
+        <StyledLabel className={css('label', classnames?.label)} $variant={variant}>
           {label}
-        </StyledRadioLabel>
+        </StyledLabel>
       )}
-    </StyledRadioContainer>
+    </StyledContainer>
   )
 }

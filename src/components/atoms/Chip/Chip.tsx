@@ -1,27 +1,39 @@
-import type { PropsWithChildren } from 'react'
+import { StyledContainer, StyledDelete } from './styled'
+import { ChipProps } from './types'
+import { X } from '../../../icons/Lucide'
+import { newClassNameGetter } from '../../../lib'
 
-import { classNameGetter } from '../../../lib/utils'
-import { StyledChipContainer, StyledChipText } from './styled'
-import type { ChipProps } from './types'
-
-const css = classNameGetter('chip')
+const css = newClassNameGetter('chip')
 
 export const Chip = ({
   children,
   className,
   classnames,
-  fullWidth,
-  status,
+  deletable,
+  onDelete,
+  ref,
+  variant = 'gray',
   ...rest
-}: PropsWithChildren<ChipProps>) => {
+}: ChipProps) => {
   return (
-    <StyledChipContainer
+    <StyledContainer
       {...rest}
-      className={css('container', className, classnames?.container)}
-      $fullWidth={fullWidth}
-      $status={status}
+      ref={ref}
+      className={css('container', className)}
+      $variant={variant}
+      $deletable={Boolean(deletable)}
     >
-      <StyledChipText className={css('text', classnames?.text)}>{children}</StyledChipText>
-    </StyledChipContainer>
+      {children}
+      {deletable && (
+        <StyledDelete
+          type="button"
+          className={css('delete', classnames?.delete)}
+          $variant={variant}
+          onClick={onDelete}
+        >
+          <X />
+        </StyledDelete>
+      )}
+    </StyledContainer>
   )
 }

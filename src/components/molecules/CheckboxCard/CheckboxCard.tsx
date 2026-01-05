@@ -1,15 +1,15 @@
-import { classNameGetter } from '../../../lib/utils'
-import { Checkbox } from '../../atoms/Checkbox'
 import {
-  StyledCheckboxCardContainer,
-  StyledCheckboxCardContent,
-  StyledCheckboxCardDescription,
-  StyledCheckboxCardInput,
-  StyledCheckboxCardLabel,
+  StyledContainer,
+  StyledContent,
+  StyledDescription,
+  StyledInput,
+  StyledLabel,
 } from './styled'
-import type { CheckboxCardProps } from './types'
+import { CheckboxCardProps } from './types'
+import { Checkbox } from '../../atoms/Checkbox'
+import { newClassNameGetter } from '../../../lib'
 
-const css = classNameGetter('checkboxCard')
+const css = newClassNameGetter('checkbox-card')
 
 export const CheckboxCard = ({
   checked,
@@ -17,23 +17,23 @@ export const CheckboxCard = ({
   classnames,
   description,
   disabled,
-  fullWidth,
+  fullWidth = false,
   label,
   onChange,
   ref,
-  state,
+  variant = 'normal',
   ...rest
 }: CheckboxCardProps) => {
   return (
-    <StyledCheckboxCardContainer
-      className={css('container', className, classnames?.container)}
+    <StyledContainer
+      className={css('container', className)}
       $checked={checked}
-      $disabled={disabled}
+      $disabled={Boolean(disabled)}
       $fullWidth={fullWidth}
-      $state={state}
+      $variant={variant}
       data-disabled={disabled}
     >
-      <StyledCheckboxCardInput
+      <StyledInput
         {...rest}
         ref={ref}
         type="checkbox"
@@ -45,24 +45,24 @@ export const CheckboxCard = ({
         className={classnames?.checkbox}
         checked={checked}
         disabled={disabled}
-        state={state}
+        variant={variant}
         onChange={() => {}}
         tabIndex={-1}
         aria-hidden
       />
-      <StyledCheckboxCardContent className={css('content', classnames?.content)}>
-        <StyledCheckboxCardLabel className={css('label', classnames?.label)} $state={state}>
+      <StyledContent className={css('content', classnames?.content)}>
+        <StyledLabel className={css('label', classnames?.label)} $variant={variant}>
           {label}
-        </StyledCheckboxCardLabel>
+        </StyledLabel>
         {description && (
-          <StyledCheckboxCardDescription
+          <StyledDescription
             className={css('description', classnames?.description)}
-            $state={state}
+            $variant={variant}
           >
             {description}
-          </StyledCheckboxCardDescription>
+          </StyledDescription>
         )}
-      </StyledCheckboxCardContent>
-    </StyledCheckboxCardContainer>
+      </StyledContent>
+    </StyledContainer>
   )
 }

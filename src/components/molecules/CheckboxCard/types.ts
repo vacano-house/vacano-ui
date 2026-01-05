@@ -1,42 +1,22 @@
-import type { ChangeEventHandler, InputHTMLAttributes, Ref } from 'react'
+import type { ChangeEventHandler, InputHTMLAttributes } from 'react'
 
-export type CheckboxCardState = 'warning' | 'error'
+import { VacanoComponentProps } from '../../../lib'
 
-export type CheckboxCardClassnames = {
-  container?: string
+export type CheckboxCardVariant = 'normal' | 'error'
+
+export type CheckboxCardClassNames = {
   checkbox?: string
   content?: string
   label?: string
   description?: string
 }
 
-export type StyledCheckboxCardContainerProps = {
-  $checked?: boolean
-  $disabled?: boolean
-  $fullWidth?: boolean
-  $state?: CheckboxCardState
-}
-
-export type StyledCheckboxCardLabelProps = {
-  $state?: CheckboxCardState
-}
-
-export type StyledCheckboxCardDescriptionProps = {
-  $state?: CheckboxCardState
-}
-
-export type CheckboxCardProps = Omit<
-  InputHTMLAttributes<HTMLInputElement>,
-  'type' | 'checked' | 'onChange'
-> & {
-  checked: boolean
-  onChange: ChangeEventHandler<HTMLInputElement>
-  label: string
-  description?: string
-  fullWidth?: boolean
-  state?: CheckboxCardState
-  className?: string
-  classnames?: CheckboxCardClassnames
-  ref?: Ref<HTMLInputElement>
-  'data-test-id'?: string
-}
+export type CheckboxCardProps = VacanoComponentProps<HTMLInputElement, CheckboxCardClassNames> &
+  Omit<InputHTMLAttributes<HTMLInputElement>, 'type' | 'checked' | 'onChange' | 'className'> & {
+    checked: boolean
+    onChange: ChangeEventHandler<HTMLInputElement>
+    label: string
+    description?: string
+    fullWidth?: boolean
+    variant?: CheckboxCardVariant
+  }

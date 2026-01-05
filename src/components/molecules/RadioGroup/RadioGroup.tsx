@@ -1,9 +1,9 @@
-import { classNameGetter } from '../../../lib/utils'
+import { StyledContainer, StyledLabel, StyledOptions } from './styled'
+import { RadioGroupProps } from './types'
 import { Radio } from '../../atoms/Radio'
-import { StyledRadioGroupContainer, StyledRadioGroupLabel, StyledRadioGroupOptions } from './styled'
-import type { RadioGroupProps } from './types'
+import { newClassNameGetter } from '../../../lib'
 
-const css = classNameGetter('radioGroup')
+const css = newClassNameGetter('radio-group')
 
 export const RadioGroup = ({
   className,
@@ -13,20 +13,18 @@ export const RadioGroup = ({
   name,
   onChange,
   options,
+  ref,
   value,
   ...rest
 }: RadioGroupProps) => {
   return (
-    <StyledRadioGroupContainer
-      {...rest}
-      className={css('container', className, classnames?.container)}
-    >
+    <StyledContainer {...rest} ref={ref} className={css('container', className)}>
       {label && (
-        <StyledRadioGroupLabel className={css('label', classnames?.label)}>
+        <StyledLabel className={css('label', classnames?.label)} $disabled={disabled}>
           {label}
-        </StyledRadioGroupLabel>
+        </StyledLabel>
       )}
-      <StyledRadioGroupOptions className={css('options', classnames?.options)}>
+      <StyledOptions className={css('options', classnames?.options)}>
         {options.map((option) => (
           <Radio
             key={option.value}
@@ -38,7 +36,7 @@ export const RadioGroup = ({
             onChange={() => onChange(option.value)}
           />
         ))}
-      </StyledRadioGroupOptions>
-    </StyledRadioGroupContainer>
+      </StyledOptions>
+    </StyledContainer>
   )
 }

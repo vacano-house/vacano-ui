@@ -1,35 +1,29 @@
+import { StyledBox, StyledContainer, StyledIcon, StyledInput, StyledLabel } from './styled'
+import { CheckboxProps } from './types'
 import { Check, Minus } from '../../../icons/Lucide'
-import { classNameGetter } from '../../../lib/utils'
-import {
-  StyledCheckboxBox,
-  StyledCheckboxContainer,
-  StyledCheckboxIcon,
-  StyledCheckboxInput,
-  StyledCheckboxLabel,
-} from './styled'
-import type { CheckboxProps } from './types'
+import { newClassNameGetter } from '../../../lib'
 
-const css = classNameGetter('checkbox')
+const css = newClassNameGetter('checkbox')
 
 export const Checkbox = ({
   checked,
   className,
   classnames,
   disabled,
-  indeterminate,
+  indeterminate = false,
   label,
   onChange,
   ref,
-  state,
+  variant = 'normal',
   ...rest
 }: CheckboxProps) => {
   return (
-    <StyledCheckboxContainer
-      className={css('container', className, classnames?.container)}
-      $disabled={disabled}
-      $state={state}
+    <StyledContainer
+      className={css('container', className)}
+      $disabled={Boolean(disabled)}
+      $variant={variant}
     >
-      <StyledCheckboxInput
+      <StyledInput
         {...rest}
         ref={ref}
         type="checkbox"
@@ -38,24 +32,25 @@ export const Checkbox = ({
         disabled={disabled}
         onChange={onChange}
       />
-      <StyledCheckboxBox
+      <StyledBox
         className={css('box', classnames?.box)}
         $checked={checked}
         $indeterminate={indeterminate}
-        $state={state}
+        $variant={variant}
       >
-        <StyledCheckboxIcon
+        <StyledIcon
           className={css('icon', classnames?.icon)}
           $visible={indeterminate || checked}
+          $variant={variant}
         >
           {indeterminate ? <Minus /> : <Check />}
-        </StyledCheckboxIcon>
-      </StyledCheckboxBox>
+        </StyledIcon>
+      </StyledBox>
       {label && (
-        <StyledCheckboxLabel className={css('label', classnames?.label)} $state={state}>
+        <StyledLabel className={css('label', classnames?.label)} $variant={variant}>
           {label}
-        </StyledCheckboxLabel>
+        </StyledLabel>
       )}
-    </StyledCheckboxContainer>
+    </StyledContainer>
   )
 }

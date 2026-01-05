@@ -1,58 +1,51 @@
-import type { Theme } from '@emotion/react'
 import styled from '@emotion/styled'
 
-import type { ChipStatus, StyledChipContainerProps } from './types'
+import { getChipVariantProps } from './helpers'
+import { ChipVariant } from './types'
 
-const getChipContainerColor = (theme: Theme, status?: ChipStatus) => {
-  switch (status) {
-    case 'neutral':
-      return theme.chip.color.neutral
-    case 'success':
-      return theme.chip.color.success
-    case 'warning':
-      return theme.chip.color.warning
-    case 'error':
-      return theme.chip.color.error
-
-    default:
-      return theme.chip.color.default
-  }
+type StyledContainerProps = {
+  $variant: ChipVariant
+  $deletable: boolean
 }
 
-const getChipContainerBackgroundColor = (theme: Theme, status?: ChipStatus) => {
-  switch (status) {
-    case 'neutral':
-      return theme.chip.backgroundColor.neutral
-    case 'success':
-      return theme.chip.backgroundColor.success
-    case 'warning':
-      return theme.chip.backgroundColor.warning
-    case 'error':
-      return theme.chip.backgroundColor.error
-
-    default:
-      return theme.chip.backgroundColor.default
-  }
+type StyledDeleteProps = {
+  $variant: ChipVariant
 }
 
-export const StyledChipContainer = styled.span<StyledChipContainerProps>`
+export const StyledContainer = styled.span<StyledContainerProps>`
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0 ${(props) => (props.$deletable ? '7px' : '10px')} 0 10px;
+  border-radius: 12px;
+  height: 24px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.5;
+  background-color: ${(props) => getChipVariantProps(props.$variant).background};
+  color: ${(props) => getChipVariantProps(props.$variant).color};
+`
+
+export const StyledDelete = styled.button<StyledDeleteProps>`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: ${({ $fullWidth }) => ($fullWidth ? '100%' : 'auto')};
-  height: 24px;
-  padding: 0 12px;
-  border-radius: 12px;
-  font-size: 12px;
-  font-weight: 600;
-  min-width: 0;
-  max-width: ${({ $fullWidth }) => ($fullWidth ? 'none' : '200px')};
-  color: ${({ theme, $status }) => getChipContainerColor(theme, $status)};
-  background-color: ${({ theme, $status }) => getChipContainerBackgroundColor(theme, $status)};
-`
+  padding: 0;
+  margin: 0;
+  margin-left: 2px;
+  border: none;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.15s ease;
 
-export const StyledChipText = styled.span`
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  &:hover {
+    background-color: ${(props) => getChipVariantProps(props.$variant).deleteHover};
+  }
+
+  & svg {
+    width: 14px;
+    height: 14px;
+  }
 `

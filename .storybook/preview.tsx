@@ -1,12 +1,17 @@
+import '@fontsource/inter/400.css'
+import '@fontsource/inter/500.css'
+import '@fontsource/inter/600.css'
+import '@fontsource/inter/700.css'
+
 import type { Preview } from '@storybook/react-vite'
 
-import { ThemeProvider } from '../src/theme/ThemeProvider'
+import { GlobalStyle } from '../src'
 
 const preview: Preview = {
   parameters: {
     options: {
       storySort: {
-        order: ['Icons', 'Atoms', 'Molecules', 'Organisms', 'hooks', '*'],
+        order: ['atoms', 'molecules', 'organisms', 'templates'],
       },
     },
     controls: {
@@ -18,9 +23,10 @@ const preview: Preview = {
   },
   decorators: [
     (Story) => (
-      <ThemeProvider>
+      <>
+        <GlobalStyle />
         <Story />
-      </ThemeProvider>
+      </>
     ),
   ],
 }

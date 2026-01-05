@@ -1,24 +1,20 @@
-import type { ChangeEventHandler, InputHTMLAttributes, Ref } from 'react'
+import type { ChangeEventHandler, InputHTMLAttributes } from 'react'
 
-export type RadioState = 'warning' | 'error'
+import { VacanoComponentProps } from '../../../lib'
 
-export type RadioClassnames = {
-  container?: string
+export type RadioVariant = 'normal' | 'error'
+
+export type RadioClassNames = {
   input?: string
-  circle?: string
+  box?: string
   dot?: string
   label?: string
 }
 
-export type RadioProps = Omit<
-  InputHTMLAttributes<HTMLInputElement>,
-  'type' | 'checked' | 'onChange'
-> & {
-  checked: boolean
-  classnames?: RadioClassnames
-  'data-test-id'?: string
-  label?: string
-  onChange: ChangeEventHandler<HTMLInputElement>
-  ref?: Ref<HTMLInputElement>
-  state?: RadioState
-}
+export type RadioProps = VacanoComponentProps<HTMLInputElement, RadioClassNames> &
+  Omit<InputHTMLAttributes<HTMLInputElement>, 'type' | 'checked' | 'onChange' | 'className'> & {
+    checked: boolean
+    onChange: ChangeEventHandler<HTMLInputElement>
+    label?: string
+    variant?: RadioVariant
+  }

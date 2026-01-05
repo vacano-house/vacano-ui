@@ -1,149 +1,61 @@
-import type { Theme } from '@emotion/react'
 import styled from '@emotion/styled'
 
-import type {
-  CheckboxCardState,
-  StyledCheckboxCardContainerProps,
-  StyledCheckboxCardDescriptionProps,
-  StyledCheckboxCardLabelProps,
-} from './types'
+import { getCheckboxCardVariantProps } from './helpers'
+import { CheckboxCardVariant } from './types'
 
-const getContainerBackgroundColor = (theme: Theme, checked?: boolean, disabled?: boolean) => {
-  if (disabled) {
-    return theme.checkboxCard.container.disabled.backgroundColor
-  }
-
-  if (checked) {
-    return theme.checkboxCard.container.checked.backgroundColor
-  }
-
-  return theme.checkboxCard.container.backgroundColor
+type StyledContainerProps = {
+  $checked: boolean
+  $disabled: boolean
+  $fullWidth: boolean
+  $variant: CheckboxCardVariant
 }
 
-const getContainerBorderColor = (
-  theme: Theme,
-  state?: CheckboxCardState,
-  checked?: boolean,
-  disabled?: boolean,
-) => {
-  if (disabled) {
-    return theme.checkboxCard.container.disabled.borderColor
-  }
-
-  if (state === 'warning') {
-    return checked
-      ? theme.checkboxCard.state.warning.container.checked.borderColor
-      : theme.checkboxCard.state.warning.container.borderColor
-  }
-
-  if (state === 'error') {
-    return checked
-      ? theme.checkboxCard.state.error.container.checked.borderColor
-      : theme.checkboxCard.state.error.container.borderColor
-  }
-
-  if (checked) {
-    return theme.checkboxCard.container.checked.borderColor
-  }
-
-  return theme.checkboxCard.container.borderColor
+type StyledLabelProps = {
+  $variant: CheckboxCardVariant
 }
 
-const getContainerHoverBorderColor = (
-  theme: Theme,
-  state?: CheckboxCardState,
-  checked?: boolean,
-) => {
-  if (state === 'warning') {
-    return checked
-      ? theme.checkboxCard.state.warning.container.checked.borderColor
-      : theme.checkboxCard.state.warning.container.borderColor
-  }
-
-  if (state === 'error') {
-    return checked
-      ? theme.checkboxCard.state.error.container.checked.borderColor
-      : theme.checkboxCard.state.error.container.borderColor
-  }
-
-  if (checked) {
-    return theme.checkboxCard.container.checked.borderColor
-  }
-
-  return theme.checkboxCard.container.hover.borderColor
+type StyledDescriptionProps = {
+  $variant: CheckboxCardVariant
 }
 
-const getContainerFocusOutlineColor = (theme: Theme, state?: CheckboxCardState) => {
-  if (state === 'warning') {
-    return theme.checkboxCard.state.warning.container.borderColor
-  }
-
-  if (state === 'error') {
-    return theme.checkboxCard.state.error.container.borderColor
-  }
-
-  return theme.checkboxCard.container.focus.outlineColor
-}
-
-const getLabelColor = (theme: Theme, state?: CheckboxCardState, disabled?: boolean) => {
-  if (disabled) {
-    return theme.checkboxCard.label.disabled.color
-  }
-
-  if (state === 'warning') {
-    return theme.checkboxCard.state.warning.label.color
-  }
-
-  if (state === 'error') {
-    return theme.checkboxCard.state.error.label.color
-  }
-
-  return theme.checkboxCard.label.color
-}
-
-const getDescriptionColor = (theme: Theme, state?: CheckboxCardState, disabled?: boolean) => {
-  if (disabled) {
-    return theme.checkboxCard.description.disabled.color
-  }
-
-  if (state === 'warning') {
-    return theme.checkboxCard.state.warning.description.color
-  }
-
-  if (state === 'error') {
-    return theme.checkboxCard.state.error.description.color
-  }
-
-  return theme.checkboxCard.description.color
-}
-
-export const StyledCheckboxCardContainer = styled.label<StyledCheckboxCardContainerProps>`
+export const StyledContainer = styled.label<StyledContainerProps>`
   display: grid;
   grid-template-columns: auto 1fr;
   align-items: start;
   gap: 12px;
   padding: 12px;
-  background-color: ${({ theme, $checked, $disabled }) =>
-    getContainerBackgroundColor(theme, $checked, $disabled)};
+  background-color: ${(props) => {
+    const variantProps = getCheckboxCardVariantProps(props.$variant)
+    if (props.$disabled) return variantProps.background.disabled
+    if (props.$checked) return variantProps.backgroundChecked
+    return variantProps.background.static
+  }};
   border: 1px solid
-    ${({ theme, $state, $checked, $disabled }) =>
-      getContainerBorderColor(theme, $state, $checked, $disabled)};
+    ${(props) => {
+      const variantProps = getCheckboxCardVariantProps(props.$variant)
+      if (props.$disabled) return variantProps.border.disabled
+      if (props.$checked) return variantProps.borderChecked
+      return variantProps.border.static
+    }};
   border-radius: 12px;
-  cursor: ${({ $disabled }) => ($disabled ? 'not-allowed' : 'pointer')};
+  cursor: ${(props) => (props.$disabled ? 'not-allowed' : 'pointer')};
   transition:
     border-color 0.15s ease,
     background-color 0.15s ease;
-  width: ${({ $fullWidth }) => ($fullWidth ? '100%' : 'auto')};
+  width: ${(props) => (props.$fullWidth ? '100%' : 'auto')};
   min-width: 0;
 
   &:hover:not([data-disabled='true']) {
-    border-color: ${({ theme, $state, $checked }) =>
-      getContainerHoverBorderColor(theme, $state, $checked)};
+    border-color: ${(props) => {
+      const variantProps = getCheckboxCardVariantProps(props.$variant)
+      if (props.$checked) return variantProps.borderChecked
+      return variantProps.border.hover
+    }};
   }
 
   &:has(:focus-visible) {
-    outline: 2px solid ${({ theme, $state }) => getContainerFocusOutlineColor(theme, $state)};
-    outline-offset: 1px;
+    outline: none;
+    box-shadow: 0 0 0 3px ${(props) => getCheckboxCardVariantProps(props.$variant).focusRing};
   }
 
   .vacano_checkbox_container {
@@ -151,7 +63,7 @@ export const StyledCheckboxCardContainer = styled.label<StyledCheckboxCardContai
   }
 `
 
-export const StyledCheckboxCardInput = styled.input`
+export const StyledInput = styled.input`
   position: absolute;
   width: 1px;
   height: 1px;
@@ -163,31 +75,31 @@ export const StyledCheckboxCardInput = styled.input`
   border: 0;
 `
 
-export const StyledCheckboxCardContent = styled.div`
+export const StyledContent = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2px;
   min-width: 0;
 `
 
-export const StyledCheckboxCardLabel = styled.span<StyledCheckboxCardLabelProps>`
+export const StyledLabel = styled.span<StyledLabelProps>`
   font-size: 14px;
   font-weight: 500;
   line-height: 1.4;
-  color: ${({ theme, $state }) => getLabelColor(theme, $state)};
+  color: ${(props) => getCheckboxCardVariantProps(props.$variant).label.static};
 
   label[data-disabled='true'] & {
-    color: ${({ theme }) => theme.checkboxCard.label.disabled.color};
+    color: ${(props) => getCheckboxCardVariantProps(props.$variant).label.disabled};
   }
 `
 
-export const StyledCheckboxCardDescription = styled.span<StyledCheckboxCardDescriptionProps>`
+export const StyledDescription = styled.span<StyledDescriptionProps>`
   font-size: 12px;
   font-weight: 400;
   line-height: 1.4;
-  color: ${({ theme, $state }) => getDescriptionColor(theme, $state)};
+  color: ${(props) => getCheckboxCardVariantProps(props.$variant).description.static};
 
   label[data-disabled='true'] & {
-    color: ${({ theme }) => theme.checkboxCard.description.disabled.color};
+    color: ${(props) => getCheckboxCardVariantProps(props.$variant).description.disabled};
   }
 `

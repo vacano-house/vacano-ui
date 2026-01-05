@@ -1,16 +1,13 @@
 import type { HTMLAttributes } from 'react'
 
-export type SpinnerClassnames = {
-  container?: string
-}
+import { VacanoComponentProps } from '../../../lib'
 
-export type StyledSpinnerContainerProps = {
-  $size: number
-}
+export type SpinnerSize = 'xs' | 'sm' | 'md' | 'lg'
 
-export type SpinnerProps = HTMLAttributes<HTMLSpanElement> & {
-  'aria-label'?: string
-  classnames?: SpinnerClassnames
-  'data-test-id'?: string
-  size?: number
-}
+export type SpinnerClassNames = Record<string, never>
+
+export type SpinnerProps = VacanoComponentProps<HTMLDivElement, SpinnerClassNames> &
+  Omit<HTMLAttributes<HTMLDivElement>, 'className' | 'children'> & {
+    size?: SpinnerSize
+    'aria-label'?: string
+  }

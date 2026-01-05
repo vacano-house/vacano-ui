@@ -1,106 +1,40 @@
-import type { Theme } from '@emotion/react'
 import styled from '@emotion/styled'
 
-import type { RadioState } from './types'
+import { getRadioVariantProps } from './helpers'
+import { RadioVariant } from './types'
 
-export type StyledRadioContainerProps = {
-  $disabled?: boolean
-  $state?: RadioState
+type StyledContainerProps = {
+  $disabled: boolean
+  $variant: RadioVariant
 }
 
-export type StyledRadioCircleProps = {
-  $checked?: boolean
-  $state?: RadioState
+type StyledBoxProps = {
+  $checked: boolean
+  $variant: RadioVariant
 }
 
-export type StyledRadioDotProps = {
-  $visible?: boolean
-  $state?: RadioState
+type StyledDotProps = {
+  $visible: boolean
+  $variant: RadioVariant
 }
 
-export type StyledRadioLabelProps = {
-  $state?: RadioState
+type StyledLabelProps = {
+  $variant: RadioVariant
 }
 
-const getCircleBorderColor = (theme: Theme, checked?: boolean, state?: RadioState) => {
-  if (checked) {
-    if (state === 'warning') {
-      return theme.radio.state.warning.circle.checked.borderColor
-    }
-
-    if (state === 'error') {
-      return theme.radio.state.error.circle.checked.borderColor
-    }
-
-    return theme.radio.circle.checked.borderColor
-  }
-
-  if (state === 'warning') {
-    return theme.radio.state.warning.circle.borderColor
-  }
-
-  if (state === 'error') {
-    return theme.radio.state.error.circle.borderColor
-  }
-
-  return theme.radio.circle.borderColor
-}
-
-const getCircleFocusShadowColor = (theme: Theme, state?: RadioState) => {
-  if (state === 'warning') {
-    return theme.radio.state.warning.circle.focus.shadowColor
-  }
-
-  if (state === 'error') {
-    return theme.radio.state.error.circle.focus.shadowColor
-  }
-
-  return theme.radio.circle.focus.shadowColor
-}
-
-const getDotColor = (theme: Theme, state?: RadioState) => {
-  if (state === 'warning') {
-    return theme.radio.state.warning.dot.color
-  }
-
-  if (state === 'error') {
-    return theme.radio.state.error.dot.color
-  }
-
-  return theme.radio.dot.color
-}
-
-const getLabelColor = (theme: Theme, state?: RadioState) => {
-  if (state === 'warning') {
-    return theme.radio.state.warning.label.color
-  }
-
-  if (state === 'error') {
-    return theme.radio.state.error.label.color
-  }
-
-  return theme.radio.label.color
-}
-
-export const StyledRadioContainer = styled.label<StyledRadioContainerProps>`
+export const StyledContainer = styled.label<StyledContainerProps>`
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  cursor: pointer;
+  cursor: ${(props) => (props.$disabled ? 'not-allowed' : 'pointer')};
+  opacity: ${(props) => (props.$disabled ? 0.5 : 1)};
 
   &:has(input:focus-visible) > span:first-of-type {
-    box-shadow: 0 0 0 3px ${({ theme, $state }) => getCircleFocusShadowColor(theme, $state)};
+    box-shadow: 0 0 0 2px ${(props) => getRadioVariantProps(props.$variant).box.focusShadow};
   }
-
-  ${({ $disabled }) =>
-    $disabled &&
-    `
-      opacity: 0.5;
-      cursor: not-allowed;
-    `}
 `
 
-export const StyledRadioInput = styled.input`
+export const StyledInput = styled.input`
   position: absolute;
   opacity: 0;
   width: 0;
@@ -108,37 +42,45 @@ export const StyledRadioInput = styled.input`
   pointer-events: none;
 `
 
-export const StyledRadioCircle = styled.span<StyledRadioCircleProps>`
+export const StyledBox = styled.span<StyledBoxProps>`
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
   width: 18px;
   height: 18px;
   border-radius: 50%;
   border: 1.5px solid
-    ${({ theme, $checked, $state }) => getCircleBorderColor(theme, $checked, $state)};
-  background-color: transparent;
+    ${(props) =>
+      props.$checked
+        ? getRadioVariantProps(props.$variant).box.borderChecked
+        : getRadioVariantProps(props.$variant).box.border};
+  background-color: ${(props) =>
+    props.$checked
+      ? getRadioVariantProps(props.$variant).box.backgroundChecked
+      : getRadioVariantProps(props.$variant).box.background};
   transition:
     border-color 0.15s ease,
+    background-color 0.15s ease,
     box-shadow 0.15s ease;
 `
 
-export const StyledRadioDot = styled.span<StyledRadioDotProps>`
-  width: 10px;
-  height: 10px;
+export const StyledDot = styled.span<StyledDotProps>`
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
-  background-color: ${({ theme, $state }) => getDotColor(theme, $state)};
-  opacity: ${({ $visible }) => ($visible ? 1 : 0)};
-  transform: ${({ $visible }) => ($visible ? 'scale(1)' : 'scale(0)')};
+  background-color: ${(props) => getRadioVariantProps(props.$variant).dot};
+  opacity: ${(props) => (props.$visible ? 1 : 0)};
+  transform: ${(props) => (props.$visible ? 'scale(1)' : 'scale(0.5)')};
   transition:
     opacity 0.15s ease,
     transform 0.15s ease;
 `
 
-export const StyledRadioLabel = styled.span<StyledRadioLabelProps>`
+export const StyledLabel = styled.span<StyledLabelProps>`
   font-size: 14px;
-  line-height: 1.5;
-  color: ${({ theme, $state }) => getLabelColor(theme, $state)};
-  user-select: none;
   font-weight: 500;
+  line-height: 1.5;
+  color: ${(props) => getRadioVariantProps(props.$variant).label};
+  user-select: none;
 `

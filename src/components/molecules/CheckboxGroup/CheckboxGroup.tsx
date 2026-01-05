@@ -1,13 +1,9 @@
-import { classNameGetter } from '../../../lib/utils'
+import { StyledContainer, StyledLabel, StyledOptions } from './styled'
+import { CheckboxGroupProps } from './types'
 import { Checkbox } from '../../atoms/Checkbox'
-import {
-  StyledCheckboxGroupContainer,
-  StyledCheckboxGroupLabel,
-  StyledCheckboxGroupOptions,
-} from './styled'
-import type { CheckboxGroupProps } from './types'
+import { newClassNameGetter } from '../../../lib'
 
-const css = classNameGetter('checkboxGroup')
+const css = newClassNameGetter('checkbox-group')
 
 export const CheckboxGroup = ({
   className,
@@ -16,6 +12,7 @@ export const CheckboxGroup = ({
   label,
   onChange,
   options,
+  ref,
   value,
   ...rest
 }: CheckboxGroupProps) => {
@@ -28,16 +25,13 @@ export const CheckboxGroup = ({
   }
 
   return (
-    <StyledCheckboxGroupContainer
-      {...rest}
-      className={css('container', className, classnames?.container)}
-    >
+    <StyledContainer {...rest} ref={ref} className={css('container', className)}>
       {label && (
-        <StyledCheckboxGroupLabel className={css('label', classnames?.label)}>
+        <StyledLabel className={css('label', classnames?.label)} $disabled={disabled}>
           {label}
-        </StyledCheckboxGroupLabel>
+        </StyledLabel>
       )}
-      <StyledCheckboxGroupOptions className={css('options', classnames?.options)}>
+      <StyledOptions className={css('options', classnames?.options)}>
         {options.map((option) => (
           <Checkbox
             key={option.value}
@@ -48,7 +42,7 @@ export const CheckboxGroup = ({
             onChange={(e) => handleChange(option.value, e.target.checked)}
           />
         ))}
-      </StyledCheckboxGroupOptions>
-    </StyledCheckboxGroupContainer>
+      </StyledOptions>
+    </StyledContainer>
   )
 }

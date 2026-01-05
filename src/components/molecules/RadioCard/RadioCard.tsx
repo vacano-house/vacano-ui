@@ -1,15 +1,15 @@
-import { classNameGetter } from '../../../lib/utils'
-import { Radio } from '../../atoms/Radio'
 import {
-  StyledRadioCardContainer,
-  StyledRadioCardContent,
-  StyledRadioCardDescription,
-  StyledRadioCardInput,
-  StyledRadioCardLabel,
+  StyledContainer,
+  StyledContent,
+  StyledDescription,
+  StyledInput,
+  StyledLabel,
 } from './styled'
-import type { RadioCardProps } from './types'
+import { RadioCardProps } from './types'
+import { Radio } from '../../atoms/Radio'
+import { newClassNameGetter } from '../../../lib'
 
-const css = classNameGetter('radioCard')
+const css = newClassNameGetter('radio-card')
 
 export const RadioCard = ({
   checked,
@@ -17,23 +17,23 @@ export const RadioCard = ({
   classnames,
   description,
   disabled,
-  fullWidth,
+  fullWidth = false,
   label,
   onChange,
   ref,
-  state,
+  variant = 'normal',
   ...rest
 }: RadioCardProps) => {
   return (
-    <StyledRadioCardContainer
-      className={css('container', className, classnames?.container)}
+    <StyledContainer
+      className={css('container', className)}
       $checked={checked}
-      $disabled={disabled}
+      $disabled={Boolean(disabled)}
       $fullWidth={fullWidth}
-      $state={state}
+      $variant={variant}
       data-disabled={disabled}
     >
-      <StyledRadioCardInput
+      <StyledInput
         {...rest}
         ref={ref}
         type="radio"
@@ -45,24 +45,24 @@ export const RadioCard = ({
         className={classnames?.radio}
         checked={checked}
         disabled={disabled}
-        state={state}
+        variant={variant}
         onChange={() => {}}
         tabIndex={-1}
         aria-hidden
       />
-      <StyledRadioCardContent className={css('content', classnames?.content)}>
-        <StyledRadioCardLabel className={css('label', classnames?.label)} $state={state}>
+      <StyledContent className={css('content', classnames?.content)}>
+        <StyledLabel className={css('label', classnames?.label)} $variant={variant}>
           {label}
-        </StyledRadioCardLabel>
+        </StyledLabel>
         {description && (
-          <StyledRadioCardDescription
+          <StyledDescription
             className={css('description', classnames?.description)}
-            $state={state}
+            $variant={variant}
           >
             {description}
-          </StyledRadioCardDescription>
+          </StyledDescription>
         )}
-      </StyledRadioCardContent>
-    </StyledRadioCardContainer>
+      </StyledContent>
+    </StyledContainer>
   )
 }

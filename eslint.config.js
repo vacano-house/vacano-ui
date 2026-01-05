@@ -13,6 +13,7 @@ export default tseslint.config(
   {
     files: ['**/*.{ts,tsx}'],
     plugins: {
+      react,
       'react-hooks': reactHooks,
     },
     languageOptions: {
@@ -30,6 +31,7 @@ export default tseslint.config(
     rules: {
       ...reactHooks.configs.recommended.rules,
       'react/prop-types': 'off',
+      'react/self-closing-comp': 'error',
     },
   },
   {

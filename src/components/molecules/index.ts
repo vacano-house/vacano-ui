@@ -1,4 +1,6 @@
 export * from './CheckboxCard'
 export * from './CheckboxGroup'
+export * from './Input'
+export * from './KeysBindings'
 export * from './RadioCard'
 export * from './RadioGroup'

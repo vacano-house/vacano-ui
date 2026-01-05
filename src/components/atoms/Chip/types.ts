@@ -1,20 +1,17 @@
-import type { HTMLAttributes } from 'react'
+import type { HTMLAttributes, ReactNode } from 'react'
 
-export type ChipStatus = 'neutral' | 'success' | 'warning' | 'error'
+import { VacanoComponentProps } from '../../../lib'
 
-export type ChipClassnames = {
-  container?: string
-  text?: string
+export type ChipVariant = 'gray' | 'red' | 'blue' | 'black'
+
+export type ChipClassNames = {
+  delete?: string
 }
 
-export type StyledChipContainerProps = {
-  $status?: ChipStatus
-  $fullWidth?: boolean
-}
-
-export type ChipProps = HTMLAttributes<HTMLSpanElement> & {
-  classnames?: ChipClassnames
-  'data-test-id'?: string
-  fullWidth?: boolean
-  status?: ChipStatus
-}
+export type ChipProps = VacanoComponentProps<HTMLSpanElement, ChipClassNames> &
+  Omit<HTMLAttributes<HTMLSpanElement>, 'className'> & {
+    children: ReactNode
+    variant?: ChipVariant
+    deletable?: boolean
+    onDelete?: () => void
+  }

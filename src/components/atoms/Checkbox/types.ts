@@ -1,26 +1,21 @@
-import type { ChangeEventHandler, InputHTMLAttributes, Ref } from 'react'
+import type { ChangeEventHandler, InputHTMLAttributes } from 'react'
 
-export type CheckboxState = 'warning' | 'error'
+import { VacanoComponentProps } from '../../../lib'
 
-export type CheckboxClassnames = {
-  container?: string
+export type CheckboxVariant = 'normal' | 'error'
+
+export type CheckboxClassNames = {
   input?: string
   box?: string
   icon?: string
   label?: string
 }
 
-export type CheckboxProps = Omit<
-  InputHTMLAttributes<HTMLInputElement>,
-  'type' | 'checked' | 'onChange'
-> & {
-  checked: boolean
-  onChange: ChangeEventHandler<HTMLInputElement>
-
-  'data-test-id'?: string
-  classnames?: CheckboxClassnames
-  indeterminate?: boolean
-  label?: string
-  ref?: Ref<HTMLInputElement>
-  state?: CheckboxState
-}
+export type CheckboxProps = VacanoComponentProps<HTMLInputElement, CheckboxClassNames> &
+  Omit<InputHTMLAttributes<HTMLInputElement>, 'type' | 'checked' | 'onChange' | 'className'> & {
+    checked: boolean
+    onChange: ChangeEventHandler<HTMLInputElement>
+    indeterminate?: boolean
+    label?: string
+    variant?: CheckboxVariant
+  }

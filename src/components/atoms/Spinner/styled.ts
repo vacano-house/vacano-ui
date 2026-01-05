@@ -1,41 +1,29 @@
 import { keyframes } from '@emotion/react'
 import styled from '@emotion/styled'
 
-import type { StyledSpinnerContainerProps } from './types'
+import { SPINNER_COLORS } from './constants'
+import { getSpinnerSizeProps } from './helpers'
+import { SpinnerSize } from './types'
 
-const rotate = keyframes`
-  to {
-    transform: rotate(1turn);
+const spin = keyframes`
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 `
 
-const getBorderWidth = (size: number) => Math.max(2, Math.round(size / 10))
+type StyledSpinnerProps = {
+  $size: SpinnerSize
+}
 
-export const StyledSpinnerContainer = styled.span<StyledSpinnerContainerProps>`
+export const StyledSpinner = styled.div<StyledSpinnerProps>`
   display: inline-block;
-  width: ${({ $size }) => $size}px;
-  aspect-ratio: 1;
+  width: ${(props) => getSpinnerSizeProps(props.$size).size};
+  height: ${(props) => getSpinnerSizeProps(props.$size).size};
+  border: ${(props) => getSpinnerSizeProps(props.$size).borderWidth} solid ${SPINNER_COLORS.track};
+  border-top-color: ${SPINNER_COLORS.indicator};
   border-radius: 50%;
-  position: relative;
-
-  /* Track (faint background circle) */
-  &::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: 50%;
-    border: ${({ $size }) => getBorderWidth($size)}px solid currentColor;
-    opacity: 0.2;
-  }
-
-  /* Spinning arc */
-  &::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: 50%;
-    border: ${({ $size }) => getBorderWidth($size)}px solid transparent;
-    border-right-color: currentColor;
-    animation: ${rotate} 0.8s linear infinite;
-  }
+  animation: ${spin} 0.8s linear infinite;
 `

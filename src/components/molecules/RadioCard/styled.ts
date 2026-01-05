@@ -1,145 +1,61 @@
-import type { Theme } from '@emotion/react'
 import styled from '@emotion/styled'
 
-import type {
-  RadioCardState,
-  StyledRadioCardContainerProps,
-  StyledRadioCardDescriptionProps,
-  StyledRadioCardLabelProps,
-} from './types'
+import { getRadioCardVariantProps } from './helpers'
+import { RadioCardVariant } from './types'
 
-const getContainerBackgroundColor = (theme: Theme, checked?: boolean, disabled?: boolean) => {
-  if (disabled) {
-    return theme.radioCard.container.disabled.backgroundColor
-  }
-
-  if (checked) {
-    return theme.radioCard.container.checked.backgroundColor
-  }
-
-  return theme.radioCard.container.backgroundColor
+type StyledContainerProps = {
+  $checked: boolean
+  $disabled: boolean
+  $fullWidth: boolean
+  $variant: RadioCardVariant
 }
 
-const getContainerBorderColor = (
-  theme: Theme,
-  state?: RadioCardState,
-  checked?: boolean,
-  disabled?: boolean,
-) => {
-  if (disabled) {
-    return theme.radioCard.container.disabled.borderColor
-  }
-
-  if (state === 'warning') {
-    return checked
-      ? theme.radioCard.state.warning.container.checked.borderColor
-      : theme.radioCard.state.warning.container.borderColor
-  }
-
-  if (state === 'error') {
-    return checked
-      ? theme.radioCard.state.error.container.checked.borderColor
-      : theme.radioCard.state.error.container.borderColor
-  }
-
-  if (checked) {
-    return theme.radioCard.container.checked.borderColor
-  }
-
-  return theme.radioCard.container.borderColor
+type StyledLabelProps = {
+  $variant: RadioCardVariant
 }
 
-const getContainerHoverBorderColor = (theme: Theme, state?: RadioCardState, checked?: boolean) => {
-  if (state === 'warning') {
-    return checked
-      ? theme.radioCard.state.warning.container.checked.borderColor
-      : theme.radioCard.state.warning.container.borderColor
-  }
-
-  if (state === 'error') {
-    return checked
-      ? theme.radioCard.state.error.container.checked.borderColor
-      : theme.radioCard.state.error.container.borderColor
-  }
-
-  if (checked) {
-    return theme.radioCard.container.checked.borderColor
-  }
-
-  return theme.radioCard.container.hover.borderColor
+type StyledDescriptionProps = {
+  $variant: RadioCardVariant
 }
 
-const getContainerFocusOutlineColor = (theme: Theme, state?: RadioCardState) => {
-  if (state === 'warning') {
-    return theme.radioCard.state.warning.container.borderColor
-  }
-
-  if (state === 'error') {
-    return theme.radioCard.state.error.container.borderColor
-  }
-
-  return theme.radioCard.container.focus.outlineColor
-}
-
-const getLabelColor = (theme: Theme, state?: RadioCardState, disabled?: boolean) => {
-  if (disabled) {
-    return theme.radioCard.label.disabled.color
-  }
-
-  if (state === 'warning') {
-    return theme.radioCard.state.warning.label.color
-  }
-
-  if (state === 'error') {
-    return theme.radioCard.state.error.label.color
-  }
-
-  return theme.radioCard.label.color
-}
-
-const getDescriptionColor = (theme: Theme, state?: RadioCardState, disabled?: boolean) => {
-  if (disabled) {
-    return theme.radioCard.description.disabled.color
-  }
-
-  if (state === 'warning') {
-    return theme.radioCard.state.warning.description.color
-  }
-
-  if (state === 'error') {
-    return theme.radioCard.state.error.description.color
-  }
-
-  return theme.radioCard.description.color
-}
-
-export const StyledRadioCardContainer = styled.label<StyledRadioCardContainerProps>`
+export const StyledContainer = styled.label<StyledContainerProps>`
   display: grid;
   grid-template-columns: auto 1fr;
   align-items: start;
   gap: 12px;
   padding: 12px;
-  background-color: ${({ theme, $checked, $disabled }) =>
-    getContainerBackgroundColor(theme, $checked, $disabled)};
+  background-color: ${(props) => {
+    const variantProps = getRadioCardVariantProps(props.$variant)
+    if (props.$disabled) return variantProps.background.disabled
+    if (props.$checked) return variantProps.backgroundChecked
+    return variantProps.background.static
+  }};
   border: 1px solid
-    ${({ theme, $state, $checked, $disabled }) =>
-      getContainerBorderColor(theme, $state, $checked, $disabled)};
+    ${(props) => {
+      const variantProps = getRadioCardVariantProps(props.$variant)
+      if (props.$disabled) return variantProps.border.disabled
+      if (props.$checked) return variantProps.borderChecked
+      return variantProps.border.static
+    }};
   border-radius: 12px;
-  cursor: ${({ $disabled }) => ($disabled ? 'not-allowed' : 'pointer')};
+  cursor: ${(props) => (props.$disabled ? 'not-allowed' : 'pointer')};
   transition:
     border-color 0.15s ease,
     background-color 0.15s ease;
-  width: ${({ $fullWidth }) => ($fullWidth ? '100%' : 'auto')};
+  width: ${(props) => (props.$fullWidth ? '100%' : 'auto')};
   min-width: 0;
 
   &:hover:not([data-disabled='true']) {
-    border-color: ${({ theme, $state, $checked }) =>
-      getContainerHoverBorderColor(theme, $state, $checked)};
+    border-color: ${(props) => {
+      const variantProps = getRadioCardVariantProps(props.$variant)
+      if (props.$checked) return variantProps.borderChecked
+      return variantProps.border.hover
+    }};
   }
 
   &:has(:focus-visible) {
-    outline: 2px solid ${({ theme, $state }) => getContainerFocusOutlineColor(theme, $state)};
-    outline-offset: 1px;
+    outline: none;
+    box-shadow: 0 0 0 3px ${(props) => getRadioCardVariantProps(props.$variant).focusRing};
   }
 
   .vacano_radio_container {
@@ -147,7 +63,7 @@ export const StyledRadioCardContainer = styled.label<StyledRadioCardContainerPro
   }
 `
 
-export const StyledRadioCardInput = styled.input`
+export const StyledInput = styled.input`
   position: absolute;
   width: 1px;
   height: 1px;
@@ -159,31 +75,31 @@ export const StyledRadioCardInput = styled.input`
   border: 0;
 `
 
-export const StyledRadioCardContent = styled.div`
+export const StyledContent = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2px;
   min-width: 0;
 `
 
-export const StyledRadioCardLabel = styled.span<StyledRadioCardLabelProps>`
+export const StyledLabel = styled.span<StyledLabelProps>`
   font-size: 14px;
   font-weight: 500;
   line-height: 1.4;
-  color: ${({ theme, $state }) => getLabelColor(theme, $state)};
+  color: ${(props) => getRadioCardVariantProps(props.$variant).label.static};
 
   label[data-disabled='true'] & {
-    color: ${({ theme }) => theme.radioCard.label.disabled.color};
+    color: ${(props) => getRadioCardVariantProps(props.$variant).label.disabled};
   }
 `
 
-export const StyledRadioCardDescription = styled.span<StyledRadioCardDescriptionProps>`
+export const StyledDescription = styled.span<StyledDescriptionProps>`
   font-size: 12px;
   font-weight: 400;
   line-height: 1.4;
-  color: ${({ theme, $state }) => getDescriptionColor(theme, $state)};
+  color: ${(props) => getRadioCardVariantProps(props.$variant).description.static};
 
   label[data-disabled='true'] & {
-    color: ${({ theme }) => theme.radioCard.description.disabled.color};
+    color: ${(props) => getRadioCardVariantProps(props.$variant).description.disabled};
   }
 `

@@ -33,6 +33,7 @@ coverage
 # Temporary files
 *.tmp
 *.temp
+/tmp
 
 # AI
 CLAUDE.md
