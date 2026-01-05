@@ -46,6 +46,7 @@ export const StyledBox = styled.span<StyledBoxProps>`
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
   width: 18px;
   height: 18px;
   border-radius: 50%;
