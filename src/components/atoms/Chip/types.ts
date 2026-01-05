@@ -6,6 +6,7 @@ export type ChipVariant = 'gray' | 'red' | 'blue' | 'black'
 
 export type ChipClassNames = {
   delete?: string
+  label?: string
 }
 
 export type ChipProps = VacanoComponentProps<HTMLSpanElement, ChipClassNames> &

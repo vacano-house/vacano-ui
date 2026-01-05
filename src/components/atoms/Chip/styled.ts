@@ -49,3 +49,7 @@ export const StyledDelete = styled.button<StyledDeleteProps>`
     height: 14px;
   }
 `
+
+export const StyledLabel = styled.span`
+  flex: 1 0 auto;
+`

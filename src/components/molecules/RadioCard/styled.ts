@@ -22,7 +22,7 @@ export const StyledContainer = styled.label<StyledContainerProps>`
   display: grid;
   grid-template-columns: auto 1fr;
   align-items: start;
-  gap: 12px;
+  gap: 8px;
   padding: 12px;
   background-color: ${(props) => {
     const variantProps = getRadioCardVariantProps(props.$variant)
@@ -42,7 +42,7 @@ export const StyledContainer = styled.label<StyledContainerProps>`
   transition:
     border-color 0.15s ease,
     background-color 0.15s ease;
-  width: ${(props) => (props.$fullWidth ? '100%' : 'auto')};
+  width: ${(props) => (props.$fullWidth ? '100%' : 'fit-content')};
   min-width: 0;
 
   &:hover:not([data-disabled='true']) {
