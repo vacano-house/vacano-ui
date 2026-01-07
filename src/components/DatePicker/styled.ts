@@ -16,6 +16,7 @@ export const StyledContainer = styled.div<{ $fullWidth: boolean }>`
   display: inline-flex;
   flex-direction: column;
   gap: 2px;
+  min-width: 180px;
   width: ${({ $fullWidth }) => ($fullWidth ? '100%' : 'fit-content')};
 `
 
@@ -215,8 +216,8 @@ export const StyledDayCell = styled.button<{
   height: ${CALENDAR_CELL_SIZE}px;
   border: none;
   border-radius: 8px;
-  font-size: 14px;
-  font-weight: ${({ $selected, $today }) => ($selected || $today ? 600 : 400)};
+  font-size: 13px;
+  font-weight: ${({ $selected, $today }) => ($selected || $today ? 600 : 500)};
   cursor: ${({ $disabled }) => ($disabled ? 'not-allowed' : 'pointer')};
   background-color: ${({ $selected }) => ($selected ? COLORS.black : 'transparent')};
   color: ${({ $selected, $disabled }) =>
