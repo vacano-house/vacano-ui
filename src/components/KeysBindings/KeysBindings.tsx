@@ -1,9 +1,8 @@
 import { useMemo } from 'react'
 
-import { KeySymbol } from '..'
-
 import { StyledKeyBindings } from './styled'
 import { KeysBindingsProps } from './types'
+import { KeySymbol } from '../KeySymbol'
 import { getKeySymbols, newClassNameGetter } from '../../lib'
 
 const css = newClassNameGetter('key-bindings')

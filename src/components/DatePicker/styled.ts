@@ -1,4 +1,3 @@
-import { FieldLabel } from '..'
 import styled from '@emotion/styled'
 
 import {
@@ -9,6 +8,7 @@ import {
   DATE_PICKER_VARIANT_PROPS,
 } from './constants'
 import { DatePickerVariant } from './types'
+import { FieldLabel } from '../FieldLabel'
 import { alpha, COLORS, VacanoComponentSize } from '../../lib'
 
 export const StyledContainer = styled.div<{ $fullWidth: boolean }>`

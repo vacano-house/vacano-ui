@@ -1,9 +1,8 @@
 import { useImperativeHandle, useMemo, useRef } from 'react'
 
-import { KeysBindings } from '..'
-
 import { StyledButton, StyledIcon, StyledLabel, StyledLoading } from './styled'
 import { ButtonProps } from './types'
+import { KeysBindings } from '../KeysBindings'
 import { newClassNameGetter, useKeyBinding } from '../../lib'
 
 const css = newClassNameGetter('button')

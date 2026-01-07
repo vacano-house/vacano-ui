@@ -52,4 +52,5 @@ export const StyledDelete = styled.button<StyledDeleteProps>`
 
 export const StyledLabel = styled.span`
   flex: 1 0 auto;
+  text-align: center;
 `

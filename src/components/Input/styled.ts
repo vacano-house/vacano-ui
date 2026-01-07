@@ -1,8 +1,8 @@
-import { FieldLabel } from '..'
 import styled from '@emotion/styled'
 
 import { getInputSizeProps, getInputVariantProps } from './helpers'
 import { InputVariant } from './types'
+import { FieldLabel } from '../FieldLabel'
 import { VacanoComponentSize } from '../../lib'
 
 type StyledInputContainerProps = {
