@@ -33,11 +33,11 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Build Storybook
+        run: pnpm build-storybook
+
       - name: Build VitePress
         run: pnpm docs:build
-
-      - name: Build Storybook
-        run: STORYBOOK_BASE=/storybook/ pnpm build-storybook -o docs/.vitepress/dist/storybook
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
