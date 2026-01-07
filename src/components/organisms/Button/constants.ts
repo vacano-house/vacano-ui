@@ -72,6 +72,46 @@ export const BUTTON_VARIANT_PROPS: Record<
       disabled: 'transparent',
     },
   },
+  success: {
+    background: {
+      static: COLORS['green'],
+      hover: alpha(COLORS['green'], 90),
+      active: alpha(COLORS['green'], 80),
+      disabled: alpha(COLORS['green'], 50),
+    },
+    color: {
+      static: COLORS['white'],
+      hover: COLORS['white'],
+      active: COLORS['white'],
+      disabled: COLORS['white'],
+    },
+    borderColor: {
+      static: 'transparent',
+      hover: 'transparent',
+      active: 'transparent',
+      disabled: 'transparent',
+    },
+  },
+  warning: {
+    background: {
+      static: COLORS['yellow'],
+      hover: alpha(COLORS['yellow'], 90),
+      active: alpha(COLORS['yellow'], 80),
+      disabled: alpha(COLORS['yellow'], 50),
+    },
+    color: {
+      static: COLORS['black'],
+      hover: COLORS['black'],
+      active: COLORS['black'],
+      disabled: COLORS['black'],
+    },
+    borderColor: {
+      static: 'transparent',
+      hover: 'transparent',
+      active: 'transparent',
+      disabled: 'transparent',
+    },
+  },
   danger: {
     background: {
       static: COLORS['red'],

@@ -20,7 +20,10 @@ const meta: Meta<typeof ButtonComponent> = {
   },
   argTypes: {
     children: { control: 'text' },
-    variant: { control: 'select', options: ['normal', 'system', 'danger', 'transparent'] },
+    variant: {
+      control: 'select',
+      options: ['normal', 'system', 'success', 'warning', 'danger', 'transparent'],
+    },
     size: { control: 'select', options: ['compact', 'default'] },
     disabled: { control: 'boolean' },
     fullWidth: { control: 'boolean' },
@@ -55,6 +58,18 @@ export const Variants: Story = {
         </div>
       </div>
       <div>
+        <div style={{ marginBottom: 8, fontSize: 12, color: '#666' }}>Success</div>
+        <div style={{ border: '1px dashed #ccc', padding: 16 }}>
+          <ButtonComponent variant="success">Success Button</ButtonComponent>
+        </div>
+      </div>
+      <div>
+        <div style={{ marginBottom: 8, fontSize: 12, color: '#666' }}>Warning</div>
+        <div style={{ border: '1px dashed #ccc', padding: 16 }}>
+          <ButtonComponent variant="warning">Warning Button</ButtonComponent>
+        </div>
+      </div>
+      <div>
         <div style={{ marginBottom: 8, fontSize: 12, color: '#666' }}>Danger</div>
         <div style={{ border: '1px dashed #ccc', padding: 16 }}>
           <ButtonComponent variant="danger">Danger Button</ButtonComponent>
@@ -76,12 +91,26 @@ export const Sizes: Story = {
     <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
       <div>
         <div style={{ marginBottom: 8, fontSize: 12, color: '#666' }}>Default Size</div>
-        <div style={{ border: '1px dashed #ccc', padding: 16, display: 'flex', gap: 16 }}>
+        <div
+          style={{
+            border: '1px dashed #ccc',
+            padding: 16,
+            display: 'flex',
+            gap: 16,
+            flexWrap: 'wrap',
+          }}
+        >
           <ButtonComponent size="default" variant="normal">
             Normal
           </ButtonComponent>
           <ButtonComponent size="default" variant="system">
             System
+          </ButtonComponent>
+          <ButtonComponent size="default" variant="success">
+            Success
+          </ButtonComponent>
+          <ButtonComponent size="default" variant="warning">
+            Warning
           </ButtonComponent>
           <ButtonComponent size="default" variant="danger">
             Danger
@@ -93,12 +122,26 @@ export const Sizes: Story = {
       </div>
       <div>
         <div style={{ marginBottom: 8, fontSize: 12, color: '#666' }}>Compact Size</div>
-        <div style={{ border: '1px dashed #ccc', padding: 16, display: 'flex', gap: 16 }}>
+        <div
+          style={{
+            border: '1px dashed #ccc',
+            padding: 16,
+            display: 'flex',
+            gap: 16,
+            flexWrap: 'wrap',
+          }}
+        >
           <ButtonComponent size="compact" variant="normal">
             Normal
           </ButtonComponent>
           <ButtonComponent size="compact" variant="system">
             System
+          </ButtonComponent>
+          <ButtonComponent size="compact" variant="success">
+            Success
+          </ButtonComponent>
+          <ButtonComponent size="compact" variant="warning">
+            Warning
           </ButtonComponent>
           <ButtonComponent size="compact" variant="danger">
             Danger
