@@ -75,16 +75,25 @@ export const StyledChevron = styled.span<{ $open: boolean }>`
   transform: rotate(${(props) => (props.$open ? '180deg' : '0deg')});
 `
 
-export const StyledDropdown = styled.div`
-  position: absolute;
-  left: -4px;
-  width: calc(100% + 8px);
+const dropdownStyles = `
   padding: 4px;
   background: ${COLORS.white};
   border: 1px solid ${alpha(COLORS.black, 10)};
   border-radius: 16px;
   box-shadow: 0 4px 20px ${alpha(COLORS.black, 15)};
   z-index: 1000;
+`
+
+export const StyledDropdown = styled.div`
+  position: absolute;
+  left: -4px;
+  width: calc(100% + 8px);
+  ${dropdownStyles}
+`
+
+export const StyledPortalDropdown = styled.div`
+  position: fixed;
+  ${dropdownStyles}
 `
 
 export const StyledOption = styled.button<{ $selected: boolean; $disabled: boolean }>`

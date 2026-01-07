@@ -1,4 +1,5 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
+import { createPortal } from 'react-dom'
 
 import { DROPDOWN_PADDING, OPTION_HEIGHT } from './constants'
 import {
@@ -8,6 +9,7 @@ import {
   StyledDropdown,
   StyledLabel,
   StyledOption,
+  StyledPortalDropdown,
   StyledTrigger,
   StyledTriggerText,
 } from './styled'
@@ -16,6 +18,12 @@ import { Check, ChevronDown } from '../../icons/Lucide'
 import { newClassNameGetter } from '../../lib'
 
 const css = newClassNameGetter('select')
+
+type PortalPosition = {
+  top: number
+  left: number
+  width: number
+}
 
 export const Select = ({
   className,
@@ -26,6 +34,7 @@ export const Select = ({
   onChange,
   options,
   placeholder = 'Select...',
+  portalRenderNode,
   ref,
   size = 'default',
   value,
@@ -33,8 +42,15 @@ export const Select = ({
   ...rest
 }: SelectProps) => {
   const [isOpen, setIsOpen] = useState(false)
+  const [portalPosition, setPortalPosition] = useState<PortalPosition>({
+    top: 0,
+    left: 0,
+    width: 0,
+  })
+
   const containerRef = useRef<HTMLDivElement>(null)
   const triggerRef = useRef<HTMLButtonElement>(null)
+  const dropdownRef = useRef<HTMLDivElement>(null)
 
   const selectedOption = options.find((opt) => opt.value === value)
   const selectedIndex = Math.max(
@@ -42,6 +58,28 @@ export const Select = ({
     options.findIndex((opt) => opt.value === value),
   )
   const dropdownTop = -(selectedIndex * OPTION_HEIGHT + DROPDOWN_PADDING)
+
+  const updatePortalPosition = () => {
+    if (!triggerRef.current || !portalRenderNode) return
+
+    const triggerRect = triggerRef.current.getBoundingClientRect()
+    const selectedOffset = selectedIndex * OPTION_HEIGHT + DROPDOWN_PADDING
+
+    let top = triggerRect.top - selectedOffset
+
+    const dropdownHeight = options.length * OPTION_HEIGHT + DROPDOWN_PADDING * 2
+    const minTop = 8
+    const maxTop = window.innerHeight - dropdownHeight - 8
+
+    if (top < minTop) top = minTop
+    if (top > maxTop) top = maxTop
+
+    setPortalPosition({
+      top,
+      left: triggerRect.left - DROPDOWN_PADDING,
+      width: triggerRect.width + DROPDOWN_PADDING * 2,
+    })
+  }
 
   const handleSelect = (optionValue: string) => {
     onChange?.(optionValue)
@@ -64,18 +102,105 @@ export const Select = ({
     }
   }
 
+  useLayoutEffect(() => {
+    if (isOpen && portalRenderNode) {
+      updatePortalPosition()
+    }
+  }, [isOpen, portalRenderNode, selectedIndex, options.length])
+
   useEffect(() => {
     if (!isOpen) return
 
     const handleClickOutside = (e: MouseEvent) => {
-      if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
-        setIsOpen(false)
+      const target = e.target as Node
+      const isOutsideContainer = containerRef.current && !containerRef.current.contains(target)
+      const isOutsideDropdown = dropdownRef.current && !dropdownRef.current.contains(target)
+
+      if (portalRenderNode) {
+        if (isOutsideContainer && isOutsideDropdown) {
+          setIsOpen(false)
+        }
+      } else {
+        if (isOutsideContainer) {
+          setIsOpen(false)
+        }
+      }
+    }
+
+    const handleScroll = () => {
+      if (portalRenderNode) {
+        updatePortalPosition()
+      }
+    }
+
+    const handleResize = () => {
+      if (portalRenderNode) {
+        updatePortalPosition()
       }
     }
 
     document.addEventListener('mousedown', handleClickOutside)
-    return () => document.removeEventListener('mousedown', handleClickOutside)
-  }, [isOpen])
+
+    if (portalRenderNode) {
+      window.addEventListener('scroll', handleScroll, true)
+      window.addEventListener('resize', handleResize)
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+      window.removeEventListener('scroll', handleScroll, true)
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [isOpen, portalRenderNode])
+
+  const renderOptions = () =>
+    options.map((option) => (
+      <StyledOption
+        key={option.value}
+        type="button"
+        role="option"
+        $selected={option.value === value}
+        $disabled={option.disabled ?? false}
+        disabled={option.disabled}
+        aria-selected={option.value === value}
+        onClick={() => handleSelect(option.value)}
+        className={css('option', classnames?.option)}
+      >
+        <span>{option.label}</span>
+        {option.value === value && (
+          <StyledCheckmark>
+            <Check size={16} />
+          </StyledCheckmark>
+        )}
+      </StyledOption>
+    ))
+
+  const dropdown = portalRenderNode ? (
+    createPortal(
+      <StyledPortalDropdown
+        ref={dropdownRef}
+        role="listbox"
+        style={{
+          top: portalPosition.top,
+          left: portalPosition.left,
+          width: portalPosition.width,
+        }}
+        className={css('dropdown', classnames?.dropdown)}
+      >
+        {renderOptions()}
+      </StyledPortalDropdown>,
+      portalRenderNode,
+    )
+  ) : (
+    <StyledDropdown
+      ref={dropdownRef}
+      role="listbox"
+      style={{ top: dropdownTop }}
+      className={css('dropdown', classnames?.dropdown)}
+    >
+      {renderOptions()}
+    </StyledDropdown>
+  )
 
   return (
     <StyledContainer
@@ -110,34 +235,7 @@ export const Select = ({
         </StyledChevron>
       </StyledTrigger>
 
-      {isOpen && (
-        <StyledDropdown
-          role="listbox"
-          style={{ top: dropdownTop }}
-          className={css('dropdown', classnames?.dropdown)}
-        >
-          {options.map((option) => (
-            <StyledOption
-              key={option.value}
-              type="button"
-              role="option"
-              $selected={option.value === value}
-              $disabled={option.disabled ?? false}
-              disabled={option.disabled}
-              aria-selected={option.value === value}
-              onClick={() => handleSelect(option.value)}
-              className={css('option', classnames?.option)}
-            >
-              <span>{option.label}</span>
-              {option.value === value && (
-                <StyledCheckmark>
-                  <Check size={16} />
-                </StyledCheckmark>
-              )}
-            </StyledOption>
-          ))}
-        </StyledDropdown>
-      )}
+      {isOpen && dropdown}
     </StyledContainer>
   )
 }

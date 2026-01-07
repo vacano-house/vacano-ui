@@ -7,7 +7,7 @@ import {
   DATE_PICKER_SIZE_PROPS,
   DATE_PICKER_VARIANT_PROPS,
 } from './constants'
-import { DatePickerVariant } from './types'
+import { DatePickerPosition, DatePickerVariant } from './types'
 import { FieldLabel } from '../FieldLabel'
 import { alpha, COLORS, VacanoComponentSize } from '../../lib'
 
@@ -90,26 +90,34 @@ const calendarStyles = `
   padding: ${CALENDAR_PADDING}px;
 `
 
-export const StyledCalendar = styled.div<{ $open: boolean }>`
+const getCalendarTransform = ($open: boolean, $position: DatePickerPosition) => {
+  if (!$open) {
+    return $position === 'bottom' ? 'translateY(-8px)' : 'translateY(8px)'
+  }
+  return 'translateY(0)'
+}
+
+export const StyledCalendar = styled.div<{ $open: boolean; $position: DatePickerPosition }>`
   position: absolute;
-  top: calc(100% + 4px);
+  ${({ $position }) =>
+    $position === 'bottom' ? 'top: calc(100% + 4px);' : 'bottom: calc(100% + 4px);'}
   left: 0;
   ${calendarStyles}
   opacity: ${({ $open }) => ($open ? 1 : 0)};
   visibility: ${({ $open }) => ($open ? 'visible' : 'hidden')};
-  transform: ${({ $open }) => ($open ? 'translateY(0)' : 'translateY(-8px)')};
+  transform: ${({ $open, $position }) => getCalendarTransform($open, $position)};
   transition:
     opacity 0.15s ease,
     transform 0.15s ease,
     visibility 0.15s;
 `
 
-export const StyledPortalCalendar = styled.div<{ $open: boolean }>`
+export const StyledPortalCalendar = styled.div<{ $open: boolean; $position: DatePickerPosition }>`
   position: fixed;
   ${calendarStyles}
   opacity: ${({ $open }) => ($open ? 1 : 0)};
   visibility: ${({ $open }) => ($open ? 'visible' : 'hidden')};
-  transform: ${({ $open }) => ($open ? 'translateY(0)' : 'translateY(-8px)')};
+  transform: ${({ $open, $position }) => getCalendarTransform($open, $position)};
   transition:
     opacity 0.15s ease,
     transform 0.15s ease,

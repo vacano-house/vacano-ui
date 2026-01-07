@@ -4,6 +4,8 @@ export type DatePickerMode = 'date' | 'month' | 'year'
 
 export type DatePickerVariant = 'normal' | 'error'
 
+export type DatePickerPosition = 'top' | 'bottom'
+
 export type DatePickerClassNames = {
   trigger?: string
   calendar?: string

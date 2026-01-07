@@ -16,4 +16,5 @@ export type TooltipProps = VacanoComponentProps<HTMLDivElement, TooltipClassName
     delay?: number
     placement?: TooltipPlacement
     variant?: TooltipVariant
+    portalRenderNode?: HTMLElement | null
   }

@@ -327,24 +327,6 @@ export const ProgressIndicator: Story = {
   },
 }
 
-export const LayoutInCard: Story = {
-  name: 'Layout: In Card',
-  parameters: { layout: 'padded' },
-  render: () => (
-    <div
-      style={{
-        border: '1px solid #e5e5e5',
-        borderRadius: 12,
-        padding: 24,
-        width: 500,
-        background: 'white',
-      }}
-    >
-      <Stepper value="payment" steps={CHECKOUT_STEPS} />
-    </div>
-  ),
-}
-
 export const LayoutVerticalInCard: Story = {
   name: 'Layout: Vertical In Card',
   parameters: { layout: 'padded' },
@@ -363,29 +345,6 @@ export const LayoutVerticalInCard: Story = {
   ),
 }
 
-export const LayoutFlexColumn: Story = {
-  name: 'Layout: Flex Column',
-  parameters: { layout: 'padded' },
-  render: () => (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        gap: 24,
-        border: '1px dashed #ccc',
-        padding: 24,
-        width: 500,
-      }}
-    >
-      <h2 style={{ margin: 0, fontSize: 20 }}>Import Contacts</h2>
-      <Stepper value="map" steps={IMPORT_STEPS} />
-      <div style={{ padding: 40, background: '#f5f5f5', borderRadius: 8, textAlign: 'center' }}>
-        Step content area
-      </div>
-    </div>
-  ),
-}
-
 export const LayoutSidebar: Story = {
   name: 'Layout: Sidebar',
   parameters: { layout: 'padded' },
@@ -398,24 +357,6 @@ export const LayoutSidebar: Story = {
         <h2 style={{ margin: '0 0 16px', fontSize: 20 }}>Complete Profile</h2>
         <p style={{ margin: 0, color: '#666' }}>Main content area</p>
       </div>
-    </div>
-  ),
-}
-
-export const LayoutCentered: Story = {
-  name: 'Layout: Centered',
-  parameters: { layout: 'padded' },
-  render: () => (
-    <div
-      style={{
-        display: 'flex',
-        justifyContent: 'center',
-        border: '1px dashed #ccc',
-        padding: 24,
-        width: 600,
-      }}
-    >
-      <Stepper value="upload" steps={IMPORT_STEPS} />
     </div>
   ),
 }

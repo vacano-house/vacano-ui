@@ -38,13 +38,16 @@ import {
   StyledYearCell,
   StyledYearsGrid,
 } from './styled'
-import { CalendarView, DatePickerProps } from './types'
+import { CalendarView, DatePickerPosition, DatePickerProps } from './types'
 import { ChevronDown, ChevronLeft, ChevronRight } from '../../icons/Lucide'
 import { newClassNameGetter } from '../../lib'
 
 const css = newClassNameGetter('date-picker')
 
-type Position = {
+const CALENDAR_GAP = 4
+const CALENDAR_MIN_HEIGHT = 300
+
+type PortalPosition = {
   top: number
   left: number
 }
@@ -75,7 +78,8 @@ export const DatePicker = ({
 }: DatePickerProps) => {
   const today = useMemo(() => new Date(), [])
   const [internalOpen, setInternalOpen] = useState(false)
-  const [position, setPosition] = useState<Position>({ top: 0, left: 0 })
+  const [portalPosition, setPortalPosition] = useState<PortalPosition>({ top: 0, left: 0 })
+  const [position, setPosition] = useState<DatePickerPosition>('bottom')
   const [view, setView] = useState<CalendarView>(() => {
     if (mode === 'year') return 'years'
     if (mode === 'month') return 'months'
@@ -114,14 +118,29 @@ export const DatePicker = ({
   const placeholderText = placeholder ?? format.replace(/2006|06|January|Jan|01|02/g, '__')
 
   const updatePosition = useCallback(() => {
-    if (!triggerRef.current || !portalRenderNode) return
+    if (!triggerRef.current) return
 
     const triggerRect = triggerRef.current.getBoundingClientRect()
+    const calendarHeight = calendarRef.current?.offsetHeight ?? CALENDAR_MIN_HEIGHT
 
-    setPosition({
-      top: triggerRect.bottom + 4,
-      left: triggerRect.left,
-    })
+    const spaceBelow = window.innerHeight - triggerRect.bottom - CALENDAR_GAP
+    const spaceAbove = triggerRect.top - CALENDAR_GAP
+
+    const newPosition: DatePickerPosition =
+      spaceBelow < calendarHeight && spaceAbove > spaceBelow ? 'top' : 'bottom'
+    setPosition(newPosition)
+
+    if (portalRenderNode) {
+      const top =
+        newPosition === 'bottom'
+          ? triggerRect.bottom + CALENDAR_GAP
+          : triggerRect.top - calendarHeight - CALENDAR_GAP
+
+      setPortalPosition({
+        top,
+        left: triggerRect.left,
+      })
+    }
   }, [portalRenderNode])
 
   const handleOpen = useCallback(() => {
@@ -239,10 +258,10 @@ export const DatePicker = ({
   }, [view])
 
   useLayoutEffect(() => {
-    if (open && portalRenderNode) {
+    if (open) {
       updatePosition()
     }
-  }, [open, portalRenderNode, updatePosition])
+  }, [open, updatePosition])
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -442,8 +461,9 @@ export const DatePicker = ({
       <StyledPortalCalendar
         ref={calendarRef}
         $open={open}
+        $position={position}
         className={css('calendar', classnames?.calendar)}
-        style={{ top: position.top, left: position.left }}
+        style={{ top: portalPosition.top, left: portalPosition.left }}
       >
         {renderCalendarContent()}
       </StyledPortalCalendar>,
@@ -453,6 +473,7 @@ export const DatePicker = ({
     <StyledCalendar
       ref={calendarRef}
       $open={open}
+      $position={position}
       className={css('calendar', classnames?.calendar)}
     >
       {renderCalendarContent()}

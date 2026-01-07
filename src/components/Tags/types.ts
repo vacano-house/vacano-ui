@@ -31,4 +31,5 @@ export type TagsProps = VacanoComponentProps<HTMLDivElement, TagsClassNames> & {
   freeSolo?: boolean
   createKey?: TagsCreateKey
   emptyMessage?: ReactNode
+  portalRenderNode?: HTMLElement | null
 }

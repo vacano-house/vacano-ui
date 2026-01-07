@@ -71,12 +71,7 @@ export const StyledInput = styled.input<{ $disabled: boolean }>`
   }
 `
 
-export const StyledDropdown = styled.div<{ $open: boolean; $position: 'bottom' | 'top' }>`
-  position: absolute;
-  left: 0;
-  right: 0;
-  ${(props) =>
-    props.$position === 'bottom' ? 'top: calc(100% + 4px);' : 'bottom: calc(100% + 4px);'}
+const dropdownStyles = `
   z-index: 100;
   background-color: ${COLORS.white};
   border: 1px solid ${alpha(COLORS.black, 15)};
@@ -84,18 +79,39 @@ export const StyledDropdown = styled.div<{ $open: boolean; $position: 'bottom' |
   box-shadow: 0 4px 16px ${alpha(COLORS.black, 12)};
   max-height: 200px;
   overflow-y: auto;
+`
+
+const getDropdownTransform = ($open: boolean, $position: 'bottom' | 'top') => {
+  if ($open) return 'translateY(0)'
+  return $position === 'bottom' ? 'translateY(-8px)' : 'translateY(8px)'
+}
+
+const getDropdownTransition = `
+  opacity 0.15s ease,
+  transform 0.15s ease,
+  visibility 0.15s;
+`
+
+export const StyledDropdown = styled.div<{ $open: boolean; $position: 'bottom' | 'top' }>`
+  position: absolute;
+  left: 0;
+  right: 0;
+  ${(props) =>
+    props.$position === 'bottom' ? 'top: calc(100% + 4px);' : 'bottom: calc(100% + 4px);'}
+  ${dropdownStyles}
   opacity: ${(props) => (props.$open ? 1 : 0)};
   visibility: ${(props) => (props.$open ? 'visible' : 'hidden')};
-  transform: ${(props) =>
-    props.$open
-      ? 'translateY(0)'
-      : props.$position === 'bottom'
-        ? 'translateY(-8px)'
-        : 'translateY(8px)'};
-  transition:
-    opacity 0.15s ease,
-    transform 0.15s ease,
-    visibility 0.15s;
+  transform: ${(props) => getDropdownTransform(props.$open, props.$position)};
+  transition: ${getDropdownTransition};
+`
+
+export const StyledPortalDropdown = styled.div<{ $open: boolean; $position: 'bottom' | 'top' }>`
+  position: fixed;
+  ${dropdownStyles}
+  opacity: ${(props) => (props.$open ? 1 : 0)};
+  visibility: ${(props) => (props.$open ? 'visible' : 'hidden')};
+  transform: ${(props) => getDropdownTransform(props.$open, props.$position)};
+  transition: ${getDropdownTransition};
 `
 
 export const StyledOption = styled.button`

@@ -25,4 +25,5 @@ export type SelectProps = VacanoComponentProps<HTMLDivElement, SelectClassNames>
   size?: VacanoComponentSize
   disabled?: boolean
   fullWidth?: boolean
+  portalRenderNode?: HTMLElement | null
 }

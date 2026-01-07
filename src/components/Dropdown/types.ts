@@ -4,6 +4,8 @@ import { VacanoComponentProps } from '../../lib'
 
 export type DropdownAlign = 'left' | 'right'
 
+export type DropdownPosition = 'top' | 'bottom'
+
 export type DropdownClassNames = {
   trigger?: string
   content?: string

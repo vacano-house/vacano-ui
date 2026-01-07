@@ -2,15 +2,18 @@ import { cloneElement, useCallback, useEffect, useLayoutEffect, useRef, useState
 import { createPortal } from 'react-dom'
 
 import { StyledContainer, StyledContent, StyledPortalContent, StyledTrigger } from './styled'
-import { DropdownProps } from './types'
+import { DropdownPosition, DropdownProps } from './types'
 import { newClassNameGetter } from '../../lib'
 
 const css = newClassNameGetter('dropdown')
 
-type Position = {
+type PortalPosition = {
   top: number
   left: number
 }
+
+const DROPDOWN_GAP = 4
+const DROPDOWN_MIN_HEIGHT = 100
 
 export const Dropdown = ({
   align = 'left',
@@ -26,7 +29,8 @@ export const Dropdown = ({
   ...rest
 }: DropdownProps) => {
   const [internalOpen, setInternalOpen] = useState(false)
-  const [position, setPosition] = useState<Position>({ top: 0, left: 0 })
+  const [portalPosition, setPortalPosition] = useState<PortalPosition>({ top: 0, left: 0 })
+  const [position, setPosition] = useState<DropdownPosition>('bottom')
   const containerRef = useRef<HTMLDivElement>(null)
   const triggerRef = useRef<HTMLDivElement>(null)
   const contentRef = useRef<HTMLDivElement>(null)
@@ -35,22 +39,34 @@ export const Dropdown = ({
   const open = isControlled ? controlledOpen : internalOpen
 
   const updatePosition = useCallback(() => {
-    if (!triggerRef.current || !portalRenderNode) return
+    if (!triggerRef.current) return
 
     const triggerRect = triggerRef.current.getBoundingClientRect()
+    const contentHeight = contentRef.current?.offsetHeight ?? DROPDOWN_MIN_HEIGHT
     const contentWidth = contentRef.current?.offsetWidth ?? 160
 
-    let left: number
-    if (align === 'left') {
-      left = triggerRect.left
-    } else {
-      left = triggerRect.right - contentWidth
-    }
+    const spaceBelow = window.innerHeight - triggerRect.bottom - DROPDOWN_GAP
+    const spaceAbove = triggerRect.top - DROPDOWN_GAP
 
-    setPosition({
-      top: triggerRect.bottom + 4,
-      left,
-    })
+    const newPosition: DropdownPosition =
+      spaceBelow < contentHeight && spaceAbove > spaceBelow ? 'top' : 'bottom'
+    setPosition(newPosition)
+
+    if (portalRenderNode) {
+      let left: number
+      if (align === 'left') {
+        left = triggerRect.left
+      } else {
+        left = triggerRect.right - contentWidth
+      }
+
+      const top =
+        newPosition === 'bottom'
+          ? triggerRect.bottom + DROPDOWN_GAP
+          : triggerRect.top - contentHeight - DROPDOWN_GAP
+
+      setPortalPosition({ top, left })
+    }
   }, [align, portalRenderNode])
 
   const handleToggle = useCallback(() => {
@@ -83,10 +99,10 @@ export const Dropdown = ({
   }, [isControlled, onClose])
 
   useLayoutEffect(() => {
-    if (open && portalRenderNode) {
+    if (open) {
       updatePosition()
     }
-  }, [open, portalRenderNode, updatePosition])
+  }, [open, updatePosition])
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -146,15 +162,22 @@ export const Dropdown = ({
       <StyledPortalContent
         ref={contentRef}
         $open={open}
+        $position={position}
         className={css('content', classnames?.content)}
-        style={{ top: position.top, left: position.left }}
+        style={{ top: portalPosition.top, left: portalPosition.left }}
       >
         {children}
       </StyledPortalContent>,
       portalRenderNode,
     )
   ) : (
-    <StyledContent $align={align} $open={open} className={css('content', classnames?.content)}>
+    <StyledContent
+      ref={contentRef}
+      $align={align}
+      $open={open}
+      $position={position}
+      className={css('content', classnames?.content)}
+    >
       {children}
     </StyledContent>
   )

@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 
-import { DropdownAlign } from './types'
+import { DropdownAlign, DropdownPosition } from './types'
 import { COLORS } from '../../lib'
 
 export const StyledContainer = styled.div`
@@ -22,26 +22,38 @@ const contentStyles = `
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 `
 
-export const StyledContent = styled.div<{ $align: DropdownAlign; $open: boolean }>`
+const getTransform = ($open: boolean, $position: DropdownPosition) => {
+  if (!$open) {
+    return $position === 'bottom' ? 'translateY(-8px)' : 'translateY(8px)'
+  }
+  return 'translateY(0)'
+}
+
+export const StyledContent = styled.div<{
+  $align: DropdownAlign
+  $open: boolean
+  $position: DropdownPosition
+}>`
   position: absolute;
-  top: calc(100% + 4px);
+  ${({ $position }) =>
+    $position === 'bottom' ? 'top: calc(100% + 4px);' : 'bottom: calc(100% + 4px);'}
   ${({ $align }) => ($align === 'left' ? 'left: 0;' : 'right: 0;')}
   ${contentStyles}
   opacity: ${({ $open }) => ($open ? 1 : 0)};
   visibility: ${({ $open }) => ($open ? 'visible' : 'hidden')};
-  transform: ${({ $open }) => ($open ? 'translateY(0)' : 'translateY(-8px)')};
+  transform: ${({ $open, $position }) => getTransform($open, $position)};
   transition:
     opacity 0.15s ease,
     transform 0.15s ease,
     visibility 0.15s;
 `
 
-export const StyledPortalContent = styled.div<{ $open: boolean }>`
+export const StyledPortalContent = styled.div<{ $open: boolean; $position: DropdownPosition }>`
   position: fixed;
   ${contentStyles}
   opacity: ${({ $open }) => ($open ? 1 : 0)};
   visibility: ${({ $open }) => ($open ? 'visible' : 'hidden')};
-  transform: ${({ $open }) => ($open ? 'translateY(0)' : 'translateY(-8px)')};
+  transform: ${({ $open, $position }) => getTransform($open, $position)};
   transition:
     opacity 0.15s ease,
     transform 0.15s ease,
