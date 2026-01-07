@@ -16,7 +16,8 @@ export default defineConfig({
     nav: [
       { text: 'Guide', link: '/guide/getting-started' },
       { text: 'Components', link: '/components/' },
-      { text: 'Storybook', link: 'https://ui.vacano.io/components/', target: '_blank' },
+      { text: 'Storybook', link: '/storybook/', target: '_blank' },
+      { text: 'AI Docs', link: '/MLAPI.txt', target: '_blank' },
     ],
     sidebar: {
       '/guide/': [

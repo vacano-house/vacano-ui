@@ -2,7 +2,7 @@
 
 Dropdown menu component with customizable trigger.
 
-<a href="https://ui.vacano.io/components/?path=/docs/molecules-dropdown--docs" target="_blank">View in Storybook</a>
+<a href="/storybook/?path=/docs/molecules-dropdown--docs" target="_blank">View in Storybook</a>
 
 ## Import
 

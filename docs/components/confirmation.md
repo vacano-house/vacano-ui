@@ -2,7 +2,7 @@
 
 Confirmation dialog with customizable actions and keyboard bindings.
 
-<a href="https://ui.vacano.io/components/?path=/docs/molecules-confirmation--docs" target="_blank">View in Storybook</a>
+<a href="/storybook/?path=/docs/molecules-confirmation--docs" target="_blank">View in Storybook</a>
 
 ## Import
 

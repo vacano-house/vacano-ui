@@ -2,7 +2,7 @@
 
 Text input field with label support and validation variants.
 
-<a href="https://ui.vacano.io/components/?path=/docs/atoms-input--docs" target="_blank">View in Storybook</a>
+<a href="/storybook/?path=/docs/atoms-input--docs" target="_blank">View in Storybook</a>
 
 ## Import
 

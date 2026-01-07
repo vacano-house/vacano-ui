@@ -2,7 +2,7 @@
 
 Multiple selection component with search, chips display, and modal picker.
 
-<a href="https://ui.vacano.io/components/?path=/docs/molecules-multiselect--docs" target="_blank">View in Storybook</a>
+<a href="/storybook/?path=/docs/molecules-multiselect--docs" target="_blank">View in Storybook</a>
 
 ## Import
 

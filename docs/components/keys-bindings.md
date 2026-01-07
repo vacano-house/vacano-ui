@@ -2,7 +2,7 @@
 
 Keyboard shortcut display component.
 
-<a href="https://ui.vacano.io/components/?path=/docs/atoms-keysbindings--docs" target="_blank">View in Storybook</a>
+<a href="/storybook/?path=/docs/atoms-keysbindings--docs" target="_blank">View in Storybook</a>
 
 ## Import
 

@@ -2,7 +2,7 @@
 
 Metric display card with value, label, and trend indicator.
 
-<a href="https://ui.vacano.io/components/?path=/docs/molecules-statuscard--docs" target="_blank">View in Storybook</a>
+<a href="/storybook/?path=/docs/molecules-statuscard--docs" target="_blank">View in Storybook</a>
 
 ## Import
 

@@ -3,7 +3,7 @@
 Vacano UI provides 32 production-ready components organized by category.
 
 ::: tip Interactive Playground
-Explore all components interactively in our [Storybook](https://ui.vacano.io/components/).
+Explore all components interactively in our [Storybook](/storybook/).
 :::
 
 ## Form

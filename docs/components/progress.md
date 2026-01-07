@@ -2,7 +2,7 @@
 
 Progress bar indicator component.
 
-<a href="https://ui.vacano.io/components/?path=/docs/atoms-progress--docs" target="_blank">View in Storybook</a>
+<a href="/storybook/?path=/docs/atoms-progress--docs" target="_blank">View in Storybook</a>
 
 ## Import
 

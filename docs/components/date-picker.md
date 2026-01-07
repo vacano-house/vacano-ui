@@ -2,7 +2,7 @@
 
 Date selection component with calendar dropdown, supporting date, month, and year modes.
 
-<a href="https://ui.vacano.io/components/?path=/docs/molecules-datepicker--docs" target="_blank">View in Storybook</a>
+<a href="/storybook/?path=/docs/molecules-datepicker--docs" target="_blank">View in Storybook</a>
 
 ## Import
 

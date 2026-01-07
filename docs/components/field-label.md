@@ -2,7 +2,7 @@
 
 Form field label component with required indicator.
 
-<a href="https://ui.vacano.io/components/?path=/docs/atoms-fieldlabel--docs" target="_blank">View in Storybook</a>
+<a href="/storybook/?path=/docs/atoms-fieldlabel--docs" target="_blank">View in Storybook</a>
 
 ## Import
 

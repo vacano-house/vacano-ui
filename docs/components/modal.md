@@ -2,7 +2,7 @@
 
 Overlay modal dialog component.
 
-<a href="https://ui.vacano.io/components/?path=/docs/organisms-modal--docs" target="_blank">View in Storybook</a>
+<a href="/storybook/?path=/docs/organisms-modal--docs" target="_blank">View in Storybook</a>
 
 ## Import
 

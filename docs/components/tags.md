@@ -2,7 +2,7 @@
 
 Tag input component with autocomplete suggestions and free-form entry.
 
-<a href="https://ui.vacano.io/components/?path=/docs/molecules-tags--docs" target="_blank">View in Storybook</a>
+<a href="/storybook/?path=/docs/molecules-tags--docs" target="_blank">View in Storybook</a>
 
 ## Import
 

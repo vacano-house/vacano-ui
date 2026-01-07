@@ -2,7 +2,7 @@
 
 Image cropping component with preview and file selection.
 
-<a href="https://ui.vacano.io/components/?path=/docs/molecules-imagecropper--docs" target="_blank">View in Storybook</a>
+<a href="/storybook/?path=/docs/molecules-imagecropper--docs" target="_blank">View in Storybook</a>
 
 ## Import
 

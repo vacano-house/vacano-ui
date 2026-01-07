@@ -47,7 +47,7 @@
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build",
+    "build-storybook": "STORYBOOK_BASE=/storybook/ storybook build -o docs/public/storybook",
     "lint": "eslint src",
     "lint:fix": "eslint src --fix",
     "format": "prettier --write \"src/**/*.{ts,tsx}\"",

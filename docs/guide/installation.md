@@ -128,4 +128,4 @@ function Controls() {
 
 - [Getting Started](/guide/getting-started) - Quick start guide
 - [Components](/components/) - Browse all components
-- [Storybook](https://ui.vacano.io/components/) - Interactive playground
+- [Storybook](/storybook/) - Interactive playground

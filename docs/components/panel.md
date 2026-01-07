@@ -2,7 +2,7 @@
 
 Section component with optional title and description.
 
-<a href="https://ui.vacano.io/components/?path=/docs/atoms-panel--docs" target="_blank">View in Storybook</a>
+<a href="/storybook/?path=/docs/atoms-panel--docs" target="_blank">View in Storybook</a>
 
 ## Import
 

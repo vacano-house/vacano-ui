@@ -2,7 +2,7 @@
 
 Small label component with optional delete action.
 
-<a href="https://ui.vacano.io/components/?path=/docs/atoms-chip--docs" target="_blank">View in Storybook</a>
+<a href="/storybook/?path=/docs/atoms-chip--docs" target="_blank">View in Storybook</a>
 
 ## Import
 

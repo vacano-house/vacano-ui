@@ -2,7 +2,7 @@
 
 Group of checkboxes with shared state management.
 
-<a href="https://ui.vacano.io/components/?path=/docs/molecules-checkboxgroup--docs" target="_blank">View in Storybook</a>
+<a href="/storybook/?path=/docs/molecules-checkboxgroup--docs" target="_blank">View in Storybook</a>
 
 ## Import
 

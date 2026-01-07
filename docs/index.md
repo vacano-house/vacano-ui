@@ -17,7 +17,7 @@ hero:
       link: /components/
     - theme: alt
       text: Storybook
-      link: https://ui.vacano.io/components/
+      link: /storybook/
 
 features:
   - icon:

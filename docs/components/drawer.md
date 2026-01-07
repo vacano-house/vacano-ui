@@ -2,7 +2,7 @@
 
 Slide-out panel component that appears from any edge of the screen.
 
-<a href="https://ui.vacano.io/components/?path=/docs/organisms-drawer--docs" target="_blank">View in Storybook</a>
+<a href="/storybook/?path=/docs/organisms-drawer--docs" target="_blank">View in Storybook</a>
 
 ## Import
 

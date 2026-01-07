@@ -2,7 +2,7 @@
 
 Tab navigation component for switching between views.
 
-<a href="https://ui.vacano.io/components/?path=/docs/molecules-tabs--docs" target="_blank">View in Storybook</a>
+<a href="/storybook/?path=/docs/molecules-tabs--docs" target="_blank">View in Storybook</a>
 
 ## Import
 

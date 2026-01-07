@@ -2,7 +2,7 @@
 
 Step indicator component for multi-step flows.
 
-<a href="https://ui.vacano.io/components/?path=/docs/molecules-stepper--docs" target="_blank">View in Storybook</a>
+<a href="/storybook/?path=/docs/molecules-stepper--docs" target="_blank">View in Storybook</a>
 
 ## Import
 

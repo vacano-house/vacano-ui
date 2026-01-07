@@ -2,7 +2,7 @@
 
 Group of radio buttons with shared state management.
 
-<a href="https://ui.vacano.io/components/?path=/docs/molecules-radiogroup--docs" target="_blank">View in Storybook</a>
+<a href="/storybook/?path=/docs/molecules-radiogroup--docs" target="_blank">View in Storybook</a>
 
 ## Import
 

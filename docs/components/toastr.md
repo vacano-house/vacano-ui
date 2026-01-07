@@ -2,7 +2,7 @@
 
 Toast notification system with queue management.
 
-<a href="https://ui.vacano.io/components/?path=/docs/organisms-toastr--docs" target="_blank">View in Storybook</a>
+<a href="/storybook/?path=/docs/organisms-toastr--docs" target="_blank">View in Storybook</a>
 
 ## Import
 

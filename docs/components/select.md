@@ -2,7 +2,7 @@
 
 Single selection dropdown with search and portal support.
 
-<a href="https://ui.vacano.io/components/?path=/docs/atoms-select--docs" target="_blank">View in Storybook</a>
+<a href="/storybook/?path=/docs/atoms-select--docs" target="_blank">View in Storybook</a>
 
 ## Import
 

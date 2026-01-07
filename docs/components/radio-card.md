@@ -2,7 +2,7 @@
 
 Card-style radio button with label and description.
 
-<a href="https://ui.vacano.io/components/?path=/docs/atoms-radiocard--docs" target="_blank">View in Storybook</a>
+<a href="/storybook/?path=/docs/atoms-radiocard--docs" target="_blank">View in Storybook</a>
 
 ## Import
 

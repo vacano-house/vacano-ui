@@ -2,7 +2,7 @@
 
 Global CSS reset and base styles component.
 
-<a href="https://ui.vacano.io/components/?path=/docs/global-globalstyle--docs" target="_blank">View in Storybook</a>
+<a href="/storybook/?path=/docs/global-globalstyle--docs" target="_blank">View in Storybook</a>
 
 ## Import
 

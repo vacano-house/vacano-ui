@@ -2,7 +2,7 @@
 
 Loading indicator component with multiple sizes.
 
-<a href="https://ui.vacano.io/components/?path=/docs/atoms-spinner--docs" target="_blank">View in Storybook</a>
+<a href="/storybook/?path=/docs/atoms-spinner--docs" target="_blank">View in Storybook</a>
 
 ## Import
 

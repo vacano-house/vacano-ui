@@ -97,4 +97,4 @@ Most form components support two sizes:
 
 - [Installation](/guide/installation) - Detailed installation instructions
 - [Components](/components/) - Browse all available components
-- [Storybook](https://ui.vacano.io/components/) - Interactive component playground
+- [Storybook](/storybook/) - Interactive component playground
