@@ -1,5 +1,6 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
+import { DROPDOWN_PADDING, OPTION_HEIGHT } from './constants'
 import {
   StyledCheckmark,
   StyledChevron,
@@ -15,9 +16,6 @@ import { Check, ChevronDown } from '../../icons/Lucide'
 import { newClassNameGetter } from '../../lib'
 
 const css = newClassNameGetter('select')
-
-const OPTION_HEIGHT = 40
-const DROPDOWN_PADDING = 4
 
 export const Select = ({
   className,
@@ -35,71 +33,42 @@ export const Select = ({
   ...rest
 }: SelectProps) => {
   const [isOpen, setIsOpen] = useState(false)
-
   const containerRef = useRef<HTMLDivElement>(null)
   const triggerRef = useRef<HTMLButtonElement>(null)
 
-  const selectedOption = useMemo(() => {
-    return options.find((opt) => opt.value === value)
-  }, [options, value])
+  const selectedOption = options.find((opt) => opt.value === value)
+  const selectedIndex = Math.max(
+    0,
+    options.findIndex((opt) => opt.value === value),
+  )
+  const dropdownTop = -(selectedIndex * OPTION_HEIGHT + DROPDOWN_PADDING)
 
-  const selectedIndex = useMemo(() => {
-    const idx = options.findIndex((opt) => opt.value === value)
-    return idx >= 0 ? idx : 0
-  }, [options, value])
+  const handleSelect = (optionValue: string) => {
+    onChange?.(optionValue)
+    setIsOpen(false)
+    triggerRef.current?.focus()
+  }
 
-  const dropdownTop = useMemo(() => {
-    return -(selectedIndex * OPTION_HEIGHT + DROPDOWN_PADDING)
-  }, [selectedIndex])
-
-  const handleToggle = useCallback(() => {
+  const handleKeyDown = (e: React.KeyboardEvent) => {
     if (disabled) return
-    setIsOpen((prev) => !prev)
-  }, [disabled])
 
-  const handleSelect = useCallback(
-    (optionValue: string) => {
-      onChange?.(optionValue)
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault()
+      setIsOpen((prev) => !prev)
+    } else if (e.key === 'Escape' && isOpen) {
+      e.preventDefault()
       setIsOpen(false)
-      triggerRef.current?.focus()
-    },
-    [onChange],
-  )
-
-  const handleKeyDown = useCallback(
-    (e: React.KeyboardEvent) => {
-      if (disabled) return
-
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault()
-        handleToggle()
-      } else if (e.key === 'Escape' && isOpen) {
-        e.preventDefault()
-        setIsOpen(false)
-      } else if (e.key === 'ArrowDown' && !isOpen) {
-        e.preventDefault()
-        setIsOpen(true)
-      }
-    },
-    [disabled, handleToggle, isOpen],
-  )
-
-  const handleOptionKeyDown = useCallback(
-    (e: React.KeyboardEvent, optionValue: string) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault()
-        handleSelect(optionValue)
-      }
-    },
-    [handleSelect],
-  )
+    } else if (e.key === 'ArrowDown' && !isOpen) {
+      e.preventDefault()
+      setIsOpen(true)
+    }
+  }
 
   useEffect(() => {
     if (!isOpen) return
 
     const handleClickOutside = (e: MouseEvent) => {
-      const target = e.target as Node
-      if (containerRef.current && !containerRef.current.contains(target)) {
+      if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
         setIsOpen(false)
       }
     }
@@ -129,7 +98,7 @@ export const Select = ({
         $disabled={disabled}
         $hasValue={Boolean(selectedOption)}
         disabled={disabled}
-        onClick={handleToggle}
+        onClick={() => !disabled && setIsOpen((prev) => !prev)}
         onKeyDown={handleKeyDown}
         aria-haspopup="listbox"
         aria-expanded={isOpen}
@@ -157,7 +126,6 @@ export const Select = ({
               disabled={option.disabled}
               aria-selected={option.value === value}
               onClick={() => handleSelect(option.value)}
-              onKeyDown={(e) => handleOptionKeyDown(e, option.value)}
               className={css('option', classnames?.option)}
             >
               <span>{option.label}</span>

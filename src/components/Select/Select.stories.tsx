@@ -286,7 +286,3 @@ export const InCard: Story = {
     </div>
   ),
 }
-
-export const ReadOnly: Story = {
-  render: () => <Select value="us" options={COUNTRIES} label="Country" />,
-}

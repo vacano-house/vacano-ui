@@ -1,77 +1,13 @@
 import styled from '@emotion/styled'
 
+import { getSelectSizeProps, getSelectVariantProps } from './helpers'
 import { SelectVariant } from './types'
 import { FieldLabel } from '../FieldLabel'
 import { alpha, COLORS, VacanoComponentSize } from '../../lib'
 
-const SIZE_PROPS: Record<
-  VacanoComponentSize,
-  {
-    height: string
-    padding: string
-    radius: string
-  }
-> = {
-  compact: {
-    height: '32px',
-    padding: '0 10px',
-    radius: '14px',
-  },
-  default: {
-    height: '40px',
-    padding: '0 14px',
-    radius: '16px',
-  },
-}
-
-const VARIANT_PROPS: Record<
-  SelectVariant,
-  {
-    border: { static: string; disabled: string }
-    background: { static: string; disabled: string }
-    color: { static: string; disabled: string }
-    placeholder: string
-    focus: string
-  }
-> = {
-  normal: {
-    background: {
-      static: alpha(COLORS['black'], 2),
-      disabled: alpha(COLORS['black'], 10),
-    },
-    border: {
-      static: alpha(COLORS['black'], 60),
-      disabled: alpha(COLORS['black'], 10),
-    },
-    color: {
-      static: COLORS['black'],
-      disabled: alpha(COLORS['black'], 65),
-    },
-    placeholder: alpha(COLORS['black'], 40),
-    focus: alpha(COLORS['iron-grey'], 30),
-  },
-  error: {
-    background: {
-      static: alpha(COLORS['red'], 2),
-      disabled: alpha(COLORS['red'], 10),
-    },
-    border: {
-      static: alpha(COLORS['red'], 60),
-      disabled: alpha(COLORS['red'], 10),
-    },
-    color: {
-      static: COLORS['red'],
-      disabled: alpha(COLORS['red'], 65),
-    },
-    placeholder: alpha(COLORS['red'], 40),
-    focus: alpha(COLORS['red'], 30),
-  },
-}
-
 export const StyledContainer = styled.div<{ $fullWidth: boolean }>`
   position: relative;
   display: grid;
-  flex-direction: column;
   gap: 2px;
   min-width: 180px;
   width: ${(props) => (props.$fullWidth ? '100%' : 'fit-content')};
@@ -97,28 +33,28 @@ export const StyledTrigger = styled.button<{
   font-weight: 500;
   text-align: left;
   cursor: ${(props) => (props.$disabled ? 'not-allowed' : 'pointer')};
-  height: ${(props) => SIZE_PROPS[props.$size].height};
-  padding: ${(props) => SIZE_PROPS[props.$size].padding};
-  border-radius: ${(props) => SIZE_PROPS[props.$size].radius};
+  height: ${(props) => getSelectSizeProps(props.$size).height};
+  padding: ${(props) => getSelectSizeProps(props.$size).padding};
+  border-radius: ${(props) => getSelectSizeProps(props.$size).radius};
 
   color: ${(props) =>
     props.$hasValue
       ? props.$disabled
-        ? VARIANT_PROPS[props.$variant].color.disabled
-        : VARIANT_PROPS[props.$variant].color.static
-      : VARIANT_PROPS[props.$variant].placeholder};
+        ? getSelectVariantProps(props.$variant).color.disabled
+        : getSelectVariantProps(props.$variant).color.static
+      : getSelectVariantProps(props.$variant).placeholder};
   border: 1px solid
     ${(props) =>
       props.$disabled
-        ? VARIANT_PROPS[props.$variant].border.disabled
-        : VARIANT_PROPS[props.$variant].border.static};
+        ? getSelectVariantProps(props.$variant).border.disabled
+        : getSelectVariantProps(props.$variant).border.static};
   background-color: ${(props) =>
     props.$disabled
-      ? VARIANT_PROPS[props.$variant].background.disabled
-      : VARIANT_PROPS[props.$variant].background.static};
+      ? getSelectVariantProps(props.$variant).background.disabled
+      : getSelectVariantProps(props.$variant).background.static};
 
   &:focus-visible {
-    outline: 2px solid ${(props) => VARIANT_PROPS[props.$variant].focus};
+    outline: 2px solid ${(props) => getSelectVariantProps(props.$variant).focus};
   }
 `
 
