@@ -3,7 +3,7 @@ import { useState } from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
 import { useImageCropper } from './useImageCropper'
-import { Button } from '../../components/organisms/Button'
+import { Button } from '../../components/Button'
 
 const meta: Meta = {
   title: 'hooks/useImageCropper',

@@ -1,7 +1,0 @@
-export * from './Checkbox'
-export * from './Chip'
-export * from './FieldLabel'
-export * from './KeySymbol'
-export * from './Radio'
-export * from './Spinner'
-export * from './Tooltip'

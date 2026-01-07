@@ -5,7 +5,7 @@ import '@fontsource/inter/700.css'
 
 import type { Preview } from '@storybook/react-vite'
 
-import { GlobalStyle } from '../src'
+import { GlobalStyle } from '../src/components/GlobalStyle'
 
 const preview: Preview = {
   parameters: {
