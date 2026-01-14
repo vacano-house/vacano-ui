@@ -12,6 +12,7 @@ const meta: Meta<typeof OtpCodeComponent> = {
     layout: 'centered',
   },
   args: {
+    autoFocus: false,
     disabled: false,
     label: 'Verification code',
     length: 6,
@@ -20,6 +21,7 @@ const meta: Meta<typeof OtpCodeComponent> = {
     variant: 'normal',
   },
   argTypes: {
+    autoFocus: { control: 'boolean' },
     disabled: { control: 'boolean' },
     label: { control: 'text' },
     length: { control: { type: 'number', min: 4, max: 8 } },

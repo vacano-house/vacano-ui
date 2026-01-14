@@ -235,6 +235,7 @@ import { OtpCode } from '@vacano/ui'
 | variant | 'normal' \| 'error' | 'normal' | Visual style |
 | size | 'compact' \| 'default' | 'default' | Input size |
 | disabled | boolean | false | Disable input |
+| autoFocus | boolean | false | Auto focus first input |
 
 ### Examples
 
@@ -262,6 +263,9 @@ const [code, setCode] = useState('')
 
 // Disabled
 <OtpCode disabled value="123456" />
+
+// Auto focus on mount
+<OtpCode autoFocus value={code} onChange={setCode} />
 ```
 
 ### Features

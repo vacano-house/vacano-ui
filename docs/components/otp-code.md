@@ -75,6 +75,7 @@ const [code, setCode] = useState('')
 | `variant` | `'normal' \| 'error'` | `'normal'` | Visual variant |
 | `size` | `'compact' \| 'default'` | `'default'` | Input size |
 | `disabled` | `boolean` | `false` | Disabled state |
+| `autoFocus` | `boolean` | `false` | Auto focus first input on mount |
 | `className` | `string` | - | CSS class name |
 | `classnames` | `OtpCodeClassNames` | - | Custom class names |
 

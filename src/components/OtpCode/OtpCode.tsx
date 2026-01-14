@@ -1,4 +1,4 @@
-import { ChangeEvent, ClipboardEvent, KeyboardEvent, useCallback, useRef } from 'react'
+import { ChangeEvent, ClipboardEvent, KeyboardEvent, useCallback, useEffect, useRef } from 'react'
 
 import { StyledContainer, StyledInput, StyledInputsWrapper, StyledLabel } from './styled'
 import { OtpCodeProps } from './types'
@@ -7,6 +7,7 @@ import { newClassNameGetter } from '../../lib'
 const css = newClassNameGetter('otp-code')
 
 export const OtpCode = ({
+  autoFocus,
   className,
   classnames,
   disabled,
@@ -20,6 +21,12 @@ export const OtpCode = ({
   ...rest
 }: OtpCodeProps) => {
   const inputRefs = useRef<(HTMLInputElement | null)[]>([])
+
+  useEffect(() => {
+    if (autoFocus && inputRefs.current[0]) {
+      inputRefs.current[0].focus()
+    }
+  }, [autoFocus])
 
   const focusInput = useCallback((index: number) => {
     const input = inputRefs.current[index]

@@ -9,6 +9,7 @@ export type OtpCodeClassNames = {
 export type OtpCodeVariant = 'normal' | 'error'
 
 export type OtpCodeProps = VacanoComponentProps<HTMLDivElement, OtpCodeClassNames> & {
+  autoFocus?: boolean
   disabled?: boolean
   label?: string
   length?: number
