@@ -7,7 +7,7 @@
 
 ```tsx
 // Main components
-import { Button, Input, Select, Checkbox, Modal, ... } from '@vacano/ui'
+import { Button, Input, OtpCode, Select, Checkbox, Modal, ... } from '@vacano/ui'
 
 // Icons (1800+ Lucide icons)
 import { IconSearch, IconUser, IconPlus, ... } from '@vacano/ui/icons'
@@ -212,6 +212,87 @@ const [value, setValue] = useState('')
   <Input label="Email" placeholder="Enter email" />
   <Button variant="normal">Subscribe</Button>
 </div>
+```
+
+---
+
+## OtpCode
+
+OTP code input for verification codes (SMS, 2FA).
+
+```tsx
+import { OtpCode } from '@vacano/ui'
+```
+
+### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| value | string | '' | Current OTP value |
+| onChange | (value: string) => void | - | Change handler |
+| length | number | 6 | Number of digits |
+| label | string | - | Label text |
+| variant | 'normal' \| 'error' | 'normal' | Visual style |
+| size | 'compact' \| 'default' | 'default' | Input size |
+| disabled | boolean | false | Disable input |
+
+### Examples
+
+```tsx
+const [code, setCode] = useState('')
+
+// Basic
+<OtpCode value={code} onChange={setCode} />
+
+// With label
+<OtpCode label="Verification code" value={code} onChange={setCode} />
+
+// Different lengths
+<OtpCode length={4} label="4-digit code" value={code} onChange={setCode} />
+<OtpCode length={6} label="6-digit code" value={code} onChange={setCode} />
+<OtpCode length={8} label="8-digit code" value={code} onChange={setCode} />
+
+// Variants
+<OtpCode variant="normal" label="Enter code" value={code} onChange={setCode} />
+<OtpCode variant="error" label="Invalid code" value={code} onChange={setCode} />
+
+// Sizes
+<OtpCode size="default" value={code} onChange={setCode} />
+<OtpCode size="compact" value={code} onChange={setCode} />
+
+// Disabled
+<OtpCode disabled value="123456" />
+```
+
+### Features
+
+- Auto-focus next input on digit entry
+- Arrow key navigation (left/right)
+- Backspace deletes and moves focus back
+- Paste support (Ctrl+V)
+- Numeric input only
+- `autoComplete="one-time-code"` for SMS autofill
+
+### Layout Patterns
+
+```tsx
+// Centered verification form
+<div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16 }}>
+  <h2>Verify your identity</h2>
+  <p>Enter the 6-digit code sent to your email</p>
+  <OtpCode value={code} onChange={setCode} />
+  <Button variant="normal">Verify</Button>
+</div>
+
+// With error state
+const [error, setError] = useState(false)
+
+<OtpCode
+  value={code}
+  onChange={(v) => { setCode(v); setError(false) }}
+  variant={error ? 'error' : 'normal'}
+  label={error ? 'Invalid code' : 'Verification code'}
+/>
 ```
 
 ---

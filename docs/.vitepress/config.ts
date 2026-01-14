@@ -40,6 +40,7 @@ export default defineConfig({
             { text: 'DatePicker', link: '/components/date-picker' },
             { text: 'Input', link: '/components/input' },
             { text: 'MultiSelect', link: '/components/multi-select' },
+            { text: 'OtpCode', link: '/components/otp-code' },
             { text: 'Radio', link: '/components/radio' },
             { text: 'RadioCard', link: '/components/radio-card' },
             { text: 'RadioGroup', link: '/components/radio-group' },
