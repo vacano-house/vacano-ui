@@ -87,6 +87,7 @@ export default defineConfig({
           text: 'Utility',
           items: [
             { text: 'FieldLabel', link: '/components/field-label' },
+            { text: 'FieldMessage', link: '/components/field-message' },
             { text: 'GlobalStyle', link: '/components/global-style' },
             { text: 'ImageCropper', link: '/components/image-cropper' },
             { text: 'KeysBindings', link: '/components/keys-bindings' },
