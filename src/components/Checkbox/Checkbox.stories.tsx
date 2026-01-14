@@ -571,6 +571,75 @@ export const LayoutGridStretch: Story = {
   ),
 }
 
+export const WithLinks: Story = {
+  name: 'With Links in Label',
+  parameters: { layout: 'padded' },
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 24, maxWidth: 400 }}>
+      <div>
+        <div style={{ marginBottom: 8, fontSize: 12, color: '#666' }}>
+          Label with link (click link to navigate, click text to toggle)
+        </div>
+        <InteractiveCheckbox
+          checked={false}
+          label={
+            <>
+              I agree to the <a href="https://example.com/terms">Terms of Service</a>
+            </>
+          }
+          onChange={() => {}}
+        />
+      </div>
+
+      <div>
+        <div style={{ marginBottom: 8, fontSize: 12, color: '#666' }}>Multiple links</div>
+        <InteractiveCheckbox
+          checked={false}
+          label={
+            <>
+              I accept the <a href="https://example.com/privacy">Privacy Policy</a> and{' '}
+              <a href="https://example.com/cookies">Cookie Policy</a>
+            </>
+          }
+          onChange={() => {}}
+        />
+      </div>
+
+      <div>
+        <div style={{ marginBottom: 8, fontSize: 12, color: '#666' }}>Error variant with link</div>
+        <InteractiveCheckbox
+          checked={false}
+          variant="error"
+          label={
+            <>
+              You must accept the <a href="https://example.com/terms">Terms</a> to continue
+            </>
+          }
+          onChange={() => {}}
+        />
+      </div>
+
+      <div>
+        <div style={{ marginBottom: 8, fontSize: 12, color: '#666' }}>Long text with link</div>
+        <div style={{ width: 300 }}>
+          <InteractiveCheckbox
+            checked={false}
+            label={
+              <>
+                I have read and agree to the{' '}
+                <a href="https://example.com/terms">Terms of Service</a>,{' '}
+                <a href="https://example.com/privacy">Privacy Policy</a>, and confirm that I am at
+                least 18 years old
+              </>
+            }
+            onChange={() => {}}
+          />
+        </div>
+      </div>
+    </div>
+  ),
+}
+
 export const MixedWithContent: Story = {
   name: 'Mixed with Other Content',
   parameters: { layout: 'padded' },

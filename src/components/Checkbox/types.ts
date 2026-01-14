@@ -1,4 +1,4 @@
-import type { ChangeEventHandler, InputHTMLAttributes } from 'react'
+import type { ChangeEventHandler, InputHTMLAttributes, ReactNode } from 'react'
 
 import { VacanoComponentProps } from '../../lib'
 
@@ -16,6 +16,6 @@ export type CheckboxProps = VacanoComponentProps<HTMLInputElement, CheckboxClass
     checked: boolean
     onChange: ChangeEventHandler<HTMLInputElement>
     indeterminate?: boolean
-    label?: string
+    label?: ReactNode
     variant?: CheckboxVariant
   }

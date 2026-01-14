@@ -379,6 +379,82 @@ export const LayoutGrid: Story = {
   ),
 }
 
+export const WithLinks: Story = {
+  name: 'With Links in Label',
+  parameters: { layout: 'padded' },
+  render: () => {
+    const RadioWithLinksDemo = () => {
+      const [selected, setSelected] = useState('')
+
+      return (
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 24, maxWidth: 400 }}>
+          <div>
+            <div style={{ marginBottom: 8, fontSize: 12, color: '#666' }}>
+              Label with link (click link to navigate, click text to select)
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+              <RadioComponent
+                name="plan"
+                checked={selected === 'free'}
+                onChange={() => setSelected('free')}
+                label={
+                  <>
+                    Free plan - <a href="https://example.com/free">see details</a>
+                  </>
+                }
+              />
+              <RadioComponent
+                name="plan"
+                checked={selected === 'pro'}
+                onChange={() => setSelected('pro')}
+                label={
+                  <>
+                    Pro plan - <a href="https://example.com/pro">see details</a>
+                  </>
+                }
+              />
+            </div>
+          </div>
+
+          <div>
+            <div style={{ marginBottom: 8, fontSize: 12, color: '#666' }}>
+              Error variant with link
+            </div>
+            <RadioComponent
+              checked={false}
+              variant="error"
+              onChange={() => {}}
+              label={
+                <>
+                  Select to accept <a href="https://example.com/terms">Terms</a>
+                </>
+              }
+            />
+          </div>
+
+          <div>
+            <div style={{ marginBottom: 8, fontSize: 12, color: '#666' }}>Long text with link</div>
+            <div style={{ width: 300 }}>
+              <RadioComponent
+                checked={false}
+                onChange={() => {}}
+                label={
+                  <>
+                    I want to receive marketing emails according to the{' '}
+                    <a href="https://example.com/privacy">Privacy Policy</a>
+                  </>
+                }
+              />
+            </div>
+          </div>
+        </div>
+      )
+    }
+
+    return <RadioWithLinksDemo />
+  },
+}
+
 export const MixedWithContent: Story = {
   name: 'Mixed with Other Content',
   parameters: { layout: 'padded' },

@@ -24,7 +24,7 @@ type StyledLabelProps = {
 
 export const StyledContainer = styled.label<StyledContainerProps>`
   display: inline-flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 8px;
   cursor: ${(props) => (props.$disabled ? 'not-allowed' : 'pointer')};
   opacity: ${(props) => (props.$disabled ? 0.5 : 1)};
@@ -83,4 +83,14 @@ export const StyledLabel = styled.span<StyledLabelProps>`
   line-height: 1.5;
   color: ${(props) => getRadioVariantProps(props.$variant).label};
   user-select: none;
+
+  a {
+    color: inherit;
+    text-decoration: underline;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
 `

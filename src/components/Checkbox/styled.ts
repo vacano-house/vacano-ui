@@ -25,7 +25,7 @@ type StyledLabelProps = {
 
 export const StyledContainer = styled.label<StyledContainerProps>`
   display: inline-flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 8px;
   cursor: ${(props) => (props.$disabled ? 'not-allowed' : 'pointer')};
   opacity: ${(props) => (props.$disabled ? 0.5 : 1)};
@@ -86,7 +86,17 @@ export const StyledIcon = styled.span<StyledIconProps>`
 export const StyledLabel = styled.span<StyledLabelProps>`
   font-size: 14px;
   font-weight: 500;
-  line-height: 1;
+  line-height: 1.4;
   color: ${(props) => getCheckboxVariantProps(props.$variant).label};
   user-select: none;
+
+  a {
+    color: inherit;
+    text-decoration: underline;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
 `

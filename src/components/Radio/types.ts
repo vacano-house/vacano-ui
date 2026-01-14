@@ -1,4 +1,4 @@
-import type { ChangeEventHandler, InputHTMLAttributes } from 'react'
+import type { ChangeEventHandler, InputHTMLAttributes, ReactNode } from 'react'
 
 import { VacanoComponentProps } from '../../lib'
 
@@ -15,6 +15,6 @@ export type RadioProps = VacanoComponentProps<HTMLInputElement, RadioClassNames>
   Omit<InputHTMLAttributes<HTMLInputElement>, 'type' | 'checked' | 'onChange' | 'className'> & {
     checked: boolean
     onChange: ChangeEventHandler<HTMLInputElement>
-    label?: string
+    label?: ReactNode
     variant?: RadioVariant
   }
