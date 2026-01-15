@@ -53,11 +53,6 @@ export const StyledContainer = styled.label<StyledContainerProps>`
     }};
   }
 
-  &:has(:focus-visible) {
-    outline: none;
-    box-shadow: 0 0 0 3px ${(props) => getRadioCardVariantProps(props.$variant).focusRing};
-  }
-
   .vacano_radio_container {
     pointer-events: none;
   }

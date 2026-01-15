@@ -54,10 +54,6 @@ export const StyledTrigger = styled.button<{
   background-color: ${({ $variant, $disabled }) =>
     DATE_PICKER_VARIANT_PROPS[$variant].background[$disabled ? 'disabled' : 'static']};
 
-  &:focus-visible {
-    outline: 2px solid ${({ $variant }) => DATE_PICKER_VARIANT_PROPS[$variant].focus};
-  }
-
   ${({ $open, $variant }) =>
     $open &&
     `
@@ -147,10 +143,6 @@ export const StyledCalendarTitle = styled.button`
   &:hover {
     background-color: ${alpha(COLORS.black, 5)};
   }
-
-  &:focus-visible {
-    outline: 2px solid ${alpha(COLORS.black, 20)};
-  }
 `
 
 export const StyledNavButton = styled.button`
@@ -167,10 +159,6 @@ export const StyledNavButton = styled.button`
 
   &:hover {
     background-color: ${alpha(COLORS.black, 5)};
-  }
-
-  &:focus-visible {
-    outline: 2px solid ${alpha(COLORS.black, 20)};
   }
 
   &:disabled {
@@ -242,11 +230,6 @@ export const StyledDayCell = styled.button<{
     background-color: ${({ $selected }) => ($selected ? COLORS.black : alpha(COLORS.black, 8))};
   }
 
-  &:focus-visible {
-    outline: 2px solid ${alpha(COLORS.black, 30)};
-    outline-offset: 1px;
-  }
-
   &:disabled {
     cursor: not-allowed;
   }
@@ -287,11 +270,6 @@ export const StyledMonthCell = styled.button<{
   &:hover:not(:disabled) {
     background-color: ${({ $selected }) => ($selected ? COLORS.black : alpha(COLORS.black, 8))};
   }
-
-  &:focus-visible {
-    outline: 2px solid ${alpha(COLORS.black, 30)};
-    outline-offset: 1px;
-  }
 `
 
 export const StyledYearsGrid = styled.div`
@@ -328,11 +306,6 @@ export const StyledYearCell = styled.button<{
 
   &:hover:not(:disabled) {
     background-color: ${({ $selected }) => ($selected ? COLORS.black : alpha(COLORS.black, 8))};
-  }
-
-  &:focus-visible {
-    outline: 2px solid ${alpha(COLORS.black, 30)};
-    outline-offset: 1px;
   }
 `
 

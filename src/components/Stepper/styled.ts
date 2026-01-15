@@ -33,15 +33,6 @@ export const StyledStep = styled.button<{
   background: transparent;
   cursor: ${(props) => (props.$clickable ? 'pointer' : 'default')};
   flex-shrink: 0;
-
-  &:focus-visible {
-    outline: none;
-
-    & > div:first-of-type {
-      outline: 2px solid ${COLORS['steel-blue']};
-      outline-offset: 2px;
-    }
-  }
 `
 
 export const StyledCircle = styled.div<{ $active: boolean; $completed: boolean }>`

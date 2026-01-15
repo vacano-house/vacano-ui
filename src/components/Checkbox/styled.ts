@@ -29,10 +29,6 @@ export const StyledContainer = styled.label<StyledContainerProps>`
   gap: 8px;
   cursor: ${(props) => (props.$disabled ? 'not-allowed' : 'pointer')};
   opacity: ${(props) => (props.$disabled ? 0.5 : 1)};
-
-  &:has(input:focus-visible) > span:first-of-type {
-    box-shadow: 0 0 0 2px ${(props) => getCheckboxVariantProps(props.$variant).box.focusShadow};
-  }
 `
 
 export const StyledInput = styled.input`

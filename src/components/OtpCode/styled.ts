@@ -47,10 +47,6 @@ export const StyledInput = styled.input<StyledInputProps>`
     border-color: ${(props) => getOtpCodeVariantProps(props.$variant).border.disabled};
   }
 
-  &:focus-visible {
-    outline: 2px solid ${(props) => getOtpCodeVariantProps(props.$variant).focus};
-  }
-
   &::selection {
     background-color: transparent;
   }

@@ -52,10 +52,6 @@ export const StyledTrigger = styled.button<{
     props.$disabled
       ? getSelectVariantProps(props.$variant).background.disabled
       : getSelectVariantProps(props.$variant).background.static};
-
-  &:focus-visible {
-    outline: 2px solid ${(props) => getSelectVariantProps(props.$variant).focus};
-  }
 `
 
 export const StyledTriggerText = styled.span`
@@ -115,11 +111,6 @@ export const StyledOption = styled.button<{ $selected: boolean; $disabled: boole
   transition: background-color 0.15s ease;
 
   &:hover:not(:disabled) {
-    background: ${alpha(COLORS.black, 8)};
-  }
-
-  &:focus-visible {
-    outline: none;
     background: ${alpha(COLORS.black, 8)};
   }
 `

@@ -34,12 +34,6 @@ export const StyledTrigger = styled.button<{ $variant: MultiSelectVariant; $disa
   &:hover:not(:disabled) {
     border-color: ${(props) => (props.$variant === 'error' ? COLORS.red : COLORS.black)};
   }
-
-  &:focus-visible {
-    outline: 2px solid
-      ${(props) => (props.$variant === 'error' ? COLORS.red : COLORS['steel-blue'])};
-    outline-offset: 2px;
-  }
 `
 
 export const StyledPlaceholder = styled.span`

@@ -120,10 +120,6 @@ export const StyledInput = styled.input<StyledInputProps>`
       color: ${(props) => VARIANT_PROPS[props.$variant].placeholder.disabled};
     }
   }
-
-  &:focus-visible {
-    outline: 2px solid ${(props) => VARIANT_PROPS[props.$variant].focus};
-  }
 `
 
 export const StyledSpinnerWrapper = styled.div`

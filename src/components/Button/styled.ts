@@ -3,7 +3,7 @@ import styled from '@emotion/styled'
 import { getButtonSizeProps, getButtonVariantProps, getButtonWidthProps } from './helpers'
 import { ButtonVariant } from './types'
 import { LoaderCircle } from '../../icons/Lucide'
-import { alpha, COLORS, KEYFRAMES, VacanoComponentSize } from '../../lib'
+import { KEYFRAMES, VacanoComponentSize } from '../../lib'
 
 type StyledButtonProps = {
   $variant: ButtonVariant
@@ -39,10 +39,6 @@ export const StyledButton = styled.button<StyledButtonProps>`
     color: ${(props) => getButtonVariantProps(props.$variant).color.active};
     background-color: ${(props) => getButtonVariantProps(props.$variant).background.active};
     border-color: ${(props) => getButtonVariantProps(props.$variant).borderColor.active};
-  }
-
-  &:focus-visible {
-    outline-color: ${alpha(COLORS['iron-grey'], 30)};
   }
 
   &:disabled {

@@ -49,8 +49,4 @@ export const StyledTextarea = styled.textarea<StyledTextareaProps>`
       color: ${(props) => getTextareaVariantProps(props.$variant).placeholder.disabled};
     }
   }
-
-  &:focus-visible {
-    outline: 2px solid ${(props) => getTextareaVariantProps(props.$variant).focus};
-  }
 `

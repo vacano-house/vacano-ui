@@ -26,9 +26,4 @@ export const StyledTab = styled.button<{ $active: boolean; $disabled: boolean }>
   &:hover:not(:disabled) {
     background-color: ${(props) => (props.$active ? COLORS.gray : 'rgba(0, 0, 0, 0.05)')};
   }
-
-  &:focus-visible {
-    outline: 2px solid ${COLORS['steel-blue']};
-    outline-offset: 2px;
-  }
 `
