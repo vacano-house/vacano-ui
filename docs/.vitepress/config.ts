@@ -33,6 +33,7 @@ export default defineConfig({
         {
           text: 'Form',
           items: [
+            { text: 'Autocomplete', link: '/components/autocomplete' },
             { text: 'Button', link: '/components/button' },
             { text: 'Checkbox', link: '/components/checkbox' },
             { text: 'CheckboxCard', link: '/components/checkbox-card' },
@@ -64,6 +65,7 @@ export default defineConfig({
             { text: 'Confirmation', link: '/components/confirmation' },
             { text: 'Modal', link: '/components/modal' },
             { text: 'Drawer', link: '/components/drawer' },
+            { text: 'SaveProgress', link: '/components/save-progress' },
             { text: 'Spinner', link: '/components/spinner' },
             { text: 'Toastr', link: '/components/toastr' },
             { text: 'Tooltip', link: '/components/tooltip' },
