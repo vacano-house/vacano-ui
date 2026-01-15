@@ -7,7 +7,7 @@
 
 ```tsx
 // Main components
-import { Button, Input, OtpCode, Select, Checkbox, Modal, ... } from '@vacano/ui'
+import { Button, Input, Textarea, Autocomplete, OtpCode, Select, Checkbox, Modal, SaveProgress, ... } from '@vacano/ui'
 
 // Icons (1800+ Lucide icons)
 import { IconSearch, IconUser, IconPlus, ... } from '@vacano/ui/icons'
@@ -137,6 +137,100 @@ import { IconPlus, IconTrash2, IconSearch } from '@vacano/ui/icons'
 
 ---
 
+## Autocomplete
+
+Async search input with suggestions dropdown.
+
+```tsx
+import { Autocomplete } from '@vacano/ui'
+```
+
+### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| value | AutocompleteValue | - | Current value |
+| onChange | (value: AutocompleteValue) => void | - | Change handler |
+| onSearch | (query: string) => Promise<AutocompleteSuggestion[]> | required | Async search function |
+| label | string | - | Label text |
+| placeholder | string | - | Placeholder |
+| variant | 'normal' \| 'error' | 'normal' | Visual style |
+| size | 'compact' \| 'default' | 'default' | Input size |
+| fullWidth | boolean | false | Full width |
+| disabled | boolean | false | Disable input |
+| debounceMs | number | 300 | Debounce delay in ms |
+| minChars | number | 1 | Min chars to trigger search |
+| noResultsMessage | string | 'No results found' | Empty state message |
+
+### Types
+
+```tsx
+type AutocompleteSuggestion = {
+  id: string
+  value: string
+  image_url: string | null
+}
+
+type AutocompleteValue = {
+  value: string
+  image_url: string | null
+}
+```
+
+### Examples
+
+```tsx
+const [value, setValue] = useState<AutocompleteValue>({ value: '', image_url: null })
+
+// Basic
+<Autocomplete
+  value={value}
+  onChange={setValue}
+  onSearch={async (query) => {
+    const response = await fetch(`/api/search?q=${query}`)
+    return response.json()
+  }}
+  placeholder="Search..."
+/>
+
+// With label
+<Autocomplete
+  label="Search users"
+  value={value}
+  onChange={setValue}
+  onSearch={searchUsers}
+/>
+
+// With suggestions that have images
+<Autocomplete
+  value={value}
+  onChange={setValue}
+  onSearch={async (query) => [
+    { id: '1', value: 'John Doe', image_url: '/avatars/john.jpg' },
+    { id: '2', value: 'Jane Smith', image_url: '/avatars/jane.jpg' },
+  ]}
+/>
+
+// Custom no results message (i18n)
+<Autocomplete
+  value={value}
+  onChange={setValue}
+  onSearch={searchProducts}
+  noResultsMessage="Ничего не найдено"
+/>
+
+// Full width in form
+<Autocomplete
+  fullWidth
+  label="City"
+  value={value}
+  onChange={setValue}
+  onSearch={searchCities}
+/>
+```
+
+---
+
 ## Input
 
 Text input with label and validation.
@@ -211,6 +305,83 @@ const [value, setValue] = useState('')
 <div style={{ display: 'flex', alignItems: 'flex-end', gap: 12 }}>
   <Input label="Email" placeholder="Enter email" />
   <Button variant="normal">Subscribe</Button>
+</div>
+```
+
+---
+
+## Textarea
+
+Multiline text input with label and validation.
+
+```tsx
+import { Textarea } from '@vacano/ui'
+```
+
+### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| value | string | - | Textarea value |
+| onChange | ChangeEventHandler | - | Change handler |
+| label | string | - | Label text |
+| placeholder | string | - | Placeholder |
+| variant | 'normal' \| 'error' | 'normal' | Visual style |
+| rows | number | 4 | Number of visible rows |
+| fullWidth | boolean | false | Full width |
+| disabled | boolean | false | Disable textarea |
+
+### Examples
+
+```tsx
+const [value, setValue] = useState('')
+
+// Basic
+<Textarea
+  value={value}
+  onChange={(e) => setValue(e.target.value)}
+  placeholder="Enter text..."
+/>
+
+// With label
+<Textarea label="Description" placeholder="Enter description" />
+
+// Variants
+<Textarea variant="normal" label="Normal" />
+<Textarea variant="error" label="Error" />
+
+// Different row counts
+<Textarea rows={2} label="Small" />
+<Textarea rows={4} label="Default" />
+<Textarea rows={8} label="Large" />
+
+// Full width
+<Textarea fullWidth label="Full Width" />
+
+// Disabled
+<Textarea disabled label="Disabled" value="Cannot edit" />
+```
+
+### Layout Patterns
+
+```tsx
+// Form layout
+<div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+  <Input fullWidth label="Title" />
+  <Textarea fullWidth label="Description" rows={4} />
+  <Button variant="normal">Submit</Button>
+</div>
+
+// Two column grid with textarea
+<div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 16 }}>
+  <Textarea fullWidth label="Notes" />
+  <Textarea fullWidth label="Comments" />
+</div>
+
+// Textarea with validation message
+<div>
+  <Textarea fullWidth variant="error" label="Bio" />
+  <FieldMessage variant="error">Bio must be at least 50 characters</FieldMessage>
 </div>
 ```
 
@@ -1152,6 +1323,77 @@ function MyComponent() {
 
 ---
 
+## SaveProgress
+
+Background save indicator (like auto-save in video games).
+
+```tsx
+import { SaveProgressProvider, useSaveProgress } from '@vacano/ui'
+```
+
+### Setup
+
+```tsx
+function App() {
+  return (
+    <SaveProgressProvider>
+      <YourApp />
+    </SaveProgressProvider>
+  )
+}
+
+// With custom default message
+<SaveProgressProvider defaultMessage="Сохранение...">
+  <YourApp />
+</SaveProgressProvider>
+```
+
+### Usage
+
+```tsx
+function MyComponent() {
+  const { show, hide } = useSaveProgress()
+
+  const handleSave = async () => {
+    show() // Show with default message
+    await saveData()
+    hide()
+  }
+
+  const handleSaveWithMessage = async () => {
+    show('Uploading...') // Custom message
+    await uploadFile()
+    hide()
+  }
+
+  return <Button onClick={handleSave}>Save</Button>
+}
+```
+
+### Props (Provider)
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| children | ReactNode | required | App content |
+| defaultMessage | string | 'Saving' | Default message |
+
+### Hook Return
+
+| Property | Type | Description |
+|----------|------|-------------|
+| isVisible | boolean | Current visibility state |
+| show | (message?: string) => void | Show indicator |
+| hide | () => void | Hide indicator |
+
+### Features
+
+- Displays spinner with message in bottom-right corner
+- Semi-transparent backdrop with blur effect
+- Non-blocking (doesn't prevent user interaction)
+- Customizable message per call
+
+---
+
 ## Tooltip
 
 Hover tooltip.
@@ -1828,8 +2070,8 @@ type KeyboardEventKey =
 
 ---
 
-**Documentation Version**: 1.1.1
-**Last Updated**: 2024
+**Documentation Version**: 1.2.0
+**Last Updated**: 2025
 **Website**: https://ui.vacano.io
 **Storybook**: https://ui.vacano.io/storybook/
 **GitHub**: https://github.com/vacano-house/vacano-ui

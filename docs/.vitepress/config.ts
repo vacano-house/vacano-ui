@@ -47,6 +47,7 @@ export default defineConfig({
             { text: 'RadioGroup', link: '/components/radio-group' },
             { text: 'Select', link: '/components/select' },
             { text: 'Tags', link: '/components/tags' },
+            { text: 'Textarea', link: '/components/textarea' },
           ],
         },
         {
@@ -101,7 +102,7 @@ export default defineConfig({
     socialLinks: [{ icon: 'github', link: 'https://github.com/vacano-house/vacano-ui' }],
     footer: {
       message: 'Released under the MIT License.',
-      copyright: 'Copyright © 2024 Vacano',
+      copyright: 'Copyright © 2025 Vacano',
     },
     search: {
       provider: 'local',
