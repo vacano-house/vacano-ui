@@ -2,7 +2,7 @@
 
 Radio button input with label support.
 
-<a href="/storybook/?path=/docs/atoms-radio--docs" target="_blank">View in Storybook</a>
+<a href="/storybook/?path=/docs/components-radio--docs" target="_blank">View in Storybook</a>
 
 ## Import
 

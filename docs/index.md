@@ -18,11 +18,12 @@ hero:
     - theme: alt
       text: Storybook
       link: /storybook/
+      target: _blank
 
 features:
   - icon:
       src: /logo.svg
-    title: 32+ Components
+    title: 37+ Components
     details: Form controls, data display, feedback, layout, and utility components ready for production.
   - icon:
       src: /logo.svg

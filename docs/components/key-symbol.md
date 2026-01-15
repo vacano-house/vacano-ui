@@ -2,7 +2,7 @@
 
 Single keyboard key symbol display.
 
-<a href="/storybook/?path=/docs/atoms-keysymbol--docs" target="_blank">View in Storybook</a>
+<a href="/storybook/?path=/docs/components-keysymbol--docs" target="_blank">View in Storybook</a>
 
 ## Import
 

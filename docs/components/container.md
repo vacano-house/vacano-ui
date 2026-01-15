@@ -2,7 +2,7 @@
 
 Responsive container component with max-width constraints.
 
-<a href="/storybook/?path=/docs/atoms-container--docs" target="_blank">View in Storybook</a>
+<a href="/storybook/?path=/docs/components-container--docs" target="_blank">View in Storybook</a>
 
 ## Import
 

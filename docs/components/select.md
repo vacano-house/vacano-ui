@@ -2,7 +2,7 @@
 
 Single selection dropdown with search and portal support.
 
-<a href="/storybook/?path=/docs/atoms-select--docs" target="_blank">View in Storybook</a>
+<a href="/storybook/?path=/docs/components-select--docs" target="_blank">View in Storybook</a>
 
 ## Import
 

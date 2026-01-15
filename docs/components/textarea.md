@@ -2,6 +2,8 @@
 
 Многострочное текстовое поле для ввода длинного текста.
 
+<a href="/storybook/?path=/docs/components-textarea--docs" target="_blank">View in Storybook</a>
+
 ## Import
 
 ```tsx

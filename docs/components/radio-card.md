@@ -2,7 +2,7 @@
 
 Card-style radio button with label and description.
 
-<a href="/storybook/?path=/docs/atoms-radiocard--docs" target="_blank">View in Storybook</a>
+<a href="/storybook/?path=/docs/components-radiocard--docs" target="_blank">View in Storybook</a>
 
 ## Import
 

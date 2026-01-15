@@ -2,7 +2,7 @@
 
 Card-style checkbox with label and description.
 
-<a href="/storybook/?path=/docs/atoms-checkboxcard--docs" target="_blank">View in Storybook</a>
+<a href="/storybook/?path=/docs/components-checkboxcard--docs" target="_blank">View in Storybook</a>
 
 ## Import
 

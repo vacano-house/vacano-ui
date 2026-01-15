@@ -2,7 +2,7 @@
 
 Container component with optional border and shadow.
 
-<a href="/storybook/?path=/docs/atoms-card--docs" target="_blank">View in Storybook</a>
+<a href="/storybook/?path=/docs/components-card--docs" target="_blank">View in Storybook</a>
 
 ## Import
 

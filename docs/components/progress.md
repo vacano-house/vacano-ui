@@ -2,7 +2,7 @@
 
 Progress bar indicator component.
 
-<a href="/storybook/?path=/docs/atoms-progress--docs" target="_blank">View in Storybook</a>
+<a href="/storybook/?path=/docs/components-progress--docs" target="_blank">View in Storybook</a>
 
 ## Import
 

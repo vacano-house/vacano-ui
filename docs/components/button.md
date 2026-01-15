@@ -2,7 +2,7 @@
 
 Clickable button with multiple variants, sizes, and keyboard binding support.
 
-<a href="/storybook/?path=/docs/atoms-button--docs" target="_blank">View in Storybook</a>
+<a href="/storybook/?path=/docs/components-button--docs" target="_blank">View in Storybook</a>
 
 ## Import
 

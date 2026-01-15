@@ -2,7 +2,7 @@
 
 Checkbox input with label and indeterminate state support.
 
-<a href="/storybook/?path=/docs/atoms-checkbox--docs" target="_blank">View in Storybook</a>
+<a href="/storybook/?path=/docs/components-checkbox--docs" target="_blank">View in Storybook</a>
 
 ## Import
 

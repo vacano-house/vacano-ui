@@ -2,7 +2,7 @@
 
 Hover tooltip component with multiple placements and variants.
 
-<a href="/storybook/?path=/docs/atoms-tooltip--docs" target="_blank">View in Storybook</a>
+<a href="/storybook/?path=/docs/components-tooltip--docs" target="_blank">View in Storybook</a>
 
 ## Import
 
