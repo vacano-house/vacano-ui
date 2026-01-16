@@ -1,4 +1,4 @@
-import { useCallback, useReducer, type PropsWithChildren } from 'react'
+import { useCallback, useReducer, type PropsWithChildren, type ReactNode } from 'react'
 
 import { DEFAULT_NOTIFICATION_DURATION } from './constants'
 import { NotificationContext } from './context'
@@ -12,7 +12,7 @@ export const NotificationProvider = ({ children }: PropsWithChildren) => {
 
   const show = useCallback(
     (
-      message: string,
+      message: ReactNode,
       variant: NotificationVariant = 'default',
       duration: number = DEFAULT_NOTIFICATION_DURATION,
     ) => {

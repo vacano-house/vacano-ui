@@ -62,6 +62,31 @@ show('Error message', 'danger')
 show('Info message', 'info')
 ```
 
+## Rich Content
+
+Message поддерживает ReactNode, можно использовать JSX:
+
+```tsx
+const { show } = useNotification()
+
+// With JSX
+show(
+  <span>
+    File <strong>report.pdf</strong> uploaded successfully
+  </span>,
+  'success'
+)
+
+// With icon
+show(
+  <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+    <IconCheck size={16} />
+    Changes saved
+  </span>,
+  'success'
+)
+```
+
 ## Custom Duration
 
 По умолчанию уведомление показывается 5 секунд. Можно указать другое время в миллисекундах:
@@ -114,7 +139,7 @@ hide()
 
 | Property | Type | Description |
 |----------|------|-------------|
-| `show` | `(message: string, variant?: NotificationVariant, duration?: number) => void` | Show notification |
+| `show` | `(message: ReactNode, variant?: NotificationVariant, duration?: number) => void` | Show notification |
 | `hide` | `() => void` | Hide current notification |
 
 ## Variants

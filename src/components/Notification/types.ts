@@ -1,8 +1,10 @@
+import type { ReactNode } from 'react'
+
 export type NotificationVariant = 'default' | 'success' | 'warning' | 'danger' | 'info'
 
 export type Notification = {
   id: string
-  message: string
+  message: ReactNode
   variant: NotificationVariant
   duration: number
 }
@@ -18,6 +20,6 @@ export type NotificationAction =
   | { type: 'SHOW_NEXT' }
 
 export type NotificationContextValue = {
-  show: (message: string, variant?: NotificationVariant, duration?: number) => void
+  show: (message: ReactNode, variant?: NotificationVariant, duration?: number) => void
   hide: () => void
 }
