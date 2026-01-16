@@ -72,6 +72,22 @@ export const KEYFRAMES = {
     from { opacity: 0; transform: scale(0.95); }
     to { opacity: 1; transform: scale(1); }
   `,
+  slideInTopFade: keyframes`
+    from { opacity: 0; transform: translateY(-100%); }
+    to { opacity: 1; transform: translateY(0); }
+  `,
+  slideOutTopFade: keyframes`
+    from { opacity: 1; transform: translateY(0); }
+    to { opacity: 0; transform: translateY(-100%); }
+  `,
+  slideInBottomFade: keyframes`
+    from { opacity: 0; transform: translateY(100%); }
+    to { opacity: 1; transform: translateY(0); }
+  `,
+  slideOutBottomFade: keyframes`
+    from { opacity: 1; transform: translateY(0); }
+    to { opacity: 0; transform: translateY(100%); }
+  `,
 }
 
 export const KEY_SYMBOLS: Partial<Record<KeyboardEventKey, { mac: string; other: string }>> = {

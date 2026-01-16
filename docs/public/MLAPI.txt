@@ -7,7 +7,7 @@
 
 ```tsx
 // Main components
-import { Button, Input, Textarea, Autocomplete, OtpCode, Select, Checkbox, Modal, SaveProgress, ... } from '@vacano/ui'
+import { Button, Input, Textarea, Autocomplete, OtpCode, Select, Checkbox, Modal, Notification, SaveProgress, ... } from '@vacano/ui'
 
 // Icons (1800+ Lucide icons)
 import { IconSearch, IconUser, IconPlus, ... } from '@vacano/ui/icons'
@@ -1323,6 +1323,81 @@ function MyComponent() {
 
 ---
 
+## Notification
+
+Top-of-screen notification bar. Shows one notification at a time with queue support.
+
+```tsx
+import { NotificationProvider, useNotification } from '@vacano/ui'
+```
+
+### Setup
+
+```tsx
+function App() {
+  return (
+    <NotificationProvider>
+      <YourApp />
+    </NotificationProvider>
+  )
+}
+```
+
+### Usage
+
+```tsx
+function MyComponent() {
+  const { show, hide } = useNotification()
+
+  // Basic
+  show('Notification message')
+
+  // With variant
+  show('Success!', 'success')
+  show('Warning!', 'warning')
+  show('Error!', 'danger')
+  show('Info message', 'info')
+
+  // With custom duration (ms)
+  show('Quick message', 'default', 2000)
+
+  // Manual hide
+  hide()
+
+  return null
+}
+```
+
+### Hook Return
+
+| Property | Type | Description |
+|----------|------|-------------|
+| show | (message: string, variant?: NotificationVariant, duration?: number) => void | Show notification |
+| hide | () => void | Hide current notification |
+
+### Variants
+
+| Variant | Color |
+|---------|-------|
+| default | Gray |
+| success | Green |
+| warning | Yellow |
+| danger | Red |
+| info | Blue |
+
+### Queue Behavior
+
+Unlike Toastr, Notification shows only one message at a time. If multiple notifications are added, they appear sequentially:
+
+```tsx
+// These show one after another
+show('First', 'default', 2000)
+show('Second', 'success', 2000)
+show('Third', 'info', 2000)
+```
+
+---
+
 ## SaveProgress
 
 Background save indicator (like auto-save in video games).
@@ -2070,7 +2145,7 @@ type KeyboardEventKey =
 
 ---
 
-**Documentation Version**: 1.2.0
+**Documentation Version**: 1.3.0
 **Last Updated**: 2025
 **Website**: https://ui.vacano.io
 **Storybook**: https://ui.vacano.io/storybook/

@@ -66,6 +66,7 @@ export default defineConfig({
             { text: 'Confirmation', link: '/components/confirmation' },
             { text: 'Modal', link: '/components/modal' },
             { text: 'Drawer', link: '/components/drawer' },
+            { text: 'Notification', link: '/components/notification' },
             { text: 'SaveProgress', link: '/components/save-progress' },
             { text: 'Spinner', link: '/components/spinner' },
             { text: 'Toastr', link: '/components/toastr' },

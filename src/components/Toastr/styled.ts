@@ -1,31 +1,8 @@
-import { keyframes } from '@emotion/react'
 import styled from '@emotion/styled'
 
 import { getToastVariantColors } from './helpers'
 import type { ToastVariant } from './types'
-import { COLORS } from '../../lib'
-
-const slideIn = keyframes`
-  from {
-    transform: translateY(100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-`
-
-const slideOut = keyframes`
-  from {
-    transform: translateY(0);
-    opacity: 1;
-  }
-  to {
-    transform: translateY(100%);
-    opacity: 0;
-  }
-`
+import { COLORS, KEYFRAMES } from '../../lib'
 
 export const StyledToastrContainer = styled.div`
   position: fixed;
@@ -57,7 +34,9 @@ export const StyledToast = styled.div<StyledToastProps>`
   border: 1px solid ${({ $variant }) => getToastVariantColors($variant).border};
   border-radius: 96px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  animation: ${({ $isExiting }) => ($isExiting ? slideOut : slideIn)} 0.3s ease-out;
+  animation: ${({ $isExiting }) =>
+      $isExiting ? KEYFRAMES.slideOutBottomFade : KEYFRAMES.slideInBottomFade}
+    0.3s ease-out;
   pointer-events: auto;
   max-width: 500px;
 `
