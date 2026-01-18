@@ -1,2 +1,3 @@
-export { Confirmation } from './Confirmation'
-export type { ConfirmationClassNames, ConfirmationProps } from './types'
+export { ConfirmationProvider } from './ConfirmationProvider'
+export { useConfirmation } from './useConfirmation'
+export type { ConfirmationContextValue, ConfirmationOptions, ConfirmationState } from './types'

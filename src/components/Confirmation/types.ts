@@ -1,23 +1,24 @@
-import type { CSSProperties, ReactNode } from 'react'
+import type { ReactNode } from 'react'
 
-import { KeyboardEventKey, VacanoComponentProps } from '../../lib'
-
-export type ConfirmationClassNames = {
-  message?: string
-  actions?: string
-  confirmButton?: string
-  cancelButton?: string
+export type ConfirmationOptions = {
+  confirmLabel?: string
+  cancelLabel?: string
 }
 
-export type ConfirmationProps = VacanoComponentProps<HTMLDivElement, ConfirmationClassNames> & {
-  cancelBindings?: KeyboardEventKey[]
-  cancelLabel?: string
-  confirmLabel?: string
-  loading?: boolean
+export type ConfirmationState = {
+  open: boolean
   message: ReactNode
-  onCancel?: () => void
-  onConfirm?: () => void
-  open?: boolean
-  style?: CSSProperties
-  submitBindings?: KeyboardEventKey[]
+  onConfirm: () => void | Promise<void>
+  onCancel: () => void
+  options: ConfirmationOptions
+}
+
+export type ConfirmationContextValue = {
+  show: (
+    message: ReactNode,
+    onConfirm: () => void | Promise<void>,
+    onCancel?: () => void,
+    options?: ConfirmationOptions,
+  ) => void
+  hide: () => void
 }

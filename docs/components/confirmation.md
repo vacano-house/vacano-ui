@@ -1,109 +1,107 @@
 # Confirmation
 
-Confirmation dialog with customizable actions and keyboard bindings.
+Confirmation dialog that appears at the bottom center of the screen.
 
-<a href="/storybook/?path=/docs/molecules-confirmation--docs" target="_blank">View in Storybook</a>
+<a href="/storybook/?path=/docs/components-confirmation--docs" target="_blank">View in Storybook</a>
 
 ## Import
 
 ```tsx
-import { Confirmation } from '@vacano/ui'
+import { ConfirmationProvider, useConfirmation } from '@vacano/ui'
+```
+
+## Setup
+
+Wrap your application with `ConfirmationProvider`:
+
+```tsx
+function App() {
+  return (
+    <ConfirmationProvider>
+      <YourApp />
+    </ConfirmationProvider>
+  )
+}
 ```
 
 ## Usage
 
 ```tsx
-const [open, setOpen] = useState(false)
+function MyComponent() {
+  const { show } = useConfirmation()
 
-<Button onClick={() => setOpen(true)}>Delete Item</Button>
+  const handleDelete = () => {
+    show(
+      'Are you sure you want to delete this item?',
+      () => console.log('Confirmed!'),
+      () => console.log('Cancelled'),
+    )
+  }
 
-<Confirmation
-  open={open}
-  message="Are you sure you want to delete this item?"
-  onConfirm={() => {
-    // Handle delete
-    setOpen(false)
-  }}
-  onCancel={() => setOpen(false)}
-/>
+  return <Button onClick={handleDelete}>Delete Item</Button>
+}
 ```
 
 ## Custom Labels
 
 ```tsx
-<Confirmation
-  open={open}
-  message="Discard unsaved changes?"
-  confirmLabel="Discard"
-  cancelLabel="Keep Editing"
-  onConfirm={handleDiscard}
-  onCancel={handleCancel}
-/>
+const { show } = useConfirmation()
+
+show(
+  'Discard unsaved changes?',
+  () => handleDiscard(),
+  () => handleCancel(),
+  { confirmLabel: 'Discard', cancelLabel: 'Keep Editing' }
+)
 ```
 
-## With Keyboard Bindings
+## Async with Loading
+
+If `onConfirm` returns a Promise, the confirm button will show a loading spinner:
 
 ```tsx
-<Confirmation
-  open={open}
-  message="Save changes?"
-  submitBindings={['Meta', 'Enter']}
-  cancelBindings={['Escape']}
-  onConfirm={handleSave}
-  onCancel={handleCancel}
-/>
-```
+const { show } = useConfirmation()
 
-## Loading State
-
-```tsx
-<Confirmation
-  open={open}
-  message="Processing..."
-  loading={isProcessing}
-  onConfirm={handleConfirm}
-  onCancel={handleCancel}
-/>
+show(
+  'Delete this item?',
+  async () => {
+    await api.deleteItem(id)  // Shows spinner until resolved
+  },
+  undefined,
+  { confirmLabel: 'Delete', cancelLabel: 'Cancel' }
+)
 ```
 
 ## Rich Message Content
 
 ```tsx
-<Confirmation
-  open={open}
-  message={
-    <div>
-      <strong>Warning!</strong>
-      <p>This action cannot be undone.</p>
-    </div>
-  }
-  onConfirm={handleConfirm}
-  onCancel={handleCancel}
-/>
+const { show } = useConfirmation()
+
+show(
+  <div>
+    <strong>Warning!</strong>
+    <p>This action cannot be undone.</p>
+  </div>,
+  handleConfirm,
+)
 ```
 
-## Props
+## Hook Return
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `open` | `boolean` | - | Open state |
-| `message` | `ReactNode` | **required** | Message content |
+| Property | Type | Description |
+|----------|------|-------------|
+| `show` | `(message: ReactNode, onConfirm: () => void \| Promise<void>, onCancel?: () => void, options?: ConfirmationOptions) => void` | Show confirmation |
+| `hide` | `() => void` | Hide confirmation |
+
+## Options
+
+| Option | Type | Default | Description |
+|--------|------|---------|-------------|
 | `confirmLabel` | `string` | `'Confirm'` | Confirm button label |
 | `cancelLabel` | `string` | `'Cancel'` | Cancel button label |
-| `onConfirm` | `() => void` | - | Confirm callback |
-| `onCancel` | `() => void` | - | Cancel callback |
-| `loading` | `boolean` | `false` | Loading state |
-| `submitBindings` | `KeyboardEventKey[]` | - | Confirm keyboard shortcut |
-| `cancelBindings` | `KeyboardEventKey[]` | - | Cancel keyboard shortcut |
-| `style` | `CSSProperties` | - | Custom styles |
-| `className` | `string` | - | CSS class name |
-| `classnames` | `ConfirmationClassNames` | - | Custom class names |
 
-## ClassNames
+## Behavior
 
-| Key | Description |
-|-----|-------------|
-| `message` | Message container |
-| `actions` | Actions container |
-| `confirmButton` | Confirm button |
-| `cancelButton` | Cancel button |
+- **Escape** — Cancel and hide
+- **Loading** — If `onConfirm` returns Promise, shows spinner and disables Cancel
+- Only one confirmation can be shown at a time

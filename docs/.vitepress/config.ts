@@ -39,6 +39,7 @@ export default defineConfig({
             { text: 'CheckboxCard', link: '/components/checkbox-card' },
             { text: 'CheckboxGroup', link: '/components/checkbox-group' },
             { text: 'DatePicker', link: '/components/date-picker' },
+            { text: 'EditableText', link: '/components/editable-text' },
             { text: 'Input', link: '/components/input' },
             { text: 'MultiSelect', link: '/components/multi-select' },
             { text: 'OtpCode', link: '/components/otp-code' },

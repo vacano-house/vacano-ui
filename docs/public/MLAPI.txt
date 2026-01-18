@@ -902,6 +902,48 @@ const [date, setDate] = useState<Date | null>(null)
 
 ---
 
+## EditableText
+
+Inline editable text with pencil/check icon toggle.
+
+```tsx
+import { EditableText } from '@vacano/ui'
+```
+
+### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| value | string | required | Current value |
+| onChange | (value: string) => void | required | Save callback |
+| disabled | boolean | false | Disable editing |
+| placeholder | string | - | Placeholder for empty value |
+
+### Examples
+
+```tsx
+const [name, setName] = useState('John Doe')
+
+// Basic
+<EditableText value={name} onChange={setName} />
+
+// With placeholder
+<EditableText value="" placeholder="Enter name..." onChange={setName} />
+
+// Disabled
+<EditableText value="Cannot edit" onChange={setName} disabled />
+```
+
+### Behavior
+
+- Click pencil icon to start editing
+- **Cmd+Enter** — Save changes
+- **Click outside** — Save changes
+- **Escape** — Cancel and revert
+- Click check icon — Save changes
+
+---
+
 ## Tags
 
 Tag input with autocomplete.
@@ -1202,50 +1244,68 @@ const [open, setOpen] = useState(false)
 
 ## Confirmation
 
-Confirmation dialog.
+Confirmation dialog that appears at the bottom center of the screen.
 
 ```tsx
-import { Confirmation } from '@vacano/ui'
+import { ConfirmationProvider, useConfirmation } from '@vacano/ui'
 ```
 
-### Props
-
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| open | boolean | - | Open state |
-| message | ReactNode | required | Message |
-| confirmLabel | string | 'Confirm' | Confirm text |
-| cancelLabel | string | 'Cancel' | Cancel text |
-| onConfirm | () => void | - | Confirm callback |
-| onCancel | () => void | - | Cancel callback |
-| loading | boolean | false | Loading state |
-| submitBindings | KeyboardEventKey[] | - | Confirm shortcut |
-| cancelBindings | KeyboardEventKey[] | - | Cancel shortcut |
-
-### Examples
+### Setup
 
 ```tsx
-const [open, setOpen] = useState(false)
-
-<Confirmation
-  open={open}
-  message="Are you sure you want to delete?"
-  confirmLabel="Delete"
-  cancelLabel="Cancel"
-  onConfirm={() => { /* delete */ setOpen(false) }}
-  onCancel={() => setOpen(false)}
-/>
-
-// With keyboard bindings
-<Confirmation
-  open={open}
-  message="Save changes?"
-  submitBindings={['Meta', 'Enter']}
-  cancelBindings={['Escape']}
-  onConfirm={handleSave}
-  onCancel={handleCancel}
-/>
+function App() {
+  return (
+    <ConfirmationProvider>
+      <YourApp />
+    </ConfirmationProvider>
+  )
+}
 ```
+
+### Usage
+
+```tsx
+function MyComponent() {
+  const { show } = useConfirmation()
+
+  const handleDelete = () => {
+    show(
+      'Are you sure you want to delete?',
+      () => console.log('Confirmed!'),
+      () => console.log('Cancelled'),
+      { confirmLabel: 'Delete', cancelLabel: 'Cancel' }
+    )
+  }
+
+  return <Button onClick={handleDelete}>Delete</Button>
+}
+```
+
+### Async with Loading
+
+If `onConfirm` returns a Promise, shows a loading spinner:
+
+```tsx
+show(
+  'Delete this item?',
+  async () => {
+    await api.deleteItem(id)  // Shows spinner until resolved
+  }
+)
+```
+
+### Hook Return
+
+| Property | Type | Description |
+|----------|------|-------------|
+| show | (message: ReactNode, onConfirm: () => void \| Promise<void>, onCancel?: () => void, options?: { confirmLabel?, cancelLabel? }) => void | Show confirmation |
+| hide | () => void | Hide confirmation |
+
+### Behavior
+
+- **Escape** — Cancel and hide
+- **Loading** — If onConfirm returns Promise, shows spinner and disables Cancel
+- Only one confirmation at a time
 
 ---
 

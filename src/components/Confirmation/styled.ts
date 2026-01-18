@@ -3,7 +3,7 @@ import styled from '@emotion/styled'
 
 import { COLORS } from '../../lib'
 
-const slideUp = keyframes`
+const slideIn = keyframes`
   from {
     opacity: 0;
     transform: translateX(-50%) translateY(100%);
@@ -14,7 +14,7 @@ const slideUp = keyframes`
   }
 `
 
-const slideDown = keyframes`
+const slideOut = keyframes`
   from {
     opacity: 1;
     transform: translateX(-50%) translateY(0);
@@ -26,14 +26,13 @@ const slideDown = keyframes`
 `
 
 type StyledContainerProps = {
-  $open: boolean
+  $isExiting: boolean
 }
 
 export const StyledContainer = styled.div<StyledContainerProps>`
   position: fixed;
   bottom: 24px;
   left: 50%;
-  transform: translateX(-50%);
   display: flex;
   align-items: center;
   gap: 16px;
@@ -44,7 +43,7 @@ export const StyledContainer = styled.div<StyledContainerProps>`
   box-shadow:
     0 4px 6px -1px rgba(0, 0, 0, 0.1),
     0 2px 4px -2px rgba(0, 0, 0, 0.1);
-  animation: ${({ $open }) => ($open ? slideUp : slideDown)} 0.2s ease-out forwards;
+  animation: ${({ $isExiting }) => ($isExiting ? slideOut : slideIn)} 0.2s ease-out forwards;
   z-index: 1000;
 `
 
