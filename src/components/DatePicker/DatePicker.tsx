@@ -25,6 +25,7 @@ import {
   StyledDaysGrid,
   StyledEmptyCell,
   StyledLabel,
+  StyledMessage,
   StyledMonthCell,
   StyledMonthsGrid,
   StyledNavButton,
@@ -67,6 +68,7 @@ export const DatePicker = ({
   disabled = false,
   fullWidth = false,
   label,
+  message,
   portalRenderNode,
   open: controlledOpen,
   onOpen,
@@ -487,7 +489,7 @@ export const DatePicker = ({
       $fullWidth={fullWidth}
       className={css('container', className)}
     >
-      {label && <StyledLabel>{label}</StyledLabel>}
+      {label && <StyledLabel variant={variant}>{label}</StyledLabel>}
       <StyledTrigger
         ref={triggerRef}
         type="button"
@@ -506,6 +508,7 @@ export const DatePicker = ({
         </StyledTriggerIcon>
       </StyledTrigger>
       {calendar}
+      {message && <StyledMessage variant={variant}>{message}</StyledMessage>}
     </StyledContainer>
   )
 }

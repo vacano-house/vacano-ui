@@ -86,6 +86,7 @@ Used for "select all" scenarios where some items are selected:
 
 ## Related
 
+- [Toggle](/components/toggle) - Toggle switch for on/off settings
 - [CheckboxCard](/components/checkbox-card) - Card-style checkbox with description
 - [CheckboxGroup](/components/checkbox-group) - Group of checkboxes
 - [Radio](/components/radio) - Mutually exclusive selection

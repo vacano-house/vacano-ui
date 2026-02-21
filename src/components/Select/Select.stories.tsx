@@ -4,6 +4,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 
 import { Select } from './Select'
 import { SelectProps } from './types'
+import { FieldRow } from '../FieldRow'
 
 const COUNTRIES = [
   { value: 'us', label: 'United States' },
@@ -96,28 +97,28 @@ export const WithValue: Story = {
 
 export const Variants: Story = {
   render: () => (
-    <div style={{ display: 'flex', gap: 16 }}>
+    <FieldRow>
       <InteractiveSelect value="" options={COUNTRIES} label="Normal" variant="normal" />
       <InteractiveSelect value="" options={COUNTRIES} label="Error" variant="error" />
-    </div>
+    </FieldRow>
   ),
 }
 
 export const Sizes: Story = {
   render: () => (
-    <div style={{ display: 'flex', gap: 16, alignItems: 'flex-start' }}>
+    <FieldRow>
       <InteractiveSelect value="" options={COUNTRIES} label="Default" size="default" />
       <InteractiveSelect value="" options={COUNTRIES} label="Compact" size="compact" />
-    </div>
+    </FieldRow>
   ),
 }
 
 export const Disabled: Story = {
   render: () => (
-    <div style={{ display: 'flex', gap: 16 }}>
+    <FieldRow>
       <Select value="" options={COUNTRIES} label="Disabled Empty" disabled />
       <Select value="us" options={COUNTRIES} label="Disabled With Value" disabled />
-    </div>
+    </FieldRow>
   ),
 }
 
@@ -293,6 +294,82 @@ export const EmptyOptions: Story = {
     <div style={{ padding: 40, display: 'flex', flexDirection: 'column', gap: 16, width: 300 }}>
       <InteractiveSelect value="" options={[]} label="No options available" fullWidth />
       <InteractiveSelect value="" options={COUNTRIES} label="With options" fullWidth />
+    </div>
+  ),
+}
+
+export const Message: Story = {
+  parameters: { layout: 'padded' },
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 24, maxWidth: 400 }}>
+      <div>
+        <div style={{ marginBottom: 8, fontSize: 12, color: '#666' }}>Error with message</div>
+        <InteractiveSelect
+          fullWidth
+          variant="error"
+          label="Country"
+          value=""
+          options={COUNTRIES}
+          message="Country is required"
+        />
+      </div>
+      <div>
+        <div style={{ marginBottom: 8, fontSize: 12, color: '#666' }}>Normal with message</div>
+        <InteractiveSelect
+          fullWidth
+          variant="normal"
+          label="Country"
+          value="us"
+          options={COUNTRIES}
+          message="United States selected"
+        />
+      </div>
+      <div>
+        <div style={{ marginBottom: 8, fontSize: 12, color: '#666' }}>Without message</div>
+        <InteractiveSelect fullWidth label="Country" value="" options={COUNTRIES} />
+      </div>
+      <div>
+        <div style={{ marginBottom: 8, fontSize: 12, color: '#666' }}>
+          Side by side: with and without message
+        </div>
+        <FieldRow>
+          <InteractiveSelect
+            fullWidth
+            variant="error"
+            label="Country"
+            value=""
+            options={COUNTRIES}
+            message="Required"
+          />
+          <InteractiveSelect fullWidth label="Fruit" value="" options={FRUITS} />
+        </FieldRow>
+      </div>
+      <div>
+        <div style={{ marginBottom: 8, fontSize: 12, color: '#666' }}>
+          Compact size with message
+        </div>
+        <InteractiveSelect
+          fullWidth
+          size="compact"
+          variant="error"
+          label="Country"
+          value=""
+          options={COUNTRIES}
+          message="Please select a country"
+        />
+      </div>
+      <div>
+        <div style={{ marginBottom: 8, fontSize: 12, color: '#666' }}>Disabled with message</div>
+        <Select
+          fullWidth
+          disabled
+          variant="error"
+          label="Country"
+          value=""
+          options={COUNTRIES}
+          message="Country is required"
+        />
+      </div>
     </div>
   ),
 }

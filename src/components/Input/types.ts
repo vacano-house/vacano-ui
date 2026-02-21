@@ -1,4 +1,4 @@
-import type { InputHTMLAttributes } from 'react'
+import type { InputHTMLAttributes, ReactNode } from 'react'
 
 import { VacanoComponentProps, VacanoComponentSize } from '../../lib'
 
@@ -15,4 +15,6 @@ export type InputProps = VacanoComponentProps<HTMLInputElement, InputClassNames>
     label?: string
     size?: VacanoComponentSize
     variant?: InputVariant
+    message?: string
+    prefix?: ReactNode
   }

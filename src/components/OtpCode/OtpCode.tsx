@@ -1,6 +1,12 @@
 import { ChangeEvent, ClipboardEvent, KeyboardEvent, useCallback, useEffect, useRef } from 'react'
 
-import { StyledContainer, StyledInput, StyledInputsWrapper, StyledLabel } from './styled'
+import {
+  StyledContainer,
+  StyledInput,
+  StyledInputsWrapper,
+  StyledLabel,
+  StyledMessage,
+} from './styled'
 import { OtpCodeProps } from './types'
 import { newClassNameGetter } from '../../lib'
 
@@ -13,6 +19,7 @@ export const OtpCode = ({
   disabled,
   label,
   length = 6,
+  message,
   onChange,
   ref,
   size = 'default',
@@ -133,6 +140,11 @@ export const OtpCode = ({
           />
         ))}
       </StyledInputsWrapper>
+      {message && (
+        <StyledMessage variant={variant} className={css('message')}>
+          {message}
+        </StyledMessage>
+      )}
     </StyledContainer>
   )
 }

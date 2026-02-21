@@ -7,7 +7,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-1.12.1-blue" />
+  <img src="https://img.shields.io/badge/version-1.13.0-blue" />
   <a href="https://www.npmjs.com/package/@vacano/ui"><img src="https://img.shields.io/npm/v/@vacano/ui" alt="npm version" /></a>
   <a href="https://github.com/vacano-house/vacano-ui/blob/master/LICENSE.md"><img src="https://img.shields.io/npm/l/@vacano/ui" alt="license" /></a>
 </p>
@@ -19,7 +19,7 @@
 
 ## Features
 
-- **39+ Components** - Form controls, data display, feedback, layout, navigation, and utility components
+- **40+ Components** - Form controls, data display, feedback, layout, navigation, and utility components
 - **1800+ Icons** - Lucide icon components included
 - **TypeScript** - Full TypeScript support with strict typing
 - **Emotion CSS-in-JS** - Styled components with transient props
@@ -58,14 +58,15 @@ function App() {
 | `@vacano/ui` | Main components |
 | `@vacano/ui/icons` | Lucide icon components |
 | `@vacano/ui/lib` | Utilities, hooks, constants, and types |
+| `@vacano/ui/form` | react-hook-form wrappers (FormInput, FormSelect, etc.) |
 
 ## Components
 
 ### Form
-Autocomplete, Button, Checkbox, CheckboxCard, CheckboxGroup, DatePicker, EditableText, Input, MultiSelect, OtpCode, Radio, RadioCard, RadioGroup, Select, Tags, Textarea
+Autocomplete, Button, Checkbox, CheckboxCard, CheckboxGroup, DatePicker, Input, MultiSelect, OtpCode, Radio, RadioCard, RadioGroup, Select, Tags, Textarea, Toggle, ToggleCard, ToggleGroup
 
 ### Data Display
-Card, Chip, Progress, StatusCard, Tabs
+Card, Chip, Progress, Tabs
 
 ### Feedback
 Confirmation, Modal, Drawer, Notification, SaveProgress, Spinner, Toastr, Tooltip
@@ -77,7 +78,7 @@ Container, Panel
 Dropdown, Stepper
 
 ### Utility
-FieldLabel, FieldMessage, GlobalStyle, ImageCropper, KeysBindings, KeySymbol
+FieldLabel, FieldMessage, FieldRow, GlobalStyle, ImageCropper, KeysBindings, KeySymbol
 
 ## Icons
 

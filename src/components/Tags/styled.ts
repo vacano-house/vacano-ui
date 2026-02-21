@@ -3,6 +3,7 @@ import styled from '@emotion/styled'
 import { VARIANT_PROPS } from './constants'
 import { TagsVariant } from './types'
 import { FieldLabel } from '../FieldLabel'
+import { FieldMessage } from '../FieldMessage'
 import { alpha, COLORS } from '../../lib'
 
 export const StyledContainer = styled.div`
@@ -12,9 +13,8 @@ export const StyledContainer = styled.div`
   gap: 4px;
 `
 
-export const StyledLabel = styled(FieldLabel)<{ $variant: TagsVariant }>`
+export const StyledLabel = styled(FieldLabel)`
   margin-left: 6px;
-  color: ${(props) => VARIANT_PROPS[props.$variant].label};
 `
 
 export const StyledTrigger = styled.div<{
@@ -52,7 +52,7 @@ export const StyledTrigger = styled.div<{
   `}
 `
 
-export const StyledInput = styled.input<{ $disabled: boolean }>`
+export const StyledInput = styled.input<{ $disabled: boolean; $variant: TagsVariant }>`
   flex: 1;
   min-width: 80px;
   border: none;
@@ -63,7 +63,7 @@ export const StyledInput = styled.input<{ $disabled: boolean }>`
   cursor: ${(props) => (props.$disabled ? 'not-allowed' : 'text')};
 
   &::placeholder {
-    color: ${COLORS['iron-grey']};
+    color: ${(props) => VARIANT_PROPS[props.$variant].placeholder};
   }
 
   &:disabled {
@@ -152,4 +152,8 @@ export const StyledEmpty = styled.div`
   color: ${COLORS['iron-grey']};
   font-size: 14px;
   text-align: center;
+`
+
+export const StyledMessage = styled(FieldMessage)`
+  margin-left: 6px;
 `

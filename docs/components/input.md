@@ -55,6 +55,20 @@ const [value, setValue] = useState('')
 <Input fullWidth label="Full Width Input" />
 ```
 
+## With Message
+
+```tsx
+<Input label="Email" variant="error" message="Invalid email address" />
+<Input label="Username" message="Must be at least 3 characters" />
+```
+
+## With Prefix
+
+```tsx
+<Input label="Website" prefix="https://" placeholder="example.com" />
+<Input label="Price" prefix="$" placeholder="0.00" />
+```
+
 ## Disabled
 
 ```tsx
@@ -69,6 +83,8 @@ const [value, setValue] = useState('')
 | `variant` | `'normal' \| 'error'` | `'normal'` | Visual variant |
 | `size` | `'compact' \| 'default'` | `'default'` | Input size |
 | `fullWidth` | `boolean` | `false` | Full width input |
+| `message` | `string` | - | Message text below input (error, hint) |
+| `prefix` | `ReactNode` | - | Prefix content inside input (text, icon) |
 | `className` | `string` | - | CSS class name |
 | `classnames` | `InputClassNames` | - | Custom class names |
 

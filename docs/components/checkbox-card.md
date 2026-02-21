@@ -91,6 +91,7 @@ const [checked, setChecked] = useState(false)
 
 ## Related
 
+- [ToggleCard](/components/toggle-card) - Card-style toggle switch
 - [Checkbox](/components/checkbox) - Simple checkbox
 - [CheckboxGroup](/components/checkbox-group) - Group of checkboxes
 - [RadioCard](/components/radio-card) - Card-style radio for mutual exclusion

@@ -1,3 +1,4 @@
+import type { RadioVariant } from '../Radio'
 import { VacanoComponentProps } from '../../lib'
 
 export type RadioGroupOption<T extends string = string> = {
@@ -21,4 +22,5 @@ export type RadioGroupProps<T extends string = string> = VacanoComponentProps<
   label?: string
   name?: string
   disabled?: boolean
+  variant?: RadioVariant
 }

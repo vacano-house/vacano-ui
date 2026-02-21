@@ -5,6 +5,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { DatePicker } from './DatePicker'
 import { DatePickerProps } from './types'
 import { Card } from '../Card'
+import { FieldRow } from '../FieldRow'
 
 const meta: Meta<typeof DatePicker> = {
   title: 'components/DatePicker',
@@ -144,30 +145,30 @@ export const Modes: Story = {
 export const Sizes: Story = {
   parameters: { layout: 'padded' },
   render: () => (
-    <div style={{ display: 'flex', gap: 24, alignItems: 'flex-start' }}>
+    <FieldRow>
       <InteractiveDatePicker size="compact" label="Compact" placeholder="Select date" />
       <InteractiveDatePicker size="default" label="Default" placeholder="Select date" />
-    </div>
+    </FieldRow>
   ),
 }
 
 export const Variants: Story = {
   parameters: { layout: 'padded' },
   render: () => (
-    <div style={{ display: 'flex', gap: 24, alignItems: 'flex-start' }}>
+    <FieldRow>
       <InteractiveDatePicker variant="normal" label="Normal" placeholder="Select date" />
       <InteractiveDatePicker variant="error" label="Error" placeholder="Select date" />
-    </div>
+    </FieldRow>
   ),
 }
 
 export const Disabled: Story = {
   parameters: { layout: 'padded' },
   render: () => (
-    <div style={{ display: 'flex', gap: 24, alignItems: 'flex-start' }}>
-      <InteractiveDatePicker disabled label="Disabled empty" placeholder="Select date" />
-      <InteractiveDatePicker disabled label="Disabled with value" value={new Date(2024, 5, 15)} />
-    </div>
+    <FieldRow>
+      <DatePicker disabled label="Disabled empty" placeholder="Select date" />
+      <DatePicker disabled label="Disabled with value" value={new Date(2024, 5, 15)} />
+    </FieldRow>
   ),
 }
 
@@ -407,6 +408,77 @@ export const PreselectedValues: Story = {
       <InteractiveDatePicker label="Date" value={new Date(2024, 5, 15)} />
       <InteractiveDatePicker label="Month" mode="month" value={new Date(2024, 5, 1)} />
       <InteractiveDatePicker label="Year" mode="year" value={new Date(2024, 0, 1)} />
+    </div>
+  ),
+}
+
+export const Message: Story = {
+  parameters: { layout: 'padded' },
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 24, maxWidth: 400 }}>
+      <div>
+        <div style={{ marginBottom: 8, fontSize: 12, color: '#666' }}>Error with message</div>
+        <InteractiveDatePicker
+          fullWidth
+          variant="error"
+          label="Birth date"
+          placeholder="Select date"
+          message="Birth date is required"
+        />
+      </div>
+      <div>
+        <div style={{ marginBottom: 8, fontSize: 12, color: '#666' }}>Normal with message</div>
+        <InteractiveDatePicker
+          fullWidth
+          variant="normal"
+          label="Start date"
+          value={new Date(2024, 5, 15)}
+          message="Selected: June 15, 2024"
+        />
+      </div>
+      <div>
+        <div style={{ marginBottom: 8, fontSize: 12, color: '#666' }}>Without message</div>
+        <InteractiveDatePicker fullWidth label="End date" placeholder="Select date" />
+      </div>
+      <div>
+        <div style={{ marginBottom: 8, fontSize: 12, color: '#666' }}>
+          Side by side: with and without message
+        </div>
+        <FieldRow>
+          <InteractiveDatePicker
+            fullWidth
+            variant="error"
+            label="Start"
+            placeholder="Select"
+            message="Required"
+          />
+          <InteractiveDatePicker fullWidth label="End" placeholder="Select" />
+        </FieldRow>
+      </div>
+      <div>
+        <div style={{ marginBottom: 8, fontSize: 12, color: '#666' }}>
+          Compact size with message
+        </div>
+        <InteractiveDatePicker
+          fullWidth
+          size="compact"
+          variant="error"
+          label="Date"
+          placeholder="Select date"
+          message="Please select a date"
+        />
+      </div>
+      <div>
+        <div style={{ marginBottom: 8, fontSize: 12, color: '#666' }}>Disabled with message</div>
+        <DatePicker
+          fullWidth
+          disabled
+          variant="error"
+          label="Date"
+          placeholder="Select date"
+          message="Date is required"
+        />
+      </div>
     </div>
   ),
 }

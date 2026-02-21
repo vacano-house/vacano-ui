@@ -15,6 +15,7 @@ export const RadioGroup = <T extends string = string>({
   options,
   ref,
   value,
+  variant = 'normal',
   ...rest
 }: RadioGroupProps<T>) => {
   return (
@@ -33,6 +34,7 @@ export const RadioGroup = <T extends string = string>({
             checked={value === option.value}
             label={option.label}
             disabled={disabled}
+            variant={variant}
             onChange={() => onChange(option.value)}
           />
         ))}

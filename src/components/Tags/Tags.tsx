@@ -7,6 +7,7 @@ import {
   StyledEmpty,
   StyledInput,
   StyledLabel,
+  StyledMessage,
   StyledOption,
   StyledPortalDropdown,
   StyledTrigger,
@@ -33,6 +34,7 @@ export const Tags = ({
   emptyMessage = 'No options',
   freeSolo = true,
   label,
+  message,
   onChange,
   options = [],
   placeholder = 'Add tag...',
@@ -154,7 +156,7 @@ export const Tags = ({
   return (
     <StyledContainer {...rest} ref={ref} className={css('container', className)}>
       {label && (
-        <StyledLabel $variant={variant} className={css('label')}>
+        <StyledLabel variant={variant} className={css('label')}>
           {label}
         </StyledLabel>
       )}
@@ -170,6 +172,7 @@ export const Tags = ({
           {value.map((tag) => (
             <Chip
               key={tag}
+              variant={variant === 'error' ? 'red' : 'gray'}
               deletable={!disabled}
               onDelete={() => handleRemove(tag)}
               className={css('chip', classnames?.chip)}
@@ -188,6 +191,7 @@ export const Tags = ({
             placeholder={value.length === 0 ? placeholder : ''}
             disabled={disabled}
             $disabled={disabled}
+            $variant={variant}
             className={css('input', classnames?.input)}
           />
         </StyledTrigger>
@@ -253,6 +257,11 @@ export const Tags = ({
             </StyledDropdown>
           ))}
       </div>
+      {message && (
+        <StyledMessage variant={variant} className={css('message')}>
+          {message}
+        </StyledMessage>
+      )}
     </StyledContainer>
   )
 }

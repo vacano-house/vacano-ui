@@ -9,7 +9,6 @@ Container component with optional border and shadow.
 ## When to use
 
 - Grouping related content with optional border and shadow. For titled sections, use Panel.
-- For metric displays, use StatusCard.
 
 ## Import
 
@@ -64,4 +63,3 @@ All standard HTML div attributes are also supported.
 ## Related
 
 - [Panel](/components/panel) - Titled content section
-- [StatusCard](/components/status-card) - Metric display card

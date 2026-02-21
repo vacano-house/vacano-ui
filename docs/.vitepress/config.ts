@@ -4,9 +4,7 @@ export default defineConfig({
   title: 'Vacano UI',
   description: 'Vacano React components library',
   base: '/',
-  head: [
-    ['link', { rel: 'icon', href: '/logo.svg' }],
-  ],
+  head: [['link', { rel: 'icon', href: '/logo.svg' }]],
   themeConfig: {
     logo: '/logo.svg',
     siteTitle: 'Vacano UI',
@@ -45,7 +43,6 @@ export default defineConfig({
             { text: 'CheckboxCard', link: '/components/checkbox-card' },
             { text: 'CheckboxGroup', link: '/components/checkbox-group' },
             { text: 'DatePicker', link: '/components/date-picker' },
-            { text: 'EditableText', link: '/components/editable-text' },
             { text: 'Input', link: '/components/input' },
             { text: 'MultiSelect', link: '/components/multi-select' },
             { text: 'OtpCode', link: '/components/otp-code' },
@@ -55,7 +52,14 @@ export default defineConfig({
             { text: 'Select', link: '/components/select' },
             { text: 'Tags', link: '/components/tags' },
             { text: 'Textarea', link: '/components/textarea' },
+            { text: 'Toggle', link: '/components/toggle' },
+            { text: 'ToggleCard', link: '/components/toggle-card' },
+            { text: 'ToggleGroup', link: '/components/toggle-group' },
           ],
+        },
+        {
+          text: 'Form Wrappers',
+          items: [{ text: 'Overview', link: '/components/form-wrappers' }],
         },
         {
           text: 'Data Display',
@@ -63,7 +67,6 @@ export default defineConfig({
             { text: 'Card', link: '/components/card' },
             { text: 'Chip', link: '/components/chip' },
             { text: 'Progress', link: '/components/progress' },
-            { text: 'StatusCard', link: '/components/status-card' },
             { text: 'Tabs', link: '/components/tabs' },
           ],
         },
@@ -105,21 +108,18 @@ export default defineConfig({
             { text: 'ImageCropper', link: '/components/image-cropper' },
             { text: 'KeysBindings', link: '/components/keys-bindings' },
             { text: 'KeySymbol', link: '/components/key-symbol' },
+            { text: 'FieldRow', link: '/components/field-row' },
           ],
         },
       ],
       '/lib/': [
         {
           text: 'Overview',
-          items: [
-            { text: 'All Utilities', link: '/lib/' },
-          ],
+          items: [{ text: 'All Utilities', link: '/lib/' }],
         },
         {
           text: 'Constants',
-          items: [
-            { text: 'Constants', link: '/lib/constants' },
-          ],
+          items: [{ text: 'Constants', link: '/lib/constants' }],
         },
         {
           text: 'Utils',
@@ -132,15 +132,15 @@ export default defineConfig({
         },
         {
           text: 'Hooks',
-          items: [
-            { text: 'useKeyBinding', link: '/lib/use-key-binding' },
-          ],
+          items: [{ text: 'useKeyBinding', link: '/lib/use-key-binding' }],
+        },
+        {
+          text: 'Validation',
+          items: [{ text: 'Validation', link: '/lib/validation' }],
         },
         {
           text: 'Types',
-          items: [
-            { text: 'Types', link: '/lib/types' },
-          ],
+          items: [{ text: 'Types', link: '/lib/types' }],
         },
       ],
     },

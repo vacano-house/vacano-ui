@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { Button } from '..'
+import { Button, FieldRow } from '..'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
 import { Autocomplete as AutocompleteComponent } from './Autocomplete'
@@ -146,7 +146,7 @@ export const Disabled: Story = {
       <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
         <div>
           <div style={{ marginBottom: 8, fontSize: 12, color: '#666' }}>Normal Disabled</div>
-          <div style={{ display: 'flex', gap: 24 }}>
+          <FieldRow gap={24}>
             <AutocompleteComponent
               disabled
               variant="normal"
@@ -161,11 +161,11 @@ export const Disabled: Story = {
               value={{ value: 'New York', image_url: null }}
               onSearch={handleSearch}
             />
-          </div>
+          </FieldRow>
         </div>
         <div>
           <div style={{ marginBottom: 8, fontSize: 12, color: '#666' }}>Error Disabled</div>
-          <div style={{ display: 'flex', gap: 24 }}>
+          <FieldRow gap={24}>
             <AutocompleteComponent
               disabled
               variant="error"
@@ -180,7 +180,7 @@ export const Disabled: Story = {
               value={{ value: 'Los Angeles', image_url: null }}
               onSearch={handleSearch}
             />
-          </div>
+          </FieldRow>
         </div>
       </div>
     )
@@ -554,6 +554,78 @@ export const LayoutGrid: Story = {
   ),
 }
 
+export const Message: Story = {
+  parameters: { layout: 'padded' },
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 24, maxWidth: 400 }}>
+      <div>
+        <div style={{ marginBottom: 8, fontSize: 12, color: '#666' }}>Error with message</div>
+        <InteractiveAutocomplete
+          fullWidth
+          variant="error"
+          label="Country"
+          placeholder="Search country..."
+          message="Country is required"
+        />
+      </div>
+      <div>
+        <div style={{ marginBottom: 8, fontSize: 12, color: '#666' }}>Normal with message</div>
+        <InteractiveAutocomplete
+          fullWidth
+          variant="normal"
+          label="City"
+          placeholder="Search city..."
+          message="City selected"
+        />
+      </div>
+      <div>
+        <div style={{ marginBottom: 8, fontSize: 12, color: '#666' }}>Without message</div>
+        <InteractiveAutocomplete fullWidth label="Category" placeholder="Search category..." />
+      </div>
+      <div>
+        <div style={{ marginBottom: 8, fontSize: 12, color: '#666' }}>
+          Side by side: with and without message
+        </div>
+        <FieldRow>
+          <InteractiveAutocomplete
+            fullWidth
+            variant="error"
+            label="Country"
+            placeholder="Search..."
+            message="Required"
+          />
+          <InteractiveAutocomplete fullWidth label="City" placeholder="Search..." />
+        </FieldRow>
+      </div>
+      <div>
+        <div style={{ marginBottom: 8, fontSize: 12, color: '#666' }}>
+          Compact size with message
+        </div>
+        <InteractiveAutocomplete
+          fullWidth
+          size="compact"
+          variant="error"
+          label="Tag"
+          placeholder="Search tag..."
+          message="Invalid tag"
+        />
+      </div>
+      <div>
+        <div style={{ marginBottom: 8, fontSize: 12, color: '#666' }}>Disabled with message</div>
+        <AutocompleteComponent
+          fullWidth
+          disabled
+          variant="error"
+          label="Country"
+          placeholder="Cannot search"
+          onSearch={async () => []}
+          message="Country is required"
+        />
+      </div>
+    </div>
+  ),
+}
+
 export const MixedWithContent: Story = {
   name: 'Mixed with Other Content',
   parameters: { layout: 'padded' },
@@ -587,10 +659,8 @@ export const MixedWithContent: Story = {
             variant="error"
             label="Category"
             placeholder="Select category"
+            message="Please select a valid category"
           />
-          <div style={{ marginTop: 4, fontSize: 12, color: '#dc3545' }}>
-            Please select a valid category
-          </div>
         </div>
       </div>
 

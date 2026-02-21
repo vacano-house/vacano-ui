@@ -1,6 +1,6 @@
 # Components
 
-Vacano UI provides 38+ production-ready components organized by category.
+Vacano UI provides 40+ production-ready components organized by category.
 
 ::: tip Interactive Playground
 Explore all components interactively in our [Storybook](/storybook/).
@@ -28,7 +28,6 @@ Components for user input and form controls.
 | [CheckboxCard](/components/checkbox-card) | Card-style checkbox with description |
 | [CheckboxGroup](/components/checkbox-group) | Group of checkboxes with shared state |
 | [DatePicker](/components/date-picker) | Date, month, or year selection with calendar dropdown |
-| [EditableText](/components/editable-text) | Inline editable text with click-to-edit |
 | [Input](/components/input) | Single-line text input with label and validation |
 | [MultiSelect](/components/multi-select) | Multiple selection with modal picker |
 | [OtpCode](/components/otp-code) | OTP/PIN verification code input (SMS, 2FA) |
@@ -38,6 +37,9 @@ Components for user input and form controls.
 | [Select](/components/select) | Single selection dropdown |
 | [Tags](/components/tags) | Tag input with autocomplete and free-form support |
 | [Textarea](/components/textarea) | Multiline text input with label and validation |
+| [Toggle](/components/toggle) | Toggle switch for binary on/off settings |
+| [ToggleCard](/components/toggle-card) | Card-style toggle with description |
+| [ToggleGroup](/components/toggle-group) | Group of toggles with shared state |
 
 ## Data Display
 
@@ -48,7 +50,6 @@ Components for displaying information.
 | [Card](/components/card) | Container with optional border and shadow |
 | [Chip](/components/chip) | Small label/tag with optional delete action |
 | [Progress](/components/progress) | Progress bar indicator (0-100%) |
-| [StatusCard](/components/status-card) | Metric/KPI card with trend indicator |
 | [Tabs](/components/tabs) | Tab navigation for switching views |
 
 ## Feedback
@@ -84,6 +85,32 @@ Components for navigation and flow.
 | [Dropdown](/components/dropdown) | Popup menu triggered by any element |
 | [Stepper](/components/stepper) | Step indicator for multi-step wizards |
 
+## Form Wrappers (react-hook-form)
+
+17 `Form*` components for [react-hook-form](https://react-hook-form.com/) integration. Each wrapper binds a Vacano UI component to a form field, automatically handling value binding, validation errors, and error display.
+
+| Wrapper | Base Component |
+|---------|---------------|
+| [FormInput](/components/form-wrappers) | Input |
+| [FormTextarea](/components/form-wrappers) | Textarea |
+| [FormSelect](/components/form-wrappers) | Select |
+| [FormAutocomplete](/components/form-wrappers) | Autocomplete |
+| [FormDatePicker](/components/form-wrappers) | DatePicker |
+| [FormMultiSelect](/components/form-wrappers) | MultiSelect |
+| [FormOtpCode](/components/form-wrappers) | OtpCode |
+| [FormTags](/components/form-wrappers) | Tags |
+| [FormCheckbox](/components/form-wrappers) | Checkbox |
+| [FormCheckboxCard](/components/form-wrappers) | CheckboxCard |
+| [FormCheckboxGroup](/components/form-wrappers) | CheckboxGroup |
+| [FormRadio](/components/form-wrappers) | Radio |
+| [FormRadioCard](/components/form-wrappers) | RadioCard |
+| [FormRadioGroup](/components/form-wrappers) | RadioGroup |
+| [FormToggle](/components/form-wrappers) | Toggle |
+| [FormToggleCard](/components/form-wrappers) | ToggleCard |
+| [FormToggleGroup](/components/form-wrappers) | ToggleGroup |
+
+[Full documentation and examples](/components/form-wrappers)
+
 ## Utility
 
 Helper components for forms, keyboard shortcuts, and styling.
@@ -96,6 +123,7 @@ Helper components for forms, keyboard shortcuts, and styling.
 | [ImageCropper](/components/image-cropper) | Image upload and cropping (avatars, profile pictures) |
 | [KeysBindings](/components/keys-bindings) | Keyboard shortcut display (e.g. Cmd+S) |
 | [KeySymbol](/components/key-symbol) | Single key symbol display |
+| [FieldRow](/components/field-row) | Grid container for horizontal field alignment (CSS Subgrid) |
 
 ---
 
@@ -108,7 +136,6 @@ Helper components for forms, keyboard shortcuts, and styling.
 | Single-line text | [Input](/components/input) |
 | Multiline text | [Textarea](/components/textarea) |
 | Search with API suggestions | [Autocomplete](/components/autocomplete) |
-| Inline click-to-edit | [EditableText](/components/editable-text) |
 | OTP / verification code | [OtpCode](/components/otp-code) |
 
 ### Selection
@@ -118,11 +145,11 @@ Helper components for forms, keyboard shortcuts, and styling.
 | One option from a list | [Select](/components/select) |
 | Multiple options from a list | [MultiSelect](/components/multi-select) |
 | Tags / keywords with autocomplete | [Tags](/components/tags) |
-| Simple yes/no toggle | [Checkbox](/components/checkbox) |
+| Simple yes/no toggle | [Checkbox](/components/checkbox) or [Toggle](/components/toggle) |
 | One from few options (visible) | [RadioGroup](/components/radio-group) |
 | Multiple from few options (visible) | [CheckboxGroup](/components/checkbox-group) |
 | Rich option cards (single) | [RadioCard](/components/radio-card) |
-| Rich option cards (multiple) | [CheckboxCard](/components/checkbox-card) |
+| Rich option cards (multiple) | [CheckboxCard](/components/checkbox-card) or [ToggleCard](/components/toggle-card) |
 | Date / month / year | [DatePicker](/components/date-picker) |
 
 ### Overlays

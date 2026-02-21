@@ -3,6 +3,7 @@ import styled from '@emotion/styled'
 import { VARIANT_PROPS } from './constants'
 import { MultiSelectVariant } from './types'
 import { FieldLabel } from '../FieldLabel'
+import { FieldMessage } from '../FieldMessage'
 import { COLORS } from '../../lib'
 
 export const StyledContainer = styled.div`
@@ -11,12 +12,11 @@ export const StyledContainer = styled.div`
   gap: 4px;
 `
 
-export const StyledLabel = styled(FieldLabel)<{ $variant: MultiSelectVariant }>`
+export const StyledLabel = styled(FieldLabel)`
   margin-left: 6px;
-  color: ${(props) => VARIANT_PROPS[props.$variant].label};
 `
 
-export const StyledTrigger = styled.button<{ $variant: MultiSelectVariant; $disabled: boolean }>`
+export const StyledTrigger = styled.div<{ $variant: MultiSelectVariant; $disabled: boolean }>`
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -31,13 +31,14 @@ export const StyledTrigger = styled.button<{ $variant: MultiSelectVariant; $disa
   transition: border-color 0.15s ease;
   text-align: left;
 
-  &:hover:not(:disabled) {
-    border-color: ${(props) => (props.$variant === 'error' ? COLORS.red : COLORS.black)};
+  &:hover {
+    border-color: ${(props) =>
+      props.$disabled ? undefined : props.$variant === 'error' ? COLORS.red : COLORS.black};
   }
 `
 
-export const StyledPlaceholder = styled.span`
-  color: ${COLORS['iron-grey']};
+export const StyledPlaceholder = styled.span<{ $variant: MultiSelectVariant }>`
+  color: ${(props) => VARIANT_PROPS[props.$variant].placeholder};
   font-size: 14px;
 `
 
@@ -98,4 +99,8 @@ export const StyledEmpty = styled.div`
   color: ${COLORS['iron-grey']};
   font-size: 14px;
   text-align: center;
+`
+
+export const StyledMessage = styled(FieldMessage)`
+  margin-left: 6px;
 `

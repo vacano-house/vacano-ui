@@ -8,6 +8,7 @@ import {
   StyledContainer,
   StyledDropdown,
   StyledLabel,
+  StyledMessage,
   StyledOption,
   StyledPortalDropdown,
   StyledTrigger,
@@ -31,6 +32,7 @@ export const Select = ({
   disabled = false,
   fullWidth = false,
   label,
+  message,
   onChange,
   options,
   placeholder = 'Select...',
@@ -244,6 +246,7 @@ export const Select = ({
       </StyledTrigger>
 
       {isOpen && dropdown}
+      {message && <StyledMessage variant={variant}>{message}</StyledMessage>}
     </StyledContainer>
   )
 }

@@ -65,6 +65,7 @@ const options = [
 | `value` | `string[]` | **required** | Selected values |
 | `onChange` | `(values: string[]) => void` | **required** | Change handler |
 | `label` | `string` | - | Group label |
+| `variant` | `'normal' \| 'error'` | `'normal'` | Visual variant for all checkboxes |
 | `disabled` | `boolean` | `false` | Disable all checkboxes |
 | `className` | `string` | - | CSS class name |
 | `classnames` | `CheckboxGroupClassNames` | - | Custom class names |
@@ -88,6 +89,7 @@ type CheckboxGroupOption = {
 
 ## Related
 
+- [ToggleGroup](/components/toggle-group) - Group of toggle switches
 - [Checkbox](/components/checkbox) - Individual checkbox
 - [CheckboxCard](/components/checkbox-card) - Card-style checkbox
 - [RadioGroup](/components/radio-group) - Single selection group

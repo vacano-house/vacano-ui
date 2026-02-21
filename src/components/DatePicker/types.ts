@@ -51,6 +51,8 @@ export type DatePickerProps = VacanoComponentProps<HTMLDivElement, DatePickerCla
   onOpen?: () => void
   /** Callback when dropdown closes */
   onClose?: () => void
+  /** Message text below the picker */
+  message?: string
 }
 
 export type CalendarView = 'days' | 'months' | 'years'

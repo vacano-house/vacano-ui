@@ -3,6 +3,8 @@ import styled from '@emotion/styled'
 import { getTextareaVariantProps } from './helpers'
 import { TextareaVariant } from './types'
 import { FieldLabel } from '../FieldLabel'
+import { FieldMessage } from '../FieldMessage'
+import { COLORS } from '../../lib'
 
 type StyledTextareaProps = {
   $variant: TextareaVariant
@@ -49,4 +51,24 @@ export const StyledTextarea = styled.textarea<StyledTextareaProps>`
       color: ${(props) => getTextareaVariantProps(props.$variant).placeholder.disabled};
     }
   }
+`
+
+export const StyledFooter = styled.div`
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin: 0 6px;
+`
+
+export const StyledMessage = styled(FieldMessage)`
+  flex: 1;
+  min-width: 0;
+`
+
+export const StyledCounter = styled.span<{ $variant: TextareaVariant }>`
+  flex-shrink: 0;
+  margin-left: auto;
+  font-size: 12px;
+  font-weight: 500;
+  color: ${(props) => (props.$variant === 'error' ? COLORS.red : COLORS['iron-grey'])};
 `
