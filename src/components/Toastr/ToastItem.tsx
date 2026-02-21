@@ -4,13 +4,13 @@ import { StyledToast, StyledToastCloseButton, StyledToastMessage } from './style
 import type { ToastItemProps } from './types'
 import { X } from '../../icons/Lucide'
 
-export const ToastItem = ({ toast, onRemove }: ToastItemProps) => {
+export const ToastItem = ({ toast, onHide }: ToastItemProps) => {
   const [isExiting, setIsExiting] = useState(false)
 
   const handleRemove = () => {
     setIsExiting(true)
     setTimeout(() => {
-      onRemove(toast.id)
+      onHide(toast.id)
     }, 300)
   }
 

@@ -113,6 +113,13 @@ export const StyledOption = styled.button<{ $selected: boolean; $disabled: boole
   &:hover:not(:disabled) {
     background: ${alpha(COLORS.black, 8)};
   }
+
+  & > span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    min-width: 0;
+  }
 `
 
 export const StyledCheckmark = styled.span`

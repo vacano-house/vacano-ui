@@ -2,7 +2,7 @@ import { StyledQueueCounter, StyledToastrBottomRow, StyledToastrContainer } from
 import { ToastItem } from './ToastItem'
 import type { ToastContainerProps } from './types'
 
-export const ToastContainer = ({ toasts, queueCount, removeToast }: ToastContainerProps) => {
+export const ToastContainer = ({ toasts, queueCount, onHide }: ToastContainerProps) => {
   if (toasts.length === 0) {
     return null
   }
@@ -15,13 +15,13 @@ export const ToastContainer = ({ toasts, queueCount, removeToast }: ToastContain
         if (index === lastIndex && queueCount > 0) {
           return (
             <StyledToastrBottomRow key={toast.id}>
-              <ToastItem toast={toast} onRemove={removeToast} />
+              <ToastItem toast={toast} onHide={onHide} />
               <StyledQueueCounter>+{queueCount}</StyledQueueCounter>
             </StyledToastrBottomRow>
           )
         }
 
-        return <ToastItem key={toast.id} toast={toast} onRemove={removeToast} />
+        return <ToastItem key={toast.id} toast={toast} onHide={onHide} />
       })}
     </StyledToastrContainer>
   )

@@ -18,17 +18,17 @@ export type ToastAction =
   | { type: 'SHOW_NEXT_FROM_QUEUE' }
 
 export type ToastContextValue = {
-  addToast: (message: string, variant?: ToastVariant, duration?: number) => void
-  removeToast: (id: string) => void
+  show: (message: string, variant?: ToastVariant, duration?: number) => void
+  hide: (id: string) => void
 }
 
 export type ToastItemProps = {
   toast: Toast
-  onRemove: (id: string) => void
+  onHide: (id: string) => void
 }
 
 export type ToastContainerProps = {
   toasts: Toast[]
   queueCount: number
-  removeToast: (id: string) => void
+  onHide: (id: string) => void
 }

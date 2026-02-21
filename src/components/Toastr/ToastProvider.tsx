@@ -8,7 +8,7 @@ import type { ToastVariant } from './types'
 export const ToastProvider = ({ children }: PropsWithChildren) => {
   const [state, dispatch] = useReducer(toastReducer, initialToastState)
 
-  const addToast = useCallback(
+  const show = useCallback(
     (message: string, variant: ToastVariant = 'default', duration?: number) => {
       const id = `toast-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`
 
@@ -25,7 +25,7 @@ export const ToastProvider = ({ children }: PropsWithChildren) => {
     [],
   )
 
-  const removeToast = useCallback((id: string) => {
+  const hide = useCallback((id: string) => {
     dispatch({
       type: 'REMOVE_TOAST',
       payload: id,
@@ -33,13 +33,9 @@ export const ToastProvider = ({ children }: PropsWithChildren) => {
   }, [])
 
   return (
-    <ToastContext.Provider value={{ addToast, removeToast }}>
+    <ToastContext.Provider value={{ show, hide }}>
       {children}
-      <ToastContainer
-        toasts={state.toasts}
-        queueCount={state.queue.length}
-        removeToast={removeToast}
-      />
+      <ToastContainer toasts={state.toasts} queueCount={state.queue.length} onHide={hide} />
     </ToastContext.Provider>
   )
 }

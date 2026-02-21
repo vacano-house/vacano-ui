@@ -88,7 +88,7 @@ export const Select = ({
   }
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (disabled) return
+    if (disabled || options.length === 0) return
 
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault()
@@ -213,7 +213,14 @@ export const Select = ({
       $fullWidth={fullWidth}
       className={css('container', className)}
     >
-      {label && <StyledLabel className={css('label', classnames?.label)}>{label}</StyledLabel>}
+      {label && (
+        <StyledLabel
+          variant={variant === 'error' ? 'error' : 'normal'}
+          className={css('label', classnames?.label)}
+        >
+          {label}
+        </StyledLabel>
+      )}
 
       <StyledTrigger
         ref={triggerRef}
@@ -223,7 +230,7 @@ export const Select = ({
         $disabled={disabled}
         $hasValue={Boolean(selectedOption)}
         disabled={disabled}
-        onClick={() => !disabled && setIsOpen((prev) => !prev)}
+        onClick={() => !disabled && options.length > 0 && setIsOpen((prev) => !prev)}
         onKeyDown={handleKeyDown}
         aria-haspopup="listbox"
         aria-expanded={isOpen}

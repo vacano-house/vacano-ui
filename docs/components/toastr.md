@@ -14,21 +14,21 @@ Toast notification system with queue management.
 ## Import
 
 ```tsx
-import { ToastrProvider, useToastr } from '@vacano/ui'
+import { ToastProvider, useToastr } from '@vacano/ui'
 ```
 
 ## Setup
 
-Wrap your app with `ToastrProvider`:
+Wrap your app with `ToastProvider`:
 
 ```tsx
-import { ToastrProvider } from '@vacano/ui'
+import { ToastProvider } from '@vacano/ui'
 
 function App() {
   return (
-    <ToastrProvider>
+    <ToastProvider>
       <YourApp />
-    </ToastrProvider>
+    </ToastProvider>
   )
 }
 ```
@@ -41,57 +41,52 @@ Use the `useToastr` hook to show notifications:
 import { useToastr } from '@vacano/ui'
 
 function MyComponent() {
-  const { addToast } = useToastr()
+  const { show } = useToastr()
 
-  const showNotification = () => {
-    addToast('Operation completed successfully', 'success')
-  }
-
-  return <Button onClick={showNotification}>Show Toast</Button>
+  return <Button onClick={() => show('Operation completed', 'success')}>Save</Button>
 }
 ```
 
 ## Variants
 
 ```tsx
-const { addToast } = useToastr()
+const { show } = useToastr()
 
 // Default
-addToast('Default message')
+show('Default message')
 
 // Success
-addToast('Successfully saved!', 'success')
+show('Successfully saved!', 'success')
 
 // Warning
-addToast('Please review your input', 'warning')
+show('Please review your input', 'warning')
 
 // Danger/Error
-addToast('An error occurred', 'danger')
+show('An error occurred', 'danger')
 ```
 
 ## Custom Duration
 
 ```tsx
 // Default duration (auto-dismiss)
-addToast('Quick message', 'default')
+show('Quick message', 'default')
 
 // Longer duration (in milliseconds)
-addToast('Important message', 'warning', 10000)
+show('Important message', 'warning', 10000)
 
 // Very short duration
-addToast('Flash message', 'success', 2000)
+show('Flash message', 'success', 2000)
 ```
 
-## Remove Toast Programmatically
+## Hide Toast Programmatically
 
 ```tsx
-const { addToast, removeToast } = useToastr()
+const { show, hide } = useToastr()
 
-// The toast ID is returned when adding
-const toastId = addToast('Processing...', 'default')
+show('Processing...', 'default')
 
-// Later, remove it manually
-removeToast(toastId)
+// Later, hide by toast id
+hide(toastId)
 ```
 
 ## Toast Types
@@ -111,12 +106,12 @@ type Toast = {
 
 ```tsx
 type ToastContextValue = {
-  addToast: (
+  show: (
     message: string,
     variant?: ToastVariant,
     duration?: number
   ) => void
-  removeToast: (id: string) => void
+  hide: (id: string) => void
 }
 ```
 

@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
 import { ToastProvider } from './ToastProvider'
-import { useToast } from './useToast'
+import { useToastr } from './useToast'
 import { Button } from '../Button'
 
 const meta: Meta<typeof ToastProvider> = {
@@ -17,29 +17,29 @@ export default meta
 type Story = StoryObj<typeof ToastProvider>
 
 const PlaygroundDemo = () => {
-  const { addToast } = useToast()
+  const { show } = useToastr()
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 16, padding: 20 }}>
       <h3 style={{ margin: 0, fontSize: 18, fontWeight: 600 }}>Toast Notifications</h3>
 
       <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-        <Button variant="system" onClick={() => addToast('This is a default notification')}>
+        <Button variant="system" onClick={() => show('This is a default notification')}>
           Show Default
         </Button>
         <Button
           variant="normal"
-          onClick={() => addToast('Operation completed successfully!', 'success')}
+          onClick={() => show('Operation completed successfully!', 'success')}
         >
           Show Success
         </Button>
         <Button
           variant="system"
-          onClick={() => addToast('Warning: Please verify this action', 'warning')}
+          onClick={() => show('Warning: Please verify this action', 'warning')}
         >
           Show Warning
         </Button>
-        <Button variant="danger" onClick={() => addToast('An error occurred!', 'danger')}>
+        <Button variant="danger" onClick={() => show('An error occurred!', 'danger')}>
           Show Danger
         </Button>
       </div>
@@ -47,7 +47,7 @@ const PlaygroundDemo = () => {
       <div style={{ marginTop: 12 }}>
         <Button
           variant="system"
-          onClick={() => addToast('This toast will disappear in 3 seconds', 'default', 3000)}
+          onClick={() => show('This toast will disappear in 3 seconds', 'default', 3000)}
         >
           Show Auto-dismiss (3s)
         </Button>
@@ -65,7 +65,7 @@ export const Playground: Story = {
 }
 
 const VariantsDemo = () => {
-  const { addToast } = useToast()
+  const { show } = useToastr()
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 16, padding: 20 }}>
@@ -77,7 +77,7 @@ const VariantsDemo = () => {
           <p style={{ margin: '0 0 8px', fontSize: 14, color: '#6b7280' }}>General information</p>
           <Button
             variant="system"
-            onClick={() => addToast('User logged in successfully', 'default', 3000)}
+            onClick={() => show('User logged in successfully', 'default', 3000)}
           >
             Show Default
           </Button>
@@ -88,7 +88,7 @@ const VariantsDemo = () => {
           <p style={{ margin: '0 0 8px', fontSize: 14, color: '#6b7280' }}>Successful operations</p>
           <Button
             variant="normal"
-            onClick={() => addToast('Changes saved successfully', 'success', 3000)}
+            onClick={() => show('Changes saved successfully', 'success', 3000)}
           >
             Show Success
           </Button>
@@ -99,7 +99,7 @@ const VariantsDemo = () => {
           <p style={{ margin: '0 0 8px', fontSize: 14, color: '#6b7280' }}>Warnings and cautions</p>
           <Button
             variant="system"
-            onClick={() => addToast('Please verify this action', 'warning', 3000)}
+            onClick={() => show('Please verify this action', 'warning', 3000)}
           >
             Show Warning
           </Button>
@@ -110,10 +110,7 @@ const VariantsDemo = () => {
           <p style={{ margin: '0 0 8px', fontSize: 14, color: '#6b7280' }}>
             Errors and critical issues
           </p>
-          <Button
-            variant="danger"
-            onClick={() => addToast('Failed to save changes', 'danger', 3000)}
-          >
+          <Button variant="danger" onClick={() => show('Failed to save changes', 'danger', 3000)}>
             Show Danger
           </Button>
         </div>
@@ -131,26 +128,20 @@ export const Variants: Story = {
 }
 
 const AutoDismissDemo = () => {
-  const { addToast } = useToast()
+  const { show } = useToastr()
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 16, padding: 20 }}>
       <h3 style={{ margin: 0, fontSize: 18, fontWeight: 600 }}>Auto-dismiss</h3>
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-        <Button
-          variant="system"
-          onClick={() => addToast('Disappears in 2 seconds', 'default', 2000)}
-        >
+        <Button variant="system" onClick={() => show('Disappears in 2 seconds', 'default', 2000)}>
           2 seconds
         </Button>
-        <Button
-          variant="system"
-          onClick={() => addToast('Disappears in 5 seconds', 'success', 5000)}
-        >
+        <Button variant="system" onClick={() => show('Disappears in 5 seconds', 'success', 5000)}>
           5 seconds
         </Button>
-        <Button variant="system" onClick={() => addToast('Stays until closed', 'danger')}>
+        <Button variant="system" onClick={() => show('Stays until closed', 'danger')}>
           No auto-dismiss
         </Button>
       </div>
@@ -167,12 +158,12 @@ export const AutoDismiss: Story = {
 }
 
 const MultipleToastsDemo = () => {
-  const { addToast } = useToast()
+  const { show } = useToastr()
 
   const showMultiple = () => {
-    addToast('First notification', 'default')
-    setTimeout(() => addToast('Second notification', 'success'), 200)
-    setTimeout(() => addToast('Third notification', 'danger'), 400)
+    show('First notification', 'default')
+    setTimeout(() => show('Second notification', 'success'), 200)
+    setTimeout(() => show('Third notification', 'danger'), 400)
   }
 
   return (
@@ -194,14 +185,14 @@ export const MultipleToasts: Story = {
 }
 
 const QueueDemo = () => {
-  const { addToast } = useToast()
+  const { show } = useToastr()
 
   const showMany = () => {
     for (let i = 1; i <= 6; i++) {
       setTimeout(() => {
         const variant =
           i % 4 === 0 ? 'danger' : i % 3 === 0 ? 'warning' : i % 2 === 0 ? 'success' : 'default'
-        addToast(`Notification ${i}`, variant)
+        show(`Notification ${i}`, variant)
       }, i * 100)
     }
   }
@@ -228,7 +219,7 @@ export const QueueSystem: Story = {
 }
 
 const LongMessageDemo = () => {
-  const { addToast } = useToast()
+  const { show } = useToastr()
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 16, padding: 20 }}>
@@ -236,7 +227,7 @@ const LongMessageDemo = () => {
       <Button
         variant="system"
         onClick={() =>
-          addToast(
+          show(
             'This is a very long notification message that demonstrates how the toast handles lengthy text content',
             'default',
           )
@@ -257,24 +248,24 @@ export const LongMessage: Story = {
 }
 
 const RealWorldDemo = () => {
-  const { addToast } = useToast()
+  const { show } = useToastr()
 
   const simulateSave = () => {
-    addToast('Saving changes...', 'default', 2000)
+    show('Saving changes...', 'default', 2000)
     setTimeout(() => {
-      addToast('Changes saved successfully!', 'success', 3000)
+      show('Changes saved successfully!', 'success', 3000)
     }, 2000)
   }
 
   const simulateError = () => {
-    addToast('Processing request...', 'default', 2000)
+    show('Processing request...', 'default', 2000)
     setTimeout(() => {
-      addToast('Server error: Unable to complete request', 'danger')
+      show('Server error: Unable to complete request', 'danger')
     }, 2000)
   }
 
   const simulateDelete = () => {
-    addToast('Item deleted successfully', 'success', 3000)
+    show('Item deleted successfully', 'success', 3000)
   }
 
   return (
@@ -306,7 +297,7 @@ export const RealWorld: Story = {
 }
 
 const LayoutDemo = () => {
-  const { addToast } = useToast()
+  const { show } = useToastr()
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>
@@ -335,12 +326,12 @@ const LayoutDemo = () => {
               }}
             />
             <div style={{ display: 'flex', gap: 8, justifyContent: 'flex-end' }}>
-              <Button variant="system" onClick={() => addToast('Form cancelled', 'default', 2000)}>
+              <Button variant="system" onClick={() => show('Form cancelled', 'default', 2000)}>
                 Cancel
               </Button>
               <Button
                 variant="normal"
-                onClick={() => addToast('Form submitted successfully!', 'success', 3000)}
+                onClick={() => show('Form submitted successfully!', 'success', 3000)}
               >
                 Submit
               </Button>
@@ -357,14 +348,14 @@ const LayoutDemo = () => {
           <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
             <Button
               variant="system"
-              onClick={() => addToast('Item copied to clipboard', 'success', 2000)}
+              onClick={() => show('Item copied to clipboard', 'success', 2000)}
             >
               Copy
             </Button>
-            <Button variant="system" onClick={() => addToast('Item pasted', 'success', 2000)}>
+            <Button variant="system" onClick={() => show('Item pasted', 'success', 2000)}>
               Paste
             </Button>
-            <Button variant="danger" onClick={() => addToast('Item deleted', 'danger', 3000)}>
+            <Button variant="danger" onClick={() => show('Item deleted', 'danger', 3000)}>
               Delete
             </Button>
           </div>
@@ -377,14 +368,14 @@ const LayoutDemo = () => {
           <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
             <Button
               variant="system"
-              onClick={() => addToast('Connection established', 'success', 2000)}
+              onClick={() => show('Connection established', 'success', 2000)}
             >
               Connect
             </Button>
-            <Button variant="system" onClick={() => addToast('Connection lost', 'warning', 3000)}>
+            <Button variant="system" onClick={() => show('Connection lost', 'warning', 3000)}>
               Disconnect
             </Button>
-            <Button variant="system" onClick={() => addToast('Syncing data...', 'default', 2000)}>
+            <Button variant="system" onClick={() => show('Syncing data...', 'default', 2000)}>
               Sync
             </Button>
           </div>
