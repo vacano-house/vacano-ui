@@ -35,6 +35,28 @@ const options = [
 />
 ```
 
+## Type-safe Values
+
+`RadioGroup` is generic — the value type is inferred from `options`:
+
+```tsx
+type Color = 'red' | 'green' | 'blue'
+
+const [color, setColor] = useState<Color | null>('red')
+
+const options: RadioGroupOption<Color>[] = [
+  { value: 'red', label: 'Red' },
+  { value: 'green', label: 'Green' },
+  { value: 'blue', label: 'Blue' },
+]
+
+<RadioGroup<Color>
+  options={options}
+  value={color}     // Color | null
+  onChange={setColor} // (value: Color) => void
+/>
+```
+
 ## With Label
 
 ```tsx
@@ -72,21 +94,23 @@ const options = [
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
-| `options` | `RadioGroupOption[]` | **required** | Array of options |
-| `value` | `string \| null` | **required** | Selected value |
-| `onChange` | `(value: string) => void` | **required** | Change handler |
+| `options` | `RadioGroupOption<T>[]` | **required** | Array of options |
+| `value` | `T \| null` | **required** | Selected value |
+| `onChange` | `(value: T) => void` | **required** | Change handler |
 | `label` | `string` | - | Group label |
 | `name` | `string` | - | Input name for all radios |
 | `disabled` | `boolean` | `false` | Disable all radios |
 | `className` | `string` | - | CSS class name |
 | `classnames` | `RadioGroupClassNames` | - | Custom class names |
 
+`T` extends `string` and defaults to `string`.
+
 ## Option Type
 
 ```tsx
-type RadioGroupOption = {
+type RadioGroupOption<T extends string = string> = {
   label: string
-  value: string
+  value: T
 }
 ```
 

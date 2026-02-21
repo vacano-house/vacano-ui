@@ -1,8 +1,8 @@
 import { VacanoComponentProps } from '../../lib'
 
-export type RadioGroupOption = {
+export type RadioGroupOption<T extends string = string> = {
   label: string
-  value: string
+  value: T
 }
 
 export type RadioGroupClassNames = {
@@ -11,10 +11,13 @@ export type RadioGroupClassNames = {
   radio?: string
 }
 
-export type RadioGroupProps = VacanoComponentProps<HTMLDivElement, RadioGroupClassNames> & {
-  options: RadioGroupOption[]
-  value: string | null
-  onChange: (value: string) => void
+export type RadioGroupProps<T extends string = string> = VacanoComponentProps<
+  HTMLDivElement,
+  RadioGroupClassNames
+> & {
+  options: RadioGroupOption<T>[]
+  value: T | null
+  onChange: (value: T) => void
   label?: string
   name?: string
   disabled?: boolean

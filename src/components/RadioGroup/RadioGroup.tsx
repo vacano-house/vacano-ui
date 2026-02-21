@@ -5,7 +5,7 @@ import { newClassNameGetter } from '../../lib'
 
 const css = newClassNameGetter('radio-group')
 
-export const RadioGroup = ({
+export const RadioGroup = <T extends string = string>({
   className,
   classnames,
   disabled,
@@ -16,7 +16,7 @@ export const RadioGroup = ({
   ref,
   value,
   ...rest
-}: RadioGroupProps) => {
+}: RadioGroupProps<T>) => {
   return (
     <StyledContainer {...rest} ref={ref} className={css('container', className)}>
       {label && (
