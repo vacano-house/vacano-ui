@@ -125,6 +125,7 @@ For internationalization:
 | `variant` | `'normal' \| 'error'` | `'normal'` | Visual variant |
 | `size` | `'compact' \| 'default'` | `'default'` | Input size |
 | `fullWidth` | `boolean` | `false` | Full width input |
+| `message` | `string` | - | Message text below input (error, hint) |
 | `disabled` | `boolean` | `false` | Disabled state |
 
 All standard HTML input attributes are also supported.

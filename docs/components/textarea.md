@@ -72,6 +72,19 @@ const [value, setValue] = useState('')
 />
 ```
 
+## With Message
+
+```tsx
+<Textarea label="Bio" variant="error" message="Bio is required" />
+<Textarea label="Notes" message="Optional field" />
+```
+
+## With Character Count
+
+```tsx
+<Textarea label="Description" count={200} placeholder="Max 200 characters" />
+```
+
 ## Props
 
 | Prop | Type | Default | Description |
@@ -81,6 +94,8 @@ const [value, setValue] = useState('')
 | `rows` | `number` | `4` | Number of visible rows |
 | `fullWidth` | `boolean` | `false` | Takes full container width |
 | `disabled` | `boolean` | `false` | Disables the field |
+| `message` | `string` | - | Message text below textarea (error, hint) |
+| `count` | `number` | - | Max character count (shows counter) |
 | `className` | `string` | - | CSS class for the container |
 | `classnames` | `TextareaClassNames` | - | CSS class names object for inner elements |
 

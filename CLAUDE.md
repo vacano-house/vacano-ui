@@ -25,11 +25,12 @@ Pre-commit hooks (Husky + lint-staged) auto-run ESLint and Prettier on staged `s
 
 ## Architecture
 
-### Three entry points
+### Four entry points
 
 - `@vacano/ui` — all components (`src/index.ts`)
 - `@vacano/ui/icons` — Lucide icon wrappers (`src/icons/Lucide/index.ts`)
 - `@vacano/ui/lib` — types, constants, hooks, utilities (`src/lib/index.ts`)
+- `@vacano/ui/form` — react-hook-form wrappers (`src/form/index.ts`)
 
 ### Component file structure
 
@@ -62,6 +63,17 @@ type ButtonProps = VacanoComponentProps<HTMLButtonElement, ButtonClassNames> &
 **Ref handling** — components accept `ref` via props (React 19 style), forward with `useImperativeHandle`.
 
 **Portal components** (Select, Modal, Drawer, Tooltip) — use `createPortal()` to `document.body`, accept optional `portalRenderNode` prop.
+
+### Form wrappers (`src/form/`)
+
+17 `Form*` components provide react-hook-form integration via `Controller`. Each wraps a base component, adding `name: FieldPath<T>` and `control: Control<T>` props while omitting the base's controlled value/onChange props.
+
+- **Text fields** (FormInput, FormSelect, FormAutocomplete, FormDatePicker, FormMultiSelect, FormOtpCode, FormTags, FormTextarea): auto-display `message` from validation errors
+- **Boolean controls** (FormCheckbox, FormCheckboxCard, FormToggle, FormToggleCard): set `variant` to `'error'` on validation error, use `field.value ?? false`
+- **Group controls** (FormCheckboxGroup, FormRadioGroup, FormToggleGroup): set `variant` on error, use `field.value ?? []` (or `?? null` for RadioGroup)
+- **Radio controls** (FormRadio, FormRadioCard): use `checked={field.value === value}` pattern
+
+All form wrappers are exported from `src/form/index.ts`.
 
 ### Design tokens
 

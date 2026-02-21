@@ -104,6 +104,7 @@ For use inside containers with `overflow: hidden`:
 | `size` | `'compact' \| 'default'` | `'default'` | Select size |
 | `disabled` | `boolean` | `false` | Disable select |
 | `fullWidth` | `boolean` | `false` | Full width |
+| `message` | `string` | - | Message text below select (error, hint) |
 | `portalRenderNode` | `HTMLElement \| null` | - | Portal target for dropdown |
 | `className` | `string` | - | CSS class name |
 | `classnames` | `SelectClassNames` | - | Custom class names |

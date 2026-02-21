@@ -99,6 +99,7 @@ const options: RadioGroupOption<Color>[] = [
 | `onChange` | `(value: T) => void` | **required** | Change handler |
 | `label` | `string` | - | Group label |
 | `name` | `string` | - | Input name for all radios |
+| `variant` | `'normal' \| 'error'` | `'normal'` | Visual variant for all radios |
 | `disabled` | `boolean` | `false` | Disable all radios |
 | `className` | `string` | - | CSS class name |
 | `classnames` | `RadioGroupClassNames` | - | Custom class names |

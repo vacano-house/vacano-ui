@@ -134,6 +134,7 @@ const [open, setOpen] = useState(false)
 | `minDate` | `Date` | - | Minimum date |
 | `maxDate` | `Date` | - | Maximum date |
 | `label` | `string` | - | Label text |
+| `message` | `string` | - | Message text below picker (error, hint) |
 | `size` | `'compact' \| 'default'` | `'default'` | Input size |
 | `variant` | `'normal' \| 'error'` | `'normal'` | Visual variant |
 | `disabled` | `boolean` | `false` | Disable picker |

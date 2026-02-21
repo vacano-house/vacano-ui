@@ -37,6 +37,10 @@ import { COLORS, mediaUp, useKeyBinding } from '@vacano/ui/lib'
 
 - [useKeyBinding](/lib/use-key-binding) - Keyboard shortcut handler
 
+## Validation
+
+- [Validation](/lib/validation) - Yup schema factories (`email`, `phone`, `url`, `password`, `slug`, `noSpaces`, `minAge`, `hexColor`, `ipv4`, `creditCard`)
+
 ## Types
 
 - [Types](/lib/types) - Shared TypeScript types (`VacanoComponentProps`, `VacanoValueItem`, `KeyboardEventKey`, `OperatingSystem`, `Browser`)

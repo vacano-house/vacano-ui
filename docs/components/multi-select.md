@@ -118,6 +118,7 @@ Limit the number of visible chips:
 | `placeholder` | `string` | - | Placeholder text |
 | `variant` | `'normal' \| 'error'` | `'normal'` | Visual variant |
 | `disabled` | `boolean` | `false` | Disable component |
+| `message` | `string` | - | Message text below component (error, hint) |
 | `maxVisible` | `number` | - | Max visible chips |
 | `emptyMessage` | `ReactNode` | - | Empty state message |
 | `searchPlaceholder` | `string` | - | Search input placeholder |

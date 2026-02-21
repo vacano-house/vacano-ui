@@ -118,6 +118,7 @@ Choose which key creates a new tag:
 | `placeholder` | `string` | - | Input placeholder |
 | `variant` | `'normal' \| 'error'` | `'normal'` | Visual variant |
 | `disabled` | `boolean` | `false` | Disable input |
+| `message` | `string` | - | Message text below input (error, hint) |
 | `freeSolo` | `boolean` | `false` | Allow custom tags |
 | `createKey` | `'Tab' \| 'Enter'` | `'Tab'` | Key to create tag |
 | `emptyMessage` | `ReactNode` | - | Empty state message |

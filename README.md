@@ -19,7 +19,7 @@
 
 ## Features
 
-- **37+ Components** - Form controls, data display, feedback, layout, navigation, and utility components
+- **40+ Components** - Form controls, data display, feedback, layout, navigation, and utility components
 - **1800+ Icons** - Lucide icon components included
 - **TypeScript** - Full TypeScript support with strict typing
 - **Emotion CSS-in-JS** - Styled components with transient props
@@ -58,11 +58,12 @@ function App() {
 | `@vacano/ui` | Main components |
 | `@vacano/ui/icons` | Lucide icon components |
 | `@vacano/ui/lib` | Utilities, hooks, constants, and types |
+| `@vacano/ui/form` | react-hook-form wrappers (FormInput, FormSelect, etc.) |
 
 ## Components
 
 ### Form
-Autocomplete, Button, Checkbox, CheckboxCard, CheckboxGroup, DatePicker, Input, MultiSelect, OtpCode, Radio, RadioCard, RadioGroup, Select, Tags, Textarea
+Autocomplete, Button, Checkbox, CheckboxCard, CheckboxGroup, DatePicker, Input, MultiSelect, OtpCode, Radio, RadioCard, RadioGroup, Select, Tags, Textarea, Toggle, ToggleCard, ToggleGroup
 
 ### Data Display
 Card, Chip, Progress, Tabs
@@ -77,7 +78,7 @@ Container, Panel
 Dropdown, Stepper
 
 ### Utility
-FieldLabel, FieldMessage, GlobalStyle, ImageCropper, KeysBindings, KeySymbol
+FieldLabel, FieldMessage, FieldRow, GlobalStyle, ImageCropper, KeysBindings, KeySymbol
 
 ## Icons
 
