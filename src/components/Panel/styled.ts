@@ -15,6 +15,9 @@ export const StyledContainer = styled.div<StyledContainerProps>`
   border: 1px dashed ${({ $variant }) => getPanelVariantColors($variant).border};
   border-radius: 16px;
   background-color: ${({ $variant }) => getPanelVariantColors($variant).background};
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -2px rgba(0, 0, 0, 0.1);
 `
 
 export const StyledHeader = styled.div`

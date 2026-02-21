@@ -1,6 +1,6 @@
 # Panel
 
-Section component with optional title and description.
+Section component with optional title, description, and subtle box shadow.
 
 *Also known as: section, content section, titled container, card with title*
 
