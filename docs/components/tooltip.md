@@ -2,7 +2,15 @@
 
 Hover tooltip component with multiple placements and variants.
 
-<a href="/storybook/?path=/docs/components-tooltip--docs" target="_blank">View in Storybook</a>
+*Also known as: popover, hint, hover info, title tooltip, info bubble*
+
+<a href="/storybook/?path=/story/components-tooltip--playground" target="_blank">View in Storybook</a>
+
+## When to use
+
+- Showing supplementary information on hover (icon explanations, truncated text, shortcuts)
+- For interactive popup menus, use [Dropdown](/components/dropdown) instead
+- Supports rich content (ReactNode), not just plain text
 
 ## Import
 
@@ -122,3 +130,8 @@ For use inside containers with `overflow: hidden`:
 | Key | Description |
 |-----|-------------|
 | `content` | Tooltip content container |
+
+## Related
+
+- [Dropdown](/components/dropdown) - interactive popup menu triggered by click
+- [KeysBindings](/components/keys-bindings) - display keyboard shortcuts (often shown inside tooltips)

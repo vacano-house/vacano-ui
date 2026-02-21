@@ -2,7 +2,14 @@
 
 Radio button input with label support.
 
-<a href="/storybook/?path=/docs/components-radio--docs" target="_blank">View in Storybook</a>
+*Also known as: radio button, option button, single choice*
+
+<a href="/storybook/?path=/story/components-radio--playground" target="_blank">View in Storybook</a>
+
+## When to use
+
+- Mutually exclusive choice from 2-5 options. For more options, use Select.
+- For card-style, use RadioCard. For grouped layout, use RadioGroup.
 
 ## Import
 
@@ -64,3 +71,10 @@ const [selected, setSelected] = useState('option1')
 | `box` | Visual radio circle |
 | `dot` | Selected dot indicator |
 | `label` | Label text |
+
+## Related
+
+- [RadioCard](/components/radio-card) - Card-style radio with description
+- [RadioGroup](/components/radio-group) - Group of radio buttons
+- [Checkbox](/components/checkbox) - Binary on/off toggle
+- [Select](/components/select) - Dropdown selection for many options

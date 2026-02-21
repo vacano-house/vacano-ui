@@ -2,7 +2,14 @@
 
 Group of radio buttons with shared state management.
 
-<a href="/storybook/?path=/docs/molecules-radiogroup--docs" target="_blank">View in Storybook</a>
+*Also known as: option group, single select group, radio list*
+
+<a href="/storybook/?path=/story/components-radiogroup--playground" target="_blank">View in Storybook</a>
+
+## When to use
+
+- Group of radio buttons for single selection. For cards with descriptions, use RadioCard.
+- For dropdown-style, use Select.
 
 ## Import
 
@@ -90,3 +97,10 @@ type RadioGroupOption = {
 | `label` | Group label |
 | `options` | Options container |
 | `radio` | Individual radio |
+
+## Related
+
+- [Radio](/components/radio) - Individual radio button
+- [RadioCard](/components/radio-card) - Card-style radio
+- [CheckboxGroup](/components/checkbox-group) - Multiple selection group
+- [Select](/components/select) - Dropdown selection

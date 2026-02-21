@@ -2,7 +2,12 @@
 
 Global CSS reset and base styles component.
 
-<a href="/storybook/?path=/docs/global-globalstyle--docs" target="_blank">View in Storybook</a>
+*Also known as: CSS reset, base styles, global CSS, theme provider*
+
+
+## When to use
+
+- Always wrap your app with GlobalStyle. It provides CSS reset, Inter font, and base styles. Required for all Vacano UI components.
 
 ## Import
 
@@ -32,23 +37,9 @@ function App() {
 The GlobalStyle component applies:
 
 - CSS reset (box-sizing, margin, padding)
-- Inter font family
+- System font stack (GitHub-style)
 - Base text styles
 - Focus visible styles
-- Smooth scrolling
-
-## Font Loading
-
-GlobalStyle includes the Inter font. Make sure to preload it in your HTML:
-
-```html
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link
-  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-  rel="stylesheet"
-/>
-```
 
 ## With Emotion
 

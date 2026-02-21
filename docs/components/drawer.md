@@ -2,7 +2,14 @@
 
 Slide-out panel component that appears from any edge of the screen.
 
-<a href="/storybook/?path=/docs/organisms-drawer--docs" target="_blank">View in Storybook</a>
+*Also known as: side panel, slide panel, sheet, sidebar, off-canvas*
+
+<a href="/storybook/?path=/story/components-drawer--playground" target="_blank">View in Storybook</a>
+
+## When to use
+
+- Slide-out panels for secondary content, settings, or detail views. Supports all four positions.
+- For centered overlays, use Modal.
 
 ## Import
 
@@ -81,3 +88,8 @@ const [open, setOpen] = useState(false)
 | `size` | `string` | - | Width (left/right) or height (top/bottom) |
 | `animated` | `boolean` | `true` | Enable animation |
 | `className` | `string` | - | CSS class name |
+
+## Related
+
+- [Modal](/components/modal) - Centered overlay dialog
+- [Panel](/components/panel) - Titled content section

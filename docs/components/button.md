@@ -2,7 +2,14 @@
 
 Clickable button with multiple variants, sizes, and keyboard binding support.
 
-<a href="/storybook/?path=/docs/components-button--docs" target="_blank">View in Storybook</a>
+*Also known as: action button, CTA, call-to-action, submit button, click target*
+
+<a href="/storybook/?path=/story/components-button--playground" target="_blank">View in Storybook</a>
+
+## When to use
+
+- Primary actions and form submissions. Use `variant="transparent"` for secondary actions.
+- For navigation, use `type="link"`. For icon-only actions in toolbars, omit children.
 
 ## Import
 
@@ -103,3 +110,8 @@ Display and respond to keyboard shortcuts:
 | `label` | Label text element |
 | `icon` | Icon container |
 | `binding` | Keyboard binding display |
+
+## Related
+
+- [KeysBindings](/components/keys-bindings) - Keyboard shortcut display
+- [Spinner](/components/spinner) - Loading indicator used in Button's loading state

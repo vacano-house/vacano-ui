@@ -2,7 +2,14 @@
 
 Confirmation dialog that appears at the bottom center of the screen.
 
-<a href="/storybook/?path=/docs/components-confirmation--docs" target="_blank">View in Storybook</a>
+*Also known as: confirm dialog, yes/no dialog, action confirmation, delete confirmation*
+
+<a href="/storybook/?path=/story/components-confirmation--playground" target="_blank">View in Storybook</a>
+
+## When to use
+
+- Simple confirmation before destructive or important actions. Supports async with loading spinner.
+- For complex forms in overlays, use Modal.
 
 ## Import
 
@@ -105,3 +112,8 @@ show(
 - **Escape** — Cancel and hide
 - **Loading** — If `onConfirm` returns Promise, shows spinner and disables Cancel
 - Only one confirmation can be shown at a time
+
+## Related
+
+- [Modal](/components/modal) - Full overlay dialog
+- [Button](/components/button) - Trigger for confirmation actions

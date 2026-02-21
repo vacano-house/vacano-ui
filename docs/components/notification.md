@@ -1,8 +1,15 @@
 # Notification
 
-Всплывающая полоска вверху экрана для отображения уведомлений.
+Full-width notification bar at the top of the screen.
 
-<a href="/storybook/?path=/docs/components-notification--docs" target="_blank">View in Storybook</a>
+*Also known as: notification bar, top banner, alert bar, status bar notification*
+
+<a href="/storybook/?path=/story/components-notification--playground" target="_blank">View in Storybook</a>
+
+## When to use
+
+- Full-width notification at the top of screen. Shows one at a time with queue.
+- For multiple simultaneous messages, use Toastr. For background save, use SaveProgress.
 
 ## Import
 
@@ -12,7 +19,7 @@ import { NotificationProvider, useNotification } from '@vacano/ui'
 
 ## Setup
 
-Оберните приложение в `NotificationProvider`:
+Wrap your application with `NotificationProvider`:
 
 ```tsx
 function App() {
@@ -64,7 +71,7 @@ show('Info message', 'info')
 
 ## Rich Content
 
-Message поддерживает ReactNode, можно использовать JSX:
+Message supports ReactNode, so you can use JSX:
 
 ```tsx
 const { show } = useNotification()
@@ -89,7 +96,7 @@ show(
 
 ## Custom Duration
 
-По умолчанию уведомление показывается 5 секунд. Можно указать другое время в миллисекундах:
+By default, the notification is shown for 5 seconds. You can specify a different duration in milliseconds:
 
 ```tsx
 const { show } = useNotification()
@@ -103,7 +110,7 @@ show('Long message', 'info', 10000)
 
 ## Queue Behavior
 
-В отличие от Toastr, Notification показывает только одно уведомление за раз. Если добавить несколько уведомлений, они покажутся последовательно:
+Unlike Toastr, Notification shows only one notification at a time. If multiple notifications are added, they are displayed sequentially:
 
 ```tsx
 const { show } = useNotification()
@@ -116,7 +123,7 @@ show('Third', 'info', 2000)
 
 ## Manual Hide
 
-Уведомление можно скрыть программно:
+The notification can be hidden programmatically:
 
 ```tsx
 const { show, hide } = useNotification()
@@ -160,3 +167,8 @@ hide()
 | Display | One at a time | Up to 3 at once |
 | Queue | Shows next after current | Shows queue count |
 | Style | Full-width bar | Rounded toast |
+
+## Related
+
+- [Toastr](/components/toastr) - Multiple simultaneous toast notifications
+- [SaveProgress](/components/save-progress) - Background save indicator

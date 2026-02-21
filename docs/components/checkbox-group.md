@@ -2,7 +2,14 @@
 
 Group of checkboxes with shared state management.
 
-<a href="/storybook/?path=/docs/molecules-checkboxgroup--docs" target="_blank">View in Storybook</a>
+*Also known as: checkbox list, multi-check, multiple choice*
+
+<a href="/storybook/?path=/story/components-checkboxgroup--playground" target="_blank">View in Storybook</a>
+
+## When to use
+
+- Selecting multiple values from a small set of options. For cards with descriptions, use CheckboxCard.
+- For a modal picker, use MultiSelect.
 
 ## Import
 
@@ -78,3 +85,10 @@ type CheckboxGroupOption = {
 | `label` | Group label |
 | `options` | Options container |
 | `checkbox` | Individual checkbox |
+
+## Related
+
+- [Checkbox](/components/checkbox) - Individual checkbox
+- [CheckboxCard](/components/checkbox-card) - Card-style checkbox
+- [RadioGroup](/components/radio-group) - Single selection group
+- [MultiSelect](/components/multi-select) - Multiple selection with modal picker

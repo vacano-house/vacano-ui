@@ -2,7 +2,14 @@
 
 Step indicator component for multi-step flows.
 
-<a href="/storybook/?path=/docs/molecules-stepper--docs" target="_blank">View in Storybook</a>
+*Also known as: step indicator, wizard, progress steps, multi-step, breadcrumb steps*
+
+<a href="/storybook/?path=/story/components-stepper--playground" target="_blank">View in Storybook</a>
+
+## When to use
+
+- Multi-step flows and wizards. Shows progress through a sequence of steps.
+- For switching between views, use Tabs.
 
 ## Import
 
@@ -133,3 +140,7 @@ type StepItem = {
 | `circle` | Step circle |
 | `label` | Step label |
 | `line` | Connector line |
+
+## Related
+
+- [Tabs](/components/tabs) - Tab navigation for switching views

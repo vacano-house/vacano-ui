@@ -2,7 +2,13 @@
 
 6-digit (or custom length) OTP code input for verification codes.
 
-<a href="/storybook/?path=/docs/components-otpcode--docs" target="_blank">View in Storybook</a>
+*Also known as: OTP input, verification code, PIN input, 2FA code, SMS code*
+
+<a href="/storybook/?path=/story/components-otpcode--playground" target="_blank">View in Storybook</a>
+
+## When to use
+
+- Entering numeric verification codes (SMS, 2FA, email verification). Supports auto-focus, paste, and SMS autofill.
 
 ## Import
 
@@ -86,3 +92,7 @@ const [code, setCode] = useState('')
 | `container` | Container element |
 | `input` | Individual input elements |
 | `label` | Label element |
+
+## Related
+
+- [Input](/components/input) - Basic text input

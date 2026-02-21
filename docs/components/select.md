@@ -2,7 +2,14 @@
 
 Single selection dropdown with search and portal support.
 
-<a href="/storybook/?path=/docs/components-select--docs" target="_blank">View in Storybook</a>
+*Also known as: dropdown, picker, option selector, single select*
+
+<a href="/storybook/?path=/story/components-select--playground" target="_blank">View in Storybook</a>
+
+## When to use
+
+- Choosing one option from a predefined list. For multiple selections, use MultiSelect.
+- For search with suggestions, use Autocomplete.
 
 ## Import
 
@@ -119,3 +126,10 @@ type SelectOption = {
 | `trigger` | Trigger button |
 | `dropdown` | Dropdown container |
 | `option` | Individual option |
+
+## Related
+
+- [MultiSelect](/components/multi-select) - Multiple option selection
+- [Autocomplete](/components/autocomplete) - Search with async suggestions
+- [Dropdown](/components/dropdown) - Custom dropdown menus
+- [RadioGroup](/components/radio-group) - Radio button group for single selection

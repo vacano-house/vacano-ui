@@ -2,7 +2,13 @@
 
 Responsive container component with max-width constraints.
 
-<a href="/storybook/?path=/docs/components-container--docs" target="_blank">View in Storybook</a>
+*Also known as: wrapper, page container, content wrapper, max-width container*
+
+<a href="/storybook/?path=/story/components-container--playground" target="_blank">View in Storybook</a>
+
+## When to use
+
+- Centering page content with responsive max-width. Use as the main layout wrapper.
 
 ## Import
 
@@ -54,3 +60,7 @@ function PageLayout() {
 | `className` | `string` | - | CSS class name |
 
 All standard HTML div attributes are also supported.
+
+## Related
+
+- [Panel](/components/panel) - Titled content section

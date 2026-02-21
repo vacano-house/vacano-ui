@@ -2,7 +2,14 @@
 
 Section component with optional title and description.
 
-<a href="/storybook/?path=/docs/components-panel--docs" target="_blank">View in Storybook</a>
+*Also known as: section, content section, titled container, card with title*
+
+<a href="/storybook/?path=/story/components-panel--playground" target="_blank">View in Storybook</a>
+
+## When to use
+
+- Titled content sections. Use for organizing page sections with headings and descriptions.
+- For simple containers, use Card. For full-page wrapper, use Container.
 
 ## Import
 
@@ -67,3 +74,8 @@ import { Panel } from '@vacano/ui'
 | `title` | Title text |
 | `description` | Description text |
 | `content` | Content container |
+
+## Related
+
+- [Card](/components/card) - Generic content container
+- [Container](/components/container) - Responsive page wrapper

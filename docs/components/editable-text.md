@@ -2,7 +2,13 @@
 
 Inline editable text with pencil/check icon toggle.
 
-<a href="/storybook/?path=/docs/components-editabletext--docs" target="_blank">View in Storybook</a>
+*Also known as: inline edit, click to edit, in-place editing*
+
+<a href="/storybook/?path=/story/components-editabletext--playground" target="_blank">View in Storybook</a>
+
+## When to use
+
+- Editing text inline without navigating to a form. Click pencil to edit, Cmd+Enter to save, Escape to cancel.
 
 ## Import
 
@@ -63,3 +69,7 @@ const [name, setName] = useState('John Doe')
 - **Click outside** — Save changes
 - **Escape** — Cancel and revert
 - Click check icon — Save changes
+
+## Related
+
+- [Input](/components/input) - Standard text input

@@ -2,7 +2,14 @@
 
 Card-style checkbox with label and description.
 
-<a href="/storybook/?path=/docs/components-checkboxcard--docs" target="_blank">View in Storybook</a>
+*Also known as: selection card, toggle card, option card with checkbox*
+
+<a href="/storybook/?path=/story/components-checkboxcard--playground" target="_blank">View in Storybook</a>
+
+## When to use
+
+- Rich checkbox with label and description (settings, feature toggles, plan selection). For simple checkboxes, use Checkbox.
+- For mutual exclusion cards, use RadioCard.
 
 ## Import
 
@@ -81,3 +88,9 @@ const [checked, setChecked] = useState(false)
 | `content` | Content container |
 | `label` | Label text |
 | `description` | Description text |
+
+## Related
+
+- [Checkbox](/components/checkbox) - Simple checkbox
+- [CheckboxGroup](/components/checkbox-group) - Group of checkboxes
+- [RadioCard](/components/radio-card) - Card-style radio for mutual exclusion

@@ -2,7 +2,13 @@
 
 Single keyboard key symbol display.
 
-<a href="/storybook/?path=/docs/components-keysymbol--docs" target="_blank">View in Storybook</a>
+*Also known as: key cap, keyboard key, key icon, shortcut key*
+
+<a href="/storybook/?path=/story/components-keysymbol--playground" target="_blank">View in Storybook</a>
+
+## When to use
+
+- Displaying a single keyboard key symbol. For full shortcuts with modifiers, use KeysBindings.
 
 ## Import
 
@@ -61,3 +67,7 @@ import { KeySymbol } from '@vacano/ui'
 | `symbol` | `string` | **required** | Key symbol to display |
 | `variant` | `'dark' \| 'light'` | `'dark'` | Color variant |
 | `className` | `string` | - | CSS class name |
+
+## Related
+
+- [KeysBindings](/components/keys-bindings) - Full keyboard shortcut display

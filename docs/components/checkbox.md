@@ -2,7 +2,14 @@
 
 Checkbox input with label and indeterminate state support.
 
-<a href="/storybook/?path=/docs/components-checkbox--docs" target="_blank">View in Storybook</a>
+*Also known as: check box, tick box, boolean toggle*
+
+<a href="/storybook/?path=/story/components-checkbox--playground" target="_blank">View in Storybook</a>
+
+## When to use
+
+- Binary on/off choices. For selecting from multiple options, use CheckboxGroup.
+- For card-style selection, use CheckboxCard. For mutual exclusion, use Radio.
 
 ## Import
 
@@ -76,3 +83,9 @@ Used for "select all" scenarios where some items are selected:
 | `box` | Visual checkbox box |
 | `icon` | Check icon |
 | `label` | Label text |
+
+## Related
+
+- [CheckboxCard](/components/checkbox-card) - Card-style checkbox with description
+- [CheckboxGroup](/components/checkbox-group) - Group of checkboxes
+- [Radio](/components/radio) - Mutually exclusive selection

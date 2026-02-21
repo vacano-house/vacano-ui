@@ -2,7 +2,14 @@
 
 Card-style radio button with label and description.
 
-<a href="/storybook/?path=/docs/components-radiocard--docs" target="_blank">View in Storybook</a>
+*Also known as: selection card, option card with radio, plan card*
+
+<a href="/storybook/?path=/story/components-radiocard--playground" target="_blank">View in Storybook</a>
+
+## When to use
+
+- Rich radio selection with label and description (plan selection, preference cards). For simple radios, use Radio.
+- For checkbox cards, use CheckboxCard.
 
 ## Import
 
@@ -79,3 +86,9 @@ const [selected, setSelected] = useState('basic')
 | `content` | Content container |
 | `label` | Label text |
 | `description` | Description text |
+
+## Related
+
+- [Radio](/components/radio) - Simple radio button
+- [RadioGroup](/components/radio-group) - Group of radio buttons
+- [CheckboxCard](/components/checkbox-card) - Card-style checkbox

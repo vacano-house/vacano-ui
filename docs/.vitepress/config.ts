@@ -6,9 +6,6 @@ export default defineConfig({
   base: '/',
   head: [
     ['link', { rel: 'icon', href: '/logo.svg' }],
-    ['link', { rel: 'preconnect', href: 'https://fonts.googleapis.com' }],
-    ['link', { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' }],
-    ['link', { href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap', rel: 'stylesheet' }],
   ],
   themeConfig: {
     logo: '/logo.svg',
@@ -17,7 +14,7 @@ export default defineConfig({
       { text: 'Guide', link: '/guide/getting-started' },
       { text: 'Components', link: '/components/' },
       { text: 'Storybook', link: '/storybook/', target: '_blank' },
-      { text: 'AI Docs', link: '/MLAPI.txt', target: '_blank' },
+      { text: 'MCP', link: '/guide/mcp' },
     ],
     sidebar: {
       '/guide/': [
@@ -26,10 +23,18 @@ export default defineConfig({
           items: [
             { text: 'Getting Started', link: '/guide/getting-started' },
             { text: 'Installation', link: '/guide/installation' },
+            { text: 'MCP Server', link: '/guide/mcp' },
           ],
         },
       ],
       '/components/': [
+        {
+          text: 'Overview',
+          items: [
+            { text: 'All Components', link: '/components/' },
+            { text: 'Icons', link: '/components/icons' },
+          ],
+        },
         {
           text: 'Form',
           items: [
@@ -104,7 +109,7 @@ export default defineConfig({
     socialLinks: [{ icon: 'github', link: 'https://github.com/vacano-house/vacano-ui' }],
     footer: {
       message: 'Released under the MIT License.',
-      copyright: 'Copyright © 2025 Vacano',
+      copyright: 'Copyright © 2026 Vacano',
     },
     search: {
       provider: 'local',

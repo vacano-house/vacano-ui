@@ -2,7 +2,14 @@
 
 Small label component with optional delete action.
 
-<a href="/storybook/?path=/docs/components-chip--docs" target="_blank">View in Storybook</a>
+*Also known as: tag, badge, label, pill*
+
+<a href="/storybook/?path=/story/components-chip--playground" target="_blank">View in Storybook</a>
+
+## When to use
+
+- Displaying small labels, tags, or status indicators. Use `deletable` for removable chips.
+- For inputting tags, use Tags component.
 
 ## Import
 
@@ -50,3 +57,7 @@ import { Chip } from '@vacano/ui'
 |-----|-------------|
 | `delete` | Delete button |
 | `label` | Label text |
+
+## Related
+
+- [Tags](/components/tags) - Tag input with autocomplete

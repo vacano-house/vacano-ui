@@ -2,7 +2,13 @@
 
 Tab navigation component for switching between views.
 
-<a href="/storybook/?path=/docs/molecules-tabs--docs" target="_blank">View in Storybook</a>
+*Also known as: tab bar, tab navigation, segmented control, tab switcher*
+
+<a href="/storybook/?path=/story/components-tabs--playground" target="_blank">View in Storybook</a>
+
+## When to use
+
+- Switching between views or content sections. For step-by-step flows, use Stepper.
 
 ## Import
 
@@ -89,3 +95,7 @@ type TabItem = {
 | Key | Description |
 |-----|-------------|
 | `tab` | Individual tab button |
+
+## Related
+
+- [Stepper](/components/stepper) - Multi-step flow indicator

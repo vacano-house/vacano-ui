@@ -16,6 +16,9 @@ const globalStyles = css`
     -webkit-text-size-adjust: 100%;
     -moz-tab-size: 4;
     tab-size: 4;
+    font-family:
+      -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif,
+      'Apple Color Emoji', 'Segoe UI Emoji';
   }
 
   body {
@@ -73,50 +76,6 @@ const globalStyles = css`
   table {
     border-collapse: collapse;
     border-spacing: 0;
-  }
-
-  /*
-   * Inter Font Configuration
-   * Optimized for UI with modern CSS features
-   */
-
-  html {
-    font-family:
-      'Inter',
-      -apple-system,
-      BlinkMacSystemFont,
-      'Segoe UI',
-      Roboto,
-      'Helvetica Neue',
-      Arial,
-      sans-serif;
-
-    /* Variable font optical sizing */
-    font-optical-sizing: auto;
-
-    /*
-     * OpenType features for Inter:
-     * - cv01: alternate 1 (distinguishable from l/I)
-     * - cv02: alternate 4 (open top)
-     * - cv03: alternate 6 (straight tail)
-     * - cv04: alternate 9 (straight tail)
-     * - ss01: open digits
-     * - ss02: disambiguation (alt a, g)
-     * - tnum: tabular numbers (monospaced digits for alignment)
-     * - zero: slashed zero
-     */
-    font-feature-settings:
-      'cv01' 1,
-      'cv02' 1,
-      'ss01' 1,
-      'tnum' 1,
-      'zero' 1;
-
-    /* Improved kerning */
-    font-kerning: normal;
-
-    /* Slight negative tracking for Inter at UI sizes */
-    letter-spacing: -0.011em;
   }
 
   /* Tabular figures for numbers in data contexts */

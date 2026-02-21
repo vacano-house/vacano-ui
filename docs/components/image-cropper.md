@@ -2,7 +2,13 @@
 
 Image cropping component with preview and file selection.
 
-<a href="/storybook/?path=/docs/molecules-imagecropper--docs" target="_blank">View in Storybook</a>
+*Also known as: avatar upload, image editor, photo crop, profile picture upload*
+
+<a href="/storybook/?path=/story/components-imagecropper--playground" target="_blank">View in Storybook</a>
+
+## When to use
+
+- Uploading and cropping images (avatars, profile pictures). Provides crop preview and configurable aspect ratio.
 
 ## Import
 

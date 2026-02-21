@@ -2,7 +2,14 @@
 
 Background save indicator (like auto-save in video games).
 
-<a href="/storybook/?path=/docs/components-saveprogress--docs" target="_blank">View in Storybook</a>
+*Also known as: auto-save indicator, saving indicator, background save, progress indicator*
+
+<a href="/storybook/?path=/story/components-saveprogress--playground" target="_blank">View in Storybook</a>
+
+## When to use
+
+- Showing background save/upload operations. Non-blocking indicator in bottom-right corner.
+- For user feedback messages, use Toastr or Notification.
 
 ## Import
 
@@ -132,3 +139,9 @@ The indicator appears in the bottom-right corner with:
 - Semi-transparent background with blur effect
 - Spinner animation
 - Customizable message text
+
+## Related
+
+- [Toastr](/components/toastr) - Toast notification system
+- [Notification](/components/notification) - Full-width top notification bar
+- [Spinner](/components/spinner) - Loading indicator

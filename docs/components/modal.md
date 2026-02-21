@@ -2,7 +2,14 @@
 
 Overlay modal dialog component.
 
-<a href="/storybook/?path=/docs/organisms-modal--docs" target="_blank">View in Storybook</a>
+*Also known as: dialog, popup, overlay, lightbox, modal dialog*
+
+<a href="/storybook/?path=/story/components-modal--playground" target="_blank">View in Storybook</a>
+
+## When to use
+
+- Overlaying content that requires attention (forms, confirmations, details). For side panels, use Drawer.
+- For simple yes/no confirmations, use Confirmation.
 
 ## Import
 
@@ -69,3 +76,8 @@ const [open, setOpen] = useState(false)
 |-----|-------------|
 | `overlay` | Background overlay |
 | `content` | Modal content container |
+
+## Related
+
+- [Drawer](/components/drawer) - Slide-out side panel
+- [Confirmation](/components/confirmation) - Simple confirmation dialog

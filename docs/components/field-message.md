@@ -2,7 +2,14 @@
 
 Helper, error, success or warning message displayed below form fields.
 
-<a href="/storybook/?path=/docs/components-fieldmessage--docs" target="_blank">View in Storybook</a>
+*Also known as: helper text, error message, validation message, hint text, form feedback*
+
+<a href="/storybook/?path=/story/components-fieldmessage--playground" target="_blank">View in Storybook</a>
+
+## When to use
+
+- Showing validation messages, hints, or errors below form fields.
+- Pair with Input/Select/Textarea `variant="error"` for consistent error UX.
 
 ## Import
 
@@ -64,3 +71,8 @@ const hasError = value.length > 0 && value.length < 3
 | `children` | `ReactNode` | - | Message content |
 | `variant` | `'normal' \| 'error' \| 'success' \| 'warning'` | `'normal'` | Visual variant |
 | `className` | `string` | - | CSS class name |
+
+## Related
+
+- [FieldLabel](/components/field-label) - Form field label
+- [Input](/components/input) - Text input with validation variants

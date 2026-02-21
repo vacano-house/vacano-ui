@@ -2,7 +2,14 @@
 
 Text input field with label support and validation variants.
 
-<a href="/storybook/?path=/docs/components-input--docs" target="_blank">View in Storybook</a>
+*Also known as: text field, text input, form field, text box*
+
+<a href="/storybook/?path=/story/components-input--playground" target="_blank">View in Storybook</a>
+
+## When to use
+
+- Single-line text entry. For multiline, use Textarea.
+- For search with suggestions, use Autocomplete. For selection from options, use Select.
 
 ## Import
 
@@ -73,3 +80,10 @@ All standard HTML input attributes are also supported.
 |-----|-------------|
 | `input` | Input element |
 | `label` | Label element |
+
+## Related
+
+- [FieldLabel](/components/field-label) - Standalone form label
+- [FieldMessage](/components/field-message) - Validation and helper messages
+- [Textarea](/components/textarea) - Multiline text input
+- [Autocomplete](/components/autocomplete) - Search input with suggestions

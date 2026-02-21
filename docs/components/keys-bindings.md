@@ -2,7 +2,14 @@
 
 Keyboard shortcut display component.
 
-<a href="/storybook/?path=/docs/components-keysbindings--docs" target="_blank">View in Storybook</a>
+*Also known as: keyboard shortcut display, hotkey indicator, shortcut badge*
+
+<a href="/storybook/?path=/story/components-keysbindings--playground" target="_blank">View in Storybook</a>
+
+## When to use
+
+- Displaying keyboard shortcuts visually. Often used inside Buttons or Tooltips.
+- For single key display, use KeySymbol.
 
 ## Import
 
@@ -90,3 +97,8 @@ All keys from `KeyboardEventKey` type are supported:
 | Key | Description |
 |-----|-------------|
 | `item` | Individual key item |
+
+## Related
+
+- [KeySymbol](/components/key-symbol) - Single keyboard key display
+- [Button](/components/button) - Button with keyboard shortcut support

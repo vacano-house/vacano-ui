@@ -2,7 +2,14 @@
 
 Multiple selection component with search, chips display, and modal picker.
 
-<a href="/storybook/?path=/docs/molecules-multiselect--docs" target="_blank">View in Storybook</a>
+*Also known as: multi picker, multiple selection, multi dropdown, tag selector*
+
+<a href="/storybook/?path=/story/components-multiselect--playground" target="_blank">View in Storybook</a>
+
+## When to use
+
+- Selecting multiple options from a list via modal picker. For free-form tags, use Tags.
+- For a simple group of checkboxes, use CheckboxGroup.
 
 ## Import
 
@@ -141,3 +148,9 @@ type MultiSelectOption = {
 | `options` | Options list |
 | `option` | Individual option |
 | `empty` | Empty state |
+
+## Related
+
+- [Select](/components/select) - Single option selection
+- [Tags](/components/tags) - Tag input with free-form entry
+- [CheckboxGroup](/components/checkbox-group) - Simple checkbox group

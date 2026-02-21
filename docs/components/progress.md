@@ -2,7 +2,14 @@
 
 Progress bar indicator component.
 
-<a href="/storybook/?path=/docs/components-progress--docs" target="_blank">View in Storybook</a>
+*Also known as: progress bar, loading bar, completion indicator, percentage bar*
+
+<a href="/storybook/?path=/story/components-progress--playground" target="_blank">View in Storybook</a>
+
+## When to use
+
+- Showing completion percentage (0-100). For indeterminate loading, use Spinner.
+- For background save indication, use SaveProgress.
 
 ## Import
 
@@ -63,3 +70,8 @@ useEffect(() => {
 |-----|-------------|
 | `track` | Background track |
 | `bar` | Progress bar fill |
+
+## Related
+
+- [Spinner](/components/spinner) - Indeterminate loading indicator
+- [SaveProgress](/components/save-progress) - Background save indicator

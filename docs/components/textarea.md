@@ -1,8 +1,15 @@
 # Textarea
 
-Многострочное текстовое поле для ввода длинного текста.
+Multiline text field for entering long text.
 
-<a href="/storybook/?path=/docs/components-textarea--docs" target="_blank">View in Storybook</a>
+*Also known as: multiline input, text area, rich text field*
+
+<a href="/storybook/?path=/story/components-textarea--playground" target="_blank">View in Storybook</a>
+
+## When to use
+
+- Multiline text entry (descriptions, comments, notes). For single-line text, use Input.
+- For code editing, consider a dedicated code editor.
 
 ## Import
 
@@ -25,7 +32,7 @@ import { Textarea } from '@vacano/ui'
 
 ## Rows
 
-Количество видимых строк можно настроить через проп `rows`:
+The number of visible rows can be configured via the `rows` prop:
 
 ```tsx
 <Textarea rows={2} label="Small" placeholder="2 rows" />
@@ -69,13 +76,13 @@ const [value, setValue] = useState('')
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
-| `label` | `string` | - | Текст метки над полем |
-| `variant` | `'normal' \| 'error'` | `'normal'` | Визуальный вариант |
-| `rows` | `number` | `4` | Количество видимых строк |
-| `fullWidth` | `boolean` | `false` | Занимает всю ширину контейнера |
-| `disabled` | `boolean` | `false` | Отключает поле |
-| `className` | `string` | - | CSS класс для контейнера |
-| `classnames` | `TextareaClassNames` | - | Объект CSS классов для внутренних элементов |
+| `label` | `string` | - | Label text above the field |
+| `variant` | `'normal' \| 'error'` | `'normal'` | Visual variant |
+| `rows` | `number` | `4` | Number of visible rows |
+| `fullWidth` | `boolean` | `false` | Takes full container width |
+| `disabled` | `boolean` | `false` | Disables the field |
+| `className` | `string` | - | CSS class for the container |
+| `classnames` | `TextareaClassNames` | - | CSS class names object for inner elements |
 
 ### TextareaClassNames
 
@@ -88,6 +95,12 @@ type TextareaClassNames = {
 
 ## Accessibility
 
-- Поле связано с меткой через структуру компонента
-- Поддерживает стандартные атрибуты `aria-*`
-- Поддерживает навигацию с клавиатуры
+- The field is associated with its label through the component structure
+- Supports standard `aria-*` attributes
+- Supports keyboard navigation
+
+## Related
+
+- [Input](/components/input) - Single-line text input
+- [FieldLabel](/components/field-label) - Standalone form label
+- [FieldMessage](/components/field-message) - Validation and helper messages

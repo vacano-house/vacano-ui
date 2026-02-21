@@ -7,7 +7,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-1.8.0-blue" />
+  <img src="https://img.shields.io/badge/version-1.9.0-blue" />
   <a href="https://www.npmjs.com/package/@vacano/ui"><img src="https://img.shields.io/npm/v/@vacano/ui" alt="npm version" /></a>
   <a href="https://github.com/vacano-house/vacano-ui/blob/master/LICENSE.md"><img src="https://img.shields.io/npm/l/@vacano/ui" alt="license" /></a>
 </p>
@@ -15,12 +15,11 @@
 <p align="center">
   <a href="https://ui.vacano.io">Documentation</a> ·
   <a href="https://ui.vacano.io/storybook/">Storybook</a> ·
-  <a href="https://ui.vacano.io/MLAPI.txt">AI Docs</a>
 </p>
 
 ## Features
 
-- **32+ Components** - Form controls, data display, feedback, layout, and utility components
+- **39+ Components** - Form controls, data display, feedback, layout, navigation, and utility components
 - **1800+ Icons** - Lucide icon components included
 - **TypeScript** - Full TypeScript support with strict typing
 - **Emotion CSS-in-JS** - Styled components with transient props
@@ -63,19 +62,22 @@ function App() {
 ## Components
 
 ### Form
-Button, Checkbox, CheckboxCard, CheckboxGroup, DatePicker, Dropdown, ImageCropper, Input, Radio, RadioCard, RadioGroup, Select, Stepper, Tabs, Toggle
+Autocomplete, Button, Checkbox, CheckboxCard, CheckboxGroup, DatePicker, EditableText, Input, MultiSelect, OtpCode, Radio, RadioCard, RadioGroup, Select, Tags, Textarea
 
 ### Data Display
-Card, Chip, Panel, StatusCard, Table
+Card, Chip, Progress, StatusCard, Tabs
 
 ### Feedback
-Confirmation, Modal, Spinner, Toastr, Tooltip
+Confirmation, Modal, Drawer, Notification, SaveProgress, Spinner, Toastr, Tooltip
 
 ### Layout
-Container, Drawer
+Container, Panel
+
+### Navigation
+Dropdown, Stepper
 
 ### Utility
-FieldLabel, GlobalStyle, KeysBindings, KeySymbol
+FieldLabel, FieldMessage, GlobalStyle, ImageCropper, KeysBindings, KeySymbol
 
 ## Icons
 

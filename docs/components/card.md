@@ -2,7 +2,14 @@
 
 Container component with optional border and shadow.
 
-<a href="/storybook/?path=/docs/components-card--docs" target="_blank">View in Storybook</a>
+*Also known as: container, content box, panel, surface*
+
+<a href="/storybook/?path=/story/components-card--playground" target="_blank">View in Storybook</a>
+
+## When to use
+
+- Grouping related content with optional border and shadow. For titled sections, use Panel.
+- For metric displays, use StatusCard.
 
 ## Import
 
@@ -53,3 +60,8 @@ import { Card } from '@vacano/ui'
 | `className` | `string` | - | CSS class name |
 
 All standard HTML div attributes are also supported.
+
+## Related
+
+- [Panel](/components/panel) - Titled content section
+- [StatusCard](/components/status-card) - Metric display card

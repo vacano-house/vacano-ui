@@ -2,7 +2,13 @@
 
 Form field label component with required indicator.
 
-<a href="/storybook/?path=/docs/components-fieldlabel--docs" target="_blank">View in Storybook</a>
+*Also known as: form label, input label, field title*
+
+<a href="/storybook/?path=/story/components-fieldlabel--playground" target="_blank">View in Storybook</a>
+
+## When to use
+
+- Labeling form fields. Most form components have built-in `label` prop, use FieldLabel only for custom layouts.
 
 ## Import
 
@@ -46,3 +52,8 @@ import { FieldLabel } from '@vacano/ui'
 | `required` | `boolean` | `false` | Show required indicator |
 | `variant` | `'normal' \| 'error'` | `'normal'` | Visual variant |
 | `className` | `string` | - | CSS class name |
+
+## Related
+
+- [FieldMessage](/components/field-message) - Validation and helper messages
+- [Input](/components/input) - Text input with built-in label

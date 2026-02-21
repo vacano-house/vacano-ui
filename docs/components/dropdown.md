@@ -2,7 +2,14 @@
 
 Dropdown menu component with customizable trigger.
 
-<a href="/storybook/?path=/docs/molecules-dropdown--docs" target="_blank">View in Storybook</a>
+*Also known as: popover, popup menu, context menu, action menu, overflow menu*
+
+<a href="/storybook/?path=/story/components-dropdown--playground" target="_blank">View in Storybook</a>
+
+## When to use
+
+- Custom dropdown menus triggered by any element. For selecting options from a list, use Select.
+- For navigation, combine with Button.
 
 ## Import
 
@@ -123,3 +130,9 @@ function MenuDropdown() {
 |-----|-------------|
 | `trigger` | Trigger wrapper |
 | `content` | Dropdown content |
+
+## Related
+
+- [Select](/components/select) - Option selection dropdown
+- [Button](/components/button) - Common trigger element
+- [Tooltip](/components/tooltip) - Hover information popup

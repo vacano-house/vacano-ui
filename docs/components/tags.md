@@ -2,7 +2,14 @@
 
 Tag input component with autocomplete suggestions and free-form entry.
 
-<a href="/storybook/?path=/docs/molecules-tags--docs" target="_blank">View in Storybook</a>
+*Also known as: tag input, chip input, token input, keyword input*
+
+<a href="/storybook/?path=/story/components-tags--playground" target="_blank">View in Storybook</a>
+
+## When to use
+
+- Entering multiple tags/keywords with autocomplete suggestions. Use `freeSolo` for custom tags.
+- For selecting from a fixed list, use MultiSelect.
 
 ## Import
 
@@ -137,3 +144,9 @@ type TagsOption = {
 | `dropdown` | Suggestions dropdown |
 | `option` | Suggestion option |
 | `empty` | Empty state |
+
+## Related
+
+- [MultiSelect](/components/multi-select) - Multiple selection with modal picker
+- [Chip](/components/chip) - Individual tag/label display
+- [Autocomplete](/components/autocomplete) - Search input with suggestions

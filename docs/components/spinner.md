@@ -2,7 +2,14 @@
 
 Loading indicator component with multiple sizes.
 
-<a href="/storybook/?path=/docs/components-spinner--docs" target="_blank">View in Storybook</a>
+*Also known as: loading indicator, loader, activity indicator, busy indicator*
+
+<a href="/storybook/?path=/story/components-spinner--playground" target="_blank">View in Storybook</a>
+
+## When to use
+
+- Indicating loading or processing state. For percentage-based progress, use Progress.
+- For Button loading states, use Button's `loading` prop.
 
 ## Import
 
@@ -71,3 +78,9 @@ function PageLoader() {
 | `size` | `'xs' \| 'sm' \| 'md' \| 'lg'` | `'md'` | Spinner size |
 | `aria-label` | `string` | - | Accessibility label |
 | `className` | `string` | - | CSS class name |
+
+## Related
+
+- [Progress](/components/progress) - Percentage-based progress bar
+- [SaveProgress](/components/save-progress) - Background save indicator
+- [Button](/components/button) - Button with built-in loading state

@@ -2,7 +2,14 @@
 
 Date selection component with calendar dropdown, supporting date, month, and year modes.
 
-<a href="/storybook/?path=/docs/molecules-datepicker--docs" target="_blank">View in Storybook</a>
+*Also known as: calendar, date selector, date input, month picker, year picker*
+
+<a href="/storybook/?path=/story/components-datepicker--playground" target="_blank">View in Storybook</a>
+
+## When to use
+
+- Selecting dates, months, or years. Supports date range constraints with minDate/maxDate.
+- Use `mode="month"` or `mode="year"` for less granular selection.
 
 ## Import
 
@@ -147,3 +154,7 @@ const [open, setOpen] = useState(false)
 | `header` | Calendar header |
 | `grid` | Days/months/years grid |
 | `cell` | Individual cell |
+
+## Related
+
+- [Input](/components/input) - Basic text input

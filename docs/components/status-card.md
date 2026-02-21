@@ -2,7 +2,13 @@
 
 Metric display card with value, label, and trend indicator.
 
-<a href="/storybook/?path=/docs/molecules-statuscard--docs" target="_blank">View in Storybook</a>
+*Also known as: metric card, KPI card, stat card, dashboard card*
+
+<a href="/storybook/?path=/story/components-statuscard--playground" target="_blank">View in Storybook</a>
+
+## When to use
+
+- Displaying metrics with optional trend indicators and icons. Use in dashboards and overview pages.
 
 ## Import
 
@@ -96,3 +102,8 @@ import { IconUsers, IconDollarSign } from '@vacano/ui/icons'
 | `label` | Label text |
 | `value` | Value text |
 | `trend` | Trend indicator |
+
+## Related
+
+- [Card](/components/card) - Generic content container
+- [Progress](/components/progress) - Progress bar indicator

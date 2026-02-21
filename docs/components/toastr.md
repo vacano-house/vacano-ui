@@ -2,7 +2,14 @@
 
 Toast notification system with queue management.
 
-<a href="/storybook/?path=/docs/organisms-toastr--docs" target="_blank">View in Storybook</a>
+*Also known as: toast, snackbar, flash message, notification popup*
+
+<a href="/storybook/?path=/story/components-toastr--playground" target="_blank">View in Storybook</a>
+
+## When to use
+
+- Brief feedback messages (success, error, warning). Shows multiple toasts simultaneously at bottom-left.
+- For top-of-screen single notifications, use Notification. For background save, use SaveProgress.
 
 ## Import
 
@@ -112,3 +119,8 @@ type ToastContextValue = {
   removeToast: (id: string) => void
 }
 ```
+
+## Related
+
+- [Notification](/components/notification) - Full-width top notification bar
+- [SaveProgress](/components/save-progress) - Background save indicator

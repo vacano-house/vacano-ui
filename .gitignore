@@ -35,9 +35,6 @@ coverage
 *.temp
 /tmp
 
-# AI
-CLAUDE.md
-
 *storybook.log
 storybook-static
 docs/public/storybook

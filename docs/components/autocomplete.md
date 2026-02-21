@@ -2,7 +2,14 @@
 
 Async search input with suggestions dropdown.
 
-<a href="/storybook/?path=/docs/components-autocomplete--docs" target="_blank">View in Storybook</a>
+*Also known as: typeahead, search input, async search, combobox, suggestion input*
+
+<a href="/storybook/?path=/story/components-autocomplete--playground" target="_blank">View in Storybook</a>
+
+## When to use
+
+- Search with async suggestions from API. For static option lists, use Select.
+- For multiple selections, use MultiSelect or Tags.
 
 ## Import
 
@@ -145,3 +152,10 @@ type AutocompleteValue = {
 | `label` | Label element |
 | `dropdown` | Dropdown container |
 | `item` | Suggestion item |
+
+## Related
+
+- [Input](/components/input) - Basic text input
+- [Select](/components/select) - Static option selection
+- [Tags](/components/tags) - Tag input with suggestions
+- [MultiSelect](/components/multi-select) - Multiple option selection
