@@ -72,6 +72,7 @@ export default defineConfig({
           items: [
             { text: 'Confirmation', link: '/components/confirmation' },
             { text: 'Modal', link: '/components/modal' },
+            { text: 'NotifyConfirmation', link: '/components/notify-confirmation' },
             { text: 'Drawer', link: '/components/drawer' },
             { text: 'Notification', link: '/components/notification' },
             { text: 'SaveProgress', link: '/components/save-progress' },
@@ -84,6 +85,7 @@ export default defineConfig({
           text: 'Layout',
           items: [
             { text: 'Container', link: '/components/container' },
+            { text: 'Divider', link: '/components/divider' },
             { text: 'Panel', link: '/components/panel' },
           ],
         },
