@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { Button } from '..'
+import { Button, FieldRow } from '..'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
 import { Input as InputComponent } from './Input'
@@ -91,7 +91,7 @@ export const Disabled: Story = {
     <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
       <div>
         <div style={{ marginBottom: 8, fontSize: 12, color: '#666' }}>Normal Disabled</div>
-        <div style={{ display: 'flex', gap: 24 }}>
+        <FieldRow gap={24}>
           <InputComponent disabled variant="normal" label="Disabled" placeholder="Disabled input" />
           <InputComponent
             disabled
@@ -99,11 +99,11 @@ export const Disabled: Story = {
             label="With value"
             value="Disabled with value"
           />
-        </div>
+        </FieldRow>
       </div>
       <div>
         <div style={{ marginBottom: 8, fontSize: 12, color: '#666' }}>Error Disabled</div>
-        <div style={{ display: 'flex', gap: 24 }}>
+        <FieldRow gap={24}>
           <InputComponent
             disabled
             variant="error"
@@ -116,7 +116,7 @@ export const Disabled: Story = {
             label="With value"
             value="Disabled error with value"
           />
-        </div>
+        </FieldRow>
       </div>
     </div>
   ),
@@ -537,6 +537,47 @@ export const MixedWithContent: Story = {
   ),
 }
 
+export const Prefix: Story = {
+  parameters: { layout: 'padded' },
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 24, maxWidth: 400 }}>
+      <InteractiveInput fullWidth label="Website" prefix="https://" placeholder="example.com" />
+      <InteractiveInput fullWidth label="Email" prefix="@" placeholder="username" />
+      <InteractiveInput fullWidth label="Price" prefix="$" placeholder="0.00" type="number" />
+      <InteractiveInput fullWidth label="Phone" prefix="+1" placeholder="234 567 8900" />
+      <InteractiveInput
+        fullWidth
+        label="Subdomain"
+        prefix="app."
+        placeholder="your-company"
+        message="Will be available at app.your-company.vacano.io"
+      />
+      <InteractiveInput
+        fullWidth
+        label="Error with prefix"
+        prefix="https://"
+        placeholder="example.com"
+        variant="error"
+        message="Invalid URL"
+      />
+      <InteractiveInput
+        fullWidth
+        label="Compact with prefix"
+        prefix="$"
+        placeholder="0.00"
+        size="compact"
+      />
+      <InputComponent
+        fullWidth
+        label="Disabled with prefix"
+        prefix="https://"
+        value="vacano.io"
+        disabled
+      />
+    </div>
+  ),
+}
+
 export const Message: Story = {
   parameters: { layout: 'padded' },
   render: () => (
@@ -569,7 +610,7 @@ export const Message: Story = {
         <div style={{ marginBottom: 8, fontSize: 12, color: '#666' }}>
           Side by side: with and without message
         </div>
-        <div style={{ display: 'flex', gap: 16 }}>
+        <FieldRow>
           <InteractiveInput
             fullWidth
             variant="error"
@@ -578,7 +619,7 @@ export const Message: Story = {
             message="Too short"
           />
           <InteractiveInput fullWidth label="Username" placeholder="Enter username" />
-        </div>
+        </FieldRow>
       </div>
       <div>
         <div style={{ marginBottom: 8, fontSize: 12, color: '#666' }}>

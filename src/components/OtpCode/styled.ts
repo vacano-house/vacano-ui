@@ -3,6 +3,7 @@ import styled from '@emotion/styled'
 import { getOtpCodeSizeProps, getOtpCodeVariantProps } from './helpers'
 import { OtpCodeVariant } from './types'
 import { FieldLabel } from '../FieldLabel'
+import { FieldMessage } from '../FieldMessage'
 import { VacanoComponentSize } from '../../lib'
 
 type StyledInputProps = {
@@ -50,4 +51,8 @@ export const StyledInput = styled.input<StyledInputProps>`
   &::selection {
     background-color: transparent;
   }
+`
+
+export const StyledMessage = styled(FieldMessage)`
+  margin-left: 6px;
 `

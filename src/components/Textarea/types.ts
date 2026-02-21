@@ -14,4 +14,6 @@ export type TextareaProps = VacanoComponentProps<HTMLTextAreaElement, TextareaCl
     fullWidth?: boolean
     label?: string
     variant?: TextareaVariant
+    message?: string
+    count?: number
   }

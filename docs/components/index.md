@@ -1,6 +1,6 @@
 # Components
 
-Vacano UI provides 38+ production-ready components organized by category.
+Vacano UI provides 36+ production-ready components organized by category.
 
 ::: tip Interactive Playground
 Explore all components interactively in our [Storybook](/storybook/).
@@ -28,7 +28,6 @@ Components for user input and form controls.
 | [CheckboxCard](/components/checkbox-card) | Card-style checkbox with description |
 | [CheckboxGroup](/components/checkbox-group) | Group of checkboxes with shared state |
 | [DatePicker](/components/date-picker) | Date, month, or year selection with calendar dropdown |
-| [EditableText](/components/editable-text) | Inline editable text with click-to-edit |
 | [Input](/components/input) | Single-line text input with label and validation |
 | [MultiSelect](/components/multi-select) | Multiple selection with modal picker |
 | [OtpCode](/components/otp-code) | OTP/PIN verification code input (SMS, 2FA) |
@@ -48,7 +47,6 @@ Components for displaying information.
 | [Card](/components/card) | Container with optional border and shadow |
 | [Chip](/components/chip) | Small label/tag with optional delete action |
 | [Progress](/components/progress) | Progress bar indicator (0-100%) |
-| [StatusCard](/components/status-card) | Metric/KPI card with trend indicator |
 | [Tabs](/components/tabs) | Tab navigation for switching views |
 
 ## Feedback
@@ -108,7 +106,6 @@ Helper components for forms, keyboard shortcuts, and styling.
 | Single-line text | [Input](/components/input) |
 | Multiline text | [Textarea](/components/textarea) |
 | Search with API suggestions | [Autocomplete](/components/autocomplete) |
-| Inline click-to-edit | [EditableText](/components/editable-text) |
 | OTP / verification code | [OtpCode](/components/otp-code) |
 
 ### Selection

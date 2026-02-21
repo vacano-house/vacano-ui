@@ -17,4 +17,5 @@ export type OtpCodeProps = VacanoComponentProps<HTMLDivElement, OtpCodeClassName
   size?: VacanoComponentSize
   value?: string
   variant?: OtpCodeVariant
+  message?: string
 }

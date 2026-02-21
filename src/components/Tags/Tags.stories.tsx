@@ -4,6 +4,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 
 import { Tags } from './Tags'
 import { TagsProps } from './types'
+import { FieldRow } from '../FieldRow'
 
 const SKILLS = [
   { value: 'react', label: 'React' },
@@ -204,6 +205,68 @@ export const WithoutLabel: Story = {
   render: () => (
     <div style={{ width: 350 }}>
       <InteractiveTags value={['tag1', 'tag2']} placeholder="Add tags..." />
+    </div>
+  ),
+}
+
+export const Message: Story = {
+  parameters: { layout: 'padded' },
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 24, width: 500 }}>
+      <InteractiveTags
+        value={[]}
+        options={SKILLS}
+        label="Error with message"
+        variant="error"
+        message="Please add at least one skill"
+        placeholder="Add skill..."
+      />
+      <InteractiveTags
+        value={['react']}
+        options={SKILLS}
+        label="Error with value"
+        variant="error"
+        message="Too few skills selected"
+      />
+      <InteractiveTags
+        value={['react', 'typescript']}
+        options={SKILLS}
+        label="Normal with message"
+        variant="normal"
+        message="Press Tab to add a new tag"
+      />
+      <InteractiveTags
+        value={[]}
+        options={SKILLS}
+        label="Without message"
+        variant="normal"
+        placeholder="Add skill..."
+      />
+      <FieldRow>
+        <InteractiveTags
+          value={[]}
+          options={SKILLS}
+          label="With message"
+          variant="error"
+          message="Required field"
+          placeholder="Add skill..."
+        />
+        <InteractiveTags
+          value={['react']}
+          options={SKILLS}
+          label="Without message"
+          variant="normal"
+        />
+      </FieldRow>
+      <InteractiveTags
+        value={[]}
+        options={SKILLS}
+        label="Disabled with message"
+        variant="error"
+        message="This field has an error"
+        disabled
+        placeholder="Add skill..."
+      />
     </div>
   ),
 }

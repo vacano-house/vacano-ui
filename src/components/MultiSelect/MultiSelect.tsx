@@ -1,9 +1,10 @@
-import { useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 
 import {
   StyledContainer,
   StyledEmpty,
   StyledLabel,
+  StyledMessage,
   StyledModalContent,
   StyledModalHeader,
   StyledModalTitle,
@@ -31,6 +32,7 @@ export const MultiSelect = ({
   emptyMessage = 'No options found',
   label,
   maxVisible = Infinity,
+  message,
   modalTitle = 'Select options',
   onChange,
   options,
@@ -43,6 +45,7 @@ export const MultiSelect = ({
 }: MultiSelectProps) => {
   const [isOpen, setIsOpen] = useState(false)
   const [search, setSearch] = useState('')
+  const modalContentRef = useRef<HTMLDivElement>(null)
 
   const selectedOptions = useMemo(() => {
     return options.filter((opt) => value.includes(opt.value))
@@ -65,10 +68,10 @@ export const MultiSelect = ({
     }
   }
 
-  const handleClose = () => {
+  const handleClose = useCallback(() => {
     setIsOpen(false)
     setSearch('')
-  }
+  }, [])
 
   const handleToggle = (optionValue: string) => {
     if (value.includes(optionValue)) {
@@ -82,23 +85,40 @@ export const MultiSelect = ({
     onChange(value.filter((v) => v !== optionValue))
   }
 
+  useEffect(() => {
+    if (!isOpen) return
+
+    const handleClickOutside = (e: MouseEvent) => {
+      if (modalContentRef.current && !modalContentRef.current.contains(e.target as Node)) {
+        handleClose()
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside)
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [isOpen, handleClose])
+
   return (
     <StyledContainer {...rest} ref={ref} className={css('container', className)}>
       {label && (
-        <StyledLabel $variant={variant} className={css('label', classnames?.trigger)}>
+        <StyledLabel variant={variant} className={css('label', classnames?.trigger)}>
           {label}
         </StyledLabel>
       )}
       <StyledTrigger
-        type="button"
         $variant={variant}
         $disabled={disabled}
-        disabled={disabled}
         onClick={handleOpen}
         className={css('trigger', classnames?.trigger)}
       >
         {selectedOptions.length === 0 ? (
-          <StyledPlaceholder className={css('placeholder', classnames?.placeholder)}>
+          <StyledPlaceholder
+            $variant={variant}
+            className={css('placeholder', classnames?.placeholder)}
+          >
             {placeholder}
           </StyledPlaceholder>
         ) : (
@@ -106,6 +126,7 @@ export const MultiSelect = ({
             {visibleChips.map((opt) => (
               <Chip
                 key={opt.value}
+                variant={variant === 'error' ? 'red' : 'gray'}
                 deletable
                 onDelete={() => handleRemove(opt.value)}
                 onClick={(e) => e.stopPropagation()}
@@ -116,7 +137,7 @@ export const MultiSelect = ({
             ))}
             {hiddenCount > 0 && (
               <Chip
-                variant="gray"
+                variant={variant === 'error' ? 'red' : 'gray'}
                 onClick={(e) => e.stopPropagation()}
                 className={css('chip', classnames?.chip)}
               >
@@ -126,12 +147,23 @@ export const MultiSelect = ({
           </>
         )}
       </StyledTrigger>
+      {message && (
+        <StyledMessage variant={variant} className={css('message')}>
+          {message}
+        </StyledMessage>
+      )}
 
       <Modal open={isOpen} width="400px" animated className={css('modal', classnames?.modal)}>
-        <StyledModalContent>
+        <StyledModalContent ref={modalContentRef}>
           <StyledModalHeader>
             <StyledModalTitle>{modalTitle}</StyledModalTitle>
-            <Button variant="transparent" size="compact" icon={<X />} onClick={handleClose} />
+            <Button
+              variant="transparent"
+              size="compact"
+              icon={<X />}
+              keyBindings={['Escape']}
+              onClick={handleClose}
+            />
           </StyledModalHeader>
 
           <Input

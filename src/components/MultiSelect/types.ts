@@ -34,4 +34,5 @@ export type MultiSelectProps = VacanoComponentProps<HTMLDivElement, MultiSelectC
   emptyMessage?: ReactNode
   searchPlaceholder?: string
   modalTitle?: string
+  message?: string
 }

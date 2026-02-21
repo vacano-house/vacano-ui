@@ -136,6 +136,113 @@ export const WithoutLabel: Story = {
   ),
 }
 
+export const Message: Story = {
+  parameters: { layout: 'padded' },
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 24, width: 400 }}>
+      <InteractiveTextarea
+        fullWidth
+        label="Error with message"
+        variant="error"
+        message="Bio must be at least 50 characters"
+        placeholder="Enter your bio..."
+      />
+      <InteractiveTextarea
+        fullWidth
+        label="Normal with message"
+        variant="normal"
+        message="Markdown is supported"
+        placeholder="Enter description..."
+      />
+      <InteractiveTextarea
+        fullWidth
+        label="Without message"
+        variant="normal"
+        placeholder="Enter text..."
+      />
+      <InteractiveTextarea
+        fullWidth
+        label="Disabled with message"
+        variant="error"
+        message="This field has an error"
+        disabled
+        placeholder="Enter text..."
+      />
+    </div>
+  ),
+}
+
+export const Counter: Story = {
+  parameters: { layout: 'padded' },
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 24, width: 400 }}>
+      <InteractiveTextarea
+        fullWidth
+        label="Counter only"
+        count={200}
+        placeholder="Enter description..."
+      />
+      <InteractiveTextarea
+        fullWidth
+        label="Counter with message"
+        count={100}
+        message="Please provide a short summary"
+        placeholder="Enter summary..."
+      />
+      <InteractiveTextarea
+        fullWidth
+        label="Error with counter"
+        variant="error"
+        count={50}
+        value="This text exceeds the character limit for this field"
+        message="Text is too long"
+      />
+      <InteractiveTextarea
+        fullWidth
+        label="Counter without message"
+        count={300}
+        variant="normal"
+        placeholder="Enter notes..."
+      />
+    </div>
+  ),
+}
+
+export const MessageAndCounterAlignment: Story = {
+  name: 'Message + Counter Alignment',
+  parameters: { layout: 'padded' },
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 24, width: 350 }}>
+      <InteractiveTextarea
+        fullWidth
+        label="Long message with counter"
+        variant="error"
+        count={100}
+        message="This is a very long error message that should not overlap with the counter on the right side"
+        placeholder="Enter text..."
+      />
+      <InteractiveTextarea
+        fullWidth
+        label="Short message with counter"
+        count={500}
+        message="Optional"
+        placeholder="Enter text..."
+      />
+      <div style={{ display: 'flex', gap: 16 }}>
+        <InteractiveTextarea
+          fullWidth
+          label="With message"
+          variant="error"
+          count={100}
+          message="Required field"
+          placeholder="Enter..."
+        />
+        <InteractiveTextarea fullWidth label="Without message" count={200} placeholder="Enter..." />
+      </div>
+    </div>
+  ),
+}
+
 export const FullWidth: Story = {
   parameters: { layout: 'padded' },
   render: () => (

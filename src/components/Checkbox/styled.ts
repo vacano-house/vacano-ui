@@ -82,7 +82,7 @@ export const StyledIcon = styled.span<StyledIconProps>`
 export const StyledLabel = styled.span<StyledLabelProps>`
   font-size: 14px;
   font-weight: 500;
-  line-height: 1.4;
+  line-height: 1.3;
   color: ${(props) => getCheckboxVariantProps(props.$variant).label};
   user-select: none;
 

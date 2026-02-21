@@ -1,18 +1,18 @@
 import { TagsVariant } from './types'
-import { COLORS } from '../../lib'
+import { alpha, COLORS } from '../../lib'
 
 type VariantProps = {
   border: string
-  label: string
+  placeholder: string
 }
 
 export const VARIANT_PROPS: Record<TagsVariant, VariantProps> = {
   normal: {
     border: COLORS['iron-grey'],
-    label: COLORS.black,
+    placeholder: COLORS['iron-grey'],
   },
   error: {
     border: COLORS.red,
-    label: COLORS.red,
+    placeholder: alpha(COLORS.red, 40),
   },
 }

@@ -1,3 +1,4 @@
+import type { CheckboxVariant } from '../Checkbox'
 import { VacanoComponentProps } from '../../lib'
 
 export type CheckboxGroupOption = {
@@ -17,4 +18,5 @@ export type CheckboxGroupProps = VacanoComponentProps<HTMLDivElement, CheckboxGr
   onChange: (values: string[]) => void
   label?: string
   disabled?: boolean
+  variant?: CheckboxVariant
 }

@@ -10,6 +10,7 @@ import {
   StyledItemImage,
   StyledItemText,
   StyledLabel,
+  StyledMessage,
   StyledSpinnerWrapper,
 } from './styled'
 import type { AutocompleteProps, AutocompleteSuggestion } from './types'
@@ -25,6 +26,7 @@ export const Autocomplete = ({
   fullWidth,
   label,
   ref,
+  message,
   size = 'default',
   variant = 'normal',
   value,
@@ -155,8 +157,9 @@ export const Autocomplete = ({
           </StyledSpinnerWrapper>
         )}
       </StyledInputWrapper>
+      {message && <StyledMessage variant={variant}>{message}</StyledMessage>}
       <StyledDropdown
-        $open={isOpen && hasSearched}
+        $open={isOpen && hasSearched && !isLoading}
         className={css('dropdown', classnames?.dropdown)}
       >
         {suggestions.length > 0

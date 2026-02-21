@@ -34,4 +34,5 @@ export type AutocompleteProps = VacanoComponentProps<HTMLInputElement, Autocompl
     size?: VacanoComponentSize
     variant?: AutocompleteVariant
     noResultsMessage?: string
+    message?: string
   }

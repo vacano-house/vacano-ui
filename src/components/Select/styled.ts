@@ -3,6 +3,7 @@ import styled from '@emotion/styled'
 import { getSelectSizeProps, getSelectVariantProps } from './helpers'
 import { SelectVariant } from './types'
 import { FieldLabel } from '../FieldLabel'
+import { FieldMessage } from '../FieldMessage'
 import { alpha, COLORS, VacanoComponentSize } from '../../lib'
 
 export const StyledContainer = styled.div<{ $fullWidth: boolean }>`
@@ -14,6 +15,10 @@ export const StyledContainer = styled.div<{ $fullWidth: boolean }>`
 `
 
 export const StyledLabel = styled(FieldLabel)`
+  margin-left: 6px;
+`
+
+export const StyledMessage = styled(FieldMessage)`
   margin-left: 6px;
 `
 
@@ -86,11 +91,13 @@ export const StyledDropdown = styled.div`
   position: absolute;
   left: -4px;
   width: calc(100% + 8px);
+  overflow: hidden;
   ${dropdownStyles}
 `
 
 export const StyledPortalDropdown = styled.div`
   position: fixed;
+  overflow: hidden;
   ${dropdownStyles}
 `
 
@@ -100,6 +107,7 @@ export const StyledOption = styled.button<{ $selected: boolean; $disabled: boole
   justify-content: space-between;
   gap: 8px;
   width: 100%;
+  min-width: 0;
   height: 40px;
   padding: 0 14px;
   border: none;

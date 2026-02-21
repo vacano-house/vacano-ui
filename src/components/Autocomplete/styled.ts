@@ -2,6 +2,7 @@ import styled from '@emotion/styled'
 
 import { AutocompleteVariant } from './types'
 import { FieldLabel } from '../FieldLabel'
+import { FieldMessage } from '../FieldMessage'
 import { alpha, COLORS, VacanoComponentSize } from '../../lib'
 
 const SIZE_PROPS: Record<VacanoComponentSize, { height: string; padding: string; radius: string }> =
@@ -76,6 +77,10 @@ export const StyledContainer = styled.div<{ $fullWidth: boolean }>`
 `
 
 export const StyledLabel = styled(FieldLabel)`
+  margin-left: 6px;
+`
+
+export const StyledMessage = styled(FieldMessage)`
   margin-left: 6px;
 `
 

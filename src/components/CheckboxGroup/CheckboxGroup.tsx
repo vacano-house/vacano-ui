@@ -14,6 +14,7 @@ export const CheckboxGroup = ({
   options,
   ref,
   value,
+  variant = 'normal',
   ...rest
 }: CheckboxGroupProps) => {
   const handleChange = (optionValue: string, checked: boolean) => {
@@ -39,6 +40,7 @@ export const CheckboxGroup = ({
             checked={value.includes(option.value)}
             label={option.label}
             disabled={disabled}
+            variant={variant}
             onChange={(e) => handleChange(option.value, e.target.checked)}
           />
         ))}

@@ -9,6 +9,7 @@ import {
 } from './constants'
 import { DatePickerPosition, DatePickerVariant } from './types'
 import { FieldLabel } from '../FieldLabel'
+import { FieldMessage } from '../FieldMessage'
 import { alpha, COLORS, VacanoComponentSize } from '../../lib'
 
 export const StyledContainer = styled.div<{ $fullWidth: boolean }>`
@@ -21,6 +22,10 @@ export const StyledContainer = styled.div<{ $fullWidth: boolean }>`
 `
 
 export const StyledLabel = styled(FieldLabel)`
+  margin-left: 6px;
+`
+
+export const StyledMessage = styled(FieldMessage)`
   margin-left: 6px;
 `
 

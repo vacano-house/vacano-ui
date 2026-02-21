@@ -4,6 +4,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 
 import { MultiSelect } from './MultiSelect'
 import { MultiSelectProps } from './types'
+import { FieldRow } from '../FieldRow'
 
 const CITIES = [
   { value: 'new-york', label: 'New York' },
@@ -265,6 +266,68 @@ export const ManySelectedItems: Story = {
         value={CITIES.map((c) => c.value)}
         options={CITIES}
         label="All cities selected"
+      />
+    </div>
+  ),
+}
+
+export const Message: Story = {
+  parameters: { layout: 'padded' },
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 24, width: 500 }}>
+      <InteractiveMultiSelect
+        value={[]}
+        options={CITIES}
+        label="Error with message"
+        variant="error"
+        message="Please select at least one city"
+        placeholder="Click to select..."
+      />
+      <InteractiveMultiSelect
+        value={['new-york']}
+        options={CITIES}
+        label="Error with value"
+        variant="error"
+        message="Maximum 1 city allowed"
+      />
+      <InteractiveMultiSelect
+        value={['new-york']}
+        options={CITIES}
+        label="Normal with message"
+        variant="normal"
+        message="You can select multiple cities"
+      />
+      <InteractiveMultiSelect
+        value={[]}
+        options={CITIES}
+        label="Without message"
+        variant="normal"
+        placeholder="Click to select..."
+      />
+      <FieldRow>
+        <InteractiveMultiSelect
+          value={[]}
+          options={CITIES}
+          label="With message"
+          variant="error"
+          message="Required field"
+          placeholder="Select..."
+        />
+        <InteractiveMultiSelect
+          value={['new-york']}
+          options={CITIES}
+          label="Without message"
+          variant="normal"
+        />
+      </FieldRow>
+      <InteractiveMultiSelect
+        value={[]}
+        options={CITIES}
+        label="Disabled with message"
+        variant="error"
+        message="This field has an error"
+        disabled
+        placeholder="Click to select..."
       />
     </div>
   ),

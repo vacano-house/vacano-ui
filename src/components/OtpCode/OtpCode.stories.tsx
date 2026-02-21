@@ -143,6 +143,40 @@ export const WithoutLabel: Story = {
   ),
 }
 
+export const Message: Story = {
+  parameters: { layout: 'padded' },
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
+      <InteractiveOtpCode
+        label="Error with message"
+        variant="error"
+        value="123456"
+        message="Invalid verification code"
+      />
+      <InteractiveOtpCode label="Error empty" variant="error" message="Please enter the code" />
+      <InteractiveOtpCode
+        label="Normal with message"
+        variant="normal"
+        message="Code sent to your email"
+      />
+      <InteractiveOtpCode label="Without message" variant="normal" />
+      <OtpCodeComponent
+        disabled
+        label="Disabled with message"
+        variant="error"
+        value="123456"
+        message="Session expired"
+      />
+      <InteractiveOtpCode
+        label="Compact with message"
+        size="compact"
+        variant="error"
+        message="Wrong code, try again"
+      />
+    </div>
+  ),
+}
+
 export const LayoutBlock: Story = {
   name: 'Layout: Block',
   parameters: { layout: 'padded' },

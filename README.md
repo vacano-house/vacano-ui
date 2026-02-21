@@ -19,7 +19,7 @@
 
 ## Features
 
-- **39+ Components** - Form controls, data display, feedback, layout, navigation, and utility components
+- **37+ Components** - Form controls, data display, feedback, layout, navigation, and utility components
 - **1800+ Icons** - Lucide icon components included
 - **TypeScript** - Full TypeScript support with strict typing
 - **Emotion CSS-in-JS** - Styled components with transient props
@@ -62,10 +62,10 @@ function App() {
 ## Components
 
 ### Form
-Autocomplete, Button, Checkbox, CheckboxCard, CheckboxGroup, DatePicker, EditableText, Input, MultiSelect, OtpCode, Radio, RadioCard, RadioGroup, Select, Tags, Textarea
+Autocomplete, Button, Checkbox, CheckboxCard, CheckboxGroup, DatePicker, Input, MultiSelect, OtpCode, Radio, RadioCard, RadioGroup, Select, Tags, Textarea
 
 ### Data Display
-Card, Chip, Progress, StatusCard, Tabs
+Card, Chip, Progress, Tabs
 
 ### Feedback
 Confirmation, Modal, Drawer, Notification, SaveProgress, Spinner, Toastr, Tooltip
