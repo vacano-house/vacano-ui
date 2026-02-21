@@ -13,6 +13,7 @@ export type DropdownClassNames = {
 
 export type DropdownProps = VacanoComponentProps<HTMLDivElement, DropdownClassNames> & {
   align?: DropdownAlign
+  autoClose?: boolean
   children?: ReactNode
   onClose?: () => void
   onOpen?: () => void

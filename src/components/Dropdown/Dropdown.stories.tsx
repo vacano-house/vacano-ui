@@ -756,3 +756,61 @@ export const PortalInCard: Story = {
   parameters: { layout: 'padded' },
   render: () => <PortalInCardExample />,
 }
+
+const AutoCloseMenuContent = () => (
+  <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+    <Button
+      variant="transparent"
+      style={{ justifyContent: 'flex-start' }}
+      onClick={() => alert('Profile clicked')}
+    >
+      Profile
+    </Button>
+    <Button
+      variant="transparent"
+      style={{ justifyContent: 'flex-start' }}
+      onClick={() => alert('Settings clicked')}
+    >
+      Settings
+    </Button>
+    <Button
+      variant="transparent"
+      style={{ justifyContent: 'flex-start' }}
+      onClick={() => alert('Logout clicked')}
+    >
+      Logout
+    </Button>
+  </div>
+)
+
+export const AutoClose: Story = {
+  name: 'Auto Close',
+  parameters: { layout: 'padded' },
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+      <p style={{ margin: 0, fontSize: 14, color: '#666' }}>
+        <code>autoClose=true</code> (default). Clicking a menu item triggers the action and closes
+        the dropdown.
+      </p>
+      <DropdownComponent trigger={<Button variant="system">Open Menu</Button>}>
+        <AutoCloseMenuContent />
+      </DropdownComponent>
+    </div>
+  ),
+}
+
+export const AutoCloseDisabled: Story = {
+  name: 'Auto Close Disabled',
+  parameters: { layout: 'padded' },
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+      <p style={{ margin: 0, fontSize: 14, color: '#666' }}>
+        <code>autoClose=false</code>. Clicking a menu item triggers the action but the dropdown
+        stays open.
+      </p>
+      <DropdownComponent autoClose={false} trigger={<Button variant="system">Open Menu</Button>}>
+        <AutoCloseMenuContent />
+      </DropdownComponent>
+    </div>
+  ),
+}

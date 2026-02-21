@@ -17,6 +17,7 @@ const DROPDOWN_MIN_HEIGHT = 100
 
 export const Dropdown = ({
   align = 'left',
+  autoClose = true,
   children,
   className,
   classnames,
@@ -98,6 +99,12 @@ export const Dropdown = ({
     }
   }, [isControlled, onClose])
 
+  const handleContentClick = useCallback(() => {
+    if (autoClose) {
+      handleClose()
+    }
+  }, [autoClose, handleClose])
+
   useLayoutEffect(() => {
     if (open) {
       updatePosition()
@@ -165,6 +172,7 @@ export const Dropdown = ({
         $position={position}
         className={css('content', classnames?.content)}
         style={{ top: portalPosition.top, left: portalPosition.left }}
+        onClick={handleContentClick}
       >
         {children}
       </StyledPortalContent>,
@@ -177,6 +185,7 @@ export const Dropdown = ({
       $open={open}
       $position={position}
       className={css('content', classnames?.content)}
+      onClick={handleContentClick}
     >
       {children}
     </StyledContent>

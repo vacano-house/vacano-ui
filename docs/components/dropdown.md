@@ -64,6 +64,22 @@ For use inside containers with `overflow: hidden`:
 </Dropdown>
 ```
 
+## Auto Close
+
+By default, the dropdown closes when clicking inside the dropdown content. Set `autoClose={false}` to keep it open:
+
+```tsx
+// Default: closes on click (autoClose=true)
+<Dropdown trigger={<Button>Auto Close</Button>}>
+  <button onClick={() => alert('Clicked!')}>Action</button>
+</Dropdown>
+
+// Stays open on click
+<Dropdown autoClose={false} trigger={<Button>Stay Open</Button>}>
+  <button onClick={() => alert('Clicked!')}>Action</button>
+</Dropdown>
+```
+
 ## Menu Example
 
 ```tsx
@@ -93,6 +109,7 @@ function MenuDropdown() {
 | `trigger` | `ReactElement` | **required** | Trigger element |
 | `children` | `ReactNode` | - | Dropdown content |
 | `align` | `'left' \| 'right'` | `'left'` | Horizontal alignment |
+| `autoClose` | `boolean` | `true` | Close dropdown on content click |
 | `open` | `boolean` | - | Controlled open state |
 | `onOpen` | `() => void` | - | Open callback |
 | `onClose` | `() => void` | - | Close callback |
