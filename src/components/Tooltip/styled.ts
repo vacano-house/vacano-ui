@@ -139,6 +139,7 @@ const contentBaseStyles = (props: StyledContentProps) => `
 export const StyledWrapper = styled.div`
   position: relative;
   display: inline-block;
+  width: fit-content;
 `
 
 const getPlacementStyles = ($placement: TooltipPlacement) => {

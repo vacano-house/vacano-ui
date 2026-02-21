@@ -278,6 +278,28 @@ export const LayoutFlexColumn: Story = {
   render: () => (
     <div style={{ display: 'flex', gap: 32 }}>
       <div>
+        <div style={{ marginBottom: 8, fontSize: 12, color: '#666' }}>
+          align-items: stretch (default)
+        </div>
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 12,
+            border: '1px dashed #ccc',
+            padding: 16,
+            minWidth: 400,
+          }}
+        >
+          <TooltipComponent
+            content="Tooltip should be centered above the button, not offset"
+            placement="top"
+          >
+            <Button variant="system">Hover me</Button>
+          </TooltipComponent>
+        </div>
+      </div>
+      <div>
         <div style={{ marginBottom: 8, fontSize: 12, color: '#666' }}>align-items: flex-start</div>
         <div
           style={{

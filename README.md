@@ -7,7 +7,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-1.10.0-blue" />
+  <img src="https://img.shields.io/badge/version-1.10.1-blue" />
   <a href="https://www.npmjs.com/package/@vacano/ui"><img src="https://img.shields.io/npm/v/@vacano/ui" alt="npm version" /></a>
   <a href="https://github.com/vacano-house/vacano-ui/blob/master/LICENSE.md"><img src="https://img.shields.io/npm/l/@vacano/ui" alt="license" /></a>
 </p>
