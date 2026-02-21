@@ -15,4 +15,5 @@ export type InputProps = VacanoComponentProps<HTMLInputElement, InputClassNames>
     label?: string
     size?: VacanoComponentSize
     variant?: InputVariant
+    message?: string
   }

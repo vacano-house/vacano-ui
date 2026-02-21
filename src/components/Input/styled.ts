@@ -3,6 +3,7 @@ import styled from '@emotion/styled'
 import { getInputSizeProps, getInputVariantProps } from './helpers'
 import { InputVariant } from './types'
 import { FieldLabel } from '../FieldLabel'
+import { FieldMessage } from '../FieldMessage'
 import { VacanoComponentSize } from '../../lib'
 
 type StyledInputContainerProps = {
@@ -18,6 +19,10 @@ export const StyledInputContainer = styled.div<{ $fullWidth: boolean }>`
 `
 
 export const StyledLabel = styled(FieldLabel)`
+  margin-left: 6px;
+`
+
+export const StyledMessage = styled(FieldMessage)`
   margin-left: 6px;
 `
 

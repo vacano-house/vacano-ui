@@ -21,16 +21,26 @@ export default defineConfig({
         index: resolve(__dirname, 'src/index.ts'),
         icons: resolve(__dirname, 'src/icons/Lucide/index.ts'),
         lib: resolve(__dirname, 'src/lib/index.ts'),
+        form: resolve(__dirname, 'src/form/index.ts'),
       },
       formats: ['es', 'cjs'],
     },
     rollupOptions: {
-      external: ['react', 'react-dom', 'react/jsx-runtime', '@emotion/react'],
+      external: [
+        'react',
+        'react-dom',
+        'react/jsx-runtime',
+        '@emotion/react',
+        'react-hook-form',
+        'yup',
+      ],
       output: {
         globals: {
           react: 'React',
           'react-dom': 'ReactDOM',
           '@emotion/react': 'emotionReact',
+          'react-hook-form': 'ReactHookForm',
+          yup: 'yup',
         },
       },
     },

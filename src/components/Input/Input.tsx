@@ -1,4 +1,4 @@
-import { StyledInput, StyledInputContainer, StyledLabel } from './styled'
+import { StyledInput, StyledInputContainer, StyledLabel, StyledMessage } from './styled'
 import { InputProps } from './types'
 import { newClassNameGetter } from '../../lib'
 
@@ -10,6 +10,7 @@ export const Input = ({
   fullWidth,
   label,
   ref,
+  message,
   size = 'default',
   variant = 'normal',
   ...rest
@@ -27,6 +28,7 @@ export const Input = ({
         $variant={variant}
         className={css('input', classnames?.input)}
       />
+      {message && <StyledMessage variant={variant}>{message}</StyledMessage>}
     </StyledInputContainer>
   )
 }
