@@ -13,6 +13,7 @@ export default defineConfig({
     nav: [
       { text: 'Guide', link: '/guide/getting-started' },
       { text: 'Components', link: '/components/' },
+      { text: 'Utilities', link: '/lib/' },
       { text: 'Storybook', link: '/storybook/', target: '_blank' },
       { text: 'MCP', link: '/guide/mcp' },
     ],
@@ -102,6 +103,41 @@ export default defineConfig({
             { text: 'ImageCropper', link: '/components/image-cropper' },
             { text: 'KeysBindings', link: '/components/keys-bindings' },
             { text: 'KeySymbol', link: '/components/key-symbol' },
+          ],
+        },
+      ],
+      '/lib/': [
+        {
+          text: 'Overview',
+          items: [
+            { text: 'All Utilities', link: '/lib/' },
+          ],
+        },
+        {
+          text: 'Constants',
+          items: [
+            { text: 'Constants', link: '/lib/constants' },
+          ],
+        },
+        {
+          text: 'Utils',
+          items: [
+            { text: 'Colors', link: '/lib/colors' },
+            { text: 'Media', link: '/lib/media' },
+            { text: 'Platform', link: '/lib/platform' },
+            { text: 'Keyboard', link: '/lib/keyboard' },
+          ],
+        },
+        {
+          text: 'Hooks',
+          items: [
+            { text: 'useKeyBinding', link: '/lib/use-key-binding' },
+          ],
+        },
+        {
+          text: 'Types',
+          items: [
+            { text: 'Types', link: '/lib/types' },
           ],
         },
       ],
