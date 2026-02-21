@@ -72,6 +72,8 @@ export const StyledChevron = styled.span<{ $open: boolean }>`
 `
 
 const dropdownStyles = `
+  display: grid;
+  gap: 2px;
   padding: 4px;
   background: ${COLORS.white};
   border: 1px solid ${alpha(COLORS.black, 10)};

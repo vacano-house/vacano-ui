@@ -1,7 +1,7 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 
-import { DROPDOWN_PADDING, OPTION_HEIGHT } from './constants'
+import { DROPDOWN_PADDING, OPTION_GAP, OPTION_HEIGHT } from './constants'
 import {
   StyledCheckmark,
   StyledChevron,
@@ -57,17 +57,18 @@ export const Select = ({
     0,
     options.findIndex((opt) => opt.value === value),
   )
-  const dropdownTop = -(selectedIndex * OPTION_HEIGHT + DROPDOWN_PADDING)
+  const dropdownTop = -(selectedIndex * (OPTION_HEIGHT + OPTION_GAP) + DROPDOWN_PADDING)
 
   const updatePortalPosition = () => {
     if (!triggerRef.current || !portalRenderNode) return
 
     const triggerRect = triggerRef.current.getBoundingClientRect()
-    const selectedOffset = selectedIndex * OPTION_HEIGHT + DROPDOWN_PADDING
+    const selectedOffset = selectedIndex * (OPTION_HEIGHT + OPTION_GAP) + DROPDOWN_PADDING
 
     let top = triggerRect.top - selectedOffset
 
-    const dropdownHeight = options.length * OPTION_HEIGHT + DROPDOWN_PADDING * 2
+    const dropdownHeight =
+      options.length * OPTION_HEIGHT + (options.length - 1) * OPTION_GAP + DROPDOWN_PADDING * 2
     const minTop = 8
     const maxTop = window.innerHeight - dropdownHeight - 8
 

@@ -2,6 +2,7 @@ import { SelectVariant } from './types'
 import { alpha, COLORS, VacanoComponentSize, VacanoInteractiveElementState } from '../../lib'
 
 export const OPTION_HEIGHT = 40
+export const OPTION_GAP = 2
 export const DROPDOWN_PADDING = 4
 
 export const SELECT_SIZE_PROPS: Record<
