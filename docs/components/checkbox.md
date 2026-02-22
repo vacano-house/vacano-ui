@@ -68,14 +68,18 @@ Used for "select all" scenarios where some items are selected:
 |------|------|---------|-------------|
 | `checked` | `boolean` | **required** | Checked state |
 | `onChange` | `ChangeEventHandler<HTMLInputElement>` | **required** | Change handler |
-| `label` | `string` | - | Label text |
+| `label` | `ReactNode` | - | Label content (text or any renderable node) |
 | `indeterminate` | `boolean` | `false` | Indeterminate state |
 | `variant` | `'normal' \| 'error'` | `'normal'` | Visual variant |
 | `disabled` | `boolean` | `false` | Disable checkbox |
-| `className` | `string` | - | CSS class name |
-| `classnames` | `CheckboxClassNames` | - | Custom class names |
+| `className` | `string` | - | CSS class name for the root element |
+| `classnames` | `CheckboxClassNames` | - | Custom class names for inner elements |
+| `ref` | `Ref<HTMLInputElement>` | - | Ref to the underlying input element |
+| `data-test-id` | `string` | - | Test identifier attribute |
 
-## ClassNames
+All standard HTML input attributes are also supported (except `type`, `checked`, `onChange`, and `className` which are controlled by the component).
+
+### ClassNames
 
 | Key | Description |
 |-----|-------------|

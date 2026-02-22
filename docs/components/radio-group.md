@@ -37,7 +37,7 @@ const options = [
 
 ## Type-safe Values
 
-`RadioGroup` is generic — the value type is inferred from `options`:
+`RadioGroup` is generic -- the value type is inferred from `options`:
 
 ```tsx
 type Color = 'red' | 'green' | 'blue'
@@ -101,8 +101,10 @@ const options: RadioGroupOption<Color>[] = [
 | `name` | `string` | - | Input name for all radios |
 | `variant` | `'normal' \| 'error'` | `'normal'` | Visual variant for all radios |
 | `disabled` | `boolean` | `false` | Disable all radios |
-| `className` | `string` | - | CSS class name |
-| `classnames` | `RadioGroupClassNames` | - | Custom class names |
+| `className` | `string` | - | CSS class for root element |
+| `classnames` | `RadioGroupClassNames` | - | Custom class names for inner elements |
+| `ref` | `Ref<HTMLDivElement>` | - | Ref to the root container element |
+| `data-test-id` | `string` | - | Test identifier for automated testing |
 
 `T` extends `string` and defaults to `string`.
 
@@ -115,7 +117,7 @@ type RadioGroupOption<T extends string = string> = {
 }
 ```
 
-## ClassNames
+### ClassNames
 
 | Key | Description |
 |-----|-------------|

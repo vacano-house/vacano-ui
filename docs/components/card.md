@@ -73,6 +73,8 @@ import { Card, CardHeader, CardBody, CardFooter } from '@vacano/ui'
 <Card shadow="lg">...</Card>
 ```
 
+You can also pass a boolean: `shadow={true}` resolves to `'md'`, `shadow={false}` resolves to `'none'`.
+
 ## Radius levels
 
 ```tsx
@@ -111,10 +113,10 @@ Adds click interaction with scale-down on press and hover shadow.
 
 ## Blurred footer
 
-Absolute-positioned footer with backdrop blur over an image.
+Absolute-positioned footer with backdrop blur over an image. Can be enabled via `footerBlurred` on Card or `blurred` on CardFooter.
 
 ```tsx
-<Card shadow="md">
+<Card shadow="md" footerBlurred>
   <img src="..." style={{ width: '100%', height: 320, objectFit: 'cover' }} />
   <CardFooter
     blurred
@@ -157,22 +159,25 @@ Semi-transparent card with backdrop blur.
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
 | `children` | `ReactNode` | - | Card content |
-| `shadow` | `'none' \| 'sm' \| 'md' \| 'lg'` | `'md'` | Shadow depth |
+| `shadow` | `'none' \| 'sm' \| 'md' \| 'lg' \| boolean` | `'md'` | Shadow depth. `true` resolves to `'md'`, `false` to `'none'` |
 | `radius` | `'none' \| 'sm' \| 'md' \| 'lg'` | `'lg'` | Border radius |
 | `border` | `boolean` | `false` | Show border |
 | `hoverable` | `boolean` | `false` | Elevate shadow on hover |
-| `pressable` | `boolean` | `false` | Enable click interaction |
+| `pressable` | `boolean` | `false` | Enable click interaction with scale-down effect |
 | `disabled` | `boolean` | `false` | Disable interactions, reduce opacity |
 | `fullWidth` | `boolean` | `false` | Stretch to container width |
 | `blurred` | `boolean` | `false` | Semi-transparent with backdrop blur |
-| `className` | `string` | - | CSS class name |
-| `classnames` | `CardClassNames` | - | Custom class names |
+| `footerBlurred` | `boolean` | `false` | Enable blur on the card footer |
+| `ref` | `Ref<HTMLDivElement>` | - | Forwarded ref |
+| `className` | `string` | - | CSS class name for the root element |
+| `classnames` | `CardClassNames` | - | Custom class names for sub-elements |
 
 ## CardHeader Props
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
 | `children` | `ReactNode` | - | Header content |
+| `ref` | `Ref<HTMLDivElement>` | - | Forwarded ref |
 | `className` | `string` | - | CSS class name |
 
 ## CardBody Props
@@ -180,6 +185,7 @@ Semi-transparent card with backdrop blur.
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
 | `children` | `ReactNode` | - | Body content |
+| `ref` | `Ref<HTMLDivElement>` | - | Forwarded ref |
 | `className` | `string` | - | CSS class name |
 
 ## CardFooter Props
@@ -188,9 +194,10 @@ Semi-transparent card with backdrop blur.
 |------|------|---------|-------------|
 | `children` | `ReactNode` | - | Footer content |
 | `blurred` | `boolean` | `false` | Backdrop blur with semi-transparent background |
+| `ref` | `Ref<HTMLDivElement>` | - | Forwarded ref |
 | `className` | `string` | - | CSS class name |
 
-## ClassNames
+### ClassNames
 
 | Key | Description |
 |-----|-------------|

@@ -60,8 +60,12 @@ The `radius` prop controls the border radius of the alert container.
 | `description` | `ReactNode` | - | Supporting description text |
 | `variant` | `'normal' \| 'success' \| 'warning' \| 'danger'` | `'normal'` | Icon circle color variant |
 | `radius` | `'none' \| 'sm' \| 'md' \| 'lg' \| 'full'` | `'lg'` | Border radius of the container |
-| `className` | `string` | - | CSS class name |
+| `className` | `string` | - | CSS class name for the root element |
 | `classnames` | `AlertClassNames` | - | Custom class names for sub-elements |
+| `ref` | `Ref<HTMLDivElement>` | - | Ref forwarded to the root element |
+| `data-test-id` | `string` | - | Test identifier attribute |
+
+The component also accepts all standard `HTMLDivElement` attributes (except `title` and `className` which are overridden by component props).
 
 ### AlertClassNames
 

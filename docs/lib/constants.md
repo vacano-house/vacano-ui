@@ -17,6 +17,8 @@ Shared design tokens and configuration values.
 import { BREAKPOINTS, COLORS, KEYFRAMES, KEY_SYMBOLS } from '@vacano/ui'
 ```
 
+All constants are declared with `as const` for literal type inference.
+
 ## BREAKPOINTS
 
 Responsive breakpoint values in pixels. Used by [mediaUp, mediaDown, mediaBetween](/lib/media).
@@ -46,12 +48,15 @@ Design system color palette.
 ```tsx
 import { COLORS } from '@vacano/ui'
 
-// COLORS.black      → '#212529'
-// COLORS.white      → '#ffffff'
-// COLORS.red        → '#C1121F'
-// COLORS.green      → '#16a34a'
-// COLORS.yellow     → '#ffb703'
-// COLORS.gray       → '#e5e7eb'
+// COLORS.black              → '#212529'
+// COLORS.white              → '#ffffff'
+// COLORS.red                → '#C1121F'
+// COLORS.green              → '#16a34a'
+// COLORS.yellow             → '#ffb703'
+// COLORS.gray               → '#e5e7eb'
+// COLORS['steel-blue']      → '#0582ca'
+// COLORS['iron-grey']       → '#495057'
+// COLORS['baltic-blue']     → '#1e6091'
 ```
 
 | Key | Value |
@@ -79,24 +84,26 @@ const fadeInStyle = css`
 `
 ```
 
-| Key | Description |
-|-----|-------------|
-| `rotate` | Full 360-degree rotation |
-| `fadeIn` | Fade in (opacity 0 → 1) |
-| `fadeOut` | Fade out (opacity 1 → 0) |
-| `slideInLeft` | Slide in from left |
-| `slideOutLeft` | Slide out to left |
-| `slideInRight` | Slide in from right |
-| `slideOutRight` | Slide out to right |
-| `slideInTop` | Slide in from top |
-| `slideOutTop` | Slide out to top |
-| `slideInBottom` | Slide in from bottom |
-| `slideOutBottom` | Slide out to bottom |
-| `scaleIn` | Scale in with fade (0.95 → 1) |
-| `slideInTopFade` | Slide in from top with fade |
-| `slideOutTopFade` | Slide out to top with fade |
-| `slideInBottomFade` | Slide in from bottom with fade |
-| `slideOutBottomFade` | Slide out to bottom with fade |
+Each value is an Emotion `keyframes` object (created with `keyframes` from `@emotion/react`). Use directly in `animation` properties within Emotion `css` or `styled` calls.
+
+| Key | Description | CSS transform/opacity |
+|-----|-------------|----------------------|
+| `rotate` | Full 360-degree rotation | `to { transform: rotate(1turn) }` |
+| `fadeIn` | Fade in | `from { opacity: 0 } to { opacity: 1 }` |
+| `fadeOut` | Fade out | `from { opacity: 1 } to { opacity: 0 }` |
+| `slideInLeft` | Slide in from left | `from { translateX(-100%) } to { translateX(0) }` |
+| `slideOutLeft` | Slide out to left | `from { translateX(0) } to { translateX(-100%) }` |
+| `slideInRight` | Slide in from right | `from { translateX(100%) } to { translateX(0) }` |
+| `slideOutRight` | Slide out to right | `from { translateX(0) } to { translateX(100%) }` |
+| `slideInTop` | Slide in from top | `from { translateY(-100%) } to { translateY(0) }` |
+| `slideOutTop` | Slide out to top | `from { translateY(0) } to { translateY(-100%) }` |
+| `slideInBottom` | Slide in from bottom | `from { translateY(100%) } to { translateY(0) }` |
+| `slideOutBottom` | Slide out to bottom | `from { translateY(0) } to { translateY(100%) }` |
+| `scaleIn` | Scale in with fade | `from { opacity: 0; scale(0.95) } to { opacity: 1; scale(1) }` |
+| `slideInTopFade` | Slide in from top with fade | `from { opacity: 0; translateY(-100%) } to { opacity: 1; translateY(0) }` |
+| `slideOutTopFade` | Slide out to top with fade | `from { opacity: 1; translateY(0) } to { opacity: 0; translateY(-100%) }` |
+| `slideInBottomFade` | Slide in from bottom with fade | `from { opacity: 0; translateY(100%) } to { opacity: 1; translateY(0) }` |
+| `slideOutBottomFade` | Slide out to bottom with fade | `from { opacity: 1; translateY(0) } to { opacity: 0; translateY(100%) }` |
 
 ## KEY_SYMBOLS
 
@@ -111,22 +118,31 @@ import { KEY_SYMBOLS } from '@vacano/ui'
 // KEY_SYMBOLS.Shift   → { mac: '⇧', other: '⇧' }
 ```
 
-| Key | macOS | Other |
-|-----|-------|-------|
-| `Meta` | ⌘ | Win |
-| `Control` | ⌃ | Ctrl |
-| `Alt` | ⌥ | Alt |
-| `Shift` | ⇧ | ⇧ |
-| `ArrowUp` | ↑ | ↑ |
-| `ArrowDown` | ↓ | ↓ |
-| `ArrowLeft` | ← | ← |
-| `ArrowRight` | → | → |
-| `Enter` | Enter | Enter |
-| `Backspace` | ⌫ | ⌫ |
-| `Delete` | ⌦ | ⌦ |
-| `Escape` | Esc | Esc |
-| `Tab` | ⇥ | ⇥ |
-| `' '` (Space) | ␣ | ␣ |
+The type is `Partial<Record<KeyboardEventKey, { mac: string; other: string }>>`. Only the keys listed below have symbol mappings; all other `KeyboardEventKey` values (letters, digits, function keys, punctuation, numpad) are returned as-is by [getKeySymbols](/lib/keyboard).
+
+| Key | macOS | Other | Category |
+|-----|-------|-------|----------|
+| `Meta` | ⌘ | Win | Modifier |
+| `Control` | ⌃ | Ctrl | Modifier |
+| `Alt` | ⌥ | Alt | Modifier |
+| `Shift` | ⇧ | ⇧ | Modifier |
+| `ArrowUp` | ↑ | ↑ | Navigation |
+| `ArrowDown` | ↓ | ↓ | Navigation |
+| `ArrowLeft` | ← | ← | Navigation |
+| `ArrowRight` | → | → | Navigation |
+| `Home` | ↖ | ↖ | Navigation |
+| `End` | ↘ | ↘ | Navigation |
+| `PageUp` | ⇞ | ⇞ | Navigation |
+| `PageDown` | ⇟ | ⇟ | Navigation |
+| `' '` (Space) | ␣ | ␣ | Whitespace |
+| `Enter` | Enter | Enter | Whitespace |
+| `Tab` | ⇥ | ⇥ | Whitespace |
+| `Backspace` | ⌫ | ⌫ | Editing |
+| `Delete` | ⌦ | ⌦ | Editing |
+| `Escape` | Esc | Esc | Editing |
+| `Insert` | Ins | Ins | Editing |
+| `CapsLock` | ⇪ | ⇪ | System |
+| `NumLock` | ⇭ | ⇭ | System |
 
 ## Related
 

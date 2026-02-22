@@ -93,26 +93,21 @@ const [value, setValue] = useState('')
 | `variant` | `'normal' \| 'error'` | `'normal'` | Visual variant |
 | `rows` | `number` | `4` | Number of visible rows |
 | `fullWidth` | `boolean` | `false` | Takes full container width |
-| `disabled` | `boolean` | `false` | Disables the field |
 | `message` | `string` | - | Message text below textarea (error, hint) |
 | `count` | `number` | - | Max character count (shows counter) |
-| `className` | `string` | - | CSS class for the container |
-| `classnames` | `TextareaClassNames` | - | CSS class names object for inner elements |
+| `className` | `string` | - | CSS class name for the root element |
+| `classnames` | `TextareaClassNames` | - | Custom class names for inner elements |
+| `ref` | `Ref<HTMLTextAreaElement>` | - | Ref to the underlying textarea element |
+| `data-test-id` | `string` | - | Test identifier attribute |
 
-### TextareaClassNames
+All standard HTML textarea attributes are also supported (e.g. `value`, `onChange`, `placeholder`, `disabled`, `name`, `maxLength`, etc.).
 
-```tsx
-type TextareaClassNames = {
-  textarea?: string
-  label?: string
-}
-```
+### ClassNames
 
-## Accessibility
-
-- The field is associated with its label through the component structure
-- Supports standard `aria-*` attributes
-- Supports keyboard navigation
+| Key | Description |
+|-----|-------------|
+| `textarea` | Textarea element |
+| `label` | Label element |
 
 ## Related
 

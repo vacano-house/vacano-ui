@@ -77,20 +77,19 @@ const [activeTab, setActiveTab] = useState('tab1')
 | `value` | `string` | **required** | Active tab value |
 | `tabs` | `TabItem[]` | **required** | Array of tabs |
 | `onChange` | `(value: string) => void` | **required** | Change handler |
-| `className` | `string` | - | CSS class name |
-| `classnames` | `TabsClassNames` | - | Custom class names |
+| `ref` | `Ref<HTMLDivElement>` | - | Forwarded ref |
+| `className` | `string` | - | CSS class name for the root element |
+| `classnames` | `TabsClassNames` | - | Custom class names for sub-elements |
 
-## Tab Item Type
+### TabItem
 
-```tsx
-type TabItem = {
-  value: string
-  label: string
-  disabled?: boolean
-}
-```
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `value` | `string` | **required** | Unique tab identifier |
+| `label` | `string` | **required** | Tab display label |
+| `disabled` | `boolean` | `false` | Disable this tab |
 
-## ClassNames
+### ClassNames
 
 | Key | Description |
 |-----|-------------|

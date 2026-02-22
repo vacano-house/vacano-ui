@@ -96,14 +96,18 @@ Display and respond to keyboard shortcuts:
 | `size` | `'compact' \| 'default'` | `'default'` | Button size |
 | `type` | `'button' \| 'submit' \| 'reset' \| 'link'` | `'button'` | Button type |
 | `icon` | `ReactNode` | - | Icon element |
-| `keyBindings` | `KeyboardEventKey[]` | - | Keyboard shortcut keys |
+| `keyBindings` | `KeyboardEventKey[]` | `[]` | Keyboard shortcut keys |
 | `loading` | `boolean` | `false` | Show loading spinner |
 | `disabled` | `boolean` | `false` | Disable button |
 | `fullWidth` | `boolean` | `false` | Full width button |
-| `className` | `string` | - | CSS class name |
-| `classnames` | `ButtonClassNames` | - | Custom class names |
+| `className` | `string` | - | CSS class name for the root element |
+| `classnames` | `ButtonClassNames` | - | Custom class names for inner elements |
+| `ref` | `Ref<HTMLButtonElement>` | - | Ref to the underlying button element |
+| `data-test-id` | `string` | - | Test identifier attribute |
 
-## ClassNames
+All standard HTML button attributes are also supported.
+
+### ClassNames
 
 | Key | Description |
 |-----|-------------|

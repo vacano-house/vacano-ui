@@ -127,26 +127,28 @@ const [open, setOpen] = useState(false)
 | `value` | `Date \| null` | - | Selected date |
 | `onChange` | `(date: Date \| null) => void` | - | Change handler |
 | `mode` | `'date' \| 'month' \| 'year'` | `'date'` | Selection mode |
-| `displayFormat` | `string` | - | Go-style date format |
-| `placeholder` | `string` | - | Placeholder text |
-| `locale` | `string` | - | Locale for names |
-| `weekStartsOn` | `0 \| 1` | `0` | First day of week |
-| `minDate` | `Date` | - | Minimum date |
-| `maxDate` | `Date` | - | Maximum date |
+| `displayFormat` | `string` | - | Go-style date format (e.g., `"02.01.2006"`, `"January 2006"`) |
+| `placeholder` | `string` | - | Placeholder text when no date selected |
+| `locale` | `string` | - | Locale for month/weekday names (e.g., `"en-US"`, `"ru"`, `"de"`) |
+| `weekStartsOn` | `0 \| 1` | `0` | First day of week (0 = Sunday, 1 = Monday) |
+| `minDate` | `Date` | - | Minimum selectable date |
+| `maxDate` | `Date` | - | Maximum selectable date |
 | `label` | `string` | - | Label text |
 | `message` | `string` | - | Message text below picker (error, hint) |
 | `size` | `'compact' \| 'default'` | `'default'` | Input size |
 | `variant` | `'normal' \| 'error'` | `'normal'` | Visual variant |
 | `disabled` | `boolean` | `false` | Disable picker |
-| `fullWidth` | `boolean` | `false` | Full width |
+| `fullWidth` | `boolean` | `false` | Full width mode |
 | `open` | `boolean` | - | Controlled open state |
-| `onOpen` | `() => void` | - | Open callback |
-| `onClose` | `() => void` | - | Close callback |
-| `portalRenderNode` | `HTMLElement \| null` | - | Portal target |
-| `className` | `string` | - | CSS class name |
-| `classnames` | `DatePickerClassNames` | - | Custom class names |
+| `onOpen` | `() => void` | - | Callback when dropdown opens |
+| `onClose` | `() => void` | - | Callback when dropdown closes |
+| `portalRenderNode` | `HTMLElement \| null` | - | Portal target for dropdown (for overflow hidden containers) |
+| `className` | `string` | - | CSS class for root element |
+| `classnames` | `DatePickerClassNames` | - | Custom class names for inner elements |
+| `ref` | `Ref<HTMLDivElement>` | - | Ref to the root container element |
+| `data-test-id` | `string` | - | Test identifier for automated testing |
 
-## ClassNames
+### ClassNames
 
 | Key | Description |
 |-----|-------------|

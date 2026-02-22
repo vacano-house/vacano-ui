@@ -1,6 +1,6 @@
 # Dropdown
 
-Dropdown menu component with customizable trigger.
+Dropdown menu component with customizable trigger. Supports controlled and uncontrolled state, portal rendering, and automatic vertical repositioning.
 
 *Also known as: popover, popup menu, context menu, action menu, overflow menu*
 
@@ -113,23 +113,25 @@ function MenuDropdown() {
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
-| `trigger` | `ReactElement` | **required** | Trigger element |
+| `trigger` | `ReactElement` | **required** | Trigger element that toggles the dropdown on click |
 | `children` | `ReactNode` | - | Dropdown content |
-| `align` | `'left' \| 'right'` | `'left'` | Horizontal alignment |
-| `autoClose` | `boolean` | `true` | Close dropdown on content click |
-| `open` | `boolean` | - | Controlled open state |
-| `onOpen` | `() => void` | - | Open callback |
-| `onClose` | `() => void` | - | Close callback |
-| `portalRenderNode` | `HTMLElement \| null` | - | Portal target |
-| `className` | `string` | - | CSS class name |
-| `classnames` | `DropdownClassNames` | - | Custom class names |
+| `align` | `'left' \| 'right'` | `'left'` | Horizontal alignment of dropdown relative to trigger |
+| `autoClose` | `boolean` | `true` | Close dropdown when clicking inside the dropdown content |
+| `open` | `boolean` | - | Controlled open state. When provided, component becomes controlled. |
+| `onOpen` | `() => void` | - | Callback fired when dropdown opens |
+| `onClose` | `() => void` | - | Callback fired when dropdown closes |
+| `portalRenderNode` | `HTMLElement \| null` | - | When provided, dropdown content is rendered via `createPortal` into this node |
+| `className` | `string` | - | CSS class name for the root container |
+| `classnames` | `DropdownClassNames` | - | Custom class names for sub-elements |
+| `ref` | `Ref<HTMLDivElement>` | - | Ref forwarded to the root container |
+| `data-test-id` | `string` | - | Test identifier attribute |
 
-## ClassNames
+### DropdownClassNames
 
 | Key | Description |
 |-----|-------------|
-| `trigger` | Trigger wrapper |
-| `content` | Dropdown content |
+| `trigger` | Trigger wrapper element |
+| `content` | Dropdown content container |
 
 ## Related
 

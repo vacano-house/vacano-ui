@@ -1,6 +1,6 @@
 # Chip
 
-Small label component with optional delete action.
+Small label component with optional icon and delete action.
 
 *Also known as: tag, badge, label, pill*
 
@@ -32,11 +32,27 @@ import { Chip } from '@vacano/ui'
 <Chip variant="black">Black</Chip>
 ```
 
+## With icon
+
+Render a leading icon inside the chip.
+
+```tsx
+<Chip icon={<StarIcon />}>Starred</Chip>
+```
+
 ## Deletable
 
 ```tsx
 <Chip deletable onDelete={() => console.log('deleted')}>
   Removable
+</Chip>
+```
+
+## With icon and deletable
+
+```tsx
+<Chip icon={<TagIcon />} deletable onDelete={() => console.log('deleted')}>
+  Tag
 </Chip>
 ```
 
@@ -46,15 +62,18 @@ import { Chip } from '@vacano/ui'
 |------|------|---------|-------------|
 | `children` | `ReactNode` | **required** | Chip content |
 | `variant` | `'gray' \| 'red' \| 'blue' \| 'black'` | `'gray'` | Color variant |
+| `icon` | `ReactNode` | - | Leading icon element |
 | `deletable` | `boolean` | `false` | Show delete button |
 | `onDelete` | `() => void` | - | Delete callback |
-| `className` | `string` | - | CSS class name |
-| `classnames` | `ChipClassNames` | - | Custom class names |
+| `ref` | `Ref<HTMLSpanElement>` | - | Forwarded ref |
+| `className` | `string` | - | CSS class name for the root element |
+| `classnames` | `ChipClassNames` | - | Custom class names for sub-elements |
 
-## ClassNames
+### ClassNames
 
 | Key | Description |
 |-----|-------------|
+| `icon` | The leading icon wrapper |
 | `delete` | Delete button |
 | `label` | Label text |
 

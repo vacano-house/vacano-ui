@@ -2,7 +2,7 @@
 
 Typography component for headings with consistent sizing. Supports 6 levels with optional semantic override.
 
-*Also known as: title, headline, header text, h1–h6*
+*Also known as: title, headline, header text, h1-h6*
 
 <a href="/storybook/?path=/story/components-heading--playground" target="_blank">View in Storybook</a>
 
@@ -54,7 +54,8 @@ Use `as` to render a different HTML tag while keeping the visual size from `leve
 |------|------|---------|-------------|
 | `children` | `ReactNode` | **required** | Heading text |
 | `level` | `1 \| 2 \| 3 \| 4 \| 5 \| 6` | `3` | Visual size level |
-| `as` | `1 \| 2 \| 3 \| 4 \| 5 \| 6` | - | Override HTML tag (h1–h6) |
+| `as` | `1 \| 2 \| 3 \| 4 \| 5 \| 6` | - | Override HTML tag (h1-h6). Defaults to `level` value |
+| `ref` | `Ref<HTMLHeadingElement>` | - | Forwarded ref |
 | `className` | `string` | - | CSS class name |
 
 ## Size reference

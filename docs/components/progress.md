@@ -61,10 +61,11 @@ useEffect(() => {
 |------|------|---------|-------------|
 | `value` | `number` | **required** | Progress value (0-100) |
 | `size` | `'compact' \| 'default'` | `'default'` | Bar size |
-| `className` | `string` | - | CSS class name |
-| `classnames` | `ProgressClassNames` | - | Custom class names |
+| `ref` | `Ref<HTMLDivElement>` | - | Forwarded ref |
+| `className` | `string` | - | CSS class name for the root element |
+| `classnames` | `ProgressClassNames` | - | Custom class names for sub-elements |
 
-## ClassNames
+### ClassNames
 
 | Key | Description |
 |-----|-------------|

@@ -77,10 +77,14 @@ const [enabled, setEnabled] = useState(false)
 | `fullWidth` | `boolean` | `false` | Full width card |
 | `variant` | `'normal' \| 'error'` | `'normal'` | Visual variant |
 | `disabled` | `boolean` | `false` | Disable card |
-| `className` | `string` | - | CSS class name |
-| `classnames` | `ToggleCardClassNames` | - | Custom class names |
+| `className` | `string` | - | CSS class for root element |
+| `classnames` | `ToggleCardClassNames` | - | Custom class names for inner elements |
+| `ref` | `Ref<HTMLInputElement>` | - | Ref to the underlying input element |
+| `data-test-id` | `string` | - | Test identifier for automated testing |
 
-## ClassNames
+Also accepts all standard `InputHTMLAttributes<HTMLInputElement>` except `type`, `checked`, `onChange`, and `className`.
+
+### ClassNames
 
 | Key | Description |
 |-----|-------------|

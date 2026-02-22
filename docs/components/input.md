@@ -85,12 +85,14 @@ const [value, setValue] = useState('')
 | `fullWidth` | `boolean` | `false` | Full width input |
 | `message` | `string` | - | Message text below input (error, hint) |
 | `prefix` | `ReactNode` | - | Prefix content inside input (text, icon) |
-| `className` | `string` | - | CSS class name |
-| `classnames` | `InputClassNames` | - | Custom class names |
+| `className` | `string` | - | CSS class name for the root element |
+| `classnames` | `InputClassNames` | - | Custom class names for inner elements |
+| `ref` | `Ref<HTMLInputElement>` | - | Ref to the underlying input element |
+| `data-test-id` | `string` | - | Test identifier attribute |
 
-All standard HTML input attributes are also supported.
+All standard HTML input attributes are also supported (e.g. `value`, `onChange`, `placeholder`, `disabled`, `type`, `name`, `autoFocus`, etc.).
 
-## ClassNames
+### ClassNames
 
 | Key | Description |
 |-----|-------------|

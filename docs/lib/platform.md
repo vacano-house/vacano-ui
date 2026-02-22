@@ -17,7 +17,7 @@ import { getOperatingSystem, getBrowser } from '@vacano/ui'
 
 ## getOperatingSystem
 
-Detects the current operating system.
+Detects the current operating system from `navigator.userAgent`.
 
 ```tsx
 import { getOperatingSystem } from '@vacano/ui'
@@ -26,20 +26,24 @@ const os = getOperatingSystem()
 // → 'macos' | 'windows' | 'linux' | 'ios' | 'android' | 'unknown'
 ```
 
+**Parameters:** none
+
 **Returns:** `OperatingSystem`
 
-| Value | Platform |
-|-------|----------|
-| `'macos'` | macOS |
-| `'windows'` | Windows |
-| `'linux'` | Linux |
-| `'ios'` | iPhone, iPad, iPod |
-| `'android'` | Android |
-| `'unknown'` | SSR or unrecognized |
+Detection order (first match wins):
+
+| Check order | Regex | Returns |
+|-------------|-------|---------|
+| 1 | `/iphone\|ipad\|ipod/` | `'ios'` |
+| 2 | `/android/` | `'android'` |
+| 3 | `/mac/` | `'macos'` |
+| 4 | `/win/` | `'windows'` |
+| 5 | `/linux/` | `'linux'` |
+| fallback | -- | `'unknown'` |
 
 ## getBrowser
 
-Detects the current browser.
+Detects the current browser from `navigator.userAgent`.
 
 ```tsx
 import { getBrowser } from '@vacano/ui'
@@ -48,20 +52,24 @@ const browser = getBrowser()
 // → 'chrome' | 'firefox' | 'safari' | 'edge' | 'opera' | 'unknown'
 ```
 
+**Parameters:** none
+
 **Returns:** `Browser`
 
-| Value | Browser |
-|-------|---------|
-| `'chrome'` | Google Chrome |
-| `'firefox'` | Mozilla Firefox |
-| `'safari'` | Apple Safari |
-| `'edge'` | Microsoft Edge |
-| `'opera'` | Opera |
-| `'unknown'` | SSR or unrecognized |
+Detection order (first match wins, order matters because Chrome UA includes "safari" and Edge UA includes "chrome"):
+
+| Check order | Regex | Returns |
+|-------------|-------|---------|
+| 1 | `/edg/` | `'edge'` |
+| 2 | `/opr\|opera/` | `'opera'` |
+| 3 | `/chrome/` | `'chrome'` |
+| 4 | `/safari/` | `'safari'` |
+| 5 | `/firefox/` | `'firefox'` |
+| fallback | -- | `'unknown'` |
 
 ## SSR Safety
 
-Both functions return `'unknown'` when `navigator` is not available (server-side rendering).
+Both functions check `typeof navigator === 'undefined'` and return `'unknown'` when `navigator` is not available (server-side rendering).
 
 ## Related
 

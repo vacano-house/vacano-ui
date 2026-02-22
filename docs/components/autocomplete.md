@@ -82,6 +82,16 @@ const handleSearch = async (query: string) => {
 />
 ```
 
+## Minimum Characters
+
+```tsx
+<Autocomplete
+  minChars={3}
+  label="Search (min 3 chars)"
+  onSearch={handleSearch}
+/>
+```
+
 ## Custom No Results Message
 
 For internationalization:
@@ -98,6 +108,13 @@ For internationalization:
 
 ```tsx
 <Autocomplete fullWidth label="Full Width" onSearch={handleSearch} />
+```
+
+## With Message
+
+```tsx
+<Autocomplete label="User" variant="error" onSearch={handleSearch} message="User not found" />
+<Autocomplete label="Search" onSearch={handleSearch} message="Start typing to search" />
 ```
 
 ## Disabled
@@ -127,10 +144,14 @@ For internationalization:
 | `fullWidth` | `boolean` | `false` | Full width input |
 | `message` | `string` | - | Message text below input (error, hint) |
 | `disabled` | `boolean` | `false` | Disabled state |
+| `className` | `string` | - | CSS class name for the root element |
+| `classnames` | `AutocompleteClassNames` | - | Custom class names for inner elements |
+| `ref` | `Ref<HTMLInputElement>` | - | Ref to the underlying input element |
+| `data-test-id` | `string` | - | Test identifier attribute |
 
-All standard HTML input attributes are also supported.
+All standard HTML input attributes are also supported (except `className`, `size`, `onChange`, and `value` which are controlled by the component).
 
-## Types
+### Types
 
 ```tsx
 type AutocompleteSuggestion = {
@@ -145,7 +166,7 @@ type AutocompleteValue = {
 }
 ```
 
-## ClassNames
+### ClassNames
 
 | Key | Description |
 |-----|-------------|

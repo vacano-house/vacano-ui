@@ -1,6 +1,6 @@
 # Panel
 
-Section component with optional title, description, and subtle box shadow.
+Section component with optional label, title, description, and subtle box shadow.
 
 *Also known as: section, content section, titled container, card with title*
 
@@ -44,6 +44,16 @@ import { Panel } from '@vacano/ui'
 </Panel>
 ```
 
+## With Label
+
+The `label` prop renders a `ReactNode` above the title/description header.
+
+```tsx
+<Panel label={<span>Step 1</span>} title="Personal Info">
+  <p>Enter your personal details.</p>
+</Panel>
+```
+
 ## Variants
 
 ```tsx
@@ -61,19 +71,25 @@ import { Panel } from '@vacano/ui'
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
 | `children` | `ReactNode` | **required** | Panel content |
-| `title` | `string` | - | Panel title |
-| `description` | `string` | - | Panel description |
+| `title` | `string` | - | Panel title text |
+| `description` | `string` | - | Panel description text below the title |
+| `label` | `ReactNode` | - | Label element rendered above the header |
 | `variant` | `'light' \| 'dark'` | `'light'` | Color variant |
-| `className` | `string` | - | CSS class name |
-| `classnames` | `PanelClassNames` | - | Custom class names |
+| `className` | `string` | - | CSS class name for the root element |
+| `classnames` | `PanelClassNames` | - | Custom class names for inner elements |
+| `ref` | `Ref<HTMLDivElement>` | - | Ref forwarded to the root `div` element |
+| `data-test-id` | `string` | - | Test identifier attribute |
 
-## ClassNames
+All standard HTML `div` attributes (except `className` and `title`) are also supported.
+
+### ClassNames
 
 | Key | Description |
 |-----|-------------|
-| `title` | Title text |
-| `description` | Description text |
-| `content` | Content container |
+| `label` | Label element above the header |
+| `title` | Title text element |
+| `description` | Description text element |
+| `content` | Content container wrapping `children` |
 
 ## Related
 

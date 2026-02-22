@@ -65,6 +65,8 @@ export default defineConfig({
         {
           text: 'Data Display',
           items: [
+            { text: 'Avatar', link: '/components/avatar' },
+            { text: 'AvatarGroup', link: '/components/avatar-group' },
             { text: 'Badge', link: '/components/badge' },
             { text: 'Card', link: '/components/card' },
             { text: 'Chip', link: '/components/chip' },
@@ -77,6 +79,7 @@ export default defineConfig({
             { text: 'StepLog', link: '/components/step-log' },
             { text: 'Stat', link: '/components/stat' },
             { text: 'Tabs', link: '/components/tabs' },
+            { text: 'Timeline', link: '/components/timeline' },
             { text: 'User', link: '/components/user' },
           ],
         },
@@ -109,8 +112,10 @@ export default defineConfig({
           text: 'Navigation',
           items: [
             { text: 'Accordion', link: '/components/accordion' },
+            { text: 'Breadcrumbs', link: '/components/breadcrumbs' },
             { text: 'Dropdown', link: '/components/dropdown' },
             { text: 'MenuButton', link: '/components/menu-button' },
+            { text: 'Pagination', link: '/components/pagination' },
             { text: 'Stepper', link: '/components/stepper' },
           ],
         },

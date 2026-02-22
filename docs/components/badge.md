@@ -98,7 +98,7 @@ Controls badge position offset relative to the child element's shape.
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
 | `children` | `ReactNode` | - | Element to attach the badge to |
-| `content` | `ReactNode` | - | Badge content (number, text, etc.) |
+| `content` | `ReactNode` | - | Badge content (number, text, etc.). Ignored when `dot` is true |
 | `color` | `'default' \| 'success' \| 'warning' \| 'danger'` | `'default'` | Color variant |
 | `variant` | `'solid' \| 'flat' \| 'bordered'` | `'solid'` | Visual variant |
 | `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Badge size |
@@ -107,10 +107,11 @@ Controls badge position offset relative to the child element's shape.
 | `dot` | `boolean` | `false` | Show dot instead of content |
 | `invisible` | `boolean` | `false` | Hide the badge |
 | `showOutline` | `boolean` | `true` | Show white outline around badge |
-| `className` | `string` | - | CSS class name |
-| `classnames` | `BadgeClassNames` | - | Custom class names |
+| `ref` | `Ref<HTMLDivElement>` | - | Forwarded ref |
+| `className` | `string` | - | CSS class name for the root element |
+| `classnames` | `BadgeClassNames` | - | Custom class names for sub-elements |
 
-## ClassNames
+### ClassNames
 
 | Key | Description |
 |-----|-------------|

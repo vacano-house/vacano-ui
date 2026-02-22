@@ -1,6 +1,6 @@
 # Stepper
 
-Step indicator component for multi-step flows.
+Step indicator component for multi-step flows. Shows numbered circles connected by lines, with visual distinction between completed, active, and pending steps.
 
 *Also known as: step indicator, wizard, progress steps, multi-step, breadcrumb steps*
 
@@ -116,30 +116,30 @@ function Wizard() {
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
-| `value` | `string` | **required** | Current step value |
-| `steps` | `StepItem[]` | **required** | Array of steps |
-| `onChange` | `(value: string) => void` | - | Change handler |
-| `orientation` | `'horizontal' \| 'vertical'` | `'horizontal'` | Layout direction |
-| `className` | `string` | - | CSS class name |
-| `classnames` | `StepperClassNames` | - | Custom class names |
+| `value` | `string` | **required** | Current active step value |
+| `steps` | `StepItem[]` | **required** | Array of step definitions |
+| `onChange` | `(value: string) => void` | - | Callback fired when a step is clicked. When omitted, stepper is display-only. |
+| `orientation` | `'horizontal' \| 'vertical'` | `'horizontal'` | Layout direction of the stepper |
+| `className` | `string` | - | CSS class name for the root element |
+| `classnames` | `StepperClassNames` | - | Custom class names for sub-elements |
+| `ref` | `Ref<HTMLDivElement>` | - | Ref forwarded to the root element |
+| `data-test-id` | `string` | - | Test identifier attribute |
 
-## Step Item Type
+### StepItem
 
-```tsx
-type StepItem = {
-  value: string
-  label: string
-}
-```
+| Property | Type | Description |
+|----------|------|-------------|
+| `value` | `string` | Unique identifier for the step |
+| `label` | `string` | Display label shown below/beside the step circle |
 
-## ClassNames
+### StepperClassNames
 
 | Key | Description |
 |-----|-------------|
-| `step` | Individual step |
-| `circle` | Step circle |
-| `label` | Step label |
-| `line` | Connector line |
+| `step` | Individual step button (circle + label wrapper) |
+| `circle` | Numbered circle indicator |
+| `label` | Step label text |
+| `line` | Connector line between steps |
 
 ## Related
 

@@ -2,6 +2,8 @@
 
 A visual separator used to divide content in lists, menus, and form sections.
 
+*Also known as: separator, horizontal rule, line break, content divider*
+
 <a href="/storybook/?path=/story/components-divider--playground" target="_blank">View in Storybook</a>
 
 ## When to use
@@ -43,14 +45,23 @@ Control vertical margin with the `spacing` prop (in pixels).
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
-| `children` | `string` | - | Optional centered text label |
+| `children` | `string` | - | Optional centered text label between the lines |
 | `spacing` | `number` | `8` | Vertical margin in pixels |
 | `className` | `string` | - | CSS class name for the root element |
 | `classnames` | `DividerClassNames` | - | Custom class names for inner elements |
+| `ref` | `Ref<HTMLDivElement>` | - | Ref forwarded to the root `div` element |
+| `data-test-id` | `string` | - | Test identifier attribute |
 
-## ClassNames
+All standard HTML `div` attributes (except `children` and `className`) are also supported.
+
+### ClassNames
 
 | Key | Description |
 |-----|-------------|
-| `line` | The horizontal line element |
+| `line` | The horizontal line element(s). When a label is present, two line elements are rendered. |
 | `label` | The centered text label |
+
+## Related
+
+- [Panel](/components/panel) - Titled content section
+- [FieldRow](/components/field-row) - Horizontal form field layout

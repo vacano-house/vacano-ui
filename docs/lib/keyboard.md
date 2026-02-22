@@ -36,9 +36,18 @@ getKeySymbols(undefined) // → []
 
 | Param | Type | Description |
 |-------|------|-------------|
-| `keys` | `KeyboardEventKey[]` | Array of keyboard keys |
+| `keys` | `KeyboardEventKey[] \| undefined` | Optional array of keyboard keys. When `undefined`, returns `[]`. |
 
-**Returns:** `string[]` — Display symbols. Keys without a mapping in [KEY_SYMBOLS](/lib/constants#key-symbols) are returned as-is.
+**Returns:** `string[]` -- Display symbols. Keys without a mapping in [KEY_SYMBOLS](/lib/constants#key-symbols) are returned as-is (e.g. letter keys like `'K'` stay as `'K'`).
+
+## Behavior
+
+1. If `keys` is `undefined` or not provided, returns an empty array `[]`.
+2. Detects the current OS via `getOperatingSystem()`.
+3. For each key, looks up the symbol in `KEY_SYMBOLS`:
+   - If found and OS is `'macos'`, returns `symbol.mac`.
+   - If found and OS is not `'macos'`, returns `symbol.other`.
+   - If not found in `KEY_SYMBOLS`, returns the raw key string as-is.
 
 ## Related
 

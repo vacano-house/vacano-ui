@@ -85,16 +85,24 @@ Generates: `@media (min-width: 768px) and (max-width: 1023px)`
 | `xl` | `min-width: 1280px` | `max-width: 1279px` |
 | `2xl` | `min-width: 1536px` | `max-width: 1535px` |
 
-## Parameters
+## Breakpoint Type
 
-All functions accept a `Breakpoint` key: `'sm' | 'md' | 'lg' | 'xl' | '2xl'`
+The `Breakpoint` type is derived from `keyof typeof BREAKPOINTS`:
 
-| Function | Params | Returns |
-|----------|--------|---------|
-| `mediaUp(bp)` | `bp: Breakpoint` | `@media (min-width: ...)` |
-| `mediaDown(bp)` | `bp: Breakpoint` | `@media (max-width: ...)` |
-| `mediaBetween(min, max)` | `min: Breakpoint, max: Breakpoint` | `@media (min-width: ...) and (max-width: ...)` |
+```tsx
+type Breakpoint = 'sm' | 'md' | 'lg' | 'xl' | '2xl'
+```
+
+This type is internal (not exported). All three functions accept `Breakpoint` values.
+
+## API Reference
+
+| Function | Params | Returns | Output format |
+|----------|--------|---------|---------------|
+| `mediaUp(bp)` | `bp: Breakpoint` | `string` | `@media (min-width: {BREAKPOINTS[bp]}px)` |
+| `mediaDown(bp)` | `bp: Breakpoint` | `string` | `@media (max-width: {BREAKPOINTS[bp] - 1}px)` |
+| `mediaBetween(min, max)` | `min: Breakpoint, max: Breakpoint` | `string` | `@media (min-width: {BREAKPOINTS[min]}px) and (max-width: {BREAKPOINTS[max] - 1}px)` |
 
 ## Related
 
-- [Constants — BREAKPOINTS](/lib/constants#breakpoints) - Raw breakpoint values
+- [Constants -- BREAKPOINTS](/lib/constants#breakpoints) - Raw breakpoint values

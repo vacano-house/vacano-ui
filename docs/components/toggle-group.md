@@ -72,10 +72,12 @@ const options = [
 | `value` | `string[]` | **required** | Selected values |
 | `onChange` | `(values: string[]) => void` | **required** | Change handler |
 | `label` | `string` | - | Group label |
-| `variant` | `'normal' \| 'error'` | `'normal'` | Visual variant |
+| `variant` | `'normal' \| 'error'` | `'normal'` | Visual variant for all toggles |
 | `disabled` | `boolean` | `false` | Disable all toggles |
-| `className` | `string` | - | CSS class name |
-| `classnames` | `ToggleGroupClassNames` | - | Custom class names |
+| `className` | `string` | - | CSS class for root element |
+| `classnames` | `ToggleGroupClassNames` | - | Custom class names for inner elements |
+| `ref` | `Ref<HTMLDivElement>` | - | Ref to the root container element |
+| `data-test-id` | `string` | - | Test identifier for automated testing |
 
 ## Option Type
 
@@ -86,7 +88,7 @@ type ToggleGroupOption = {
 }
 ```
 
-## ClassNames
+### ClassNames
 
 | Key | Description |
 |-----|-------------|

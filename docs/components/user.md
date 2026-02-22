@@ -45,7 +45,7 @@ When `src` is not provided, Avatar displays initials from `name`.
 
 ## Custom avatar props
 
-Pass any Avatar prop via `avatarProps`.
+Pass any Avatar prop (except `ref`) via `avatarProps`.
 
 ```tsx
 <User
@@ -68,11 +68,12 @@ Pass any Avatar prop via `avatarProps`.
 | `description` | `ReactNode` | - | Secondary text (e.g. handle, role) |
 | `src` | `string` | - | Avatar image URL |
 | `avatarPosition` | `'left' \| 'right'` | `'left'` | Avatar placement relative to text |
-| `avatarProps` | `AvatarProps` | - | Additional props passed to Avatar |
-| `className` | `string` | - | CSS class name |
-| `classnames` | `UserClassNames` | - | Custom class names |
+| `avatarProps` | `Omit<AvatarProps, 'ref'>` | - | Additional props passed to Avatar (excluding ref) |
+| `ref` | `Ref<HTMLDivElement>` | - | Forwarded ref |
+| `className` | `string` | - | CSS class name for the root element |
+| `classnames` | `UserClassNames` | - | Custom class names for sub-elements |
 
-## ClassNames
+### ClassNames
 
 | Key | Description |
 |-----|-------------|

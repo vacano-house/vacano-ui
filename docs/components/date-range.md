@@ -48,10 +48,11 @@ When `to` is omitted, displays "Present Time" as the end date.
 | `from` | `Date` | **required** | Start date |
 | `to` | `Date` | - | End date (omit for "Present Time") |
 | `presentLabel` | `string` | `'Present Time'` | Custom label when `to` is not set |
-| `className` | `string` | - | CSS class name |
-| `classnames` | `DateRangeClassNames` | - | Custom class names |
+| `ref` | `Ref<HTMLSpanElement>` | - | Forwarded ref |
+| `className` | `string` | - | CSS class name for the root element |
+| `classnames` | `DateRangeClassNames` | - | Custom class names for sub-elements |
 
-## ClassNames
+### ClassNames
 
 | Key | Description |
 |-----|-------------|

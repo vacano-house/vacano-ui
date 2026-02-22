@@ -68,8 +68,10 @@ import { EmptyState } from '@vacano/ui'
 | `title` | `ReactNode` | **required** | Main heading text |
 | `description` | `ReactNode` | - | Supporting text below the title |
 | `actions` | `ReactNode` | - | Action buttons or links |
-| `className` | `string` | - | CSS class name |
+| `className` | `string` | - | CSS class name for the root element |
 | `classnames` | `EmptyStateClassNames` | - | Custom class names for sub-elements |
+| `ref` | `Ref<HTMLDivElement>` | - | Ref forwarded to the root element |
+| `data-test-id` | `string` | - | Test identifier attribute |
 
 ### EmptyStateClassNames
 

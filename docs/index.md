@@ -21,8 +21,8 @@ hero:
       target: _blank
 
 features:
-  - title: 38+ Components
-    details: Form controls, data display, feedback, layout, and utility components ready for production.
+  - title: 50+ Components
+    details: Form controls, data display, feedback, layout, navigation, and utility components ready for production.
   - title: 1800+ Icons
     details: Full Lucide icon set as optimized React components with TypeScript support.
   - title: TypeScript First

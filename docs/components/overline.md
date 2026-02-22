@@ -45,10 +45,11 @@ Common pattern: Overline + Heading for structured content headers.
 |------|------|---------|-------------|
 | `children` | `ReactNode` | **required** | Uppercase label text |
 | `description` | `ReactNode` | - | Secondary text below the label |
-| `className` | `string` | - | CSS class name |
-| `classnames` | `OverlineClassNames` | - | Custom class names |
+| `ref` | `Ref<HTMLDivElement>` | - | Forwarded ref |
+| `className` | `string` | - | CSS class name for the root element |
+| `classnames` | `OverlineClassNames` | - | Custom class names for sub-elements |
 
-## ClassNames
+### ClassNames
 
 | Key | Description |
 |-----|-------------|

@@ -48,7 +48,7 @@ const options = [
 
 ## Free Solo Mode
 
-Allow creating tags not in the options list:
+Allow creating tags not in the options list (enabled by default):
 
 ```tsx
 <Tags
@@ -57,6 +57,18 @@ Allow creating tags not in the options list:
   onChange={setTags}
   freeSolo
   placeholder="Type to add custom tags"
+/>
+```
+
+Disable free solo to restrict to options only:
+
+```tsx
+<Tags
+  value={tags}
+  options={options}
+  onChange={setTags}
+  freeSolo={false}
+  placeholder="Select from options only"
 />
 ```
 
@@ -101,10 +113,30 @@ Choose which key creates a new tag:
 <Tags variant="error" value={tags} onChange={setTags} />
 ```
 
+## With Message
+
+```tsx
+<Tags label="Tags" variant="error" value={tags} onChange={setTags} message="At least one tag is required" />
+<Tags label="Keywords" value={tags} onChange={setTags} message="Add up to 5 keywords" />
+```
+
 ## Disabled
 
 ```tsx
 <Tags disabled value={['react', 'vue']} onChange={() => {}} />
+```
+
+## Portal Rendering
+
+For use inside containers with `overflow: hidden`:
+
+```tsx
+<Tags
+  value={tags}
+  options={options}
+  onChange={setTags}
+  portalRenderNode={document.body}
+/>
 ```
 
 ## Props
@@ -113,20 +145,22 @@ Choose which key creates a new tag:
 |------|------|---------|-------------|
 | `value` | `string[]` | **required** | Selected tag values |
 | `onChange` | `(value: string[]) => void` | **required** | Change handler |
-| `options` | `TagsOption[]` | - | Suggestion options |
+| `options` | `TagsOption[]` | `[]` | Suggestion options |
 | `label` | `string` | - | Label text |
-| `placeholder` | `string` | - | Input placeholder |
+| `placeholder` | `string` | `'Add tag...'` | Input placeholder |
 | `variant` | `'normal' \| 'error'` | `'normal'` | Visual variant |
 | `disabled` | `boolean` | `false` | Disable input |
 | `message` | `string` | - | Message text below input (error, hint) |
-| `freeSolo` | `boolean` | `false` | Allow custom tags |
+| `freeSolo` | `boolean` | `true` | Allow creating custom tags not in the options list |
 | `createKey` | `'Tab' \| 'Enter'` | `'Tab'` | Key to create tag |
-| `emptyMessage` | `ReactNode` | - | Empty state message |
-| `portalRenderNode` | `HTMLElement \| null` | - | Portal target |
-| `className` | `string` | - | CSS class name |
-| `classnames` | `TagsClassNames` | - | Custom class names |
+| `emptyMessage` | `ReactNode` | `'No options'` | Empty state message when no suggestions match |
+| `portalRenderNode` | `HTMLElement \| null` | - | Portal target for dropdown |
+| `className` | `string` | - | CSS class name for the root element |
+| `classnames` | `TagsClassNames` | - | Custom class names for inner elements |
+| `ref` | `Ref<HTMLDivElement>` | - | Ref to the root container element |
+| `data-test-id` | `string` | - | Test identifier attribute |
 
-## Option Type
+### Option Type
 
 ```tsx
 type TagsOption = {
@@ -135,7 +169,7 @@ type TagsOption = {
 }
 ```
 
-## ClassNames
+### ClassNames
 
 | Key | Description |
 |-----|-------------|

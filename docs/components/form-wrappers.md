@@ -92,7 +92,7 @@ Every Form Wrapper accepts the same props as its base component, plus `name` and
 // Base component
 <Input value={value} onChange={onChange} label="Email" />
 
-// Form wrapper — value/onChange replaced by name/control
+// Form wrapper -- value/onChange replaced by name/control
 <FormInput control={control} name="email" label="Email" />
 ```
 
@@ -108,46 +108,74 @@ Every Form Wrapper accepts the same props as its base component, plus `name` and
 
 These wrappers automatically display error messages via the `message` prop.
 
-| Wrapper | Base Component | Omitted Props |
-|---------|---------------|---------------|
-| `FormInput` | [Input](/components/input) | — (extends InputProps) |
-| `FormTextarea` | [Textarea](/components/textarea) | — (extends TextareaProps) |
-| `FormSelect` | [Select](/components/select) | `value`, `onChange` |
-| `FormAutocomplete` | [Autocomplete](/components/autocomplete) | `value`, `onChange` |
-| `FormDatePicker` | [DatePicker](/components/date-picker) | `value`, `onChange` |
-| `FormMultiSelect` | [MultiSelect](/components/multi-select) | `value`, `onChange` |
-| `FormOtpCode` | [OtpCode](/components/otp-code) | `value`, `onChange` |
-| `FormTags` | [Tags](/components/tags) | `value`, `onChange` |
+| Wrapper | Base Component | Omitted Props | Type Name |
+|---------|---------------|---------------|-----------|
+| `FormInput` | [Input](/components/input) | -- (extends InputProps; value/onChange overridden at runtime) | `FormInputProps<T>` |
+| `FormTextarea` | [Textarea](/components/textarea) | -- (extends TextareaProps; value/onChange overridden at runtime) | `FormTextareaProps<T>` |
+| `FormSelect` | [Select](/components/select) | `value`, `onChange` | `FormSelectProps<T>` |
+| `FormAutocomplete` | [Autocomplete](/components/autocomplete) | `value`, `onChange` | `FormAutocompleteProps<T>` |
+| `FormDatePicker` | [DatePicker](/components/date-picker) | `value`, `onChange` | `FormDatePickerProps<T>` |
+| `FormMultiSelect` | [MultiSelect](/components/multi-select) | `value`, `onChange` | `FormMultiSelectProps<T>` |
+| `FormOtpCode` | [OtpCode](/components/otp-code) | `value`, `onChange` | `FormOtpCodeProps<T>` |
+| `FormTags` | [Tags](/components/tags) | `value`, `onChange` | `FormTagsProps<T>` |
 
 ### Boolean Controls
 
 These wrappers set `variant="error"` on validation errors (no message text).
 
-| Wrapper | Base Component | Omitted Props |
-|---------|---------------|---------------|
-| `FormCheckbox` | [Checkbox](/components/checkbox) | `checked`, `onChange` |
-| `FormCheckboxCard` | [CheckboxCard](/components/checkbox-card) | `checked`, `onChange` |
-| `FormToggle` | [Toggle](/components/toggle) | `checked`, `onChange` |
-| `FormToggleCard` | [ToggleCard](/components/toggle-card) | `checked`, `onChange` |
+| Wrapper | Base Component | Omitted Props | Type Name |
+|---------|---------------|---------------|-----------|
+| `FormCheckbox` | [Checkbox](/components/checkbox) | `checked`, `onChange` | `FormCheckboxProps<T>` |
+| `FormCheckboxCard` | [CheckboxCard](/components/checkbox-card) | `checked`, `onChange` | `FormCheckboxCardProps<T>` |
+| `FormToggle` | [Toggle](/components/toggle) | `checked`, `onChange` | `FormToggleProps<T>` |
+| `FormToggleCard` | [ToggleCard](/components/toggle-card) | `checked`, `onChange` | `FormToggleCardProps<T>` |
 
 ### Group Controls
 
 These wrappers set `variant="error"` on validation errors and manage array or nullable values.
 
-| Wrapper | Base Component | Omitted Props |
-|---------|---------------|---------------|
-| `FormCheckboxGroup` | [CheckboxGroup](/components/checkbox-group) | `value`, `onChange` |
-| `FormToggleGroup` | [ToggleGroup](/components/toggle-group) | `value`, `onChange` |
-| `FormRadioGroup` | [RadioGroup](/components/radio-group) | `value`, `onChange` |
+| Wrapper | Base Component | Omitted Props | Type Name |
+|---------|---------------|---------------|-----------|
+| `FormCheckboxGroup` | [CheckboxGroup](/components/checkbox-group) | `value`, `onChange` | `FormCheckboxGroupProps<T>` |
+| `FormToggleGroup` | [ToggleGroup](/components/toggle-group) | `value`, `onChange` | `FormToggleGroupProps<T>` |
+| `FormRadioGroup` | [RadioGroup](/components/radio-group) | `value`, `onChange` | `FormRadioGroupProps<T>` |
 
 ### Radio Controls
 
-These wrappers compare `field.value === value` to determine checked state.
+These wrappers compare `field.value === value` to determine checked state. You must pass a `value` prop to each radio so it knows which option it represents.
 
-| Wrapper | Base Component | Omitted Props |
-|---------|---------------|---------------|
-| `FormRadio` | [Radio](/components/radio) | `checked`, `onChange` |
-| `FormRadioCard` | [RadioCard](/components/radio-card) | `checked`, `onChange` |
+| Wrapper | Base Component | Omitted Props | Type Name |
+|---------|---------------|---------------|-----------|
+| `FormRadio` | [Radio](/components/radio) | `checked`, `onChange` | `FormRadioProps<T>` |
+| `FormRadioCard` | [RadioCard](/components/radio-card) | `checked`, `onChange` | `FormRadioCardProps<T>` |
+
+## Type Definitions
+
+All form wrapper types follow the same pattern:
+
+```tsx
+import type { Control, FieldPath, FieldValues } from 'react-hook-form'
+
+// Value-based wrappers (e.g., FormSelect)
+type FormSelectProps<T extends FieldValues> = Omit<SelectProps, 'value' | 'onChange'> & {
+  name: FieldPath<T>
+  control: Control<T>
+}
+
+// Checked-based wrappers (e.g., FormCheckbox)
+type FormCheckboxProps<T extends FieldValues> = Omit<CheckboxProps, 'checked' | 'onChange'> & {
+  name: FieldPath<T>
+  control: Control<T>
+}
+
+// Extended wrappers (e.g., FormInput -- includes all base props)
+type FormInputProps<T extends FieldValues> = InputProps & {
+  name: FieldPath<T>
+  control: Control<T>
+}
+```
+
+`T` extends `FieldValues` and defaults to `FieldValues`. It is inferred from the `control` prop.
 
 ## Usage Examples
 
@@ -249,6 +277,43 @@ const PlanForm = () => {
           { value: 'pro', label: 'Pro' },
           { value: 'enterprise', label: 'Enterprise' },
         ]}
+      />
+      <Button type="submit">Continue</Button>
+    </form>
+  )
+}
+```
+
+### Radio Cards with FormRadioCard
+
+```tsx
+const schema = yup.object({
+  plan: yup.string().required('Select a plan'),
+})
+
+type PlanValues = yup.InferType<typeof schema>
+
+const PlanCardForm = () => {
+  const { control, handleSubmit } = useForm<PlanValues>({
+    resolver: yupResolver(schema),
+    defaultValues: { plan: '' },
+  })
+
+  return (
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <FormRadioCard
+        control={control}
+        name="plan"
+        value="free"
+        label="Free"
+        description="Basic features"
+      />
+      <FormRadioCard
+        control={control}
+        name="plan"
+        value="pro"
+        label="Pro"
+        description="All features"
       />
       <Button type="submit">Continue</Button>
     </form>

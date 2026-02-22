@@ -49,19 +49,30 @@ useKeyBinding(['Escape'], () => {
 })
 ```
 
+## Signature
+
+```tsx
+useKeyBinding(keys: KeyboardEventKey[], cb?: () => void): void
+```
+
 ## Parameters
 
-| Param | Type | Description |
-|-------|------|-------------|
-| `keys` | `KeyboardEventKey[]` | Keys that must be pressed simultaneously |
-| `cb` | `() => void` | Callback fired when all keys are pressed |
+| Param | Type | Required | Description |
+|-------|------|----------|-------------|
+| `keys` | `KeyboardEventKey[]` | Yes | Keys that must all be pressed simultaneously to trigger the callback. The hook re-subscribes when this array changes (it is a dependency of the internal `useEffect`). |
+| `cb` | `() => void` | No | Callback fired when all keys are pressed. Optional -- if not provided, the key combination is tracked but nothing fires. The callback is stored in a ref (`useRef`) so it never causes re-subscription and is never stale. |
+
+**Returns:** `void`
 
 ## Behavior
 
-- Calls `preventDefault()` when the shortcut matches
-- Case-insensitive for letter keys (`a` matches `A`)
-- Clears pressed keys on window `blur` to prevent stuck keys
-- The callback ref is updated on every render (no stale closures)
+- Listens to `keydown`, `keyup`, and `blur` events on `window`.
+- On `keydown`: adds the pressed key to an internal `Set<string>`. If all keys in the `keys` array are currently pressed, calls `e.preventDefault()` and invokes `cb()`.
+- On `keyup`: removes the released key from the internal set.
+- On `blur`: clears all pressed keys to prevent stuck keys when the window loses focus.
+- Letter keys are normalized to uppercase (e.g. `'a'` becomes `'A'`), so key matching is case-insensitive for single letter keys.
+- The `keys` array is used as the `useEffect` dependency, so the listeners are re-registered when it changes.
+- The callback ref (`cbRef`) is updated on every render, preventing stale closure issues without triggering effect re-runs.
 
 ## Related
 

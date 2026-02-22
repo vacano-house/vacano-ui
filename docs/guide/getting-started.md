@@ -4,7 +4,7 @@ Vacano UI is a React component library built with Emotion CSS-in-JS. It provides
 
 ## Features
 
-- **32+ Components** - Form controls, data display, feedback, layout, and utility components
+- **50+ Components** - Form controls, data display, feedback, layout, navigation, and utility components
 - **1800+ Icons** - Lucide icon components included
 - **TypeScript** - Full TypeScript support with strict typing
 - **Emotion CSS-in-JS** - Styled components with transient props

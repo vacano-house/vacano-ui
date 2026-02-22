@@ -100,6 +100,7 @@ For avatar or icon placeholders.
 | `radius` | `'none' \| 'sm' \| 'md' \| 'lg' \| 'full'` | `'md'` | Border radius |
 | `animation` | `'pulse' \| 'wave' \| 'none'` | `'pulse'` | Animation type |
 | `circle` | `boolean` | `false` | Render as circle (width = height) |
+| `ref` | `Ref<HTMLDivElement>` | - | Forwarded ref |
 | `className` | `string` | - | CSS class name |
 
 ## Related

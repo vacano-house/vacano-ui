@@ -1,6 +1,6 @@
 # Components
 
-Vacano UI provides 40+ production-ready components organized by category.
+Vacano UI provides 50+ production-ready components organized by category.
 
 ::: tip Interactive Playground
 Explore all components interactively in our [Storybook](/storybook/).
@@ -28,6 +28,7 @@ Components for user input and form controls.
 | [CheckboxCard](/components/checkbox-card) | Card-style checkbox with description |
 | [CheckboxGroup](/components/checkbox-group) | Group of checkboxes with shared state |
 | [DatePicker](/components/date-picker) | Date, month, or year selection with calendar dropdown |
+| [FileUpload](/components/file-upload) | Drag-and-drop file upload with progress tracking |
 | [Input](/components/input) | Single-line text input with label and validation |
 | [MultiSelect](/components/multi-select) | Multiple selection with modal picker |
 | [OtpCode](/components/otp-code) | OTP/PIN verification code input (SMS, 2FA) |
@@ -47,10 +48,22 @@ Components for displaying information.
 
 | Component | Description |
 |-----------|-------------|
-| [Card](/components/card) | Container with optional border and shadow |
-| [Chip](/components/chip) | Small label/tag with optional delete action |
-| [Progress](/components/progress) | Progress bar indicator (0-100%) |
+| [Avatar](/components/avatar) | User avatar with image, initials fallback, icon, and status indicator |
+| [AvatarGroup](/components/avatar-group) | Group of overlapping avatars with max count |
+| [Badge](/components/badge) | Status indicator dot or counter on any element |
+| [Card](/components/card) | Container with header, body, footer, shadow, and border |
+| [Chip](/components/chip) | Small label/tag with optional icon and delete action |
+| [DateRange](/components/date-range) | Display a date range (from–to) with optional "Present" label |
+| [Hashtag](/components/hashtag) | Hashtag display with optional link |
+| [Heading](/components/heading) | Semantic heading (h1–h6) with visual level override |
+| [Overline](/components/overline) | Small uppercase label with optional description |
+| [Progress](/components/progress) | Progress bar indicator (0–100%) |
+| [Skeleton](/components/skeleton) | Loading placeholder with pulse or wave animation |
+| [Stat](/components/stat) | Statistic display with value and label |
+| [StepLog](/components/step-log) | CI/CD-style step log with status, duration, and expandable output |
 | [Tabs](/components/tabs) | Tab navigation for switching views |
+| [Timeline](/components/timeline) | Vertical timeline for chronological events |
+| [User](/components/user) | User display with avatar, name, and description |
 
 ## Feedback
 
@@ -58,10 +71,13 @@ Components for user notifications, confirmations, and loading states.
 
 | Component | Description |
 |-----------|-------------|
+| [Alert](/components/alert) | Inline alert block with icon, title, description, and variant colors |
 | [Confirmation](/components/confirmation) | Yes/no confirmation dialog for destructive actions |
-| [Modal](/components/modal) | Overlay dialog for forms and content |
 | [Drawer](/components/drawer) | Slide-out side panel (left, right, top, bottom) |
+| [EmptyState](/components/empty-state) | Empty view with icon, title, description, and actions |
+| [Modal](/components/modal) | Overlay dialog for forms and content |
 | [Notification](/components/notification) | Top-of-screen notification bar (one at a time, queued) |
+| [NotifyConfirmation](/components/notify-confirmation) | Slide-in confirmation with confirm/discard actions |
 | [SaveProgress](/components/save-progress) | Background save/upload indicator (bottom-right) |
 | [Spinner](/components/spinner) | Loading/activity indicator |
 | [Toastr](/components/toastr) | Toast notifications (multiple, bottom-left) |
@@ -74,7 +90,9 @@ Components for page structure.
 | Component | Description |
 |-----------|-------------|
 | [Container](/components/container) | Responsive centered container with max-width |
+| [Divider](/components/divider) | Visual separator with optional label |
 | [Panel](/components/panel) | Titled content section with description |
+| [ShellScreen](/components/shell-screen) | Full-screen layout with grid background for auth, error, and status pages |
 
 ## Navigation
 
@@ -82,7 +100,11 @@ Components for navigation and flow.
 
 | Component | Description |
 |-----------|-------------|
+| [Accordion](/components/accordion) | Expandable content sections with outlined or splitted variants |
+| [Breadcrumbs](/components/breadcrumbs) | Navigation breadcrumb trail with collapsing support |
 | [Dropdown](/components/dropdown) | Popup menu triggered by any element |
+| [MenuButton](/components/menu-button) | Animated hamburger menu button (toggles to X) |
+| [Pagination](/components/pagination) | Page navigation with variants and controls |
 | [Stepper](/components/stepper) | Step indicator for multi-step wizards |
 
 ## Form Wrappers (react-hook-form)
@@ -119,11 +141,11 @@ Helper components for forms, keyboard shortcuts, and styling.
 |-----------|-------------|
 | [FieldLabel](/components/field-label) | Form field label with required indicator |
 | [FieldMessage](/components/field-message) | Validation message, hint, or error below form fields |
+| [FieldRow](/components/field-row) | Grid container for horizontal field alignment (CSS Subgrid) |
 | [GlobalStyle](/components/global-style) | Global CSS reset and base styles (required) |
 | [ImageCropper](/components/image-cropper) | Image upload and cropping (avatars, profile pictures) |
 | [KeysBindings](/components/keys-bindings) | Keyboard shortcut display (e.g. Cmd+S) |
 | [KeySymbol](/components/key-symbol) | Single key symbol display |
-| [FieldRow](/components/field-row) | Grid container for horizontal field alignment (CSS Subgrid) |
 
 ---
 
@@ -137,6 +159,7 @@ Helper components for forms, keyboard shortcuts, and styling.
 | Multiline text | [Textarea](/components/textarea) |
 | Search with API suggestions | [Autocomplete](/components/autocomplete) |
 | OTP / verification code | [OtpCode](/components/otp-code) |
+| File selection | [FileUpload](/components/file-upload) |
 
 ### Selection
 
@@ -152,6 +175,20 @@ Helper components for forms, keyboard shortcuts, and styling.
 | Rich option cards (multiple) | [CheckboxCard](/components/checkbox-card) or [ToggleCard](/components/toggle-card) |
 | Date / month / year | [DatePicker](/components/date-picker) |
 
+### Data Display
+
+| Need | Component |
+|------|-----------|
+| User identity | [Avatar](/components/avatar) or [User](/components/user) |
+| Multiple users | [AvatarGroup](/components/avatar-group) |
+| Status label / tag | [Chip](/components/chip) or [Badge](/components/badge) |
+| Key statistic | [Stat](/components/stat) |
+| Section label | [Overline](/components/overline) or [Heading](/components/heading) |
+| Loading placeholder | [Skeleton](/components/skeleton) |
+| Completion percentage | [Progress](/components/progress) |
+| CI/CD pipeline | [StepLog](/components/step-log) |
+| Chronological events | [Timeline](/components/timeline) |
+
 ### Overlays
 
 | Need | Component |
@@ -166,9 +203,22 @@ Helper components for forms, keyboard shortcuts, and styling.
 
 | Need | Component |
 |------|-----------|
+| Inline alert / message | [Alert](/components/alert) — inside containers, cards, panels |
 | Brief feedback (success, error) | [Toastr](/components/toastr) — multiple toasts, bottom-left |
 | Prominent single notification | [Notification](/components/notification) — top bar, queued |
 | Background save indicator | [SaveProgress](/components/save-progress) — bottom-right, non-blocking |
 | Loading spinner | [Spinner](/components/spinner) |
 | Completion percentage | [Progress](/components/progress) |
 | Button loading state | [Button](/components/button) — `loading` prop |
+| Empty content placeholder | [EmptyState](/components/empty-state) |
+
+### Navigation
+
+| Need | Component |
+|------|-----------|
+| Page breadcrumbs | [Breadcrumbs](/components/breadcrumbs) |
+| Tab switching | [Tabs](/components/tabs) |
+| Multi-step wizard | [Stepper](/components/stepper) |
+| Page pagination | [Pagination](/components/pagination) |
+| Collapsible sections | [Accordion](/components/accordion) |
+| Hamburger menu toggle | [MenuButton](/components/menu-button) |

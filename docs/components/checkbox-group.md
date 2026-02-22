@@ -67,8 +67,10 @@ const options = [
 | `label` | `string` | - | Group label |
 | `variant` | `'normal' \| 'error'` | `'normal'` | Visual variant for all checkboxes |
 | `disabled` | `boolean` | `false` | Disable all checkboxes |
-| `className` | `string` | - | CSS class name |
-| `classnames` | `CheckboxGroupClassNames` | - | Custom class names |
+| `className` | `string` | - | CSS class for root element |
+| `classnames` | `CheckboxGroupClassNames` | - | Custom class names for inner elements |
+| `ref` | `Ref<HTMLDivElement>` | - | Ref to the root container element |
+| `data-test-id` | `string` | - | Test identifier for automated testing |
 
 ## Option Type
 
@@ -79,7 +81,7 @@ type CheckboxGroupOption = {
 }
 ```
 
-## ClassNames
+### ClassNames
 
 | Key | Description |
 |-----|-------------|

@@ -1,6 +1,6 @@
 # Modal
 
-Overlay modal dialog component.
+Overlay modal dialog component. Renders via `createPortal` to `document.body`.
 
 *Also known as: dialog, popup, overlay, lightbox, modal dialog*
 
@@ -63,18 +63,22 @@ const [open, setOpen] = useState(false)
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
-| `open` | `boolean` | **required** | Open state |
+| `open` | `boolean` | **required** | Controls whether the modal is visible |
 | `children` | `ReactNode` | - | Modal content |
-| `width` | `string` | - | Custom width |
-| `animated` | `boolean` | `true` | Enable animation |
-| `className` | `string` | - | CSS class name |
-| `classnames` | `ModalClassNames` | - | Custom class names |
+| `width` | `string` | `'500px'` | Custom width of the modal content container |
+| `animated` | `boolean` | `false` | Enable fade-in animation for overlay and content |
+| `className` | `string` | - | CSS class name applied to the content container |
+| `classnames` | `ModalClassNames` | - | Custom class names for sub-elements |
+| `ref` | `Ref<HTMLDivElement>` | - | Ref forwarded to the content container |
+| `data-test-id` | `string` | - | Test identifier attribute |
 
-## ClassNames
+The component also accepts all standard `HTMLDivElement` attributes (except `className` which is overridden by the component prop).
+
+### ModalClassNames
 
 | Key | Description |
 |-----|-------------|
-| `overlay` | Background overlay |
+| `overlay` | Background overlay that covers the viewport |
 | `content` | Modal content container |
 
 ## Related

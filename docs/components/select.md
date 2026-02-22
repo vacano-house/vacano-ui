@@ -79,6 +79,13 @@ const options = [
 <Select fullWidth value="" options={options} placeholder="Full width" />
 ```
 
+## With Message
+
+```tsx
+<Select label="Country" variant="error" value="" options={options} message="Please select a country" />
+<Select label="Region" value="" options={options} message="Optional field" />
+```
+
 ## Portal Rendering
 
 For use inside containers with `overflow: hidden`:
@@ -99,17 +106,19 @@ For use inside containers with `overflow: hidden`:
 | `options` | `SelectOption[]` | **required** | Array of options |
 | `onChange` | `(value: string) => void` | - | Change handler |
 | `label` | `string` | - | Label text |
-| `placeholder` | `string` | - | Placeholder text |
+| `placeholder` | `string` | `'Select...'` | Placeholder text |
 | `variant` | `'normal' \| 'error'` | `'normal'` | Visual variant |
 | `size` | `'compact' \| 'default'` | `'default'` | Select size |
 | `disabled` | `boolean` | `false` | Disable select |
 | `fullWidth` | `boolean` | `false` | Full width |
 | `message` | `string` | - | Message text below select (error, hint) |
 | `portalRenderNode` | `HTMLElement \| null` | - | Portal target for dropdown |
-| `className` | `string` | - | CSS class name |
-| `classnames` | `SelectClassNames` | - | Custom class names |
+| `className` | `string` | - | CSS class name for the root element |
+| `classnames` | `SelectClassNames` | - | Custom class names for inner elements |
+| `ref` | `Ref<HTMLDivElement>` | - | Ref to the root container element |
+| `data-test-id` | `string` | - | Test identifier attribute |
 
-## Option Type
+### Option Type
 
 ```tsx
 type SelectOption = {
@@ -119,7 +128,7 @@ type SelectOption = {
 }
 ```
 
-## ClassNames
+### ClassNames
 
 | Key | Description |
 |-----|-------------|

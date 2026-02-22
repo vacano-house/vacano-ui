@@ -50,10 +50,10 @@ const steps = [
 
 Each step has a visual status indicator:
 
-- `success` — green check circle
-- `error` — red X circle
-- `running` — yellow spinning indicator
-- `pending` — gray hollow circle
+- `success` -- green check circle
+- `error` -- red X circle
+- `running` -- yellow spinning indicator
+- `pending` -- gray hollow circle (non-interactive, cannot expand)
 
 ## Default expanded
 
@@ -79,7 +79,8 @@ const [expanded, setExpanded] = useState(['build'])
 | `value` | `string[]` | - | Controlled expanded step values |
 | `defaultValue` | `string[]` | `[]` | Initially expanded steps (uncontrolled) |
 | `onChange` | `(value: string[]) => void` | - | Callback when expanded steps change |
-| `className` | `string` | - | CSS class name |
+| `ref` | `Ref<HTMLDivElement>` | - | Forwarded ref |
+| `className` | `string` | - | CSS class name for the root element |
 | `classnames` | `StepLogClassNames` | - | Custom class names for sub-elements |
 
 ### StepLogItem
@@ -99,7 +100,7 @@ const [expanded, setExpanded] = useState(['build'])
 | `line` | `number` | Line number |
 | `text` | `string` | Line content (displayed in monospace) |
 
-### StepLogClassNames
+### ClassNames
 
 | Key | Description |
 |-----|-------------|

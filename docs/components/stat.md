@@ -47,10 +47,11 @@ import { Stat } from '@vacano/ui'
 |------|------|---------|-------------|
 | `value` | `ReactNode` | **required** | The stat value (bold, dark text) |
 | `label` | `string` | **required** | Description label (gray text) |
-| `className` | `string` | - | CSS class name |
-| `classnames` | `StatClassNames` | - | Custom class names |
+| `ref` | `Ref<HTMLSpanElement>` | - | Forwarded ref |
+| `className` | `string` | - | CSS class name for the root element |
+| `classnames` | `StatClassNames` | - | Custom class names for sub-elements |
 
-## ClassNames
+### ClassNames
 
 | Key | Description |
 |-----|-------------|

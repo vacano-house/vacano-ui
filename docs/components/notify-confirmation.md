@@ -94,10 +94,20 @@ show(
 | `confirmLabel` | `string` | `'Agree'` | Confirm button label |
 | `discardLabel` | `string` | `'Discard'` | Discard button label |
 
+## ClassNames
+
+The internal `NotifyConfirmationBar` component uses these CSS class name keys:
+
+| Key | Description |
+|-----|-------------|
+| `label` | Label text element |
+| `description` | Description text element |
+| `actions` | Actions button container |
+
 ## Behavior
 
-- **Escape** — Discard and hide
-- **Loading** — If `onConfirm` returns Promise, shows spinner and disables Discard
+- **Escape** -- Discard and hide
+- **Loading** -- If `onConfirm` returns Promise, shows spinner and disables Discard
 - Only one notification can be shown at a time
 
 ## Related

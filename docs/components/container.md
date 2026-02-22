@@ -1,6 +1,6 @@
 # Container
 
-Responsive container component with max-width constraints.
+Responsive container component that constrains content width at each breakpoint.
 
 *Also known as: wrapper, page container, content wrapper, max-width container*
 
@@ -52,14 +52,34 @@ function PageLayout() {
 }
 ```
 
+## Responsive Breakpoints
+
+The container applies `max-width` at each breakpoint:
+
+| Breakpoint | Min Width | Container Max Width |
+|------------|-----------|---------------------|
+| `sm` | `640px` | `640px` |
+| `md` | `768px` | `768px` |
+| `lg` | `1024px` | `1024px` |
+| `xl` | `1280px` | `1280px` |
+| `2xl` | `1536px` | `1536px` |
+
+Below `640px`, the container is `width: 100%` with no max-width constraint.
+
 ## Props
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
 | `children` | `ReactNode` | - | Container content |
-| `className` | `string` | - | CSS class name |
+| `className` | `string` | - | CSS class name for the root element |
+| `ref` | `Ref<HTMLDivElement>` | - | Ref forwarded to the root `div` element |
+| `data-test-id` | `string` | - | Test identifier attribute |
 
-All standard HTML div attributes are also supported.
+All standard HTML `div` attributes are also supported.
+
+## CSS Class
+
+The root element receives `vacano_container_container`.
 
 ## Related
 

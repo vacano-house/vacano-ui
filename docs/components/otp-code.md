@@ -83,10 +83,12 @@ const [code, setCode] = useState('')
 | `disabled` | `boolean` | `false` | Disabled state |
 | `message` | `string` | - | Message text below input (error, hint) |
 | `autoFocus` | `boolean` | `false` | Auto focus first input on mount |
-| `className` | `string` | - | CSS class name |
-| `classnames` | `OtpCodeClassNames` | - | Custom class names |
+| `className` | `string` | - | CSS class for root element |
+| `classnames` | `OtpCodeClassNames` | - | Custom class names for inner elements |
+| `ref` | `Ref<HTMLDivElement>` | - | Ref to the root container element |
+| `data-test-id` | `string` | - | Test identifier for automated testing |
 
-## ClassNames
+### ClassNames
 
 | Key | Description |
 |-----|-------------|

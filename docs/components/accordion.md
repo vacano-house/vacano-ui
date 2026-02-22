@@ -96,8 +96,10 @@ const items = [
 | `value` | `string[]` | - | Controlled expanded item values |
 | `defaultValue` | `string[]` | `[]` | Initially expanded items (uncontrolled) |
 | `onChange` | `(value: string[]) => void` | - | Callback when expanded items change |
-| `className` | `string` | - | CSS class name |
+| `className` | `string` | - | CSS class name for the root element |
 | `classnames` | `AccordionClassNames` | - | Custom class names for sub-elements |
+| `ref` | `Ref<HTMLDivElement>` | - | Ref forwarded to the root element |
+| `data-test-id` | `string` | - | Test identifier attribute |
 
 ### AccordionItem
 

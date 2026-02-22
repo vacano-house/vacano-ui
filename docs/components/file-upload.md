@@ -102,8 +102,10 @@ Use `FileUploadItem` to display individual files with upload status.
 | `multiple` | `boolean` | `true` | Allow multiple files |
 | `onChange` | `(files: File[]) => void` | - | Callback with accepted files |
 | `onReject` | `(files: File[], reason: 'type' \| 'size') => void` | - | Callback for rejected files |
-| `className` | `string` | - | CSS class name |
-| `classnames` | `FileUploadClassNames` | - | Custom class names |
+| `className` | `string` | - | CSS class for root element |
+| `classnames` | `FileUploadClassNames` | - | Custom class names for inner elements |
+| `ref` | `Ref<HTMLDivElement>` | - | Ref to the root container element |
+| `data-test-id` | `string` | - | Test identifier for automated testing |
 
 ## FileUploadItem Props
 
@@ -112,13 +114,31 @@ Use `FileUploadItem` to display individual files with upload status.
 | `name` | `string` | **required** | File name |
 | `size` | `number` | **required** | File size in bytes |
 | `status` | `'uploading' \| 'complete' \| 'failed'` | `'uploading'` | Upload status |
-| `progress` | `number` | - | Upload progress (0–100) |
+| `progress` | `number` | - | Upload progress (0-100) |
 | `icon` | `ReactNode` | - | Custom file icon |
 | `onRemove` | `() => void` | - | Remove file callback |
 | `onRetry` | `() => void` | - | Retry upload callback (shown when failed) |
-| `classnames` | `FileUploadItemClassNames` | - | Custom class names |
+| `className` | `string` | - | CSS class for root element |
+| `classnames` | `FileUploadItemClassNames` | - | Custom class names for inner elements |
+| `ref` | `Ref<HTMLDivElement>` | - | Ref to the root container element |
+| `data-test-id` | `string` | - | Test identifier for automated testing |
 
-## ClassNames (FileUpload)
+### FileUploadFile Type
+
+The `FileUploadFile` type can be used to manage file state in your application:
+
+```tsx
+type FileUploadFile = {
+  id: string
+  name: string
+  size: number
+  progress?: number
+  status: 'uploading' | 'complete' | 'failed'
+  file?: File
+}
+```
+
+### ClassNames (FileUpload)
 
 | Key | Description |
 |-----|-------------|
@@ -128,7 +148,7 @@ Use `FileUploadItem` to display individual files with upload status.
 | `hint` | Hint text below description |
 | `list` | File list container |
 
-## ClassNames (FileUploadItem)
+### ClassNames (FileUploadItem)
 
 | Key | Description |
 |-----|-------------|

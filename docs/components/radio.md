@@ -56,14 +56,18 @@ const [selected, setSelected] = useState('option1')
 |------|------|---------|-------------|
 | `checked` | `boolean` | **required** | Checked state |
 | `onChange` | `ChangeEventHandler<HTMLInputElement>` | **required** | Change handler |
-| `label` | `string` | - | Label text |
+| `label` | `ReactNode` | - | Label content (text or any renderable node) |
 | `variant` | `'normal' \| 'error'` | `'normal'` | Visual variant |
 | `disabled` | `boolean` | `false` | Disable radio |
 | `name` | `string` | - | Input name for grouping |
-| `className` | `string` | - | CSS class name |
-| `classnames` | `RadioClassNames` | - | Custom class names |
+| `className` | `string` | - | CSS class name for the root element |
+| `classnames` | `RadioClassNames` | - | Custom class names for inner elements |
+| `ref` | `Ref<HTMLInputElement>` | - | Ref to the underlying input element |
+| `data-test-id` | `string` | - | Test identifier attribute |
 
-## ClassNames
+All standard HTML input attributes are also supported (except `type`, `checked`, `onChange`, and `className` which are controlled by the component).
+
+### ClassNames
 
 | Key | Description |
 |-----|-------------|

@@ -1,6 +1,6 @@
 # Spinner
 
-Loading indicator component with multiple sizes.
+Loading indicator component with multiple sizes. Renders a CSS-animated spinner with `role="status"` for accessibility.
 
 *Also known as: loading indicator, loader, activity indicator, busy indicator*
 
@@ -76,8 +76,16 @@ function PageLoader() {
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
 | `size` | `'xs' \| 'sm' \| 'md' \| 'lg'` | `'md'` | Spinner size |
-| `aria-label` | `string` | - | Accessibility label |
-| `className` | `string` | - | CSS class name |
+| `aria-label` | `string` | `'Loading'` | Accessibility label for screen readers |
+| `className` | `string` | - | CSS class name for the root element |
+| `ref` | `Ref<HTMLDivElement>` | - | Ref forwarded to the root element |
+| `data-test-id` | `string` | - | Test identifier attribute |
+
+The component also accepts all standard `HTMLDivElement` attributes (except `className` and `children` which are overridden/excluded by the component).
+
+::: info
+The Spinner component has an empty `classnames` type (`Record<string, never>`) and does not expose any sub-element class name slots.
+:::
 
 ## Related
 

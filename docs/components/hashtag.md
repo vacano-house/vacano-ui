@@ -57,11 +57,11 @@ When `href` is provided, renders as an `<a>` element.
 |------|------|---------|-------------|
 | `children` | `ReactNode` | **required** | Tag text (without `#`, added automatically) |
 | `href` | `string` | - | Link URL (renders as `<a>`) |
-| `onClick` | `() => void` | - | Click handler (makes it interactive) |
-| `className` | `string` | - | CSS class name |
-| `classnames` | `HashtagClassNames` | - | Custom class names |
+| `ref` | `Ref<HTMLSpanElement>` | - | Forwarded ref |
+| `className` | `string` | - | CSS class name for the root element |
+| `classnames` | `HashtagClassNames` | - | Custom class names for sub-elements |
 
-## ClassNames
+### ClassNames
 
 | Key | Description |
 |-----|-------------|

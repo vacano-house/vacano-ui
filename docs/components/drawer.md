@@ -1,6 +1,6 @@
 # Drawer
 
-Slide-out panel component that appears from any edge of the screen.
+Slide-out panel component that appears from any edge of the screen. Renders via `createPortal` to `document.body`.
 
 *Also known as: side panel, slide panel, sheet, sidebar, off-canvas*
 
@@ -82,12 +82,20 @@ const [open, setOpen] = useState(false)
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
-| `open` | `boolean` | **required** | Open state |
+| `open` | `boolean` | **required** | Controls whether the drawer is visible |
 | `children` | `ReactNode` | - | Drawer content |
-| `position` | `'left' \| 'right' \| 'top' \| 'bottom'` | `'right'` | Slide direction |
-| `size` | `string` | - | Width (left/right) or height (top/bottom) |
-| `animated` | `boolean` | `true` | Enable animation |
-| `className` | `string` | - | CSS class name |
+| `position` | `'left' \| 'right' \| 'top' \| 'bottom'` | `'right'` | Edge of the screen the drawer slides from |
+| `size` | `string` | `'400px'` | Width (for left/right) or height (for top/bottom) of the drawer |
+| `animated` | `boolean` | `false` | Enable slide-in animation |
+| `className` | `string` | - | CSS class name for the root container |
+| `ref` | `Ref<HTMLDivElement>` | - | Ref forwarded to the root container |
+| `data-test-id` | `string` | - | Test identifier attribute |
+
+The component also accepts all standard `HTMLDivElement` attributes (except `className` which is overridden by the component prop).
+
+::: info
+The Drawer component does not have a `classnames` prop -- it uses a single root container element.
+:::
 
 ## Related
 

@@ -101,6 +101,13 @@ Limit the number of visible chips:
 <MultiSelect variant="error" value={[]} options={options} onChange={() => {}} />
 ```
 
+## With Message
+
+```tsx
+<MultiSelect label="Skills" variant="error" value={[]} options={options} onChange={() => {}} message="Please select at least one skill" />
+<MultiSelect label="Interests" value={[]} options={options} onChange={() => {}} message="Optional field" />
+```
+
 ## Disabled
 
 ```tsx
@@ -115,18 +122,20 @@ Limit the number of visible chips:
 | `options` | `MultiSelectOption[]` | **required** | Array of options |
 | `onChange` | `(value: string[]) => void` | **required** | Change handler |
 | `label` | `string` | - | Label text |
-| `placeholder` | `string` | - | Placeholder text |
+| `placeholder` | `string` | `'Select...'` | Placeholder text |
 | `variant` | `'normal' \| 'error'` | `'normal'` | Visual variant |
 | `disabled` | `boolean` | `false` | Disable component |
 | `message` | `string` | - | Message text below component (error, hint) |
-| `maxVisible` | `number` | - | Max visible chips |
-| `emptyMessage` | `ReactNode` | - | Empty state message |
-| `searchPlaceholder` | `string` | - | Search input placeholder |
-| `modalTitle` | `string` | - | Modal header title |
-| `className` | `string` | - | CSS class name |
-| `classnames` | `MultiSelectClassNames` | - | Custom class names |
+| `maxVisible` | `number` | `Infinity` | Max visible chips before showing "+N" overflow |
+| `emptyMessage` | `ReactNode` | `'No options found'` | Empty state message when search has no results |
+| `searchPlaceholder` | `string` | `'Search...'` | Search input placeholder text |
+| `modalTitle` | `string` | `'Select options'` | Modal header title |
+| `className` | `string` | - | CSS class name for the root element |
+| `classnames` | `MultiSelectClassNames` | - | Custom class names for inner elements |
+| `ref` | `Ref<HTMLDivElement>` | - | Ref to the root container element |
+| `data-test-id` | `string` | - | Test identifier attribute |
 
-## Option Type
+### Option Type
 
 ```tsx
 type MultiSelectOption = {
@@ -136,7 +145,7 @@ type MultiSelectOption = {
 }
 ```
 
-## ClassNames
+### ClassNames
 
 | Key | Description |
 |-----|-------------|

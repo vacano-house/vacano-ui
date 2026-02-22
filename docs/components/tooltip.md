@@ -1,6 +1,6 @@
 # Tooltip
 
-Hover tooltip component with multiple placements and variants.
+Hover tooltip component with multiple placements and variants. Automatically repositions when there is not enough space in the preferred direction.
 
 *Also known as: popover, hint, hover info, title tooltip, info bubble*
 
@@ -116,20 +116,24 @@ For use inside containers with `overflow: hidden`:
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
-| `children` | `ReactNode` | **required** | Trigger element |
-| `content` | `ReactNode` | **required** | Tooltip content |
-| `placement` | `'top' \| 'bottom' \| 'left' \| 'right'` | `'top'` | Tooltip position |
+| `children` | `ReactNode` | **required** | Trigger element that activates the tooltip on hover |
+| `content` | `ReactNode` | **required** | Tooltip content (text or JSX) |
+| `placement` | `'top' \| 'bottom' \| 'left' \| 'right'` | `'top'` | Preferred tooltip position relative to the trigger. Auto-adjusts if not enough space. |
 | `variant` | `'dark' \| 'light' \| 'success' \| 'warning' \| 'danger'` | `'dark'` | Color variant |
-| `delay` | `number` | - | Show delay in ms |
-| `portalRenderNode` | `HTMLElement \| null` | - | Portal target |
-| `className` | `string` | - | CSS class name |
-| `classnames` | `TooltipClassNames` | - | Custom class names |
+| `delay` | `number` | `200` | Delay in milliseconds before showing the tooltip on hover |
+| `portalRenderNode` | `HTMLElement \| null` | - | When provided, tooltip content is rendered via `createPortal` into this node |
+| `className` | `string` | - | CSS class name for the wrapper element |
+| `classnames` | `TooltipClassNames` | - | Custom class names for sub-elements |
+| `ref` | `Ref<HTMLDivElement>` | - | Ref forwarded to the wrapper element |
+| `data-test-id` | `string` | - | Test identifier attribute |
 
-## ClassNames
+The component also accepts all standard `HTMLDivElement` attributes (except `className` and `content` which are overridden by component props).
+
+### TooltipClassNames
 
 | Key | Description |
 |-----|-------------|
-| `content` | Tooltip content container |
+| `content` | Tooltip content container (the floating tooltip box) |
 
 ## Related
 

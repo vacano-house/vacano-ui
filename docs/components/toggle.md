@@ -61,15 +61,17 @@ const [enabled, setEnabled] = useState(false)
 |------|------|---------|-------------|
 | `checked` | `boolean` | **required** | Toggle state |
 | `onChange` | `ChangeEventHandler<HTMLInputElement>` | **required** | Change handler |
-| `label` | `ReactNode` | - | Label text |
+| `label` | `ReactNode` | - | Label content (text or any renderable node) |
 | `variant` | `'normal' \| 'error'` | `'normal'` | Visual variant |
 | `disabled` | `boolean` | `false` | Disable toggle |
-| `className` | `string` | - | CSS class name |
-| `classnames` | `ToggleClassNames` | - | Custom class names |
+| `className` | `string` | - | CSS class name for the root element |
+| `classnames` | `ToggleClassNames` | - | Custom class names for inner elements |
+| `ref` | `Ref<HTMLInputElement>` | - | Ref to the underlying input element |
+| `data-test-id` | `string` | - | Test identifier attribute |
 
-All standard HTML input attributes are also supported.
+All standard HTML input attributes are also supported (except `type`, `checked`, `onChange`, and `className` which are controlled by the component).
 
-## ClassNames
+### ClassNames
 
 | Key | Description |
 |-----|-------------|
