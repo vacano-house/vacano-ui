@@ -40,7 +40,6 @@ export const Clickable: Story = {
 }
 
 export const AsLink: Story = {
-  name: 'As Link',
   render: () => (
     <div style={{ display: 'flex', gap: 12 }}>
       <HashtagComponent href="#">FrontendWithZoey</HashtagComponent>

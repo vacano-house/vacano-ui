@@ -38,7 +38,6 @@ export const Levels: Story = {
 }
 
 export const SemanticOverride: Story = {
-  name: 'Semantic Override',
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
       <div>

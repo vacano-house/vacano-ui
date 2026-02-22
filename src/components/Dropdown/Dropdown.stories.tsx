@@ -784,7 +784,6 @@ const AutoCloseMenuContent = () => (
 )
 
 export const AutoClose: Story = {
-  name: 'Auto Close',
   parameters: { layout: 'padded' },
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
@@ -800,7 +799,6 @@ export const AutoClose: Story = {
 }
 
 export const AutoCloseDisabled: Story = {
-  name: 'Auto Close Disabled',
   parameters: { layout: 'padded' },
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>

@@ -98,7 +98,6 @@ export const ActivityLog: Story = {
 }
 
 export const TitleOnly: Story = {
-  name: 'Title Only',
   render: () => (
     <Timeline
       style={{ maxWidth: 400 }}
@@ -128,7 +127,6 @@ export const WithDescription: Story = {
 }
 
 export const RichContent: Story = {
-  name: 'Rich Content',
   render: () => (
     <Timeline
       style={{ maxWidth: 500 }}
@@ -166,7 +164,6 @@ export const RichContent: Story = {
 }
 
 export const SingleItem: Story = {
-  name: 'Single Item',
   render: () => (
     <Timeline
       style={{ maxWidth: 500 }}

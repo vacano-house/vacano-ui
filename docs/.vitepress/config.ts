@@ -73,6 +73,8 @@ export default defineConfig({
             { text: 'Heading', link: '/components/heading' },
             { text: 'Overline', link: '/components/overline' },
             { text: 'Progress', link: '/components/progress' },
+            { text: 'Skeleton', link: '/components/skeleton' },
+            { text: 'StepLog', link: '/components/step-log' },
             { text: 'Stat', link: '/components/stat' },
             { text: 'Tabs', link: '/components/tabs' },
             { text: 'User', link: '/components/user' },
@@ -81,6 +83,8 @@ export default defineConfig({
         {
           text: 'Feedback',
           items: [
+            { text: 'Alert', link: '/components/alert' },
+            { text: 'EmptyState', link: '/components/empty-state' },
             { text: 'Confirmation', link: '/components/confirmation' },
             { text: 'Modal', link: '/components/modal' },
             { text: 'NotifyConfirmation', link: '/components/notify-confirmation' },
@@ -97,13 +101,16 @@ export default defineConfig({
           items: [
             { text: 'Container', link: '/components/container' },
             { text: 'Divider', link: '/components/divider' },
+            { text: 'ShellScreen', link: '/components/shell-screen' },
             { text: 'Panel', link: '/components/panel' },
           ],
         },
         {
           text: 'Navigation',
           items: [
+            { text: 'Accordion', link: '/components/accordion' },
             { text: 'Dropdown', link: '/components/dropdown' },
+            { text: 'MenuButton', link: '/components/menu-button' },
             { text: 'Stepper', link: '/components/stepper' },
           ],
         },

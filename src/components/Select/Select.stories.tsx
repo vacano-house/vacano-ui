@@ -289,7 +289,6 @@ export const InCard: Story = {
 }
 
 export const EmptyOptions: Story = {
-  name: 'Empty Options',
   render: () => (
     <div style={{ padding: 40, display: 'flex', flexDirection: 'column', gap: 16, width: 300 }}>
       <InteractiveSelect value="" options={[]} label="No options available" fullWidth />
