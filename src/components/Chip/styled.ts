@@ -15,7 +15,7 @@ type StyledDeleteProps = {
 export const StyledContainer = styled.span<StyledContainerProps>`
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  gap: 6px;
   padding: 0 ${(props) => (props.$deletable ? '7px' : '10px')} 0 10px;
   border-radius: 12px;
   height: 24px;
@@ -50,7 +50,20 @@ export const StyledDelete = styled.button<StyledDeleteProps>`
   }
 `
 
+export const StyledIcon = styled.span`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  & svg {
+    width: 14px;
+    height: 14px;
+  }
+`
+
 export const StyledLabel = styled.span`
   flex: 1 0 auto;
   text-align: center;
+  line-height: 1.4;
 `

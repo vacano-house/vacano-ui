@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Vacano UI is a React 19 component library built with Emotion CSS-in-JS, published as `@vacano/ui`. It provides 40+ components, 1800+ Lucide icons, and shared utilities. Package manager is **pnpm**.
+Vacano UI is a React 19 component library built with Emotion CSS-in-JS, published as `@vacano/ui`. It provides 50+ components, 1800+ Lucide icons, and shared utilities. Package manager is **pnpm**.
 
 ## Commands
 

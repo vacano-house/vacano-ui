@@ -1,4 +1,4 @@
-import { StyledContainer, StyledDelete, StyledLabel } from './styled'
+import { StyledContainer, StyledDelete, StyledIcon, StyledLabel } from './styled'
 import { ChipProps } from './types'
 import { X } from '../../icons/Lucide'
 import { newClassNameGetter } from '../../lib'
@@ -10,6 +10,7 @@ export const Chip = ({
   className,
   classnames,
   deletable,
+  icon,
   onDelete,
   ref,
   variant = 'gray',
@@ -23,6 +24,7 @@ export const Chip = ({
       $variant={variant}
       $deletable={Boolean(deletable)}
     >
+      {icon && <StyledIcon className={css('icon', classnames?.icon)}>{icon}</StyledIcon>}
       <StyledLabel className={css('label', classnames?.label)}>{children}</StyledLabel>
       {deletable && (
         <StyledDelete

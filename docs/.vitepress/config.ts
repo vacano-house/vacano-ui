@@ -43,6 +43,7 @@ export default defineConfig({
             { text: 'CheckboxCard', link: '/components/checkbox-card' },
             { text: 'CheckboxGroup', link: '/components/checkbox-group' },
             { text: 'DatePicker', link: '/components/date-picker' },
+            { text: 'FileUpload', link: '/components/file-upload' },
             { text: 'Input', link: '/components/input' },
             { text: 'MultiSelect', link: '/components/multi-select' },
             { text: 'OtpCode', link: '/components/otp-code' },
@@ -64,10 +65,17 @@ export default defineConfig({
         {
           text: 'Data Display',
           items: [
+            { text: 'Badge', link: '/components/badge' },
             { text: 'Card', link: '/components/card' },
             { text: 'Chip', link: '/components/chip' },
+            { text: 'DateRange', link: '/components/date-range' },
+            { text: 'Hashtag', link: '/components/hashtag' },
+            { text: 'Heading', link: '/components/heading' },
+            { text: 'Overline', link: '/components/overline' },
             { text: 'Progress', link: '/components/progress' },
+            { text: 'Stat', link: '/components/stat' },
             { text: 'Tabs', link: '/components/tabs' },
+            { text: 'User', link: '/components/user' },
           ],
         },
         {

@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
 import { Chip as ChipComponent } from './Chip'
+import { Check, CircleAlert, Clock, Star, Tag, User } from '../../icons/Lucide'
 
 const meta: Meta<typeof ChipComponent> = {
   title: 'components/Chip',
@@ -68,6 +69,45 @@ export const Deletable: Story = {
           </ChipComponent>
           <ChipComponent variant="black" deletable onDelete={() => {}}>
             Black
+          </ChipComponent>
+        </div>
+      </div>
+    </div>
+  ),
+}
+
+export const WithIcon: Story = {
+  parameters: { layout: 'padded' },
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
+      <div>
+        <div style={{ marginBottom: 8, fontSize: 12, color: '#666' }}>With icons</div>
+        <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+          <ChipComponent icon={<User />} variant="blue">
+            John Doe
+          </ChipComponent>
+          <ChipComponent icon={<Check />} variant="gray">
+            Completed
+          </ChipComponent>
+          <ChipComponent icon={<CircleAlert />} variant="red">
+            Error
+          </ChipComponent>
+          <ChipComponent icon={<Star />} variant="black">
+            Featured
+          </ChipComponent>
+        </div>
+      </div>
+      <div>
+        <div style={{ marginBottom: 8, fontSize: 12, color: '#666' }}>With icons + deletable</div>
+        <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+          <ChipComponent icon={<Tag />} deletable onDelete={() => {}}>
+            react
+          </ChipComponent>
+          <ChipComponent icon={<Tag />} variant="blue" deletable onDelete={() => {}}>
+            typescript
+          </ChipComponent>
+          <ChipComponent icon={<Clock />} variant="red" deletable onDelete={() => {}}>
+            overdue
           </ChipComponent>
         </div>
       </div>

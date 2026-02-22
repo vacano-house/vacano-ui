@@ -71,6 +71,71 @@ export const Variants: Story = {
   ),
 }
 
+export const WithLabel: Story = {
+  parameters: { layout: 'padded' },
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 24, maxWidth: 500 }}>
+      <div>
+        <div style={{ marginBottom: 8, fontSize: 12, color: '#666' }}>Label only</div>
+        <PanelComponent label="New">
+          <Button variant="system">Check it out</Button>
+        </PanelComponent>
+      </div>
+      <div>
+        <div style={{ marginBottom: 8, fontSize: 12, color: '#666' }}>Label + title</div>
+        <PanelComponent label="Beta" title="Experimental Features">
+          <Button variant="system">Try Now</Button>
+        </PanelComponent>
+      </div>
+      <div>
+        <div style={{ marginBottom: 8, fontSize: 12, color: '#666' }}>
+          Label + title + description
+        </div>
+        <PanelComponent
+          label="Pro plan"
+          title="Subscription"
+          description="Your plan renews on March 15, 2026"
+        >
+          <Button variant="system">Manage</Button>
+          <Button variant="danger">Cancel</Button>
+        </PanelComponent>
+      </div>
+    </div>
+  ),
+}
+
+export const LabelSessionExample: Story = {
+  name: 'Example: Active Session',
+  parameters: { layout: 'padded' },
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 16, maxWidth: 600 }}>
+      <PanelComponent
+        label="Current session"
+        title="Chrome on macOS"
+        description="95.161.226.182 — Moscow, Russia"
+      >
+        <Button variant="system">Details</Button>
+      </PanelComponent>
+      <PanelComponent title="Safari on iPhone" description="95.161.226.182 — Moscow, Russia">
+        <Button variant="system">Details</Button>
+        <Button variant="danger">Revoke</Button>
+      </PanelComponent>
+    </div>
+  ),
+}
+
+export const LabelDarkVariant: Story = {
+  name: 'Label: Dark Variant',
+  parameters: { layout: 'padded' },
+  render: () => (
+    <div style={{ backgroundColor: '#0f1115', padding: 24, borderRadius: 16, maxWidth: 500 }}>
+      <PanelComponent variant="dark" label="Recommended" title="Annual Plan">
+        <Button variant="normal">Upgrade</Button>
+      </PanelComponent>
+    </div>
+  ),
+}
+
 export const WithTitleOnly: Story = {
   parameters: { layout: 'padded' },
   render: () => (

@@ -3,6 +3,7 @@ import {
   StyledContent,
   StyledDescription,
   StyledHeader,
+  StyledLabel,
   StyledTitle,
 } from './styled'
 import { PanelProps } from './types'
@@ -15,6 +16,7 @@ export const Panel = ({
   className,
   classnames,
   description,
+  label,
   ref,
   title,
   variant = 'light',
@@ -24,6 +26,7 @@ export const Panel = ({
 
   return (
     <StyledContainer {...rest} ref={ref} className={css('container', className)} $variant={variant}>
+      {label && <StyledLabel className={css('label', classnames?.label)}>{label}</StyledLabel>}
       {hasHeader && (
         <StyledHeader>
           {title && (
