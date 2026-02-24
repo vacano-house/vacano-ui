@@ -9,6 +9,7 @@ export const DateRange = ({
   className,
   classnames,
   from,
+  locale = 'en',
   presentLabel = 'Present Time',
   ref,
   to,
@@ -16,8 +17,8 @@ export const DateRange = ({
 }: DateRangeProps) => (
   <StyledContainer {...rest} ref={ref} className={css('container', className)}>
     <StyledHash className={css('hash', classnames?.hash)}>#</StyledHash>
-    <span className={css('from', classnames?.from)}>{formatDate(from)}</span>
+    <span className={css('from', classnames?.from)}>{formatDate(from, locale)}</span>
     <StyledSeparator className={css('separator', classnames?.separator)}>&mdash;</StyledSeparator>
-    <span className={css('to', classnames?.to)}>{to ? formatDate(to) : presentLabel}</span>
+    <span className={css('to', classnames?.to)}>{to ? formatDate(to, locale) : presentLabel}</span>
   </StyledContainer>
 )

@@ -1,6 +1,6 @@
 # DateRange
 
-Displays a formatted date range with start and end dates. Shows "Present Time" when no end date is provided.
+Displays a formatted date range with start and end dates. Shows "Present Time" when no end date is provided. Supports localization via the `locale` prop.
 
 *Also known as: period, time range, duration, date span*
 
@@ -24,21 +24,35 @@ When `to` is omitted, displays "Present Time" as the end date.
 
 ```tsx
 <DateRange from={new Date(2021, 9)} />
-// Renders: # 2021, October — Present Time
+// Renders: # October 2021 — Present Time
 ```
 
 ## With end date
 
 ```tsx
 <DateRange from={new Date(2019, 6)} to={new Date(2021, 8)} />
-// Renders: # 2019, July — 2021, September
+// Renders: # July 2019 — September 2021
+```
+
+## Localization
+
+Use the `locale` prop to display month names in the desired language. Accepts any valid [BCP 47 language tag](https://www.ietf.org/rfc/bcp/bcp47.txt). Formatting is handled by `Intl.DateTimeFormat`.
+
+```tsx
+<DateRange from={new Date(2023, 2)} to={new Date(2025, 11)} locale="ru" />
+// Renders: # март 2023 г. — декабрь 2025 г.
+
+<DateRange from={new Date(2023, 2)} to={new Date(2025, 11)} locale="de" />
+// Renders: # März 2023 — Dezember 2025
 ```
 
 ## Custom present label
 
+When using `locale`, remember to localize `presentLabel` as well:
+
 ```tsx
-<DateRange from={new Date(2023, 2)} presentLabel="Now" />
-// Renders: # 2023, March — Now
+<DateRange from={new Date(2023, 2)} locale="ru" presentLabel="По настоящее время" />
+// Renders: # март 2023 г. — По настоящее время
 ```
 
 ## Props
@@ -46,11 +60,13 @@ When `to` is omitted, displays "Present Time" as the end date.
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
 | `from` | `Date` | **required** | Start date |
-| `to` | `Date` | - | End date (omit for "Present Time") |
-| `presentLabel` | `string` | `'Present Time'` | Custom label when `to` is not set |
+| `to` | `Date` | - | End date. When omitted, `presentLabel` is shown instead. |
+| `locale` | `string` | `'en'` | BCP 47 language tag for month name localization (e.g. `'ru'`, `'de'`, `'fr'`, `'ja'`). Uses `Intl.DateTimeFormat` internally. |
+| `presentLabel` | `string` | `'Present Time'` | Label displayed when `to` is not set. Should be localized manually when using a non-English `locale`. |
 | `ref` | `Ref<HTMLSpanElement>` | - | Forwarded ref |
 | `className` | `string` | - | CSS class name for the root element |
 | `classnames` | `DateRangeClassNames` | - | Custom class names for sub-elements |
+| `data-test-id` | `string` | - | Test identifier attribute |
 
 ### ClassNames
 
@@ -65,3 +81,4 @@ When `to` is omitted, displays "Present Time" as the end date.
 
 - [Overline](/components/overline) - Category label, often paired with DateRange
 - [Heading](/components/heading) - Heading component for titles
+- [DatePicker](/components/date-picker) - Interactive date selection

@@ -13,5 +13,6 @@ export type DateRangeProps = VacanoComponentProps<HTMLSpanElement, DateRangeClas
   Omit<HTMLAttributes<HTMLSpanElement>, 'className'> & {
     from: Date
     to?: Date
+    locale?: string
     presentLabel?: string
   }
