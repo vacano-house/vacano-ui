@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react'
 
 import { DEFAULT_CANCEL_LABEL, DEFAULT_CONFIRM_LABEL } from './constants'
-import { StyledActions, StyledContainer, StyledMessage } from './styled'
+import { StyledActions, StyledContainer, StyledMessage, StyledOverlay } from './styled'
 import type { ConfirmationState } from './types'
 import { Button } from '../Button'
 
@@ -61,16 +61,19 @@ export const ConfirmationBar = ({ confirmation, onDone }: ConfirmationBarProps) 
   }, [handleCancel, isLoading])
 
   return (
-    <StyledContainer $isExiting={isExiting}>
-      <StyledMessage>{message}</StyledMessage>
-      <StyledActions>
-        <Button variant="system" size="compact" onClick={handleCancel} disabled={isLoading}>
-          {cancelLabel}
-        </Button>
-        <Button variant="danger" size="compact" onClick={handleConfirm} loading={isLoading}>
-          {confirmLabel}
-        </Button>
-      </StyledActions>
-    </StyledContainer>
+    <>
+      <StyledOverlay $isExiting={isExiting} onClick={handleCancel} />
+      <StyledContainer $isExiting={isExiting}>
+        <StyledMessage>{message}</StyledMessage>
+        <StyledActions>
+          <Button variant="system" size="compact" onClick={handleCancel} disabled={isLoading}>
+            {cancelLabel}
+          </Button>
+          <Button variant="danger" size="compact" onClick={handleConfirm} loading={isLoading}>
+            {confirmLabel}
+          </Button>
+        </StyledActions>
+      </StyledContainer>
+    </>
   )
 }

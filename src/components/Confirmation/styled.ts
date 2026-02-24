@@ -3,6 +3,16 @@ import styled from '@emotion/styled'
 
 import { COLORS } from '../../lib'
 
+const fadeIn = keyframes`
+  from { opacity: 0; }
+  to { opacity: 1; }
+`
+
+const fadeOut = keyframes`
+  from { opacity: 1; }
+  to { opacity: 0; }
+`
+
 const slideIn = keyframes`
   from {
     opacity: 0;
@@ -23,6 +33,19 @@ const slideOut = keyframes`
     opacity: 0;
     transform: translateX(-50%) translateY(100%);
   }
+`
+
+type StyledOverlayProps = {
+  $isExiting: boolean
+}
+
+export const StyledOverlay = styled.div<StyledOverlayProps>`
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  background-color: rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(2px);
+  animation: ${({ $isExiting }) => ($isExiting ? fadeOut : fadeIn)} 0.2s ease-out forwards;
 `
 
 type StyledContainerProps = {
