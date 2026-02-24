@@ -3,6 +3,13 @@ import styled from '@emotion/styled'
 import { FileUploadItemStatus } from './types'
 import { COLORS } from '../../lib'
 
+export const StyledFileUpload = styled.div`
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+`
+
 export const StyledDropzone = styled.div<{ $disabled: boolean; $dragOver: boolean }>`
   display: flex;
   flex-direction: column;
@@ -77,7 +84,6 @@ export const StyledList = styled.div`
   display: flex;
   flex-direction: column;
   gap: 12px;
-  margin-top: 16px;
 `
 
 // File item styles

@@ -7,6 +7,7 @@ import {
   StyledDropzoneHint,
   StyledDropzoneIcon,
   StyledDropzoneText,
+  StyledFileUpload,
   StyledInput,
 } from './styled'
 import { FileUploadProps } from './types'
@@ -113,7 +114,7 @@ export const FileUpload = ({
   }
 
   return (
-    <div ref={ref} className={className} {...rest}>
+    <StyledFileUpload ref={ref} className={className} {...rest}>
       <StyledDropzone
         className={css('dropzone', classnames?.dropzone)}
         $disabled={disabled}
@@ -153,6 +154,6 @@ export const FileUpload = ({
       />
 
       {children}
-    </div>
+    </StyledFileUpload>
   )
 }
