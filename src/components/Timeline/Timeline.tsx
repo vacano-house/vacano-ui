@@ -33,8 +33,8 @@ export const Timeline = ({ className, classnames, items, ref, ...rest }: Timelin
                   {item.description}
                 </StyledDescription>
               )}
-              {item.children && (
-                <StyledBody className={css('body', classnames?.body)}>{item.children}</StyledBody>
+              {item.content && (
+                <StyledBody className={css('body', classnames?.body)}>{item.content}</StyledBody>
               )}
             </StyledContent>
           </StyledItem>

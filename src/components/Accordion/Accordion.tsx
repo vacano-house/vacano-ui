@@ -80,6 +80,7 @@ export const Accordion = ({
               type="button"
               aria-expanded={isExpanded}
               $disabled={Boolean(item.disabled)}
+              $expanded={isExpanded}
               disabled={item.disabled}
               onClick={() => toggle(item.value)}
               className={css('trigger', classnames?.trigger)}

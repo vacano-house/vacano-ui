@@ -3,9 +3,9 @@ import type { HTMLAttributes, ReactNode } from 'react'
 import { VacanoComponentProps } from '../../lib'
 
 export type TimelineItem = {
-  title: string
+  title: ReactNode
   description?: ReactNode
-  children?: ReactNode
+  content?: ReactNode
 }
 
 export type TimelineClassNames = {

@@ -50,7 +50,7 @@ Each item can include an optional `description` rendered below the title in a sm
 
 ## Rich Content
 
-Use the `children` field on each item to render arbitrary React content below the description. It accepts both strings and JSX.
+Use the `content` field on each item to render arbitrary React content below the description. It accepts both strings and JSX.
 
 ```tsx
 <Timeline
@@ -58,7 +58,7 @@ Use the `children` field on each item to render arbitrary React content below th
     {
       title: 'Lead Frontend Developer',
       description: 'Acme Corp',
-      children: (
+      content: (
         <ul style={{ margin: 0, paddingLeft: 20 }}>
           <li>Led a team of 12 developers</li>
           <li>Migrated core product to micro-frontend architecture</li>
@@ -69,13 +69,13 @@ Use the `children` field on each item to render arbitrary React content below th
     {
       title: 'Senior Frontend Engineer',
       description: 'Global Soft',
-      children:
+      content:
         'Developed internal BI tool. Implemented design system and CI/CD pipelines.',
     },
     {
       title: 'Frontend Developer',
       description: 'Startup Media',
-      children: 'Built SPA with React. Integrated REST and GraphQL APIs.',
+      content: 'Built SPA with React. Integrated REST and GraphQL APIs.',
     },
   ]}
 />
@@ -89,17 +89,17 @@ Use the `children` field on each item to render arbitrary React content below th
     {
       title: 'Deployment completed',
       description: 'v2.4.1 — 2 hours ago',
-      children: 'Production deployment to 3 regions. All health checks passed.',
+      content: 'Production deployment to 3 regions. All health checks passed.',
     },
     {
       title: 'Pull request merged',
       description: '#482 — 5 hours ago',
-      children: 'feat: add user notification preferences',
+      content: 'feat: add user notification preferences',
     },
     {
       title: 'Issue resolved',
       description: '#179 — yesterday',
-      children: 'Fixed memory leak in WebSocket connection handler.',
+      content: 'Fixed memory leak in WebSocket connection handler.',
     },
     {
       title: 'Release published',
@@ -119,7 +119,7 @@ The timeline works with a single item. The connecting line is automatically hidd
     {
       title: 'Project started',
       description: 'January 2025',
-      children: 'Initial commit and project setup.',
+      content: 'Initial commit and project setup.',
     },
   ]}
 />
@@ -141,9 +141,9 @@ All additional `HTMLDivElement` attributes (e.g. `style`, `id`, `onClick`) are f
 
 | Property | Type | Required | Description |
 |----------|------|----------|-------------|
-| `title` | `string` | Yes | Primary text displayed for the event. Rendered in bold (600 weight) at 15px. |
+| `title` | `ReactNode` | Yes | Primary text displayed for the event. Rendered in bold (600 weight) at 15px. Accepts strings or JSX. |
 | `description` | `ReactNode` | No | Secondary text rendered below the title in a muted color at 13px. Accepts strings or JSX. |
-| `children` | `ReactNode` | No | Additional content rendered below the description at 14px. Accepts strings or JSX for rich content such as lists, links, or nested components. |
+| `content` | `ReactNode` | No | Additional content rendered below the description at 14px. Accepts strings or JSX for rich content such as lists, links, or nested components. |
 
 ### ClassNames
 
@@ -157,7 +157,7 @@ Custom class names can be applied to internal sub-elements via the `classnames` 
 | `content` | The content area to the right of the track (wraps title, description, and body) |
 | `title` | The primary title text element |
 | `description` | The secondary description text element |
-| `body` | The container for `children` content below the description |
+| `body` | The container for `content` content below the description |
 
 ### CSS Class Names
 

@@ -14,6 +14,7 @@ type StyledItemProps = {
 
 type StyledTriggerProps = {
   $disabled: boolean
+  $expanded: boolean
 }
 
 type StyledContentWrapperProps = {
@@ -55,13 +56,13 @@ export const StyledTrigger = styled.button<StyledTriggerProps>`
   cursor: ${({ $disabled }) => ($disabled ? 'not-allowed' : 'pointer')};
   font-size: 14px;
   font-weight: 600;
-  color: ${COLORS.black};
+  color: ${({ $expanded }) => ($expanded ? COLORS.black : COLORS['iron-grey'])};
   text-align: left;
   outline: none;
   transition: color 0.2s ease;
 
   &:hover {
-    color: ${COLORS['steel-blue']};
+    color: ${COLORS.black};
   }
 `
 

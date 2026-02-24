@@ -22,7 +22,7 @@ export const Playground: Story = {
         {
           title: 'Lead Frontend Developer',
           description: 'ТехноКит Групп',
-          children: (
+          content: (
             <ul style={{ margin: 0, paddingLeft: 20 }}>
               <li>Руководство командой из 12 разработчиков</li>
               <li>Перевод основного продукта на микрофронтенд архитектуру</li>
@@ -33,13 +33,13 @@ export const Playground: Story = {
         {
           title: 'Senior Frontend Engineer',
           description: 'Глобал Софт',
-          children:
+          content:
             'Разработка внутреннего BI-инструмента. Внедрение дизайн-системы и CI/CD процессов для фронтенда.',
         },
         {
           title: 'Frontend Developer',
           description: 'Стартап Медиа',
-          children: 'Разработка SPA на React. Интеграция с REST и GraphQL API.',
+          content: 'Разработка SPA на React. Интеграция с REST и GraphQL API.',
         },
       ]}
     />
@@ -55,12 +55,12 @@ export const Education: Story = {
         {
           title: 'MSc Computer Science',
           description: 'MIT — 2020–2022',
-          children: 'Thesis: Distributed Systems for Real-Time Data Processing',
+          content: 'Thesis: Distributed Systems for Real-Time Data Processing',
         },
         {
           title: 'BSc Software Engineering',
           description: 'Stanford University — 2016–2020',
-          children: "Dean's List, GPA 3.9/4.0",
+          content: "Dean's List, GPA 3.9/4.0",
         },
       ]}
     />
@@ -76,17 +76,17 @@ export const ActivityLog: Story = {
         {
           title: 'Deployment completed',
           description: 'v2.4.1 — 2 hours ago',
-          children: 'Production deployment to 3 regions. All health checks passed.',
+          content: 'Production deployment to 3 regions. All health checks passed.',
         },
         {
           title: 'Pull request merged',
           description: '#482 — 5 hours ago',
-          children: 'feat: add user notification preferences',
+          content: 'feat: add user notification preferences',
         },
         {
           title: 'Issue resolved',
           description: '#179 — yesterday',
-          children: 'Fixed memory leak in WebSocket connection handler.',
+          content: 'Fixed memory leak in WebSocket connection handler.',
         },
         {
           title: 'Release published',
@@ -134,7 +134,7 @@ export const RichContent: Story = {
         {
           title: 'Q4 2025',
           description: 'Product Roadmap',
-          children: (
+          content: (
             <div>
               <p style={{ margin: '0 0 8px' }}>Key deliverables:</p>
               <ul style={{ margin: 0, paddingLeft: 20 }}>
@@ -148,7 +148,7 @@ export const RichContent: Story = {
         {
           title: 'Q3 2025',
           description: 'Product Roadmap',
-          children: (
+          content: (
             <div>
               <p style={{ margin: '0 0 8px' }}>Completed:</p>
               <ul style={{ margin: 0, paddingLeft: 20 }}>
@@ -171,7 +171,7 @@ export const SingleItem: Story = {
         {
           title: 'Project started',
           description: 'January 2025',
-          children: 'Initial commit and project setup.',
+          content: 'Initial commit and project setup.',
         },
       ]}
     />
