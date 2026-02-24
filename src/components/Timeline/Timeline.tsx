@@ -30,18 +30,22 @@ export const Timeline = ({ className, classnames, items, ref, ...rest }: Timelin
             </StyledTrack>
             <StyledContent className={css('content', classnames?.content)} $last={last}>
               <StyledHeader>
-                <StyledTitle className={css('title', classnames?.title)}>{item.title}</StyledTitle>
+                <div>
+                  <StyledTitle className={css('title', classnames?.title)}>
+                    {item.title}
+                  </StyledTitle>
+                  {item.description && (
+                    <StyledDescription className={css('description', classnames?.description)}>
+                      {item.description}
+                    </StyledDescription>
+                  )}
+                </div>
                 {item.actions && (
                   <StyledActions className={css('actions', classnames?.actions)}>
                     {item.actions}
                   </StyledActions>
                 )}
               </StyledHeader>
-              {item.description && (
-                <StyledDescription className={css('description', classnames?.description)}>
-                  {item.description}
-                </StyledDescription>
-              )}
               {item.content && (
                 <StyledBody className={css('body', classnames?.body)}>{item.content}</StyledBody>
               )}

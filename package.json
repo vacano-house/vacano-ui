@@ -1,6 +1,6 @@
 {
   "name": "@vacano/ui",
-  "version": "1.15.7",
+  "version": "1.15.8",
   "description": "Vacano React components library",
   "type": "module",
   "main": "./dist/index.cjs",
