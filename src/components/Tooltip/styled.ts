@@ -2,6 +2,7 @@ import styled from '@emotion/styled'
 
 import { getTooltipVariantColors } from './helpers'
 import { TooltipPlacement, TooltipVariant } from './types'
+import { Z_INDEX } from '../../lib'
 
 type StyledContentProps = {
   $placement: TooltipPlacement
@@ -91,7 +92,6 @@ const getLightArrowStyles = ($placement: TooltipPlacement, $variant: TooltipVari
 }
 
 const contentBaseStyles = (props: StyledContentProps) => `
-  z-index: 1000;
   padding: 6px 12px;
   background-color: ${getTooltipVariantColors(props.$variant).background};
   color: ${getTooltipVariantColors(props.$variant).text};
@@ -175,11 +175,13 @@ const getPlacementStyles = ($placement: TooltipPlacement) => {
 
 export const StyledContent = styled.div<StyledContentProps>`
   position: absolute;
+  z-index: ${Z_INDEX.dropdown};
   ${(props) => contentBaseStyles(props)}
   ${({ $placement }) => getPlacementStyles($placement)}
 `
 
 export const StyledPortalContent = styled.div<StyledContentProps>`
   position: fixed;
+  z-index: ${Z_INDEX.portalDropdown};
   ${(props) => contentBaseStyles(props)}
 `

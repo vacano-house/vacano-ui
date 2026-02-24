@@ -4,7 +4,7 @@ import { VARIANT_PROPS } from './constants'
 import { TagsVariant } from './types'
 import { FieldLabel } from '../FieldLabel'
 import { FieldMessage } from '../FieldMessage'
-import { alpha, COLORS } from '../../lib'
+import { alpha, COLORS, Z_INDEX } from '../../lib'
 
 export const StyledContainer = styled.div`
   position: relative;
@@ -72,7 +72,6 @@ export const StyledInput = styled.input<{ $disabled: boolean; $variant: TagsVari
 `
 
 const dropdownStyles = `
-  z-index: 100;
   background-color: ${COLORS.white};
   border: 1px solid ${alpha(COLORS.black, 15)};
   border-radius: 8px;
@@ -98,6 +97,7 @@ export const StyledDropdown = styled.div<{ $open: boolean; $position: 'bottom' |
   right: 0;
   ${(props) =>
     props.$position === 'bottom' ? 'top: calc(100% + 4px);' : 'bottom: calc(100% + 4px);'}
+  z-index: ${Z_INDEX.dropdown};
   ${dropdownStyles}
   opacity: ${(props) => (props.$open ? 1 : 0)};
   visibility: ${(props) => (props.$open ? 'visible' : 'hidden')};
@@ -107,6 +107,7 @@ export const StyledDropdown = styled.div<{ $open: boolean; $position: 'bottom' |
 
 export const StyledPortalDropdown = styled.div<{ $open: boolean; $position: 'bottom' | 'top' }>`
   position: fixed;
+  z-index: ${Z_INDEX.portalDropdown};
   ${dropdownStyles}
   opacity: ${(props) => (props.$open ? 1 : 0)};
   visibility: ${(props) => (props.$open ? 'visible' : 'hidden')};

@@ -10,7 +10,7 @@ import {
 import { DatePickerPosition, DatePickerVariant } from './types'
 import { FieldLabel } from '../FieldLabel'
 import { FieldMessage } from '../FieldMessage'
-import { alpha, COLORS, VacanoComponentSize } from '../../lib'
+import { alpha, COLORS, VacanoComponentSize, Z_INDEX } from '../../lib'
 
 export const StyledContainer = styled.div<{ $fullWidth: boolean }>`
   position: relative;
@@ -83,7 +83,6 @@ export const StyledTriggerIcon = styled.span<{ $open: boolean }>`
 `
 
 const calendarStyles = `
-  z-index: 100;
   background-color: ${COLORS.white};
   border: 1px solid ${alpha(COLORS.black, 15)};
   border-radius: 12px;
@@ -103,6 +102,7 @@ export const StyledCalendar = styled.div<{ $open: boolean; $position: DatePicker
   ${({ $position }) =>
     $position === 'bottom' ? 'top: calc(100% + 4px);' : 'bottom: calc(100% + 4px);'}
   left: 0;
+  z-index: ${Z_INDEX.dropdown};
   ${calendarStyles}
   opacity: ${({ $open }) => ($open ? 1 : 0)};
   visibility: ${({ $open }) => ($open ? 'visible' : 'hidden')};
@@ -115,6 +115,7 @@ export const StyledCalendar = styled.div<{ $open: boolean; $position: DatePicker
 
 export const StyledPortalCalendar = styled.div<{ $open: boolean; $position: DatePickerPosition }>`
   position: fixed;
+  z-index: ${Z_INDEX.portalDropdown};
   ${calendarStyles}
   opacity: ${({ $open }) => ($open ? 1 : 0)};
   visibility: ${({ $open }) => ($open ? 'visible' : 'hidden')};

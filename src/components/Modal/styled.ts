@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 
-import { alpha, COLORS, KEYFRAMES } from '../../lib'
+import { alpha, COLORS, KEYFRAMES, Z_INDEX } from '../../lib'
 
 type StyledOverlayProps = {
   $animated: boolean
@@ -14,7 +14,7 @@ type StyledContentProps = {
 export const StyledOverlay = styled.div<StyledOverlayProps>`
   position: fixed;
   inset: 0;
-  z-index: 1000;
+  z-index: ${Z_INDEX.modalOverlay};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -24,7 +24,7 @@ export const StyledOverlay = styled.div<StyledOverlayProps>`
 
 export const StyledContent = styled.div<StyledContentProps>`
   position: relative;
-  z-index: 1001;
+  z-index: ${Z_INDEX.modal};
   width: ${(props) => props.$width};
   max-width: calc(100vw - 32px);
   max-height: calc(100vh - 32px);

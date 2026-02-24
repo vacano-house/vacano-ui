@@ -22,6 +22,15 @@ export const COLORS = {
   'baltic-blue': '#1e6091',
 } as const
 
+export const Z_INDEX = {
+  dropdown: 100,
+  modalOverlay: 1000,
+  modal: 1001,
+  portalDropdown: 1002,
+  confirmation: 1003,
+  confirmationBar: 1004,
+} as const
+
 export const KEYFRAMES = {
   rotate: keyframes`
     to {

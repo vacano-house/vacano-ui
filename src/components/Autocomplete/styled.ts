@@ -3,7 +3,7 @@ import styled from '@emotion/styled'
 import { AutocompleteVariant } from './types'
 import { FieldLabel } from '../FieldLabel'
 import { FieldMessage } from '../FieldMessage'
-import { alpha, COLORS, VacanoComponentSize } from '../../lib'
+import { alpha, COLORS, VacanoComponentSize, Z_INDEX } from '../../lib'
 
 const SIZE_PROPS: Record<VacanoComponentSize, { height: string; padding: string; radius: string }> =
   {
@@ -138,7 +138,6 @@ export const StyledSpinnerWrapper = styled.div`
 `
 
 const dropdownStyles = `
-  z-index: 100;
   max-height: 240px;
   overflow-y: auto;
   background-color: ${COLORS.white};
@@ -157,6 +156,7 @@ export const StyledDropdown = styled.div<{ $open: boolean }>`
   left: 0;
   right: 0;
   margin-top: 4px;
+  z-index: ${Z_INDEX.dropdown};
   ${dropdownStyles}
   opacity: ${({ $open }) => ($open ? 1 : 0)};
   visibility: ${({ $open }) => ($open ? 'visible' : 'hidden')};
@@ -165,6 +165,7 @@ export const StyledDropdown = styled.div<{ $open: boolean }>`
 
 export const StyledPortalDropdown = styled.div<{ $open: boolean }>`
   position: fixed;
+  z-index: ${Z_INDEX.portalDropdown};
   ${dropdownStyles}
   opacity: ${({ $open }) => ($open ? 1 : 0)};
   visibility: ${({ $open }) => ($open ? 'visible' : 'hidden')};

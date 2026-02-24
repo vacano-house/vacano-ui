@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 
 import { DropdownAlign, DropdownPosition } from './types'
-import { COLORS } from '../../lib'
+import { COLORS, Z_INDEX } from '../../lib'
 
 export const StyledContainer = styled.div`
   position: relative;
@@ -13,7 +13,6 @@ export const StyledTrigger = styled.div`
 `
 
 const contentStyles = `
-  z-index: 100;
   min-width: 160px;
   padding: 8px;
   background-color: ${COLORS.white};
@@ -38,6 +37,7 @@ export const StyledContent = styled.div<{
   ${({ $position }) =>
     $position === 'bottom' ? 'top: calc(100% + 4px);' : 'bottom: calc(100% + 4px);'}
   ${({ $align }) => ($align === 'left' ? 'left: 0;' : 'right: 0;')}
+  z-index: ${Z_INDEX.dropdown};
   ${contentStyles}
   opacity: ${({ $open }) => ($open ? 1 : 0)};
   visibility: ${({ $open }) => ($open ? 'visible' : 'hidden')};
@@ -50,6 +50,7 @@ export const StyledContent = styled.div<{
 
 export const StyledPortalContent = styled.div<{ $open: boolean; $position: DropdownPosition }>`
   position: fixed;
+  z-index: ${Z_INDEX.portalDropdown};
   ${contentStyles}
   opacity: ${({ $open }) => ($open ? 1 : 0)};
   visibility: ${({ $open }) => ($open ? 'visible' : 'hidden')};

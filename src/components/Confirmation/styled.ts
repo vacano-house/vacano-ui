@@ -1,7 +1,7 @@
 import { keyframes } from '@emotion/react'
 import styled from '@emotion/styled'
 
-import { COLORS } from '../../lib'
+import { COLORS, Z_INDEX } from '../../lib'
 
 const fadeIn = keyframes`
   from { opacity: 0; }
@@ -42,7 +42,7 @@ type StyledOverlayProps = {
 export const StyledOverlay = styled.div<StyledOverlayProps>`
   position: fixed;
   inset: 0;
-  z-index: 999;
+  z-index: ${Z_INDEX.confirmation};
   background-color: rgba(0, 0, 0, 0.15);
   backdrop-filter: blur(2px);
   animation: ${({ $isExiting }) => ($isExiting ? fadeOut : fadeIn)} 0.2s ease-out forwards;
@@ -67,7 +67,7 @@ export const StyledContainer = styled.div<StyledContainerProps>`
     0 4px 6px -1px rgba(0, 0, 0, 0.1),
     0 2px 4px -2px rgba(0, 0, 0, 0.1);
   animation: ${({ $isExiting }) => ($isExiting ? slideOut : slideIn)} 0.2s ease-out forwards;
-  z-index: 1000;
+  z-index: ${Z_INDEX.confirmationBar};
 `
 
 export const StyledMessage = styled.p`

@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 
 import { DrawerPosition } from './types'
-import { alpha, COLORS, KEYFRAMES } from '../../lib'
+import { alpha, COLORS, KEYFRAMES, Z_INDEX } from '../../lib'
 
 const slideIn = {
   left: KEYFRAMES.slideInLeft,
@@ -51,7 +51,7 @@ const getPositionStyles = (position: DrawerPosition, size: string) => {
 
 export const StyledContainer = styled.div<StyledContainerProps>`
   position: fixed;
-  z-index: 1001;
+  z-index: ${Z_INDEX.modal};
   background-color: ${COLORS['white']};
   box-shadow: 0 4px 24px ${alpha(COLORS['black'], 20)};
   ${(props) => getPositionStyles(props.$position, props.$size)}

@@ -4,7 +4,7 @@ import { getSelectSizeProps, getSelectVariantProps } from './helpers'
 import { SelectVariant } from './types'
 import { FieldLabel } from '../FieldLabel'
 import { FieldMessage } from '../FieldMessage'
-import { alpha, COLORS, VacanoComponentSize } from '../../lib'
+import { alpha, COLORS, VacanoComponentSize, Z_INDEX } from '../../lib'
 
 export const StyledContainer = styled.div<{ $fullWidth: boolean }>`
   position: relative;
@@ -84,7 +84,6 @@ const dropdownStyles = `
   border: 1px solid ${alpha(COLORS.black, 10)};
   border-radius: 16px;
   box-shadow: 0 4px 20px ${alpha(COLORS.black, 15)};
-  z-index: 1000;
 `
 
 export const StyledDropdown = styled.div`
@@ -92,12 +91,14 @@ export const StyledDropdown = styled.div`
   left: -4px;
   width: calc(100% + 8px);
   overflow: hidden;
+  z-index: ${Z_INDEX.dropdown};
   ${dropdownStyles}
 `
 
 export const StyledPortalDropdown = styled.div`
   position: fixed;
   overflow: hidden;
+  z-index: ${Z_INDEX.portalDropdown};
   ${dropdownStyles}
 `
 
