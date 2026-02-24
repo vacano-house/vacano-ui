@@ -83,10 +83,22 @@ All form wrappers are exported from `src/form/index.ts`.
 
 ## Documentation
 
-VitePress docs live in the `docs/` folder. **Always update the corresponding docs after any component change** — whether adding a new component, modifying props/API, or changing behavior. This includes:
+VitePress docs live in the `docs/` folder. The documentation is served via an MCP server and consumed by AI agents, so it must be written with machine readability in mind. **Always update the corresponding docs after any component change** — whether adding a new component, modifying props/API, or changing behavior. This includes:
 
 - `docs/components/<component-name>.md` — component documentation page
 - `docs/.vitepress/config.ts` — sidebar navigation (when adding/removing components)
+
+### Writing docs for MCP consumption
+
+Since agents use this documentation to understand how to use components, follow these rules:
+
+- **Every prop must be documented** in the Props table with its exact type, default value, and a clear description
+- **Show complete, copy-pasteable import statements** — agents need to know the exact import path
+- **Include realistic usage examples** covering common scenarios, not just trivial ones
+- **Document prop interactions and constraints** — if certain prop combinations are invalid or one prop depends on another, state it explicitly
+- **Use precise TypeScript types** in the Props table (e.g., `'normal' | 'danger'` not just `string`)
+- **List all classname slots** in a separate table so agents can target sub-elements for styling
+- **Link related components** at the bottom — agents use these to discover alternatives
 
 ## Code style
 
