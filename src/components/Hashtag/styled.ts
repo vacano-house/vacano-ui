@@ -5,7 +5,8 @@ import { COLORS } from '../../lib'
 const base = `
   display: inline-flex;
   font-size: 14px;
-  color: #666;
+  gap: 3px;
+  color: ${COLORS['iron-grey']};
   transition: color 0.15s ease;
   text-decoration: none;
 `

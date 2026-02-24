@@ -41,11 +41,26 @@ export const StyledContent = styled.div<{ $last: boolean }>`
   min-width: 0;
 `
 
+export const StyledHeader = styled.div`
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+`
+
 export const StyledTitle = styled.div`
   font-size: 15px;
   font-weight: 600;
   color: ${COLORS.black};
   line-height: 20px;
+  min-width: 0;
+`
+
+export const StyledActions = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
 `
 
 export const StyledDescription = styled.div`

@@ -6,6 +6,7 @@ export type TimelineItem = {
   title: ReactNode
   description?: ReactNode
   content?: ReactNode
+  actions?: ReactNode
 }
 
 export type TimelineClassNames = {
@@ -16,6 +17,7 @@ export type TimelineClassNames = {
   title?: string
   description?: string
   body?: string
+  actions?: string
 }
 
 export type TimelineProps = VacanoComponentProps<HTMLDivElement, TimelineClassNames> &

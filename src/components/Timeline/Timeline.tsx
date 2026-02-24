@@ -1,9 +1,11 @@
 import {
+  StyledActions,
   StyledBody,
   StyledContainer,
   StyledContent,
   StyledDescription,
   StyledDot,
+  StyledHeader,
   StyledItem,
   StyledLine,
   StyledTitle,
@@ -27,7 +29,14 @@ export const Timeline = ({ className, classnames, items, ref, ...rest }: Timelin
               <StyledLine className={css('line', classnames?.line)} $last={last} />
             </StyledTrack>
             <StyledContent className={css('content', classnames?.content)} $last={last}>
-              <StyledTitle className={css('title', classnames?.title)}>{item.title}</StyledTitle>
+              <StyledHeader>
+                <StyledTitle className={css('title', classnames?.title)}>{item.title}</StyledTitle>
+                {item.actions && (
+                  <StyledActions className={css('actions', classnames?.actions)}>
+                    {item.actions}
+                  </StyledActions>
+                )}
+              </StyledHeader>
               {item.description && (
                 <StyledDescription className={css('description', classnames?.description)}>
                   {item.description}

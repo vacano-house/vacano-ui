@@ -81,6 +81,42 @@ Use the `content` field on each item to render arbitrary React content below the
 />
 ```
 
+## With Actions
+
+Each item can include an `actions` slot rendered to the right of the title. Typically used for edit/delete buttons.
+
+```tsx
+import { Timeline } from '@vacano/ui'
+import { Button } from '@vacano/ui'
+import { Pencil, Trash2 } from '@vacano/ui/icons'
+
+<Timeline
+  items={[
+    {
+      title: 'Lead Frontend Developer',
+      description: 'Acme Corp — 2023–Present',
+      content: 'Led a team of 12 developers.',
+      actions: (
+        <>
+          <Button variant="transparent" size="compact" icon={<Pencil size={14} />} />
+          <Button variant="transparent" size="compact" icon={<Trash2 size={14} />} />
+        </>
+      ),
+    },
+    {
+      title: 'Senior Frontend Engineer',
+      description: 'Global Soft — 2021–2023',
+      actions: (
+        <>
+          <Button variant="transparent" size="compact" icon={<Pencil size={14} />} />
+          <Button variant="transparent" size="compact" icon={<Trash2 size={14} />} />
+        </>
+      ),
+    },
+  ]}
+/>
+```
+
 ## Activity Log Example
 
 ```tsx
@@ -144,6 +180,7 @@ All additional `HTMLDivElement` attributes (e.g. `style`, `id`, `onClick`) are f
 | `title` | `ReactNode` | Yes | Primary text displayed for the event. Rendered in bold (600 weight) at 15px. Accepts strings or JSX. |
 | `description` | `ReactNode` | No | Secondary text rendered below the title in a muted color at 13px. Accepts strings or JSX. |
 | `content` | `ReactNode` | No | Additional content rendered below the description at 14px. Accepts strings or JSX for rich content such as lists, links, or nested components. |
+| `actions` | `ReactNode` | No | Action buttons rendered to the right of the title. Typically icon buttons for edit, delete, etc. |
 
 ### ClassNames
 
@@ -158,6 +195,7 @@ Custom class names can be applied to internal sub-elements via the `classnames` 
 | `title` | The primary title text element |
 | `description` | The secondary description text element |
 | `body` | The container for `content` content below the description |
+| `actions` | The actions container to the right of the title |
 
 ### CSS Class Names
 
@@ -173,6 +211,7 @@ The component generates the following CSS class names using the `vacano_timeline
 | `vacano_timeline_title` | Title text |
 | `vacano_timeline_description` | Description text |
 | `vacano_timeline_body` | Body content wrapper |
+| `vacano_timeline_actions` | Actions container |
 
 ## Visual Details
 

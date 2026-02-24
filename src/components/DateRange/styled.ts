@@ -1,12 +1,14 @@
 import styled from '@emotion/styled'
 
+import { COLORS } from '../../lib'
+
 export const StyledContainer = styled.span`
   display: inline-flex;
   align-items: baseline;
-  gap: 6px;
-  font-size: 14px;
-  font-weight: 400;
-  color: #666;
+  gap: 5px;
+  font-size: 13px;
+  font-weight: 500;
+  color: ${COLORS['iron-grey']};
 `
 
 export const StyledHash = styled.span`

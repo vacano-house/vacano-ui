@@ -1,5 +1,7 @@
 import styled from '@emotion/styled'
 
+import { COLORS } from '../../lib'
+
 export const StyledContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -7,14 +9,14 @@ export const StyledContainer = styled.div`
 `
 
 export const StyledLabel = styled.span`
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  color: #666;
+  color: ${COLORS['iron-grey']};
 `
 
 export const StyledDescription = styled.span`
-  font-size: 12px;
-  color: #666;
+  font-size: 14px;
+  color: ${COLORS['iron-grey']};
 `

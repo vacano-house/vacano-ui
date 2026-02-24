@@ -1,6 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
 import { Timeline } from './Timeline'
+import { Button } from '../Button'
+import { Pencil, Trash2 } from '../../icons/Lucide'
 
 const meta: Meta<typeof Timeline> = {
   title: 'components/Timeline',
@@ -156,6 +158,50 @@ export const RichContent: Story = {
                 <li>SSO integration</li>
               </ul>
             </div>
+          ),
+        },
+      ]}
+    />
+  ),
+}
+
+export const WithActions: Story = {
+  name: 'With Actions',
+  render: () => (
+    <Timeline
+      style={{ maxWidth: 500 }}
+      items={[
+        {
+          title: 'Lead Frontend Developer',
+          description: 'ТехноКит Групп — 2023–Present',
+          content:
+            'Руководство командой из 12 разработчиков. Перевод на микрофронтенд архитектуру.',
+          actions: (
+            <>
+              <Button variant="transparent" size="compact" icon={<Pencil size={14} />} />
+              <Button variant="transparent" size="compact" icon={<Trash2 size={14} />} />
+            </>
+          ),
+        },
+        {
+          title: 'Senior Frontend Engineer',
+          description: 'Глобал Софт — 2021–2023',
+          content: 'Разработка внутреннего BI-инструмента.',
+          actions: (
+            <>
+              <Button variant="transparent" size="compact" icon={<Pencil size={14} />} />
+              <Button variant="transparent" size="compact" icon={<Trash2 size={14} />} />
+            </>
+          ),
+        },
+        {
+          title: 'Frontend Developer',
+          description: 'Стартап Медиа — 2019–2021',
+          actions: (
+            <>
+              <Button variant="transparent" size="compact" icon={<Pencil size={14} />} />
+              <Button variant="transparent" size="compact" icon={<Trash2 size={14} />} />
+            </>
           ),
         },
       ]}
