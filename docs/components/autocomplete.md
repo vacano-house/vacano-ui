@@ -104,6 +104,22 @@ For internationalization:
 />
 ```
 
+## Portal rendering
+
+When the Autocomplete is placed inside a container with `overflow: hidden` or `overflow: auto`, the dropdown will be clipped. Use `portalRenderNode` to render the dropdown via a portal so it escapes the container:
+
+```tsx
+<Autocomplete
+  label="City"
+  onSearch={handleSearch}
+  value={value}
+  onChange={setValue}
+  portalRenderNode={document.body}
+/>
+```
+
+The dropdown automatically tracks the input position on scroll and resize when rendered in a portal.
+
 ## Full Width
 
 ```tsx
@@ -143,6 +159,7 @@ For internationalization:
 | `size` | `'compact' \| 'default'` | `'default'` | Input size |
 | `fullWidth` | `boolean` | `false` | Full width input |
 | `message` | `string` | - | Message text below input (error, hint) |
+| `portalRenderNode` | `HTMLElement \| null` | - | Portal render node for dropdown (for overflow hidden containers). When set, dropdown is rendered via `createPortal` with fixed positioning. |
 | `disabled` | `boolean` | `false` | Disabled state |
 | `className` | `string` | - | CSS class name for the root element |
 | `classnames` | `AutocompleteClassNames` | - | Custom class names for inner elements |

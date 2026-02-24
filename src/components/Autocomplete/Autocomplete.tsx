@@ -1,4 +1,5 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react'
+import { createPortal } from 'react-dom'
 
 import {
   StyledContainer,
@@ -11,6 +12,7 @@ import {
   StyledItemText,
   StyledLabel,
   StyledMessage,
+  StyledPortalDropdown,
   StyledSpinnerWrapper,
 } from './styled'
 import type { AutocompleteProps, AutocompleteSuggestion } from './types'
@@ -18,6 +20,14 @@ import { Spinner } from '../Spinner'
 import { newClassNameGetter } from '../../lib'
 
 const css = newClassNameGetter('autocomplete')
+
+const DROPDOWN_GAP = 4
+
+type PortalPosition = {
+  top: number
+  left: number
+  width: number
+}
 
 export const Autocomplete = ({
   className,
@@ -27,6 +37,7 @@ export const Autocomplete = ({
   label,
   ref,
   message,
+  portalRenderNode,
   size = 'default',
   variant = 'normal',
   value,
@@ -42,8 +53,14 @@ export const Autocomplete = ({
   const [isLoading, setIsLoading] = useState(false)
   const [isOpen, setIsOpen] = useState(false)
   const [hasSearched, setHasSearched] = useState(false)
+  const [portalPosition, setPortalPosition] = useState<PortalPosition>({
+    top: 0,
+    left: 0,
+    width: 0,
+  })
 
   const containerRef = useRef<HTMLDivElement>(null)
+  const dropdownRef = useRef<HTMLDivElement>(null)
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   useEffect(() => {
@@ -118,6 +135,56 @@ export const Autocomplete = ({
     }
   }, [suggestions.length])
 
+  const updatePortalPosition = useCallback(() => {
+    if (!containerRef.current) return
+
+    const rect = containerRef.current.getBoundingClientRect()
+
+    setPortalPosition({
+      top: rect.bottom + DROPDOWN_GAP,
+      left: rect.left,
+      width: rect.width,
+    })
+  }, [])
+
+  useLayoutEffect(() => {
+    if (isOpen && portalRenderNode) {
+      updatePortalPosition()
+    }
+  }, [isOpen, portalRenderNode, updatePortalPosition])
+
+  useEffect(() => {
+    if (!isOpen || !portalRenderNode) return
+
+    const handleScroll = () => updatePortalPosition()
+    const handleResize = () => updatePortalPosition()
+
+    window.addEventListener('scroll', handleScroll, true)
+    window.addEventListener('resize', handleResize)
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll, true)
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [isOpen, portalRenderNode, updatePortalPosition])
+
+  useEffect(() => {
+    if (!isOpen || !portalRenderNode) return
+
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as Node
+      const isOutsideContainer = containerRef.current && !containerRef.current.contains(target)
+      const isOutsideDropdown = dropdownRef.current && !dropdownRef.current.contains(target)
+
+      if (isOutsideContainer && isOutsideDropdown) {
+        setIsOpen(false)
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [isOpen, portalRenderNode])
+
   useEffect(() => {
     return () => {
       if (debounceRef.current) {
@@ -125,6 +192,53 @@ export const Autocomplete = ({
       }
     }
   }, [])
+
+  const dropdownOpen = isOpen && hasSearched && !isLoading
+
+  const dropdownContent = (
+    <>
+      {suggestions.length > 0
+        ? suggestions.map((suggestion) => (
+            <StyledItem
+              key={suggestion.id}
+              onClick={() => handleSelect(suggestion)}
+              className={css('item', classnames?.item)}
+            >
+              {suggestion.image_url && (
+                <StyledItemImage src={suggestion.image_url} alt={suggestion.value} />
+              )}
+              <StyledItemText>{suggestion.value}</StyledItemText>
+            </StyledItem>
+          ))
+        : !isLoading && <StyledEmpty>{noResultsMessage}</StyledEmpty>}
+    </>
+  )
+
+  const dropdown = portalRenderNode ? (
+    createPortal(
+      <StyledPortalDropdown
+        ref={dropdownRef}
+        $open={dropdownOpen}
+        className={css('dropdown', classnames?.dropdown)}
+        style={{
+          top: portalPosition.top,
+          left: portalPosition.left,
+          width: portalPosition.width,
+        }}
+      >
+        {dropdownContent}
+      </StyledPortalDropdown>,
+      portalRenderNode,
+    )
+  ) : (
+    <StyledDropdown
+      ref={dropdownRef}
+      $open={dropdownOpen}
+      className={css('dropdown', classnames?.dropdown)}
+    >
+      {dropdownContent}
+    </StyledDropdown>
+  )
 
   return (
     <StyledContainer
@@ -158,25 +272,7 @@ export const Autocomplete = ({
         )}
       </StyledInputWrapper>
       {message && <StyledMessage variant={variant}>{message}</StyledMessage>}
-      <StyledDropdown
-        $open={isOpen && hasSearched && !isLoading}
-        className={css('dropdown', classnames?.dropdown)}
-      >
-        {suggestions.length > 0
-          ? suggestions.map((suggestion) => (
-              <StyledItem
-                key={suggestion.id}
-                onClick={() => handleSelect(suggestion)}
-                className={css('item', classnames?.item)}
-              >
-                {suggestion.image_url && (
-                  <StyledItemImage src={suggestion.image_url} alt={suggestion.value} />
-                )}
-                <StyledItemText>{suggestion.value}</StyledItemText>
-              </StyledItem>
-            ))
-          : !isLoading && <StyledEmpty>{noResultsMessage}</StyledEmpty>}
-      </StyledDropdown>
+      {dropdown}
     </StyledContainer>
   )
 }

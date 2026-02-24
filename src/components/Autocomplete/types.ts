@@ -35,4 +35,5 @@ export type AutocompleteProps = VacanoComponentProps<HTMLInputElement, Autocompl
     variant?: AutocompleteVariant
     noResultsMessage?: string
     message?: string
+    portalRenderNode?: HTMLElement | null
   }

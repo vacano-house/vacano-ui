@@ -137,26 +137,38 @@ export const StyledSpinnerWrapper = styled.div`
   justify-content: center;
 `
 
-export const StyledDropdown = styled.div<{ $open: boolean }>`
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
+const dropdownStyles = `
   z-index: 100;
-  margin-top: 4px;
   max-height: 240px;
   overflow-y: auto;
   background-color: ${COLORS.white};
   border: 1px solid ${COLORS.gray};
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  opacity: ${({ $open }) => ($open ? 1 : 0)};
-  visibility: ${({ $open }) => ($open ? 'visible' : 'hidden')};
-  transform: ${({ $open }) => ($open ? 'translateY(0)' : 'translateY(-8px)')};
   transition:
     opacity 0.15s ease,
     transform 0.15s ease,
     visibility 0.15s;
+`
+
+export const StyledDropdown = styled.div<{ $open: boolean }>`
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin-top: 4px;
+  ${dropdownStyles}
+  opacity: ${({ $open }) => ($open ? 1 : 0)};
+  visibility: ${({ $open }) => ($open ? 'visible' : 'hidden')};
+  transform: ${({ $open }) => ($open ? 'translateY(0)' : 'translateY(-8px)')};
+`
+
+export const StyledPortalDropdown = styled.div<{ $open: boolean }>`
+  position: fixed;
+  ${dropdownStyles}
+  opacity: ${({ $open }) => ($open ? 1 : 0)};
+  visibility: ${({ $open }) => ($open ? 'visible' : 'hidden')};
+  transform: ${({ $open }) => ($open ? 'translateY(0)' : 'translateY(-8px)')};
 `
 
 export const StyledItem = styled.div`

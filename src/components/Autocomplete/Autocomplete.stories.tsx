@@ -626,6 +626,70 @@ export const Message: Story = {
   ),
 }
 
+const PortalDemo = () => {
+  const [value, setValue] = useState<AutocompleteValue>({ value: '', image_url: null })
+  const handleSearch = async (query: string) => simulateSearch(mockCities, query)
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>
+      <div>
+        <div style={{ marginBottom: 8, fontSize: 12, color: '#666' }}>
+          Without portal — dropdown clipped by overflow: hidden
+        </div>
+        <div
+          style={{
+            overflow: 'hidden',
+            border: '1px dashed #e74c3c',
+            borderRadius: 8,
+            padding: 16,
+            height: 80,
+          }}
+        >
+          <AutocompleteComponent
+            fullWidth
+            label="City"
+            placeholder="Search cities..."
+            value={value}
+            onChange={setValue}
+            onSearch={handleSearch}
+          />
+        </div>
+      </div>
+
+      <div>
+        <div style={{ marginBottom: 8, fontSize: 12, color: '#666' }}>
+          With portalRenderNode — dropdown escapes overflow: hidden
+        </div>
+        <div
+          style={{
+            overflow: 'hidden',
+            border: '1px dashed #27ae60',
+            borderRadius: 8,
+            padding: 16,
+            height: 80,
+          }}
+        >
+          <AutocompleteComponent
+            fullWidth
+            label="City"
+            placeholder="Search cities..."
+            value={value}
+            onChange={setValue}
+            onSearch={handleSearch}
+            portalRenderNode={document.body}
+          />
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export const Portal: Story = {
+  name: 'Portal (overflow: hidden)',
+  parameters: { layout: 'padded' },
+  render: () => <PortalDemo />,
+}
+
 export const MixedWithContent: Story = {
   name: 'Mixed with Other Content',
   parameters: { layout: 'padded' },
