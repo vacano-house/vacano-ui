@@ -126,7 +126,6 @@ export default defineConfig({
             { text: 'FieldLabel', link: '/components/field-label' },
             { text: 'FieldMessage', link: '/components/field-message' },
             { text: 'GlobalStyle', link: '/components/global-style' },
-            { text: 'ImageCropper', link: '/components/image-cropper' },
             { text: 'KeysBindings', link: '/components/keys-bindings' },
             { text: 'KeySymbol', link: '/components/key-symbol' },
             { text: 'SplitFlapText', link: '/components/split-flap-text' },

@@ -143,7 +143,6 @@ Helper components for forms, keyboard shortcuts, and styling.
 | [FieldMessage](/components/field-message) | Validation message, hint, or error below form fields |
 | [FieldRow](/components/field-row) | Grid container for horizontal field alignment (CSS Subgrid) |
 | [GlobalStyle](/components/global-style) | Global CSS reset and base styles (required) |
-| [ImageCropper](/components/image-cropper) | Image upload and cropping (avatars, profile pictures) |
 | [KeysBindings](/components/keys-bindings) | Keyboard shortcut display (e.g. Cmd+S) |
 | [KeySymbol](/components/key-symbol) | Single key symbol display |
 

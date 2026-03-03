@@ -17,9 +17,6 @@ importers:
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
-      hq-cropper:
-        specifier: ^4.0.0
-        version: 4.0.0
       react-hook-form:
         specifier: ^7.0.0
         version: 7.71.2(react@19.2.3)
@@ -2073,10 +2070,6 @@ packages:
 
   hookable@5.5.3:
     resolution: {integrity: sha512-Yc+BQe8SvoXH1643Qez1zqLRmbA5rCL+sSmk6TVos0LWVfNIB7PGncdlId77WzLGSIB5KaWgTaNTs2lNVEI6VQ==}
-
-  hq-cropper@4.0.0:
-    resolution: {integrity: sha512-bPKWU2kWpN1qM+w/h1+jVAsSQLsn4Wl1DiDC+dINSLpgRZ3kEGyc/AzcBxACfY14mlw1alo4z8jvt7sLwx3jXw==}
-    engines: {node: '>=22.0.0'}
 
   html-void-elements@3.0.0:
     resolution: {integrity: sha512-bEqo66MRXsUGxWHV5IP0PUiAWwoEjba4VCzg0LjFJBpchPaTfyfCKTG6bc5F8ucKec3q5y6qOdGyYTSBEvhCrg==}
@@ -5461,8 +5454,6 @@ snapshots:
       react-is: 16.13.1
 
   hookable@5.5.3: {}
-
-  hq-cropper@4.0.0: {}
 
   html-void-elements@3.0.0: {}
 
