@@ -29,7 +29,7 @@ export default meta
 type Story = StoryObj<typeof DropdownComponent>
 
 const MenuContent = () => (
-  <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+  <div style={{ display: 'flex', flexDirection: 'column', gap: 4, padding: 4 }}>
     <Button variant="transparent" style={{ justifyContent: 'flex-start' }}>
       Profile
     </Button>

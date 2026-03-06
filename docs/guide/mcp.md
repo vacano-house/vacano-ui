@@ -9,7 +9,7 @@ Model Context Protocol is an open standard that allows AI assistants to access e
 ## Server URL
 
 ```
-https://tools.vacano.io/ui/mcp
+https://mcp.vacano.io/ui
 ```
 
 ## Setup
@@ -19,7 +19,7 @@ https://tools.vacano.io/ui/mcp
 Add the server to your project configuration:
 
 ```bash
-claude mcp add vacano-ui --transport http https://tools.vacano.io/ui/mcp
+claude mcp add vacano-ui --transport http https://mcp.vacano.io/ui
 ```
 
 Or add it manually to `.mcp.json` in your project root:
@@ -29,7 +29,7 @@ Or add it manually to `.mcp.json` in your project root:
   "mcpServers": {
     "vacano-ui": {
       "type": "http",
-      "url": "https://tools.vacano.io/ui/mcp"
+      "url": "https://mcp.vacano.io/ui"
     }
   }
 }
@@ -41,7 +41,7 @@ Open **Settings > MCP** and add a new server:
 
 - **Name**: `vacano-ui`
 - **Type**: `http`
-- **URL**: `https://tools.vacano.io/ui/mcp`
+- **URL**: `https://mcp.vacano.io/ui`
 
 Or add it to `.cursor/mcp.json` in your project root:
 
@@ -50,7 +50,7 @@ Or add it to `.cursor/mcp.json` in your project root:
   "mcpServers": {
     "vacano-ui": {
       "type": "http",
-      "url": "https://tools.vacano.io/ui/mcp"
+      "url": "https://mcp.vacano.io/ui"
     }
   }
 }
@@ -65,7 +65,7 @@ Add the server to `~/.codeium/windsurf/mcp_config.json`:
   "mcpServers": {
     "vacano-ui": {
       "type": "http",
-      "url": "https://tools.vacano.io/ui/mcp"
+      "url": "https://mcp.vacano.io/ui"
     }
   }
 }
@@ -76,7 +76,7 @@ Add the server to `~/.codeium/windsurf/mcp_config.json`:
 Any MCP-compatible client can connect using the HTTP transport:
 
 - **Transport**: HTTP
-- **URL**: `https://tools.vacano.io/ui/mcp`
+- **URL**: `https://mcp.vacano.io/ui`
 
 Refer to your client's documentation for specific configuration steps.
 

@@ -152,4 +152,24 @@ export const BUTTON_VARIANT_PROPS: Record<
       disabled: alpha(COLORS['iron-grey'], 10),
     },
   },
+  ghost: {
+    background: {
+      static: alpha(COLORS['iron-grey'], 6),
+      hover: alpha(COLORS['iron-grey'], 10),
+      active: alpha(COLORS['iron-grey'], 14),
+      disabled: alpha(COLORS['iron-grey'], 4),
+    },
+    color: {
+      static: COLORS['black'],
+      hover: COLORS['black'],
+      active: COLORS['black'],
+      disabled: alpha(COLORS['black'], 30),
+    },
+    borderColor: {
+      static: 'transparent',
+      hover: 'transparent',
+      active: 'transparent',
+      disabled: 'transparent',
+    },
+  },
 }

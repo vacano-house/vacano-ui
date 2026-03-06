@@ -9,7 +9,14 @@ export type ButtonClassNames = {
 }
 
 export type ButtonType = 'button' | 'submit' | 'reset' | 'link'
-export type ButtonVariant = 'normal' | 'system' | 'success' | 'warning' | 'danger' | 'transparent'
+export type ButtonVariant =
+  | 'normal'
+  | 'system'
+  | 'success'
+  | 'warning'
+  | 'danger'
+  | 'transparent'
+  | 'ghost'
 
 export type ButtonProps = VacanoComponentProps<HTMLButtonElement, ButtonClassNames> &
   Omit<HTMLAttributes<HTMLButtonElement>, 'children' | 'className'> & {

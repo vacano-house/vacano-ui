@@ -14,7 +14,6 @@ export const StyledTrigger = styled.div`
 
 const contentStyles = `
   min-width: 160px;
-  padding: 8px;
   background-color: ${COLORS.white};
   border: 1px solid ${COLORS.gray};
   border-radius: 8px;

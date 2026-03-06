@@ -1,3 +1,5 @@
+import React from 'react'
+
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
 import { Button as ButtonComponent } from './Button'
@@ -22,7 +24,7 @@ const meta: Meta<typeof ButtonComponent> = {
     children: { control: 'text' },
     variant: {
       control: 'select',
-      options: ['normal', 'system', 'success', 'warning', 'danger', 'transparent'],
+      options: ['normal', 'system', 'success', 'warning', 'danger', 'transparent', 'ghost'],
     },
     size: { control: 'select', options: ['compact', 'default'] },
     disabled: { control: 'boolean' },
@@ -81,6 +83,12 @@ export const Variants: Story = {
           <ButtonComponent variant="transparent">Transparent Button</ButtonComponent>
         </div>
       </div>
+      <div>
+        <div style={{ marginBottom: 8, fontSize: 12, color: '#666' }}>Ghost</div>
+        <div style={{ border: '1px dashed #ccc', padding: 16 }}>
+          <ButtonComponent variant="ghost">Ghost Button</ButtonComponent>
+        </div>
+      </div>
     </div>
   ),
 }
@@ -118,6 +126,9 @@ export const Sizes: Story = {
           <ButtonComponent size="default" variant="transparent">
             Transparent
           </ButtonComponent>
+          <ButtonComponent size="default" variant="ghost">
+            Ghost
+          </ButtonComponent>
         </div>
       </div>
       <div>
@@ -149,6 +160,9 @@ export const Sizes: Story = {
           <ButtonComponent size="compact" variant="transparent">
             Transparent
           </ButtonComponent>
+          <ButtonComponent size="compact" variant="ghost">
+            Ghost
+          </ButtonComponent>
         </div>
       </div>
     </div>
@@ -176,6 +190,9 @@ export const WithIcon: Story = {
           <ButtonComponent icon={<Search />} variant="transparent">
             Search
           </ButtonComponent>
+          <ButtonComponent icon={<Download />} variant="ghost">
+            Download
+          </ButtonComponent>
         </div>
       </div>
       <div>
@@ -195,6 +212,9 @@ export const WithIcon: Story = {
           <ButtonComponent icon={<Download />} variant="transparent" size="compact">
             Download
           </ButtonComponent>
+          <ButtonComponent icon={<Search />} variant="ghost" size="compact">
+            Search
+          </ButtonComponent>
         </div>
       </div>
     </div>
@@ -212,6 +232,7 @@ export const IconOnly: Story = {
           <ButtonComponent icon={<Settings />} variant="system" />
           <ButtonComponent icon={<Trash2 />} variant="danger" />
           <ButtonComponent icon={<Search />} variant="transparent" />
+          <ButtonComponent icon={<Download />} variant="ghost" />
         </div>
       </div>
       <div>
@@ -221,6 +242,7 @@ export const IconOnly: Story = {
           <ButtonComponent icon={<Settings />} variant="system" size="compact" />
           <ButtonComponent icon={<Trash2 />} variant="danger" size="compact" />
           <ButtonComponent icon={<Search />} variant="transparent" size="compact" />
+          <ButtonComponent icon={<Download />} variant="ghost" size="compact" />
         </div>
       </div>
       <div>
@@ -254,6 +276,9 @@ export const Loading: Story = {
             Loading
           </ButtonComponent>
           <ButtonComponent loading variant="transparent">
+            Loading
+          </ButtonComponent>
+          <ButtonComponent loading variant="ghost">
             Loading
           </ButtonComponent>
         </div>
@@ -307,6 +332,9 @@ export const Disabled: Story = {
           <ButtonComponent disabled variant="transparent">
             Transparent
           </ButtonComponent>
+          <ButtonComponent disabled variant="ghost">
+            Ghost
+          </ButtonComponent>
         </div>
       </div>
       <div>
@@ -355,6 +383,9 @@ export const FullWidth: Story = {
             <ButtonComponent fullWidth variant="transparent">
               Full Width Transparent
             </ButtonComponent>
+            <ButtonComponent fullWidth variant="ghost">
+              Full Width Ghost
+            </ButtonComponent>
           </div>
         </div>
       </div>
@@ -375,49 +406,78 @@ export const FullWidth: Story = {
   ),
 }
 
+const KeyBindingButton = ({ children, ...props }: React.ComponentProps<typeof ButtonComponent>) => {
+  const [flash, setFlash] = React.useState(false)
+  const timeoutRef = React.useRef<ReturnType<typeof setTimeout>>(null)
+
+  const handleClick = () => {
+    if (timeoutRef.current) clearTimeout(timeoutRef.current)
+    setFlash(true)
+    timeoutRef.current = setTimeout(() => setFlash(false), 600)
+  }
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6 }}>
+      <ButtonComponent {...props} onClick={handleClick}>
+        {children}
+      </ButtonComponent>
+      <div
+        style={{
+          fontSize: 11,
+          fontWeight: 600,
+          color: flash ? '#16a34a' : 'transparent',
+          transition: 'color 0.15s',
+        }}
+      >
+        triggered
+      </div>
+    </div>
+  )
+}
+
 export const WithKeyBindings: Story = {
   parameters: { layout: 'padded' },
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
       <div>
         <div style={{ marginBottom: 8, fontSize: 12, color: '#666' }}>
-          Buttons with Keyboard Shortcuts
+          Buttons with Keyboard Shortcuts — click or press the shortcut to see feedback
         </div>
         <div style={{ border: '1px dashed #ccc', padding: 16, display: 'flex', gap: 16 }}>
-          <ButtonComponent keyBindings={['Meta', 'S']} variant="normal">
+          <KeyBindingButton keyBindings={['Meta', 'S']} variant="normal">
             Save
-          </ButtonComponent>
-          <ButtonComponent keyBindings={['Meta', 'Enter']} variant="system">
+          </KeyBindingButton>
+          <KeyBindingButton keyBindings={['Meta', 'Enter']} variant="system">
             Submit
-          </ButtonComponent>
-          <ButtonComponent keyBindings={['Escape']} variant="transparent">
+          </KeyBindingButton>
+          <KeyBindingButton keyBindings={['Escape']} variant="transparent">
             Cancel
-          </ButtonComponent>
+          </KeyBindingButton>
         </div>
       </div>
       <div>
         <div style={{ marginBottom: 8, fontSize: 12, color: '#666' }}>With Icons and Shortcuts</div>
         <div style={{ border: '1px dashed #ccc', padding: 16, display: 'flex', gap: 16 }}>
-          <ButtonComponent icon={<Plus />} keyBindings={['Meta', 'N']} variant="normal">
+          <KeyBindingButton icon={<Plus />} keyBindings={['Meta', 'N']} variant="normal">
             New
-          </ButtonComponent>
-          <ButtonComponent icon={<Search />} keyBindings={['Meta', 'K']} variant="system">
+          </KeyBindingButton>
+          <KeyBindingButton icon={<Search />} keyBindings={['Meta', 'K']} variant="system">
             Search
-          </ButtonComponent>
-          <ButtonComponent icon={<Trash2 />} keyBindings={['Delete']} variant="danger">
+          </KeyBindingButton>
+          <KeyBindingButton icon={<Trash2 />} keyBindings={['Delete']} variant="danger">
             Delete
-          </ButtonComponent>
+          </KeyBindingButton>
         </div>
       </div>
       <div>
         <div style={{ marginBottom: 8, fontSize: 12, color: '#666' }}>Single Key Shortcuts</div>
         <div style={{ border: '1px dashed #ccc', padding: 16, display: 'flex', gap: 16 }}>
-          <ButtonComponent keyBindings={['Enter']} variant="normal">
+          <KeyBindingButton keyBindings={['Enter']} variant="normal">
             Confirm
-          </ButtonComponent>
-          <ButtonComponent keyBindings={[' ']} variant="system">
+          </KeyBindingButton>
+          <KeyBindingButton keyBindings={[' ']} variant="system">
             Toggle
-          </ButtonComponent>
+          </KeyBindingButton>
         </div>
       </div>
     </div>

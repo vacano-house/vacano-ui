@@ -34,7 +34,8 @@ import { Button } from '@vacano/ui'
 | `success` | Green success button |
 | `warning` | Yellow warning button |
 | `danger` | Red danger/delete button |
-| `transparent` | Transparent background |
+| `transparent` | Transparent background with border |
+| `ghost` | Subtle tinted background, no border |
 
 ```tsx
 <Button variant="normal">Normal</Button>
@@ -43,6 +44,7 @@ import { Button } from '@vacano/ui'
 <Button variant="warning">Warning</Button>
 <Button variant="danger">Danger</Button>
 <Button variant="transparent">Transparent</Button>
+<Button variant="ghost">Ghost</Button>
 ```
 
 ## Sizes
@@ -92,7 +94,7 @@ Display and respond to keyboard shortcuts:
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
 | `children` | `string` | - | Button label text |
-| `variant` | `'normal' \| 'system' \| 'success' \| 'warning' \| 'danger' \| 'transparent'` | `'normal'` | Visual variant |
+| `variant` | `'normal' \| 'system' \| 'success' \| 'warning' \| 'danger' \| 'transparent' \| 'ghost'` | `'normal'` | Visual variant |
 | `size` | `'compact' \| 'default'` | `'default'` | Button size |
 | `type` | `'button' \| 'submit' \| 'reset' \| 'link'` | `'button'` | Button type |
 | `icon` | `ReactNode` | - | Icon element |
